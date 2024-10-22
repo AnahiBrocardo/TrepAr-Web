@@ -1,0 +1,54 @@
+.formularioLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px; /* Opcional, para esquinas redondeadas */
+    background-color: #f9f9f9; /* Fondo claro */
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 8vh;
+    margin-top: 5vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 450px; /* Ancho del formulario */
+    padding: 15px;
+    border: 1px solid #ccc; /* Borde gris */
+    border-radius: 10px; /* Esquinas redondeadas */
+    margin-bottom: 20px; /* Para separar más los elementos */
+}
+
+.username, .password {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 15px; /* Aumentar separación si es necesario */
+}
+
+input, select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.username label, .password label {
+    margin-bottom: 2vh; /* Ajusta este valor según sea necesario */
+}
+button {
+    padding: 10px;
+    font-size: 1em;
+    background-color: #6d6d6d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

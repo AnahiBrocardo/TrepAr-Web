@@ -1,0 +1,37 @@
+
+:root{
+    --naranja: #F7BD56;
+    --blanco: white;
+}
+
+.header{
+    box-sizing: border-box;
+    font-size: 18px;
+    background-color: #ffb73a ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 5px 25px;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: white ;
+}
+
+.header .nav-link li {
+    list-style-type: none;
+}
+
+.header .nav-link a {
+    text-decoration: none;
+    color: rgb(77, 77, 77);
+    padding: 9px 25px;
+    background-color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
