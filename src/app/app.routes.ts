@@ -1,10 +1,26 @@
+import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { PrincipalComponent } from './pages/principal/principal.component';
+import { ProductoComponent } from './pages/Producto/producto/producto.component';
+import { SimuladorComponent } from './pages/simulador/simulador.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 export const routes: Routes = [
-    { path: '', component: DashboardComponent },
+    //{ path: '', component: HomeComponent}, AQUI PODRIA IR LA PAGINA PRINCIPAL
     {path: 'acceso', component: LoginComponent},
-    {path: 'registrarse', component: RegisterComponent}
+    {path: 'registrarse', component: RegisterComponent},
+    {
+        path: 'dashboard', 
+        component: DashboardComponent,
+        children: [
+            {path: 'principal', component: PrincipalComponent},
+            {path: 'producto', component: ProductoComponent},
+            {path: 'simulador', component: SimuladorComponent },
+            {path: 'settings', component: SettingsComponent}
+        ]
+    }
 ];
+

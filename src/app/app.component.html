@@ -1,6 +1,18 @@
-<app-header></app-header>
+<!--<app-header></app-header>–>
 <router-outlet></router-outlet>
 <div class="fixed-bottom">
   <app-footer></app-footer>
-</div>
+</div>--!-->
+
+<ng-container *ngIf="!isDashboard">
+  <app-header></app-header>
+</ng-container>
+
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="!isDashboard">
+  <div class="fixed-bottom">
+    <app-footer></app-footer>
+  </div>
+</ng-container>
 
