@@ -1,0 +1,41 @@
+
+.mi-imagen-inicio {
+    position: relative; 
+    width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho */
+    height: auto; 
+    overflow: hidden; /* Opcional: oculta el desbordamiento si la imagen es más grande */
+  }
+  
+  .mi-imagen-inicio img {
+    width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
+    height: auto; /* Mantiene la proporción de aspecto de la imagen */
+    display: block; /* Elimina el espacio debajo de la imagen */
+    object-fit: cover;
+  }
+
+  .overlay {
+    position: absolute; /* Se coloca sobre la imagen */
+    top: 0; /* Alinea en la parte superior */
+    left: 0; /* Alinea a la izquierda */
+    right: 0; /* Alinea a la derecha */
+    bottom: 0; /* Alinea en la parte inferior */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con 50% de transparencia */
+    z-index: 1; /* Asegura que el overlay esté por encima de la imagen */
+}
+  .texto-centrado {
+    position: absolute; /* Posiciona el texto sobre la imagen */
+    top: 50%; /* Coloca el texto en la mitad vertical del contenedor */
+    left: 50%; /* Coloca el texto en la mitad horizontal del contenedor */
+    transform: translate(-50%, -50%); /* Centra el texto ajustando su tamaño */
+    color: white; /* Color del texto (blanco para contraste) */
+    font-size: 7vh; /* Tamaño del texto */
+    text-align: center; /* Centra el texto dentro de su contenedor */
+    z-index: 2; /* Asegura que el texto esté por encima del overlay */
+  }
+
+  .texto-pequeno {
+    font-size: 0.5em; /* Ajusta el tamaño como prefieras */
+    color: white; /* Ajusta el color según prefieras */
+    margin-top: 10px; /* Añade un margen superior para separarlo del texto principal */
+  }
+  
