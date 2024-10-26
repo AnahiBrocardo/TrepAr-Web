@@ -10,7 +10,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 export const routes: Routes = [
-   // { path: '', component: LandingPageComponent},
+   { path: '', component: LandingPageComponent},
     {path: 'acceso', component: LoginComponent},
     {path: 'registrarse', component: RegisterComponent},
     {
@@ -23,6 +23,6 @@ export const routes: Routes = [
             {path: 'settings', component: SettingsComponent}
         ]
     }, 
-   // {path: '**', redirectTo: '', pathMatch: 'full'} //si pone cualquier otra cosa lo redirige a vacio '', osea a la landing
+   {path: '**', redirectTo: '', pathMatch: 'full'} //si pone cualquier otra cosa lo redirige a vacio '', osea a la landing
 ];
 
