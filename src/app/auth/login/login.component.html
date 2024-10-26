@@ -1,13 +1,13 @@
 <div class="formularioLogin">
     <h1>Inicio Sesión</h1>
-    <form>
+    <form [formGroup]="loginForm">
         <div class="username">
             <label for="username">Nombre de usuario</label>
-            <input type="text" id="username" placeholder="Ingrese su nombre de usuario">
+            <input formControlName="email" type="text" id="username" placeholder="Ingrese su nombre de usuario">
         </div>
         <div class="password">
             <label for="password">Contraseña</label>
-            <input type="password" id="password" placeholder="Ingrese su contraseña">
+            <input formControlName="password" type="password" id="password" placeholder="Ingrese su contraseña">
         </div>
         <a href="/registrarse">Crear cuenta</a>
         <button type="submit">Enviar</button>
