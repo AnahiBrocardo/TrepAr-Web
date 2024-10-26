@@ -27,18 +27,32 @@
     color: white ;
 }
 
+.logo img {
+    height: 150px; /* Ajusta la altura según necesites */
+    width: auto;  /* Mantiene la proporción */
+}
+
+
 .header .nav-link li {
     list-style-type: none;
 }
 
 .header .nav-link a {
     text-decoration: none;
-    color: rgb(77, 77, 77);
+    color: white;
     padding: 9px 25px;
-    background-color: white;
+    background-color: #f6ae8e;
     border: none;
     border-radius: 50px;
     cursor: pointer;
+   
 }
 
+.nav-link a:hover {
+    opacity: 0.5; /* Cambia la opacidad al pasar el mouse */
+}
+
+.nav-link a:active {
+    opacity: 0.7; /* Cambia la opacidad al hacer clic (opcional) */
+}
 
