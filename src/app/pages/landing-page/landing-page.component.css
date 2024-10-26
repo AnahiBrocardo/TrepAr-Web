@@ -39,3 +39,56 @@
     margin-top: 10px; /* Añade un margen superior para separarlo del texto principal */
   }
   
+  .about-card {
+    background-color:#f6ae8e; /* Color de fondo */
+    border-radius: 70px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(255, 94, 0, 0.7); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+    max-width: 1200px; /* Ancho máximo de la tarjeta */
+    margin: 60px auto 40px auto; /* Centrado horizontal, distancia con la section anterior*/
+    text-align: center; /* Centrado del texto */
+    margin-bottom: 40px; /* Espaciado inferior */
+    position: relative; /* Para posicionar al gatito */
+}
+
+.about-card h2 {
+    font-size: 24px; /* Tamaño del título */
+    margin-bottom: 10px; /* Espaciado inferior */
+    color: black;
+}
+
+.about-card p {
+    font-size: 16px; /* Tamaño del texto */
+    line-height: 1.5; /* Altura de línea para mejor legibilidad */
+    margin-bottom: 15px; /* Espaciado inferior */
+    color: black;
+}
+
+.about-card .team {
+    margin-top: 20px; /* Espacio superior para separar del texto anterior */
+}
+
+.about-card .team h3 {
+    font-size: 20px; /* Tamaño del subtítulo */
+    margin-bottom: 10px; /* Espaciado inferior */
+    color: black;
+}
+
+.about-card .team ul {
+    list-style-type: none; /* Eliminar viñetas de la lista */
+    padding: 0; /* Eliminar padding */
+}
+
+.about-card .team li {
+    font-size: 16px; /* Tamaño del texto de la lista */
+    margin: 5px 0; /* Espaciado vertical entre elementos de la lista */
+  
+}
+
+.hanging-cat {
+  position: absolute;
+  top: -60px; /* Ajusta según el tamaño del gatito */
+  right: -20px; /* Ajusta para colgarlo de la esquina */
+  width: 170px; /* Ajusta el tamaño del gatito */
+  transform: rotate(0deg); /* Gira un poco para darle efecto de colgar */
+}
