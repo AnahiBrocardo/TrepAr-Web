@@ -7,12 +7,17 @@
 .header{
     box-sizing: border-box;
     font-size: 18px;
-    background-color: #ffb73a ;
+    background-color: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80px;
     padding: 5px 25px;
+    position: fixed;
+    top: 0;         /* Se coloca en la parte superior */
+    left: 0;        /* Alineación a la izquierda */
+    width: 100%;    /* Asegura que el header ocupe todo el ancho */
+    z-index: 1000;  /* Valor alto para que se muestre sobre otros elementos */
 }
 
 .logo a {
@@ -35,3 +40,5 @@
     border-radius: 50px;
     cursor: pointer;
 }
+
+
