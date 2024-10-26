@@ -7,9 +7,10 @@ import { PrincipalComponent } from './pages/principal/principal.component';
 import { ProductoComponent } from './pages/Producto/producto/producto.component';
 import { SimuladorComponent } from './pages/simulador/simulador.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 export const routes: Routes = [
-    //{ path: '', component: HomeComponent}, AQUI PODRIA IR LA PAGINA PRINCIPAL
+   // { path: '', component: LandingPageComponent},
     {path: 'acceso', component: LoginComponent},
     {path: 'registrarse', component: RegisterComponent},
     {
@@ -21,6 +22,7 @@ export const routes: Routes = [
             {path: 'simulador', component: SimuladorComponent },
             {path: 'settings', component: SettingsComponent}
         ]
-    }
+    }, 
+   // {path: '**', redirectTo: '', pathMatch: 'full'} //si pone cualquier otra cosa lo redirige a vacio '', osea a la landing
 ];
 
