@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { loginRequest } from '../../Interfaces/loginRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -6,8 +7,9 @@ import { Injectable } from '@angular/core';
 export class ControlAccesoService {
 
   constructor() { }
-// creamos el metodo login que se va a conectar con la api rest
-  login(credentials:any){
+// Creamos el método `login` que se conectará con la API REST.
+// Este método recibe un parámetro `credentials` que debe cumplir con la interfaz `loginRequest`.
+  login(credentials:loginRequest){ 
    console.log(credentials);
   }
 
