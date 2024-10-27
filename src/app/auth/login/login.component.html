@@ -5,7 +5,7 @@
             <label for="username">Nombre de usuario</label>
             <input formControlName="email" type="text" id="username" placeholder="Ingrese su nombre de usuario">
              <!-- Mensajes de error para el campo de correo electrónico -->
-             <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
+             <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
                 <div *ngIf="email?.hasError('required')">El correo electrónico es obligatorio.</div>
                 <div *ngIf="email?.hasError('email')">Ingrese un formato de correo electrónico válido.</div>
               </div>
