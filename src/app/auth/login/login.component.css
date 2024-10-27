@@ -24,15 +24,15 @@ form {
 }
 
 
-.username, .password {
+.email, .password {
     display: flex;
     flex-direction: column;
     margin-top: 5px;
     margin-bottom: 25px;
 }
 
-.username label, .password label {
-    margin-bottom: 2vh; /* Ajusta este valor según sea necesario */
+.email label, .password label {
+    margin-bottom: 1.5vh; /* Ajusta este valor según sea necesario */
 }
 
 input {

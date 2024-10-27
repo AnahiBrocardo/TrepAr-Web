@@ -1,9 +1,9 @@
 <div class="formularioLogin">
     <h1>Inicio Sesión</h1>
     <form [formGroup]="loginForm">
-        <div class="username">
-            <label for="username">Nombre de usuario</label>
-            <input formControlName="email" type="text" id="username" placeholder="Ingrese su nombre de usuario">
+        <div class="email">
+            <label for="email">Correo Electronico</label>
+            <input formControlName="email" type="text" id="email" placeholder="Ingrese su email">
              <!-- Mensajes de error para el campo de correo electrónico -->
              <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
                 <div *ngIf="email?.hasError('required')">El correo electrónico es obligatorio.</div>
