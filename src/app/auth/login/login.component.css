@@ -32,7 +32,7 @@ form {
 }
 
 .email label, .password label {
-    margin-bottom: 1.5vh; /* Ajusta este valor según sea necesario */
+    margin-bottom: 1.5vh; 
 }
 
 input {

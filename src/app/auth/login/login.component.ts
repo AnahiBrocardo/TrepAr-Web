@@ -46,7 +46,17 @@ export class LoginComponent implements OnInit{
     
     if(this.loginForm.valid){ //si el formulario es valido
 
-    this.loginService.login(this.loginForm.value); //lamamos a servicio, pansandole por parametro los datos del formulario
+    this.loginService.login(this.loginForm.value).subscribe({
+      next: (userData)=> {
+        console.log(userData);
+      },
+      error: (errorData)=> {
+       console.error(errorData);
+      },
+      complete: ()=>{
+        console.log("Login completo");
+      }
+    }); //lamamos a servicio, pansandole por parametro los datos del formulario
     this.router.navigateByUrl('/dashboard');// Redirige al usuario a la ruta '/dashboard' utilizando el método navigateByUrl
     this.loginForm.reset();//reseteamos los campos del form
     
