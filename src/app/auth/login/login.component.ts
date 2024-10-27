@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'; //importamos la clase form builder
 import { Router } from '@angular/router';
+import { ControlAccesoService } from '../../../Servicios/acceso/control-acceso.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit{
  loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router){
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: ControlAccesoService){
+
    this.loginForm= this.formBuilder.group({//loginForm: FormGroup ->define una propiedad loginForm de tipo FormGroup.
       //this.fb.group(): Usa FormBuilder para crear un grupo de controles de formulario con distintos campos
       
@@ -44,7 +46,7 @@ export class LoginComponent implements OnInit{
     
     if(this.loginForm.valid){ //si el formulario es valido
 
-    console.log("Llamar al servicio de login");
+    this.loginService.login(this.loginForm.value); //lamamos a servicio, pansandole por parametro los datos del formulario
     this.router.navigateByUrl('/dashboard');// Redirige al usuario a la ruta '/dashboard' utilizando el método navigateByUrl
     this.loginForm.reset();//reseteamos los campos del form
     
