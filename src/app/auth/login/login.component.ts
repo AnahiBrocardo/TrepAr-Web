@@ -1,19 +1,20 @@
+import { Router } from '@angular/router';
 import { Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ControlAccesoService } from '../../Servicios/auth/control-acceso.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit{
   fb= inject(FormBuilder);
   loginService= inject(ControlAccesoService);
-
-  router: any;
+  router= inject(Router);
   
     ngOnInit(): void {
     }
