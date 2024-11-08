@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { HeaderComponent } from '../../../shared/header/header.component';
+import { RegisterComponent } from '../../../auth/register/register.component';
 
 @Component({
   selector: 'app-registrarse-page',
   standalone: true,
-  imports: [],
+  imports: [HeaderComponent, RegisterComponent],
   templateUrl: './registrarse-page.component.html',
   styleUrl: './registrarse-page.component.css'
 })

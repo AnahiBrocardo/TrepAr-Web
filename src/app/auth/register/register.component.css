@@ -10,13 +10,13 @@
 h1 {
     font-size: 2em;
     margin-bottom: 8vh;
-    margin-top: 5vh;
+    margin-top: 10vh;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    width: 450px; /* Ancho del formulario */
+    width: 300px; /* Ancho del formulario */
     padding: 15px;
     border: 1px solid #ccc; /* Borde gris */
     border-radius: 10px; /* Esquinas redondeadas */

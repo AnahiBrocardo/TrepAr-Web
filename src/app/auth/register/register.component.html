@@ -16,37 +16,9 @@
             <input type="email" id="email" name="email" required>
         </div>
 
-        <div class="username">
-            <label for="nombreUsuario">Nombre de Usuario</label>
-            <input type="text" id="nombreUsuario" name="nombreUsuario" required>
-        </div>
-
         <div class="password">
             <label for="contrasena">Contraseña</label>
             <input type="password" id="contrasena" name="contrasena" required>
-        </div>
-
-        <div class="username">
-            <label for="telefono">Teléfono</label>
-            <input type="tel" id="telefono" name="telefono" required>
-        </div>
-
-        <div class="username">
-            <label for="pais">País</label>
-            <input type="text" id="pais"name="pais" required>
-        </div>
-
-        <div class="username">
-            <label for="ciudad">Ciudad</label>
-            <input type="text" id="ciudad"  name="ciudad" required>
-        </div>
-
-        <div class="username">
-            <label for="categoria">Categoría</label>
-            <select id="categoria" name="categoria" required>
-                <option value="" disabled selected>Selecciona una categoría</option>
-                <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
-            </select>
         </div>
 
         <button type="submit">Registrarse</button>
