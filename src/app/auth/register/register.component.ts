@@ -1,20 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
- // Se definen las categorías como un array de strings
- categorias: string[] = [
-  'Tecnología',
-  'Salud y bienestar',
-  'Manualidades',
-  'Construccion',
-  'Moda'
-];
+ fb= inject(FormBuilder);
+
 }
