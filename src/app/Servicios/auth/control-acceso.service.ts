@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { LoginRequest } from '../../Interfaces/loginRequest.interface';
-import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { User } from '../../Interfaces/user.interface';
 
 @Injectable({
@@ -9,13 +9,19 @@ import { User } from '../../Interfaces/user.interface';
 })
 export class ControlAccesoService {
   usuarioActualLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false); //valor por defecto false, el usuario no va a estar logueado inicialmente
-  
+  dataUsuarioActual: BehaviorSubject<User>= new BehaviorSubject<User>({id:0, email:''}); 
+
   constructor( private http: HttpClient) { }
 
 // Creamos el método `login` que se conectará con la API REST.
 // Este método recibe un parámetro `credentials` que debe cumplir con la interfaz `loginRequest`.
   login(credentials: LoginRequest ): Observable <User>{ 
-    return this.http.get<User>('http://localhost:3000/usuarios').pipe(
+    return this.http.get<User>('http://localhost:3000/user').pipe(
+      tap((userData: User) =>{ //tap permite realizar acciones secundarias sin alterar el flujo de datos.En este caso se utiliza para actualizar estados o variables con los datos obtenidos.
+        console.log('Datos del usuario recibidos en login:', userData); 
+        this.dataUsuarioActual.next(userData); // se actualiza el observable `dataUsuarioActual` con los datos del usuario que acaba de iniciar sesión.
+        this.usuarioActualLoginOn.next(true); //se cambia el estado de `usuarioActualLoginOn` a `true` para indicar que el usuario ha iniciado sesión 
+      }),
       catchError(this.manejadorError) //si algo sale mal con la solicitud al servidor, catchError llama a manejadorError para que maneje el problema
     );
    }
@@ -48,5 +54,11 @@ export class ControlAccesoService {
     return throwError(() => new Error('Algo falló. Por favor, intenta nuevamente...'));
   }
  
+  get userData(): Observable<User>{
+    return this.dataUsuarioActual.asObservable();
+  }
 
+  get userLoginOn(): Observable<boolean>{
+    return this.usuarioActualLoginOn.asObservable();
+  }
   }

@@ -1,11 +1,9 @@
 {
-    "usuarios":
-    [
-        {
-            "id":1,
-            "nombre":"Juan",
-            "apellido":"Gomez",
-            "email":"juan@mail.com"
-        }
-    ]
+    "user":{
+    "id":1,
+    "nombre":"Juan",
+    "apellido":"Gomez",
+    "email":"juan@mail.com"
+ }
+           
 }
