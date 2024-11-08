@@ -16,17 +16,17 @@ export class SidenavComponent {
     {
       routeLink: 'principal',
       icon: 'fal fa-home',
-      label: 'principal',
+      label: 'Principal',
     },
     {
       routeLink: 'producto',
       icon: 'fal fa-box-open',
-      label: 'producto',
+      label: 'Producto',
     },
     {
       routeLink: 'simulador',
       icon: 'fal fa-file',
-      label: 'simulador',
+      label: 'Simulador',
     },
     {
       routeLink: 'settings',
