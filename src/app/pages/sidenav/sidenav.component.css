@@ -1,5 +1,5 @@
 .sidenav {
-    background: #e9d66d;
+    background: white;
     transition: all 0.5s ease;
     position: fixed;
     z-index: 1;
@@ -31,9 +31,14 @@
   }
   .sidenav .logo-container .logo-text {
     margin-left: 1.5rem;
-    font-size: 24px;
-    font-weight: 700;
-    color: #fff;
+    display: flex;
+    align-items: center; /* Alinea verticalmente la imagen */
+  }
+
+  .sidenav .logo-container .logo-text img {
+    height: 2rem; /* Ajusta el tamaño de la imagen */
+  width: auto; /* Mantiene la proporción de la imagen */
+  object-fit: contain; /* Ajusta la imagen dentro del contenedor sin distorsionarla */
   }
   .sidenav .logo-container .btn-close {
     margin-left: auto;
@@ -41,11 +46,11 @@
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background-color: transparent;
+    background-color:  #a7dcdf; /*fondo del boton de la cruz*/
     border: none;
   }
   .sidenav .logo-container .btn-close .fa-times {
-    color: #fff;
+    color: #fff; /*color del boton cruz*/
     font-size: 24px;
   }
   
@@ -67,7 +72,7 @@
     display: flex;
     align-items: center;
     height: 3rem;
-    color: #f3f3f3;
+    color: #dddddd;
     text-decoration: none;
     border-radius: 0.625rem;
     transition: all 0.3s ease;
@@ -83,14 +88,14 @@
     margin-left: 1.5rem;
   }
   .sidenav-nav .sidenav-nav-item:hover .sidenav-nav-link {
-    background-color: #fff;
+    background-color:  #a7dcdf;
     color: #000;
   }
   
   .active {
-    background-color: #fff;
+    background-color: #a7dcdf;
   }
   .active .sidenav-link-icon,
   .active .sidenav-link-text {
-    color: #000;
+    color: white;
   }
