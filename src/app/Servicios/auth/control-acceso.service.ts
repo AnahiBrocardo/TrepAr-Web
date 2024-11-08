@@ -1,22 +1,52 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { LoginRequest } from '../../Interfaces/loginRequest.interface';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { User } from '../../Interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ControlAccesoService {
-
+  usuarioActualLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false); //valor por defecto false, el usuario no va a estar logueado inicialmente
+  
   constructor( private http: HttpClient) { }
 
 // Creamos el método `login` que se conectará con la API REST.
 // Este método recibe un parámetro `credentials` que debe cumplir con la interfaz `loginRequest`.
   login(credentials: LoginRequest ): Observable <User>{ 
-    return this.http.get<User>('http://localhost:3000/usuarios');
+    return this.http.get<User>('http://localhost:3000/usuarios').pipe(
+      catchError(this.manejadorError) //si algo sale mal con la solicitud al servidor, catchError llama a manejadorError para que maneje el problema
+    );
    }
  
+   private manejadorError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      // Error del lado del cliente o problema de red
+      console.error('Se ha producido un error de red o cliente:', error.error);
+    } else {
+      // Error del backend, el código de estado indica el problema
+      switch (error.status) {
+        case 400:
+          console.error('Solicitud incorrecta (400):', error.error);
+          break;
+        case 401:
+          console.error('No autorizado (401):', error.error);
+          break;
+        case 404:
+          console.error('Recurso no encontrado (404):', error.error);
+          break;
+        case 500:
+          console.error('Error interno del servidor (500):', error.error);
+          break;
+        default:
+          console.error(`Backend retornó el código de estado ${error.status}:`, error.error);
+      }
+    }
+    
+    // se lanza un error genérico
+    return throwError(() => new Error('Algo falló. Por favor, intenta nuevamente...'));
+  }
  
 
   }

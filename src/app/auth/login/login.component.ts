@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit{
+  loginError: string="";
+
   fb= inject(FormBuilder);
   loginService= inject(ControlAccesoService);
   router= inject(Router);
@@ -44,21 +46,23 @@ export class LoginComponent implements OnInit{
     const emailForm = this.formularioLogin.get('email')?.value;
     const passwordForm = this.formularioLogin.get('password')?.value;
 
-// Verifica que ambos valores no sean nulos o undefined
-if (emailForm && passwordForm) {
-    this.loginService.login({ email: emailForm, password: passwordForm }).subscribe({
-      next: (userData)=> {
+    // Verifica que ambos valores no sean nulos o undefined
+    if (emailForm && passwordForm) {
+    this.loginService.login({ email: emailForm, password: passwordForm }).subscribe({ //lamamos a servicio, pansandole por parametro los datos del formulario
+      next: (userData)=> {//se ejecuta cada vez que el Observable emite un valor
         console.log(userData);
       },
       error: (errorData)=> {
-       console.error(errorData);
+      console.error(errorData);
+      this.loginError=errorData;
       },
-      complete: ()=>{
+      complete: ()=>{ //se ejecuta cuando el Observable termina su ejecución sin errores
         console.log("Login completo");
+        this.router.navigateByUrl('/dashboard');// Redirige al usuario a la ruta '/dashboard' utilizando el método navigateByUrl
+        this.formularioLogin.reset();//reseteamos los campos del form
       }
-    }); //lamamos a servicio, pansandole por parametro los datos del formulario
-    this.router.navigateByUrl('/dashboard');// Redirige al usuario a la ruta '/dashboard' utilizando el método navigateByUrl
-    this.formularioLogin.reset();//reseteamos los campos del form
+    });
+    
     
   }else{
 
