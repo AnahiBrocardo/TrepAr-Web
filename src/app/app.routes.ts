@@ -8,11 +8,13 @@ import { ProductoComponent } from './pages/Producto/producto/producto.component'
 import { SimuladorComponent } from './pages/simulador/simulador.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { InicioSesionPageComponent } from './pages/auth/inicio-sesion-page/inicio-sesion-page.component';
+import { RegistrarsePageComponent } from './pages/auth/registrarse-page/registrarse-page.component';
 
 export const routes: Routes = [
    { path: '', component: LandingPageComponent},
-    {path: 'acceso', component: LoginComponent},
-    {path: 'registrarse', component: RegisterComponent},
+    {path: 'acceso', component: InicioSesionPageComponent},
+    {path: 'registrarse', component: RegistrarsePageComponent},
     {
         path: 'dashboard', 
         component: DashboardComponent,
