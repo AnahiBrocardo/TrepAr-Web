@@ -31,7 +31,7 @@ form {
     margin-bottom: 25px;
 }
 
-.username label, .password label {
+.email label, .password label {
     margin-bottom: 2vh; /* Ajusta este valor según sea necesario */
 }
 
