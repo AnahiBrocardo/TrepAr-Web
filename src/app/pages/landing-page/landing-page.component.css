@@ -28,7 +28,7 @@
     left: 50%; /* Coloca el texto en la mitad horizontal del contenedor */
     transform: translate(-50%, -50%); /* Centra el texto ajustando su tamaño */
     color: white; /* Color del texto (blanco para contraste) */
-    font-size: 7vh; /* Tamaño del texto */
+    font-size: 6.5vh; /* Tamaño del texto */
     text-align: center; /* Centra el texto dentro de su contenedor */
     z-index: 2; /* Asegura que el texto esté por encima del overlay */
   }
