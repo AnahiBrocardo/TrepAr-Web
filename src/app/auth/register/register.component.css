@@ -23,7 +23,7 @@ form {
     margin-bottom: 20px; /* Para separar más los elementos */
 }
 
-.username, .password {
+.item{
     display: flex;
     flex-direction: column;
     margin-top: 5px;
@@ -36,7 +36,8 @@ input, select {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-.username label, .password label {
+
+label {
     margin-bottom: 2vh; /* Ajusta este valor según sea necesario */
 }
 button {

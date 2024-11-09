@@ -1,31 +1,71 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { LoginRequest } from '../../Interfaces/loginRequest.interface';
-import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { User } from '../../Interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ControlAccesoService {
-  usuarioActualLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false); //valor por defecto false, el usuario no va a estar logueado inicialmente
-  dataUsuarioActual: BehaviorSubject<User>= new BehaviorSubject<User>({id:0, email:''}); 
+  private loginStatus: boolean= false; //var que indica si el usuario ha iniciado sesion o no
+  private userId:number = -1; // en esta variable se almacena el id del usuario que ha iniciado sesion, inicializado en -1
+
+  private url: string= 'http://localhost:3000/users'; 
 
   constructor( private http: HttpClient) { }
 
-// Creamos el método `login` que se conectará con la API REST.
-// Este método recibe un parámetro `credentials` que debe cumplir con la interfaz `loginRequest`.
-  login(credentials: LoginRequest ): Observable <User>{ 
-    return this.http.get<User>('http://localhost:3000/user').pipe(
-      tap((userData: User) =>{ //tap permite realizar acciones secundarias sin alterar el flujo de datos.En este caso se utiliza para actualizar estados o variables con los datos obtenidos.
-        console.log('Datos del usuario recibidos en login:', userData); 
-        this.dataUsuarioActual.next(userData); // se actualiza el observable `dataUsuarioActual` con los datos del usuario que acaba de iniciar sesión.
-        this.usuarioActualLoginOn.next(true); //se cambia el estado de `usuarioActualLoginOn` a `true` para indicar que el usuario ha iniciado sesión 
+  public getLogginStatus(){
+    return this.loginStatus;
+  }
+
+  public getUserId(){
+    return this.userId;
+  }
+   
+  public validarLogin(userEmail: string, password: string): Observable<User> {
+    return this.http.get<User[]>(`${this.url}?email=${userEmail}`).pipe(  // Filtramos por email en el backend
+      map(users => {
+        const user = users.find(u => u.password === password); // Comprobamos que la contraseña coincida
+        if (user) {
+          console.log(user);
+          if(user.id){
+          // Si el usuario es encontrado y la contraseña es correcta
+          this.userId = user.id;  // Guardamos el ID del usuario
+          }
+          localStorage.setItem('token', '' + user.id);  // Almacenamos el ID en el localStorage como token
+          this.loginStatus = true;  // Marcamos que el usuario ha iniciado sesión
+          return user;  // Devolvemos el usuario encontrado
+        } else {
+          this.loginStatus = false;  // Si no se encuentra el usuario o la contraseña no coincide
+          throw new Error('Credenciales incorrectas');
+        }
       }),
-      catchError(this.manejadorError) //si algo sale mal con la solicitud al servidor, catchError llama a manejadorError para que maneje el problema
+      catchError(this.manejadorError)  // Manejo de errores
     );
-   }
- 
+  }
+  
+
+  public validPassword(userEmail: string, password: string): Observable<boolean> { //retorna true o false indicando si la contraseña es válida o no
+    let validPassword = false;
+
+    try {
+      // Obtener usuarios desde localStorage (el localStorage se usa para almacenar una lista de usuarios previamente registrados)
+      const users: User[] = JSON.parse(window.localStorage.getItem('users') || '[]');
+      
+      // Buscar el usuario por su email
+      const found = users.find((user) => user.email === userEmail);
+  
+      // Verificar si el usuario fue encontrado y la contraseña es correcta
+      if (found && found.password === password) {
+        validPassword = true;
+      }
+    } catch (error) {
+      console.error('Error al recuperar los usuarios de localStorage', error);
+    }
+  
+    return of(validPassword);
+  }
+
    private manejadorError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // Error del lado del cliente o problema de red
@@ -53,12 +93,5 @@ export class ControlAccesoService {
     // se lanza un error genérico
     return throwError(() => new Error('Algo falló. Por favor, intenta nuevamente...'));
   }
- 
-  get userData(): Observable<User>{
-    return this.dataUsuarioActual.asObservable();
   }
-
-  get userLoginOn(): Observable<boolean>{
-    return this.usuarioActualLoginOn.asObservable();
-  }
-  }
+  
