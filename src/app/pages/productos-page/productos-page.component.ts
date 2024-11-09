@@ -1,42 +1,47 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductoInterface } from '../../interfaces/producto.interface';
 import { ProductoServiceService } from '../../../Servicios/producto-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-productos-page',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './productos-page.component.html',
   styleUrl: './productos-page.component.css'
 })
 export class ProductosPageComponent {
-
-  @Output()
-  emitirProducto: EventEmitter<ProductoInterface> = new EventEmitter(); 
-
-  categorias: string[] = ['Electrónica', 'Ropa', 'Hogar', 'Libros', 'Belleza', 'Juguetes', 'Deportes', 'Automotores', 'Alimentos', 'Mascotas', 'Otro'];
-
+  
   fb= inject(FormBuilder)
   productoService= inject(ProductoServiceService)
+  //submit = false
 
- /*No va a aceptar nincun campo que sea nulo con el nonnull.. */
+
+  categorias: string[] = ['Electrónica', 'Ropa', 'Hogar', 'Libros', 'Belleza', 'Juguetes', 'Deportes', 'Automotores', 'Alimentos', 'Mascotas', 'Otro'];
+  
+  
+  /*No va a aceptar nincun campo que sea nulo con el nonnull.. */
   formulario = this.fb.nonNullable.group(
     {
-      id: [0, Validators.required],
+      id: ['', Validators.required],
       nombre: ['', Validators.required],
       categoria: ['', Validators.required],
       descripcion: ['', Validators.required],
-      precio: [0, Validators.required]
+      precio: ['', Validators.required]
     }
   )
-
+  
+  @Output()
+  emitirProducto: EventEmitter<ProductoInterface> = new EventEmitter(); 
+ 
   addProducto()
   {
     if(this.formulario.invalid) return; 
 
-    const nproducto = this.formulario.getRawValue(); 
+    const nproducto: ProductoInterface = this.formulario.getRawValue(); 
+    this.addProductoDB(nproducto)
     this.emitirProducto.emit(nproducto); 
   }
 
