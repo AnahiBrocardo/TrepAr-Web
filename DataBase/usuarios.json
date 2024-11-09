@@ -33,6 +33,15 @@
       "password": "123478596",
       "createdAt": "2024-11-09T20:10:12.119Z",
       "deletedAt": null
+    },
+    {
+      "id": "d8af",
+      "nombre": "juan",
+      "apellido": "perez",
+      "email": "aye@example.com",
+      "password": "sssssssss",
+      "createdAt": "2024-11-09T20:47:47.615Z",
+      "deletedAt": null
     }
   ]
 }

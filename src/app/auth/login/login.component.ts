@@ -3,6 +3,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ControlAccesoService } from '../../Servicios/auth/control-acceso.service';
 import { CommonModule } from '@angular/common';
+import { User } from '../../Interfaces/user.interface';
 
 @Component({
   selector: 'app-login',
@@ -42,16 +43,14 @@ export class LoginComponent implements OnInit{
     this.loginService.validarLogin(emailForm,passwordForm).subscribe({ //lamamos a servicio, pansandole por parametro los datos del formulario
       next: (userData)=> {//se ejecuta cada vez que el Observable emite un valor
         console.log(userData);
+        console.log("Login completo");
+        this.router.navigateByUrl(`dashboard/${userData.id}`);// Redirige al usuario a la ruta '/dashboard' utilizando el método navigateByUrl
+        this.formularioLogin.reset();//reseteamos los campos del form
       },
       error: (errorData)=> {
         console.log(errorData);
         this.loginError="Error, usuarios y/o contraseña incorrectos. Por favor ingrese los datos nuevamente";
         
-      },
-      complete: ()=>{ //se ejecuta cuando el Observable termina su ejecución sin errores
-        console.log("Login completo");
-        this.router.navigateByUrl('/dashboard');// Redirige al usuario a la ruta '/dashboard' utilizando el método navigateByUrl
-        this.formularioLogin.reset();//reseteamos los campos del form
       }
     });
     
