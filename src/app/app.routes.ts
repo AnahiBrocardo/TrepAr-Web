@@ -16,7 +16,7 @@ export const routes: Routes = [
     {path: 'acceso', component: InicioSesionPageComponent},
     {path: 'registrarse', component: RegistrarsePageComponent},
     {
-        path: 'dashboard', 
+        path: 'dashboard/:id', 
         component: DashboardComponent,
         children: [
             {path: 'principal', component: PrincipalComponent},

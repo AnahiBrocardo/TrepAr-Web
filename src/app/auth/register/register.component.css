@@ -10,20 +10,20 @@
 h1 {
     font-size: 2em;
     margin-bottom: 8vh;
-    margin-top: 5vh;
+    margin-top: 10vh;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    width: 450px; /* Ancho del formulario */
+    width: 300px; /* Ancho del formulario */
     padding: 15px;
     border: 1px solid #ccc; /* Borde gris */
     border-radius: 10px; /* Esquinas redondeadas */
     margin-bottom: 20px; /* Para separar más los elementos */
 }
 
-.username, .password {
+.item{
     display: flex;
     flex-direction: column;
     margin-top: 5px;
@@ -36,7 +36,8 @@ input, select {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-.username label, .password label {
+
+label {
     margin-bottom: 2vh; /* Ajusta este valor según sea necesario */
 }
 button {

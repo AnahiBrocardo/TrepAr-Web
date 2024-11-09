@@ -1,6 +1,7 @@
-import { Component, HostListener, OnInit, signal } from '@angular/core';
+import { Component, HostListener, inject, OnInit, signal } from '@angular/core';
 import { BodyComponent } from "../body/body.component";
 import { SidenavComponent } from "../sidenav/sidenav.component";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,10 @@ import { SidenavComponent } from "../sidenav/sidenav.component";
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
+  activated= inject(ActivatedRoute);
+  
+  idUser:string='';
+
   isLeftSidebarCollapsed = signal<boolean>(false);
   screenWidth = signal<number>(window.innerWidth);
 
@@ -23,6 +28,17 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
+
+    this.activated.paramMap.subscribe({
+      next: (param)=>{
+        const id= param.get('id');
+        if(id){
+          this.idUser= id;
+        }
+      console.log(id);
+      }
+    })
+    
   }
 
   changeIsLeftSidebarCollapsed(isLeftSidebarCollapsed: boolean): void {

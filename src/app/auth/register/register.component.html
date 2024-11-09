@@ -1,52 +1,60 @@
 <div class="formularioLogin">
     <h1>Registro</h1>
-    <form >
-        <div class="username">
+    <form [formGroup]="formularioRegistrase" (ngSubmit)="signIn()">
+        <div class="item">
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre"name="nombre" required>
+            <input type="text" id="nombre"name="nombre" formControlName="nombre">
+            <div *ngIf="formularioRegistrase.controls['nombre'].invalid && (formularioRegistrase.controls['nombre'].dirty || formularioRegistrase.controls['nombre'].touched)" 
+            class="alert alert-danger">
+            
+                <div  class="error" *ngIf="formularioRegistrase.controls['nombre'].getError('required')">
+                    Nombre requerido
+                </div>
+            </div>
         </div>
 
-        <div class="username">
+        <div class="item">
             <label for="apellido">Apellido</label>
-            <input type="text" id="apellido"name="apellido" required>
+            <input type="text" id="apellido"name="apellido"  formControlName="apellido">
+            <div *ngIf="formularioRegistrase.controls['apellido'].invalid && (formularioRegistrase.controls['apellido'].dirty || formularioRegistrase.controls['apellido'].touched)" 
+            class="alert alert-danger">
+            
+                <div  class="error" *ngIf="formularioRegistrase.controls['apellido'].getError('required')">
+                    Apellido requerido
+                </div>
+            </div>
         </div>
 
-        <div class="username">
+        <div class="item">
             <label for="email">Correo Electrónico</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" formControlName="email">
+            <div *ngIf="formularioRegistrase.controls['email'].invalid && (formularioRegistrase.controls['email'].dirty || formularioRegistrase.controls['email'].touched)" 
+            class="alert alert-danger">
+            
+                <div  class="error" *ngIf="formularioRegistrase.controls['email'].getError('required')">
+                    Email requerido
+                </div>
+                 <div  class="error" *ngIf="formularioRegistrase.controls['email'].hasError('email')">
+                 Ingrese un formato de correo electrónico válido
+                </div>
+            </div>
         </div>
+        
 
-        <div class="username">
-            <label for="nombreUsuario">Nombre de Usuario</label>
-            <input type="text" id="nombreUsuario" name="nombreUsuario" required>
-        </div>
-
-        <div class="password">
+        <div class="item">
             <label for="contrasena">Contraseña</label>
-            <input type="password" id="contrasena" name="contrasena" required>
-        </div>
+            <input type="password" id="contrasena" name="contrasena" formControlName="password">
+            <div *ngIf="formularioRegistrase.controls['password'].invalid && (formularioRegistrase.controls['password'].dirty || formularioRegistrase.controls['password'].touched)" 
+            class="alert alert-danger">
+            
+                <div  class="error" *ngIf="formularioRegistrase.controls['password'].getError('required')">
+                    Contraseña requerida
+                </div>
 
-        <div class="username">
-            <label for="telefono">Teléfono</label>
-            <input type="tel" id="telefono" name="telefono" required>
+                <div class="error" *ngIf="formularioRegistrase.controls['password'].hasError('minlength')">
+                    La contraseña debe tener al menos 8 caracteres
+                  </div>
         </div>
-
-        <div class="username">
-            <label for="pais">País</label>
-            <input type="text" id="pais"name="pais" required>
-        </div>
-
-        <div class="username">
-            <label for="ciudad">Ciudad</label>
-            <input type="text" id="ciudad"  name="ciudad" required>
-        </div>
-
-        <div class="username">
-            <label for="categoria">Categoría</label>
-            <select id="categoria" name="categoria" required>
-                <option value="" disabled selected>Selecciona una categoría</option>
-                <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
-            </select>
         </div>
 
         <button type="submit">Registrarse</button>
