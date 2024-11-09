@@ -1,10 +1,65 @@
-<app-agregar-simulador (emitirSimulacion)="agregarLista($event)"></app-agregar-simulador>
+<!--<app-agregar-simulador (emitirSimulacion)="agregarLista($event)"></app-agregar-simulador>
 <section>
 <ul>
     @for (simulado of listaSimulacions; track $index) {
-        <li>Nombre: {{simulado.nombre}}</li>
+        <li>id: {{simulado.id}}Nombre: {{simulado.nombre}} Precio: {{simulado.PrecioFinal}}</li>
         <a href="" (click)="delete(simulado.id)">Eliminar    </a>
-        <!--<a [routerLink]="['/update', tarea.id]">Modificar    </a>-->
+        <a [routerLink]="['/update', tarea.id]">Modificar    </a>
     }
 </ul>
-</section>
+</section>-->
+<mat-toolbar>
+ <div class=" container-fluid">
+    <div class="row">
+        <div class="col-6" >
+        <button mat-fab extended class="my-2"><mat-icon>note_add</mat-icon>Crear</button>
+        </div>
+        <div class="col-6">
+        <mat-form-field appearance="fill">
+            <mat-label> Buscar</mat-label>
+            <input matInput>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        </div>
+    </div>
+ </div>   
+</mat-toolbar>
+<div class="conteineer-fuid my-3">
+ <div class="row">
+    <div class="col">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+                  
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let simulado"> {{simulado.id}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef> Nombre</th>
+              <td mat-cell *matCellDef="let simulado"> {{simulado.nombre}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="PrecioFinal">
+              <th mat-header-cell *matHeaderCellDef> Precio</th>
+              <td mat-cell *matCellDef="let simulado"> {{simulado.PrecioFinal}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="accions">
+              <th mat-header-cell *matHeaderCellDef> Accions </th>
+              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+    </div>
+ </div>
+</div>

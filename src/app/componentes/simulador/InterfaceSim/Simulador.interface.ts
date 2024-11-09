@@ -7,5 +7,6 @@ export interface Simulador{
     MateriaPrima: MateriaPrima [],
     CantidadProductoMensual?: number,
     Ganancia?: number,
-    PrecioFinal: number
+    PrecioFinal: number,
+    habilitado: boolean
 }

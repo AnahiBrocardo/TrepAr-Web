@@ -13,7 +13,7 @@ export class SimuladorService {
   
  constructor(private http: HttpClient) { }
 
- urlBase: string = 'http://localhost:3000/Simulador'
+ urlBase: string = 'http://localhost:3000/simuladores'
 
  getSimulador(): Observable<Simulador[]> {
   return this.http.get<Simulador[]>(this.urlBase)

@@ -1,0 +1,52 @@
+{
+  "simuladores": [
+    {"id": 1, 
+    "nombre": "Simulador de Velas", 
+    "GastoFijo": [ 
+        { "id": 1, "nombre": "Alquiler de Local", "valor": 1000 }, 
+        { "id": 2, "nombre": "Sueldos", "valor": 2000 } ],
+    "MateriaPrima": [ 
+        { "id": 1, "nombre": "Cera de Abejas", "precio": 50, "cantidad": 10, "UnidadDeCompra": 1 }, 
+        { "id": 2, "nombre": "Mecha", "precio": 10, "cantidad": 100, "UnidadDeCompra": 1 } ],
+    "CantidadProductoMensual": 500, "Ganancia": 3000, "PrecioFinal": 15
+    
+    },
+    {
+      "id": "2",
+      "nombre": "Simulador 2",
+      "GastosFijos": [
+        {
+          "id": 3,
+          "nombre": "Sueldos",
+          "valor": 2000
+        },
+        {
+          "id": 4,
+          "nombre": "Mantenimiento",
+          "valor": 500
+        }
+      ],
+      "MateriasPrimas": [
+        {
+          "id": 3,
+          "nombre": "Madera",
+          "precio": 30,
+          "cantidad": 300,
+          "UnidadDeCompra": 1500
+        },
+        {
+          "id": 4,
+          "nombre": "Vidrio",
+          "precio": 25,
+          "cantidad": 400,
+          "UnidadDeCompra": 1200
+        }
+      ],
+      "CantidadProductoMensual": 1000,
+      "Ganancia": 20000,
+      "PrecioFinal": 1500
+    },
+    {"id": 2, "nombre": "Simulador de Tés", "GastoFijo": [ { "id": 3, "nombre": "Equipos de Infusión", "valor": 500 }, { "id": 4, "nombre": "Publicidad", "valor": 300 } ], "MateriaPrima": [ { "id": 3, "nombre": "Hojas de Té Verde", "precio": 30, "cantidad": 20, "UnidadDeCompra": 1 }, { "id": 4, "nombre": "Hojas de Té Negro", "precio": 25, "cantidad": 15, "UnidadDeCompra": 1 } ], "CantidadProductoMensual": 700, "Ganancia": 4000, "PrecioFinal": 10 }
+
+  ]
+}

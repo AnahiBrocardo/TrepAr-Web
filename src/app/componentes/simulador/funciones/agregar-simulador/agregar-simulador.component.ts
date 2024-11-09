@@ -25,7 +25,8 @@ export class AgregarSimuladorComponent {
     MateriaPrima: this.fb.array([], Validators.required),
     antidadProductoMensual: [null, [Validators.min(0)]],
     Ganancia: [null, [Validators.min(0)]],
-    PrecioFinal: [0, [Validators.required, Validators.min(0)]]
+    PrecioFinal: [0, [Validators.required, Validators.min(0)]],
+    habilitado:[true]
 })
 agregarGastoFijo() {
   const gastoFijoForm = this.fb.group({
@@ -73,7 +74,8 @@ simulado: Simulador={
     MateriaPrima: [],
     CantidadProductoMensual: 0,
     Ganancia: 0,
-    PrecioFinal: 0
+    PrecioFinal: 0,
+    habilitado:true
 }
 
 }
