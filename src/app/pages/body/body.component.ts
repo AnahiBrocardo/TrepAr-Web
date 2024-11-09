@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ProductosPageComponent } from '../productos-page/productos-page.component';
 
 @Component({
   selector: 'app-body',
