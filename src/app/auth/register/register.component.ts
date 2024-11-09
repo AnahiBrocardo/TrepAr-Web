@@ -55,7 +55,7 @@ export class RegisterComponent {
           this.userService.addUser(newUser).subscribe({
             next: (user) => {
               alert('Registro exitoso. Redirigiendo al inicio de sesión...');
-              this.router.navigate(['/login']);
+              this.router.navigate(['/acceso']);
             },
             error: (error) => {
               console.error('Error al registrar al usuario', error);
