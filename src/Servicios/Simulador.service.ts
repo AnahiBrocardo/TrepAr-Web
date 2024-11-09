@@ -1,12 +1,14 @@
+
+import { Simulador } from '../app/componentes/simulador/InterfaceSim/Simulador.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Simulador } from '../app/componentes/simulador/InterfaceSim/Simulador.interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class TareaService {
+export class SimuladorService {
  //opcion de injeccion:  http2 = inject(HttpClient)
   
  constructor(private http: HttpClient) { }

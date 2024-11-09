@@ -1,0 +1,10 @@
+<app-agregar-simulador (emitirSimulacion)="agregarLista($event)"></app-agregar-simulador>
+<section>
+<ul>
+    @for (simulado of listaSimulacions; track $index) {
+        <li>Nombre: {{simulado.nombre}}</li>
+        <a href="" (click)="delete(simulado.id)">Eliminar    </a>
+        <!--<a [routerLink]="['/update', tarea.id]">Modificar    </a>-->
+    }
+</ul>
+</section>
