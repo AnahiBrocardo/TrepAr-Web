@@ -1,4 +1,3 @@
-
 import { GastoFijo } from './GastoFijo.interface';
 import { MateriaPrima } from './MateriaPrima.interface';
 export interface Simulador{
@@ -10,4 +9,8 @@ export interface Simulador{
     Ganancia?: number,
     PrecioFinal: number,
     habilitado: boolean
+}
+export interface SimuladorXUsuario{
+    idUser: string,
+    Simulador: Simulador[]
 }
