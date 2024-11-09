@@ -8,7 +8,6 @@
 body {
     font-family: 'Poppins', sans-serif;
   }
-<<<<<<< HEAD
   
 
   .ng-valid:not(form).ng-touched{ 
@@ -20,8 +19,5 @@ body {
   .error{ 
     color: #f7261bb1; /* Color de texto rojo suave */ 
 } 
-=======
-  
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
->>>>>>> S.D.Costos
+
+
