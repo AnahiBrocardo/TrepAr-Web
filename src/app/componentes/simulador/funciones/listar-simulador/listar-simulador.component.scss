@@ -4,3 +4,31 @@
 .mat-mdc-form-field:not(.mat-mdc-paginator-page-size-select){
     width: 100%;
 }
+
+.mat-mdc-no-data-row td div.mensaje-no-existen-datos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    line-height: 50px;
+    background-color:#f7c8e7ad ;
+}
+.mat-mdc-no-data-row td div.mensaje-no-existen-datos .mat-icon{
+    color: #f14c75ad;
+}
+.custom-button {
+    background-color: #f8deb3c7; /* Cambia el color de fondo */
+    color: #f38f0b; /* Cambia el color del texto */
+    border-radius: 50px; /* Haz los bordes más redondeados */
+    padding: 5px; /* Ajusta el tamaño */
+    width: 40px; /* Ajusta el ancho */
+    height: 40px; /* Ajusta la altura */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .custom-button mat-icon {
+    font-size: 20px; /* Cambia el tamaño del icono */
+  }
+  .button-container { display: flex; gap: 10px; /* Espacio entre los botones */ }

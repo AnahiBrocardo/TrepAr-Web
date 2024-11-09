@@ -13,6 +13,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @Component({
   selector: 'app-listar-simulador',
   standalone: true,
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule, 
     MatTableModule,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
     ],
   templateUrl: './listar-simulador.component.html',
   styleUrl: './listar-simulador.component.scss'
