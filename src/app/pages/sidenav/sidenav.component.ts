@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ProductosPageComponent } from '../productos-page/productos-page.component';
 
 @Component({
   selector: 'app-sidenav',

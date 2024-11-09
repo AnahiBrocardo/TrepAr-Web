@@ -1,0 +1,50 @@
+/* Contenedor principal */ 
+.container { 
+max-width: 1200px; 
+margin: 0 auto; 
+padding: 1rem; 
+border-radius: 30px;
+}
+
+/* Estilos para formularios */ 
+form { background:white; 
+    padding: 2rem; 
+    border-radius: 30px; /* Hace que los bordes del formulario sean más redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 2rem; } 
+
+    /* Estilos para etiquetas */ 
+    label { 
+    display: block; 
+    margin-bottom: 0.5rem; 
+   } 
+    
+    /* Estilos para campos de entrada */ 
+    input, select, textarea { 
+    width: 100%; padding: 0.75rem; 
+    margin-bottom: 1rem; 
+    border: 1px solid #ccc; 
+    border-radius: 30px; 
+    box-sizing: border-box; 
+    font-size: 1rem; } 
+
+    /* Estilo para botón */ 
+button { 
+background-color: #a7dcdf; 
+color: #fff; border: none; 
+padding: 0.75rem 1.5rem; 
+font-size: 1rem; 
+border-radius: 30px; 
+cursor: pointer; 
+transition: background-color 0.3s ease; } 
+
+button:hover { background-color: #84adaf; } 
+
+/* Estilos específicos para el componente Productos */ 
+.productos { 
+padding: 1rem; 
+background-color: #ffffff; 
+border-radius: 30px; 
+margin-bottom: 2rem; } 
+
+.productos h2 { font-size: 2rem; margin-bottom: 1rem; }
