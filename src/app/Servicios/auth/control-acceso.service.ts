@@ -8,7 +8,7 @@ import { User } from '../../Interfaces/user.interface';
 })
 export class ControlAccesoService {
   private loginStatus: boolean= false; //var que indica si el usuario ha iniciado sesion o no
-  private userId:number = -1; // en esta variable se almacena el id del usuario que ha iniciado sesion, inicializado en -1
+  private userId:string = ''; // en esta variable se almacena el id del usuario que ha iniciado sesion, inicializado en vacio
 
   private url: string= 'http://localhost:3000/users'; 
 

@@ -16,7 +16,7 @@ export class UserService {
 
   public inicUser(){
     let user: User = {
-      id: 0,
+      id: '',
       email: '',
       password: '',
       createdAt: new Date,
