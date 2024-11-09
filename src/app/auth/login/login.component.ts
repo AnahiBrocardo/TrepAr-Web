@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit{
       error: (errorData)=> {
         console.log(errorData);
         this.loginError="Error, usuarios y/o contraseña incorrectos. Por favor ingrese los datos nuevamente";
-        
       }
     });
     
