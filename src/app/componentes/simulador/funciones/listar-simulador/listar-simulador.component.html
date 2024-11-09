@@ -17,7 +17,7 @@
         <div class="col-6">
         <mat-form-field appearance="fill">
             <mat-label> Buscar</mat-label>
-            <input matInput>
+            <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" (keyup.enter)="leerTodo()"   matInput>
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
         </div>
@@ -59,6 +59,16 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
+          <mat-paginator #paginator
+               
+               (page)="CambiarPagina($event)"
+               [length]="cantidadTotal"
+               [pageSize]="cantidadPorPagina"
+               [showFirstLastButtons]="true"
+               [pageSizeOptions]="opcionesDePaginado"
+               [pageIndex]="numeroDePag">
+            </mat-paginator>
+
 
     </div>
  </div>
