@@ -57,8 +57,11 @@ agregarLista(simulador: Simulador){
 }
 ///----------------ELIMINAR UNA SIMULACION HECHAS-----------------------
 
-delete(id: number){
-  this.SimuladorService.deleteSimulador(id).subscribe(
+deleteSimulador(Simuladorid: number){
+  let confirmacion= confirm('¿Esta seguro de eliminar esta simulacion de Costo?');
+  if(confirmacion){
+    let ids=[Simuladorid];
+    this.SimuladorService.deleteSimulador(Simuladorid).subscribe(
     {
       next: ()=>{
         console.log('Actualizado');
@@ -68,6 +71,7 @@ delete(id: number){
       }
     }
   )
+  }
 }
 ///--------------visualizacion---------------------------
 displayedColumns: string[] = ['id', 'nombre', 'PrecioFinal', 'accions'];
