@@ -17,6 +17,10 @@ export class ProductoServiceService {
     return this.http.get<UsuariosxProductos[]>(this.urlBase)
   }
 
+  getProductoPorId(id: string): Observable<UsuariosxProductos> {
+    return this.http.get<UsuariosxProductos>(`${this.urlBase}/${id}`);
+  }
+
   postProductos(producto: UsuariosxProductos): Observable<UsuariosxProductos>{
     return this.http.post<UsuariosxProductos>(this.urlBase, producto)
   }
