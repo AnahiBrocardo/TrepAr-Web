@@ -1,0 +1,28 @@
+{
+  "productos": [
+    {
+      "id": "7750",
+      "productoInterface": [
+        {
+          "nombre": "Miel",
+          "categoria": "Alimentos",
+          "descripcion": "Lleva azúcar y necesito de abejas.",
+          "precio": 3100,
+          "deletedAt": false
+        }
+      ]
+    },
+    {
+      "id": "7750",
+      "productoInterface": [
+        {
+          "nombre": "velas",
+          "categoria": "Hogar",
+          "descripcion": "necesito cera e hilo encerado",
+          "precio": 544,
+          "deletedAt": false
+        }
+      ]
+    }
+  ]
+}
