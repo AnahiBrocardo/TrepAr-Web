@@ -11,18 +11,6 @@
           "deletedAt": false
         }
       ]
-    },
-    {
-      "id": "7750",
-      "productoInterface": [
-        {
-          "nombre": "velas",
-          "categoria": "Hogar",
-          "descripcion": "necesito cera e hilo encerado",
-          "precio": 544,
-          "deletedAt": false
-        }
-      ]
     }
   ]
 }
