@@ -93,5 +93,16 @@ export class ControlAccesoService {
     // se lanza un error genérico
     return throwError(() => new Error('Algo falló. Por favor, intenta nuevamente...'));
   }
+
+
+  // Cerrar sesión
+  public cerrarSesion(): void {
+    // Eliminar el token de localStorage
+    localStorage.removeItem('token');
+    this.userId='';
+    this.loginStatus = false; // Cambiamos el estado de login
+    console.log('Sesión cerrada correctamente');
+  }
+
   }
   

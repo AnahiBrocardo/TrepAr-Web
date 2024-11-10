@@ -1,21 +1,24 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ControlAccesoService } from '../../Servicios/auth/control-acceso.service';
 import { User } from '../../Interfaces/user.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { UserService } from '../../Servicios/usuario/user.service';
+import { UpdateUserComponent } from '../update/update-user/update-user.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [],
+  imports: [UpdateUserComponent, CommonModule],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css'
 })
 export class SettingsComponent implements OnInit{
-  logInService= inject(ControlAccesoService);
+   userService= inject(UserService);
   userLoginOn:boolean=false;
   userData?:User;
-  
- 
+  // Control de visibilidad del formulario
+  mostrarFormulario: boolean = false;
+
   activated= inject(ActivatedRoute);
   userId: string='';
 
@@ -28,6 +31,22 @@ export class SettingsComponent implements OnInit{
       }
     }
    })
+   this.usuarioData(this.userId);
+  }
+
+  usuarioData(id:string){
+    this.userService.getUserById(id).subscribe({
+      next:(user:User)=>{
+        this.userData=user;
+      },
+      error:(e:Error)=>{
+        console.log(e);
+      }
+    })
+  }
+  // Método para alternar la visibilidad del formulario
+  toggleModificar() {
+    this.mostrarFormulario = !this.mostrarFormulario;
   }
 
 }
