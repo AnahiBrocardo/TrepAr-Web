@@ -20,9 +20,9 @@ export const routes: Routes = [
         component: DashboardComponent,
         children: [
             {path: 'principal', component: PrincipalComponent},
-            {path: 'producto', component: ProductoComponent},
-            {path: 'simulador', component: SimuladorComponent },
-            {path: 'settings', component: SettingsComponent}
+            {path: 'producto/:id', component: ProductoComponent},
+            {path: 'simulador/:id', component: SimuladorComponent },
+            {path: 'settings/:id', component: SettingsComponent}
         ]
     }, 
    {path: '**', redirectTo: '', pathMatch: 'full'} //si pone cualquier otra cosa lo redirige a vacio '', osea a la landing
