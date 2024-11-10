@@ -50,7 +50,10 @@ export class UserService {
   getUsers():Observable<User[]>{
     return this.http.get<User[]>(this.url);
   } 
-  
+  // Método para verificar si un email ya está en uso
+  checkEmailExists(email: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/?email=${email}`);
+  }
   
 
 

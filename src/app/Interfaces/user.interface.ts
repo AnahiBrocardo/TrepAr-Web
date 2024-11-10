@@ -4,6 +4,6 @@ export interface User{
     password: string;
     nombre?:string,
     apellido?:string,
-    createdAt: Date,
-    deletedAt: Date | null
+    createdAt?: Date,
+    deletedAt?: Date | null
 }
