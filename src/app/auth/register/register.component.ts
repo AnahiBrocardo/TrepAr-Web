@@ -16,6 +16,7 @@ export class RegisterComponent {
  fb= inject(FormBuilder);
  router= inject(Router);
  userService= inject(UserService);
+ isPasswordVisible = false; // Controla la visibilidad de la contraseña
 
  formularioRegistrase= this.fb.nonNullable.group({
   nombre: ['', Validators.required],
@@ -75,6 +76,8 @@ export class RegisterComponent {
 private emailExists(users: User[], email: string): boolean {
   return users.some(user => user.email === email);
 }
-
+togglePasswordVisibility() {
+  this.isPasswordVisible = !this.isPasswordVisible;
+}
 }
 

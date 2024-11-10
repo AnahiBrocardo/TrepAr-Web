@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit{
   loginService= inject(ControlAccesoService);
   router= inject(Router);
   acivated= inject(ActivatedRoute);
+  isPasswordVisible = false; // Controla la visibilidad de la contraseña
   
     ngOnInit(): void {
     }
@@ -60,6 +61,10 @@ export class LoginComponent implements OnInit{
     alert("Error al ingresar los datos");
   }
   }
+  }
+
+  togglePasswordVisibility() {
+    this.isPasswordVisible = !this.isPasswordVisible;
 }
 
   }

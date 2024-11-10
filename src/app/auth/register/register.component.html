@@ -43,7 +43,15 @@
 
         <div class="item">
             <label for="contrasena">Contraseña</label>
-            <input type="password" id="contrasena" name="contrasena" formControlName="password">
+            <div class="password-container">
+                <input [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Ingrese su contraseña" formControlName="password">
+                <a  
+                    class="botonMostrarOcultar" 
+                    (click)="togglePasswordVisibility()"
+                    >{{ isPasswordVisible ? '' : '' }}
+                    <i class="fas" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
+                </a>
+            </div>
             <div *ngIf="formularioRegistrase.controls['password'].invalid && (formularioRegistrase.controls['password'].dirty || formularioRegistrase.controls['password'].touched)" 
             class="alert alert-danger">
             
