@@ -40,35 +40,54 @@ export class ProductosComponent implements OnInit {
         nombre: ['', Validators.required],
         categoria: ['', Validators.required],
         descripcion: ['', Validators.required],
-        precio: ['', Validators.required]
+        precio: ['', Validators.required],
+        deleteAt: false
       }
     )
     
-    @Output()
-  emitirProducto: EventEmitter<UsuariosxProductos> = new EventEmitter(); 
- 
   addProducto()
   {
+   
     if(this.formulario.invalid) return; 
 
     const nproducto = this.formulario.getRawValue();
 
     const nuevoProducto: ProductoInterface = {
+    id: this.generarId(),
     nombre: nproducto.nombre, 
     categoria: nproducto.categoria,
     descripcion: nproducto.descripcion,
     precio: nproducto.precio,
     deletedAt: false
-    }
+    }; 
 
-    const usuariosxproductos: UsuariosxProductos = {
-      id: this.userId, 
-      productoInterface: [nuevoProducto]
-    }
+    // Buscar si ya existe un objeto UsuariosxProductos con el mismo userId
+    // Verificar si el usuario ya tiene productos
+    this.productoService.obtenerUsuarioPorId(this.userId).subscribe(usuarios => {
+      if (usuarios.length > 0) {
+        // Si el usuario ya tiene productos, agregar el nuevo al final del arreglo
+        const usuarioExistente = usuarios[0];
+        usuarioExistente.productoInterface.push(nuevoProducto); // Agregar producto al final del arreglo
 
-    this.addProductoDB(usuariosxproductos)
-    this.emitirProducto.emit(usuariosxproductos); 
-  }
+        // Actualizar usuario con el nuevo producto
+        this.productoService.putProductos(usuarioExistente).subscribe((usuarioActualizado) => {
+          console.log('Usuario actualizado con nuevo producto', usuarioActualizado);
+          this.formulario.reset();
+        });
+      } else {
+        // Si el usuario no existe, crear uno nuevo con el producto
+        const nuevoUsuario = {
+          id: this.userId,
+          productoInterface: [nuevoProducto] // El primer producto se agrega aquí
+        };
+
+        this.productoService.postProductos(nuevoUsuario).subscribe((usuarioCreado) => {
+          console.log('Nuevo usuario creado con el primer producto', usuarioCreado);
+          this.formulario.reset();
+        });
+      }
+    } )
+  };
 
   addProductoDB (producto: UsuariosxProductos){
     this.productoService.postProductos(producto).subscribe(
@@ -83,4 +102,9 @@ export class ProductosComponent implements OnInit {
       }
     )
   }
+
+  generarId(): string {
+    return Math.random().toString(36).substr(2, Math.floor(Math.random() * 4) + 2);
+  }
+  
 }

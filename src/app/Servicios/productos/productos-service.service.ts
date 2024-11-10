@@ -17,15 +17,16 @@ export class ProductoServiceService {
     return this.http.get<UsuariosxProductos[]>(this.urlBase)
   }
 
-  getProductoPorId(id: string): Observable<UsuariosxProductos> {
-    return this.http.get<UsuariosxProductos>(`${this.urlBase}/${id}`);
+  // Obtener un usuario por su userId
+  obtenerUsuarioPorId(userId: string): Observable<UsuariosxProductos[]> {
+    return this.http.get<UsuariosxProductos[]>(`${this.urlBase}?id=${userId}`);
   }
 
   postProductos(producto: UsuariosxProductos): Observable<UsuariosxProductos>{
-    return this.http.post<UsuariosxProductos>(this.urlBase, producto)
+      return this.http.post<UsuariosxProductos>(`${this.urlBase}`, producto);
   }
 
-  putProductos(producto: UsuariosxProductos, id: number): Observable<UsuariosxProductos> {
-    return this.http.put<UsuariosxProductos>(`${this.urlBase}/${id}`, producto)
+  putProductos(producto: UsuariosxProductos): Observable<UsuariosxProductos> {
+    return this.http.put<UsuariosxProductos>(`${this.urlBase}/${producto.id}`, producto)
   }
 }
