@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, output } from '@angular/core';
+import { Component, Input, input, OnInit, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,31 +9,53 @@ import { RouterModule } from '@angular/router';
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.css'
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnInit{
+  @Input()  //recibo el id del dashboard
+  idUser: string ='';
+  
+  ngOnInit(): void {
+  // se llama al metodo para actualizar las rutas una vez que el idUser esté definido
+  if (this.idUser) {
+    this.updateRoutes(this.idUser);
+  }
+  }
+
+
   isLeftSidebarCollapsed = input.required<boolean>();
   changeIsLeftSidebarCollapsed = output<boolean>();
+
   items = [
     {
       routeLink: 'principal',
       icon: 'fal fa-home',
       label: 'Principal',
     },
-    {
-      routeLink: 'producto',
-      icon: 'fal fa-box-open',
-      label: 'Producto',
-    },
-    {
-      routeLink: 'simulador',
+        {
+      routeLink: 'simulador/:id',
       icon: 'fal fa-file',
       label: 'Simulador',
     },
     {
-      routeLink: 'settings',
+      routeLink: `producto/:id`,
+      icon: 'fal fa-box-open',
+      label: 'Producto',
+    },
+    {
+      routeLink: 'settings/:id',
       icon: 'fal fa-cog',
       label: 'Settings',
     },
   ];
+
+  
+
+  // Método para actualizar las rutas con el idUser
+  updateRoutes(id:string): void {
+    console.log('en funcion update');
+    this.items[2].routeLink = `producto/${id}`; // Rutas dependientes de idUser
+    this.items[1].routeLink = `simulador/${id}`;
+    this.items[3].routeLink = `settings/${id}`;
+  }
 
   toggleCollapse(): void {
     this.changeIsLeftSidebarCollapsed.emit(!this.isLeftSidebarCollapsed());

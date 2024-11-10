@@ -99,3 +99,7 @@
   .active .sidenav-link-text {
     color: white;
   }
+
+  ul {
+    text-decoration: none;
+  }

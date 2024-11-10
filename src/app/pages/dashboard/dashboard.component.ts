@@ -44,4 +44,6 @@ export class DashboardComponent implements OnInit {
   changeIsLeftSidebarCollapsed(isLeftSidebarCollapsed: boolean): void {
     this.isLeftSidebarCollapsed.set(isLeftSidebarCollapsed);
   }
+
+
 }
