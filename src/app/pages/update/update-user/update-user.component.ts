@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { User } from '../../../Interfaces/user.interface';
 import { UserService } from '../../../Servicios/usuario/user.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ControlAccesoService } from '../../../Servicios/auth/control-acceso.service';
 
 @Component({
   selector: 'app-update-user',
@@ -12,12 +12,13 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   styleUrl: './update-user.component.css'
 })
 export class UpdateUserComponent implements OnInit{
-  activated= inject(ActivatedRoute);
   userId:string='';
   userData?:User;
   userService= inject(UserService);
+  controlAccesoService= inject(ControlAccesoService);
 
   fb=inject(FormBuilder);
+
   formularioUpdateUserData= this.fb.nonNullable.group({
   nombre: ['', Validators.required],
   apellido: ['', Validators.required],
@@ -26,14 +27,14 @@ export class UpdateUserComponent implements OnInit{
   })
 
   ngOnInit(): void {
-    this.activated.paramMap.subscribe({
-      next:(param)=>{
-        const id= param.get('id');
+    this.controlAccesoService.getUserId().subscribe({
+      next:(id: string)=>{
         if(id){
           this.userId=id;
         }
+        
       }
-     })
+    })
      this.usuarioData(this.userId);
   }
 
