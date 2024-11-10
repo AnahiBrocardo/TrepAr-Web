@@ -51,7 +51,6 @@ export class SidenavComponent implements OnInit{
 
   // Método para actualizar las rutas con el idUser
   updateRoutes(id:string): void {
-    console.log('en funcion update');
     this.items[2].routeLink = `producto/${id}`; // Rutas dependientes de idUser
     this.items[1].routeLink = `simulador/${id}`;
     this.items[3].routeLink = `settings/${id}`;
