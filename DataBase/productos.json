@@ -36,6 +36,19 @@
           "deletedAt": false
         }
       ]
+    },
+    {
+      "id": "1",
+      "productoInterface": [
+        {
+          "id": "ufr",
+          "nombre": "Arroz",
+          "categoria": "Alimentos",
+          "descripcion": "blanco ",
+          "precio": 500,
+          "deletedAt": false
+        }
+      ]
     }
   ]
 }

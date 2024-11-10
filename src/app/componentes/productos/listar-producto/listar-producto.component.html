@@ -1,0 +1,17 @@
+<div *ngIf="productos.length > 0; else noProductos">
+  <h3>Lista de productos</h3>
+  <ul>
+    <li *ngFor="let producto of productos">
+      <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
+      <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+      <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+      <p><strong>Precio:</strong> {{ producto.precio | currency }}</p>
+      <hr>
+    </li>
+  </ul>
+</div>
+
+<!-- Mensaje alternativo si no hay productos -->
+<ng-template #noProductos>
+  <p>No hay productos disponibles para este usuario.</p>
+</ng-template>

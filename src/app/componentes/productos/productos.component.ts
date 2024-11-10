@@ -4,11 +4,12 @@ import { ProductoServiceService } from '../../Servicios/productos/productos-serv
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductoInterface, UsuariosxProductos } from '../../Interfaces/producto-interface';
 import { CommonModule } from '@angular/common';
+import { ListarProductoComponent } from './listar-producto/listar-producto.component';
 
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ListarProductoComponent],
   templateUrl: './productos.component.html',
   styleUrl: './productos.component.css'
 })

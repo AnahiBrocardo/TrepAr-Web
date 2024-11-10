@@ -4,7 +4,7 @@ export interface ProductoInterface {
     categoria: string;
     descripcion: string; 
     precio: string; 
-    deletedAt: boolean
+    deletedAt: boolean | null
 }
 
 export interface UsuariosxProductos{
