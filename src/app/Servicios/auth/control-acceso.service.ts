@@ -8,8 +8,7 @@ import { User } from '../../Interfaces/user.interface';
 })
 export class ControlAccesoService {
   private loginStatus: boolean= false; //var que indica si el usuario ha iniciado sesion o no
-  private userId:string = ''; // en esta variable se almacena el id del usuario que ha iniciado sesion, inicializado en vacio
-
+  private userIdSubject: BehaviorSubject<string> = new BehaviorSubject<string>(''); // Inicialmente vacío
   private url: string= 'http://localhost:3000/users'; 
 
   constructor( private http: HttpClient) { }
@@ -18,22 +17,21 @@ export class ControlAccesoService {
     return this.loginStatus;
   }
 
-  public getUserId(){
-    return this.userId;
+  // Obtener el ID del usuario desde el BehaviorSubject
+  public getUserId(): Observable<string> {
+    return this.userIdSubject.asObservable(); // Nos suscribimos al BehaviorSubject para obtener el ID
   }
-   
+  
   public validarLogin(userEmail: string, password: string): Observable<User> {
     return this.http.get<User[]>(`${this.url}?email=${userEmail}`).pipe(  // Filtramos por email en el backend
       map(users => {
         const user = users.find(u => u.password === password); // Comprobamos que la contraseña coincida
         if (user) {
-          console.log(user);
           if(user.id){
           // Si el usuario es encontrado y la contraseña es correcta
-          this.userId = user.id;  // Guardamos el ID del usuario
+          this.loginStatus = true;// Marcamos que el usuario ha iniciado sesión
+          this.userIdSubject.next(user.id); // Actualizamos el BehaviorSubject con el ID
           }
-          localStorage.setItem('token', '' + user.id);  // Almacenamos el ID en el localStorage como token
-          this.loginStatus = true;  // Marcamos que el usuario ha iniciado sesión
           return user;  // Devolvemos el usuario encontrado
         } else {
           this.loginStatus = false;  // Si no se encuentra el usuario o la contraseña no coincide
@@ -98,8 +96,7 @@ export class ControlAccesoService {
   // Cerrar sesión
   public cerrarSesion(): void {
     // Eliminar el token de localStorage
-    localStorage.removeItem('token');
-    this.userId='';
+    this.userIdSubject.next(''); // Actualizar el BehaviorSubject con un valor vacío
     this.loginStatus = false; // Cambiamos el estado de login
     console.log('Sesión cerrada correctamente');
   }
