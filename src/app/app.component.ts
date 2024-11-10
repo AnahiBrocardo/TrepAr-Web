@@ -2,7 +2,7 @@
 
 import { filter } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, Event, RouterModule, RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from "./shared/footer/footer.component";
 import { LoginComponent } from './auth/login/login.component';
@@ -12,7 +12,7 @@ import { LandingPageComponent } from "./pages/landing-page/landing-page.componen
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, HeaderComponent, FooterComponent, LoginComponent, CommonModule, LandingPageComponent],
+  imports: [RouterModule, HeaderComponent, FooterComponent, CommonModule, LoginComponent, LandingPageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

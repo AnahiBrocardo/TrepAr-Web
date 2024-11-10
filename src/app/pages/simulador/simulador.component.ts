@@ -1,5 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-simulador',
@@ -8,20 +7,6 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './simulador.component.html',
   styleUrl: './simulador.component.css'
 })
-export class SimuladorComponent implements OnInit{
-  activated= inject(ActivatedRoute);
-  userId: string='';
-
-  ngOnInit(): void {
-   this.activated.paramMap.subscribe({
-    next:(param)=>{
-      const id= param.get('id');
-      if(id){
-        this.userId=id;
-      }
-    }
-   })
-  }
-
+export class SimuladorComponent {
 
 }
