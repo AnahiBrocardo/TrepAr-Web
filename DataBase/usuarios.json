@@ -51,6 +51,15 @@
       "password": "12345678",
       "createdAt": "2024-11-09T22:50:41.049Z",
       "deletedAt": null
+    },
+    {
+      "id": "7750",
+      "nombre": "Ayelen",
+      "apellido": "Ibañez",
+      "email": "ayelen@gmail.com",
+      "password": "12345678",
+      "createdAt": "2024-11-10T02:07:58.900Z",
+      "deletedAt": null
     }
   ]
 }

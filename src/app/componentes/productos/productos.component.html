@@ -3,10 +3,6 @@
        <h2>Agregar un nuevo producto</h2>
        <form [formGroup]="formulario" (ngSubmit)="addProducto()">
           <div class="form-group">
-             <label for="id">ID:</label>
-             <input type="number" id="id" formControlName="id" />
-          </div>
-          <div class="form-group">
              <label for="nombre">Nombre:</label>
              <input type="text" id="nombre" formControlName="nombre" />
           </div>

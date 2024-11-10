@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductoInterface } from '../../Interfaces/producto-interface';
+import { ProductoInterface, UsuariosxProductos } from '../../Interfaces/producto-interface';
 
 
 @Injectable({
@@ -13,15 +13,15 @@ export class ProductoServiceService {
 
   urlBase: string = 'http://localhost:3000/productos'
 
-  getProductos(): Observable <ProductoInterface[]>{
-    return this.http.get<ProductoInterface[]>(this.urlBase)
+  getProductos(): Observable <UsuariosxProductos[]>{
+    return this.http.get<UsuariosxProductos[]>(this.urlBase)
   }
 
-  postProductos(producto: ProductoInterface): Observable<ProductoInterface>{
-    return this.http.post<ProductoInterface>(this.urlBase, producto)
+  postProductos(producto: UsuariosxProductos): Observable<UsuariosxProductos>{
+    return this.http.post<UsuariosxProductos>(this.urlBase, producto)
   }
 
-  putProductos(producto: ProductoInterface, id: number): Observable<ProductoInterface> {
-    return this.http.put<ProductoInterface>(`${this.urlBase}/${id}`, producto)
+  putProductos(producto: UsuariosxProductos, id: number): Observable<UsuariosxProductos> {
+    return this.http.put<UsuariosxProductos>(`${this.urlBase}/${id}`, producto)
   }
 }
