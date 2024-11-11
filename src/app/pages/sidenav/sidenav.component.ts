@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, input, OnInit, output } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject, Input, input, OnInit, output } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 export class SidenavComponent implements OnInit{
   @Input()  //recibo el id del dashboard
   idUser: string ='';
+  router= inject(Router);
   
   ngOnInit(): void {
   // se llama al metodo para actualizar las rutas una vez que el idUser esté definido
@@ -64,4 +65,9 @@ export class SidenavComponent implements OnInit{
   closeSidenav(): void {
     this.changeIsLeftSidebarCollapsed.emit(true);
   }
+  redirigir(){
+    this.router.navigate(['/']); //se redirige
+  }
+  
+
 }
