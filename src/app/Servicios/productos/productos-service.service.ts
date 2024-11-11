@@ -11,7 +11,7 @@ export class ProductoServiceService {
 
   constructor(private http: HttpClient) { }
 
-  urlBase: string = 'http://localhost:3000/productos'
+  urlBase: string = 'http://localhost:3002/productos'
 
 getProductos(idUsuario: string): Observable <ProductoInterface[]>{
   return this.http.get<ProductoInterface[]>(`${this.urlBase}?idUser=${idUsuario}`);  
