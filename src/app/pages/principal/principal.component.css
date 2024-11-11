@@ -1,0 +1,22 @@
+/* Contenedor con estilo para mostrar el contenido de forma centrada */
+.container {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  h1 {
+    color: #FFA07A; /* Naranja pastel */
+  }
+  
+  p {
+    font-size: 1.2em;
+    color: #333;
+  }
+  
