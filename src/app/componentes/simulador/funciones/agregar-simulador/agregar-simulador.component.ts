@@ -9,7 +9,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { v4 as uuidv4 } from 'uuid';
+
 @Component({
   selector: 'app-agregar-simulador',
   standalone: true,

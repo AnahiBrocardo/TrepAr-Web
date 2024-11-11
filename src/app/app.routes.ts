@@ -11,6 +11,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { InicioSesionPageComponent } from './pages/auth/inicio-sesion-page/inicio-sesion-page.component';
 import { RegistrarsePageComponent } from './pages/auth/registrarse-page/registrarse-page.component';
 import { AgregarSimuladorComponent } from './componentes/simulador/funciones/agregar-simulador/agregar-simulador.component';
+import { ListarSimuladorComponent } from './componentes/simulador/funciones/listar-simulador/listar-simulador.component';
 
 export const routes: Routes = [
    { path: '', component: LandingPageComponent},
@@ -26,6 +27,7 @@ export const routes: Routes = [
             {path: 'settings/:id', component: SettingsComponent},
             {path: 'simulador/:id', component: SimuladorComponent },
             {path: 'simulador/agregar-Simulador', component: AgregarSimuladorComponent},
+            { path: 'simulador/listar-simulador/:id', component: ListarSimuladorComponent }
         ]
     }, 
    {path: '**', redirectTo: '', pathMatch: 'full'} //si pone cualquier otra cosa lo redirige a vacio '', osea a la landing

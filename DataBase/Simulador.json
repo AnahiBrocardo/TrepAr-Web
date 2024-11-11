@@ -1,3 +1,43 @@
 {
-  "simuladores": []
+  "simuladores": [
+    {
+      "id": "1",
+      "idUsuario": "8672",
+      "nombre": "Simulador Alpha",
+      "precioMP": 100,
+      "cantidadMP": 20,
+      "UnidadDeCompraMP": 500,
+      "valorGF": 300,
+      "CantidadProductoMensual": 1000,
+      "Ganancia": 25,
+      "PrecioFinal": 150,
+      "habilitado": true
+    },
+    {
+      "id": "2",
+      "idUsuario": "8300",
+      "nombre": "Simulador Beta",
+      "precioMP": 200,
+      "cantidadMP": 15,
+      "UnidadDeCompraMP": 300,
+      "valorGF": 500,
+      "CantidadProductoMensual": 2000,
+      "Ganancia": 30,
+      "PrecioFinal": 300,
+      "habilitado": true
+    },
+    {
+      "id": "3",
+      "idUsuario": "8672",
+      "nombre": "Simulador Gamma",
+      "precioMP": 150,
+      "cantidadMP": 25,
+      "UnidadDeCompraMP": 400,
+      "valorGF": 400,
+      "CantidadProductoMensual": 1500,
+      "Ganancia": 20,
+      "PrecioFinal": 250,
+      "habilitado": true
+    }
+  ]
 }

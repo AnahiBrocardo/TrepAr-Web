@@ -2,7 +2,7 @@ import { Simulador } from './../../InterfaceSim/Simulador.interface';
 import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { SimuladorService } from '../../../../../Servicios/Simulador.service';
 import { AgregarSimuladorComponent } from "../agregar-simulador/agregar-simulador.component";
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -17,8 +17,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 
-
-
 @Component({
   selector: 'app-listar-simulador',
   standalone: true,
@@ -31,7 +29,7 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
     MatPaginatorModule,
     FormsModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule, 
     ],
   templateUrl: './listar-simulador.component.html',
   styleUrl: './listar-simulador.component.scss'
@@ -39,14 +37,16 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 export class ListarSimuladorComponent implements OnInit  {
 listaSimulacions: Simulador[]= [];
 SimuladorService= inject(SimuladorService);
-
-
+idUsuario: string = ''
+constructor(private route: ActivatedRoute) { }
 ngOnInit(): void {
-  this.listarTodasSimulaciones();
+  this.idUsuario = this.route.snapshot.paramMap.get('id') || '';
+  if (this.idUsuario) { this.listarTodasSimulaciones(this.idUsuario); }
+
 }
 ///----------------LISTAR TODAS LAS SIMULACIONES HECHAS----------------
-listarTodasSimulaciones(){
-  this.SimuladorService.getSimulador().subscribe(
+listarTodasSimulaciones(idUsuario: string){
+  this.SimuladorService.getSimulador(idUsuario).subscribe(
     {
       next: (Simulador: Simulador[]) =>{
         this.listaSimulacions = Simulador;
@@ -66,7 +66,7 @@ agregarLista(simulador: Simulador){
 deleteSimulador(Simuladorid: number){
   let confirmacion= confirm('¿Esta seguro de eliminar esta simulacion de Costo?');
   if(confirmacion){
-    let ids=[Simuladorid];
+    
     this.SimuladorService.deleteSimulador(Simuladorid).subscribe(
     {
       next: ()=>{
@@ -82,13 +82,13 @@ deleteSimulador(Simuladorid: number){
 ///--------------visualizacion---------------------------
 displayedColumns: string[] = ['id', 'nombre', 'PrecioFinal', 'accions'];
 dataSource = new MatTableDataSource<Simulador>([]);
-constructor() { this.leerTodo(); }
+
 
 leerTodo() { 
   const inicio = this.numeroDePag * this.cantidadPorPagina; 
   const fin = inicio + this.cantidadPorPagina;
 
-  this.SimuladorService.getSimulador().subscribe({
+  this.SimuladorService.getSimulador(this.idUsuario).subscribe({
     next: (simuladores: Simulador[]) =>{
       let datosFiltrados = simuladores;
 
@@ -130,7 +130,8 @@ agregarSimulado() {
     width: '70vw',// Ancho del 80% del viewport
     maxHeight: '80vh',
     data: {
-      tipo: 'CREAR'
+      tipo: 'CREAR',
+      idUsuario: this.idUsuario // Pasa el idUsuario al diálogo
     }
   });
 

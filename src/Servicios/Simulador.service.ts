@@ -15,8 +15,8 @@ export class SimuladorService {
 
  urlBase: string = 'http://localhost:3001/simuladores'
 
-getSimulador(): Observable<Simulador[]> {
-  return this.http.get<Simulador[]>(this.urlBase)
+getSimulador(idUsuario: string): Observable<Simulador[]> {
+  return this.http.get<Simulador[]>(`${this.urlBase}?idUsuario=${idUsuario}`);
 }
 
 postSimulador(Simulador: Simulador): Observable<Simulador> {
