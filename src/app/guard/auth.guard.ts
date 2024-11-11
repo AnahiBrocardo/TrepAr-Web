@@ -8,7 +8,8 @@ export const loginGuard = () => {
   if(localStorage.getItem('token')){
     return true;
   }else{
-    router.navigate(['/dashboard/:id'])
+   // router.navigate(['/dashboard/:id'])
+    router.navigate(['acceso'])
     return false;
   }
 }
