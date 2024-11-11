@@ -1,5 +1,5 @@
 export interface GastoFijo{
-    id: number,
-    nombre: string,
-    valor?: number
+    idGF: number,
+    nombreGF: string,
+    valorGF?: number
 }

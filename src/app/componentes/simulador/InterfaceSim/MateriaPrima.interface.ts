@@ -1,7 +1,7 @@
 export interface MateriaPrima{
-    id: number,
-    nombre: string,
-    precio?: number,
-    cantidad?: number,
-    UnidadDeCompra?: number
+    idMP?: number,
+    nombreMP: string,
+    precioMP: number,
+    cantidadMP: number,
+    UnidadDeCompraMP: number
 }

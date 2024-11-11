@@ -14,6 +14,11 @@ import {MatTableDataSource} from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+
+
+
+
 @Component({
   selector: 'app-listar-simulador',
   standalone: true,
@@ -25,7 +30,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTableModule,
     MatPaginatorModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
     ],
   templateUrl: './listar-simulador.component.html',
   styleUrl: './listar-simulador.component.scss'
@@ -112,7 +118,31 @@ CambiarPagina(event: any){
 ///--------------Busqueda---------------------------
 textoBuscado= '';
 
+///--------------AGREGAR---------------------------
+readonly dialog = inject(MatDialog);
+agregarSimulado() {
+  ///abre la ventana modal en l formulario
+  const dialogRef = this.dialog.open(AgregarSimuladorComponent, {
+    disableClose: true, // esto hace que si hago click por fuera de la ventana modal no se me cierre
+    autoFocus: true, // esto hace que se ponga el foco del mouse n la veentana que se abre
+    closeOnNavigation: false, //por si se aprieta algo fuera de la ventana
+    position: {top: '30px'},
+    width: '70vw',// Ancho del 80% del viewport
+    maxHeight: '80vh',
+    data: {
+      tipo: 'CREAR'
+    }
+  });
 
+  //resultado y funcion de la ventana 
+  dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  
+}
+
+
+///--------------MODAL---------------------------
 
 
 }

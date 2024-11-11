@@ -10,6 +10,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { InicioSesionPageComponent } from './pages/auth/inicio-sesion-page/inicio-sesion-page.component';
 import { RegistrarsePageComponent } from './pages/auth/registrarse-page/registrarse-page.component';
+import { AgregarSimuladorComponent } from './componentes/simulador/funciones/agregar-simulador/agregar-simulador.component';
 
 export const routes: Routes = [
    { path: '', component: LandingPageComponent},
@@ -22,7 +23,9 @@ export const routes: Routes = [
             {path: 'principal', component: PrincipalComponent},
             {path: 'producto/:id', component: ProductoComponent},
             {path: 'simulador/:id', component: SimuladorComponent },
-            {path: 'settings/:id', component: SettingsComponent}
+            {path: 'settings/:id', component: SettingsComponent},
+            {path: 'simulador/:id', component: SimuladorComponent },
+            {path: 'simulador/agregar-Simulador', component: AgregarSimuladorComponent},
         ]
     }, 
    {path: '**', redirectTo: '', pathMatch: 'full'} //si pone cualquier otra cosa lo redirige a vacio '', osea a la landing

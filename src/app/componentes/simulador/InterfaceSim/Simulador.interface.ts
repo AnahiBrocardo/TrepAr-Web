@@ -3,14 +3,12 @@ import { MateriaPrima } from './MateriaPrima.interface';
 export interface Simulador{
     id: number,
     nombre: string,
-    GastoFijo: GastoFijo[],
-    MateriaPrima: MateriaPrima [],
-    CantidadProductoMensual?: number,
-    Ganancia?: number,
+    precioMP: number,
+    cantidadMP: number,
+    UnidadDeCompraMP: number
+    valorGF: number
+    CantidadProductoMensual: number,
+    Ganancia: number,
     PrecioFinal: number,
     habilitado: boolean
-}
-export interface SimuladorXUsuario{
-    idUser: string,
-    Simulador: Simulador[]
 }
