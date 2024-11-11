@@ -1,9 +1,43 @@
-<div class="profile-container">
-    <h2>Perfil</h2>
-    <div class="profile-pic"></div>
-    <p>Nombre: {{userData?.nombre}}</p>
-    <hr/>
-    <p>Correo: {{userData?.email}}</p>
-    <hr/>
-    <p>Apellido: {{userData?.apellido}}</p>
-</div>
+<section class="user-details">
+    <div class="container">
+    
+        <div class="user-container">
+            <img src="/assets/img/usuario.png" alt="icono user" class="icono">
+            <h3 class="title">Detalle del usuario</h3>
+        </div>
+
+        <ul class="user-info">
+            <!-- Nombre y Apellido -->
+            <li class="user-info-item">
+                Nombre Completo
+                <article>
+                    {{userData?.nombre}}  {{userData?.apellido}}
+                </article>
+            </li>
+
+            <!-- Email -->
+            <li class="user-info-item">
+                Email
+                <article>
+                    {{userData?.email}}
+                </article>
+            </li>
+        </ul>
+        <!-- Botones para eliminar o modificar -->
+
+        <div class="buttons">
+            <!-- Botón de Modificar -->
+            <button (click)="toggleModificar()" class="btn btn-edit">Modificar cuenta</button>
+            
+            <!-- Barra desplegable con el formulario de modificar y el botón Eliminar -->
+            <div *ngIf="mostrarFormulario" class="form-container">
+                <!-- Botón de Eliminar que aparece al lado del botón de Modificar -->
+                <button (click)="verificacionEliminacion()" class="btn btn-delete">Eliminar cuenta</button>
+            </div>
+        </div>
+        
+        <!-- Componente de formulario de actualización -->
+        <app-update-user [userId]="this.userId" *ngIf="mostrarFormulario"></app-update-user>
+        
+    </div>
+</section>
