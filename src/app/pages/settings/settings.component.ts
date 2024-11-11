@@ -138,7 +138,8 @@ async verificarPassword() {
         title: `Cuenta Eliminada`,
         text: ``
       });
-    //ver si se cierra sesion 
+      localStorage.removeItem("token"); //se remueve el token del local storage
+      this.router.navigate(['/']); //se redirige
     }
   } catch (error) {
     Swal.showValidationMessage(`Solicitud fallida: ${error}`);
