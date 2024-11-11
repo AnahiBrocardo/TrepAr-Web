@@ -58,7 +58,7 @@ export class AgregarSimuladorComponent implements OnInit {
   //inicializa el formulario
   initForm() {
     this.formulario = this.fb.nonNullable.group({
-      idUsuario: [0],
+      idUsuario: '',
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       precioMP: [[0, [Validators.required]]],
       cantidadUsadaMP: [0, [Validators.required]],
