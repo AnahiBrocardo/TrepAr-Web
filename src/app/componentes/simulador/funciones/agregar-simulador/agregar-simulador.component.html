@@ -1,1 +1,82 @@
 
+<h2 mat-dialog-title>Simulador</h2>
+<mat-dialog-content>
+<form [formGroup]="formulario">
+    <div> 
+        <mat-form-field> 
+            <mat-label>Nombre</mat-label> 
+            <input matInput formControlName="nombre" placeholder="Nombre del Producto">
+        </mat-form-field>
+    </div>
+    <div class="container-fluid mb-4" >
+        <h3>Costo de materia prima</h3> 
+        <div class="row align-items-center">
+            <div class="col-6">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Precio De Compra</mat-label>
+                    <input matInput type="number" formControlName="precioMP" required>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Cantidad Comprada</mat-label>
+                    <input matInput type="number" formControlName="UnidadDeCompraMP">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Cantidad Utilizada</mat-label>
+                    <input matInput type="number" formControlName="cantidadMP">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid mb-4">
+        <h3>Gastos Fijos</h3> 
+        <div class="row align-items-center">
+            
+            <div class="col-6">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Monto</mat-label>
+                    <input matInput type="number" formControlName="valorGF">
+                </mat-form-field>
+            </div>
+                  
+        </div>
+    </div>
+    <div class="container-fluid mb-4">
+        <h3>Produccion mensual</h3> 
+        <div class="row align-items-center">
+            <div class="col-6">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Cantidad Total Producida al mes</mat-label>
+                    <input matInput type="number" formControlName="CantidadProductoMensual">
+                </mat-form-field>
+            </div> 
+
+        </div>
+        
+    </div>
+    
+    <div class="container-fluid mb-4" >
+        <h3>Porcentaje de Ganancia</h3> 
+        <div class="row align-items-center">
+            <div class="col-6">
+                <mat-form-field class="example-form-field">
+                    <input matInput type="number" formControlName="Ganancia">
+                </mat-form-field>
+            </div>     
+        </div>
+    </div>
+    <div>
+        <button mat-button type="button" (click)="calcularTodo()">Calcular Todo</button>
+        <h4>Calcular Precio Final con Ganancia ${{ calcularTodo().toFixed(2) }}</h4>
+        
+    </div>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button (click)="addSimulador()">Guardar</button>
+</mat-dialog-actions>

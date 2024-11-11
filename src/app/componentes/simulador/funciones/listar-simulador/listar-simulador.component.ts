@@ -2,7 +2,7 @@ import { Simulador } from './../../InterfaceSim/Simulador.interface';
 import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { SimuladorService } from '../../../../../Servicios/Simulador.service';
 import { AgregarSimuladorComponent } from "../agregar-simulador/agregar-simulador.component";
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -14,6 +14,9 @@ import {MatTableDataSource} from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+
+
 @Component({
   selector: 'app-listar-simulador',
   standalone: true,
@@ -25,7 +28,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTableModule,
     MatPaginatorModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule, 
     ],
   templateUrl: './listar-simulador.component.html',
   styleUrl: './listar-simulador.component.scss'
@@ -33,14 +37,21 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 export class ListarSimuladorComponent implements OnInit  {
 listaSimulacions: Simulador[]= [];
 SimuladorService= inject(SimuladorService);
+idUsuario: string = '';
 
+constructor(private route: ActivatedRoute,  private router: Router) { }
 
 ngOnInit(): void {
-  this.listarTodasSimulaciones();
+  this.idUsuario = this.route.snapshot.paramMap.get('id') || '';
+  if (this.idUsuario) { this.listarTodasSimulaciones(this.idUsuario); }
+
 }
+ // Método para navegar a AgrgarSimuladorComponent 
+navigateToAgrgarSimulador(): void { 
+  if (this.idUsuario) { this.router.navigate([`/agregar-simulador/${this.idUsuario}`]); } } 
 ///----------------LISTAR TODAS LAS SIMULACIONES HECHAS----------------
-listarTodasSimulaciones(){
-  this.SimuladorService.getSimulador().subscribe(
+listarTodasSimulaciones(idUsuario: string){
+  this.SimuladorService.getSimulador(idUsuario).subscribe(
     {
       next: (Simulador: Simulador[]) =>{
         this.listaSimulacions = Simulador;
@@ -60,7 +71,7 @@ agregarLista(simulador: Simulador){
 deleteSimulador(Simuladorid: number){
   let confirmacion= confirm('¿Esta seguro de eliminar esta simulacion de Costo?');
   if(confirmacion){
-    let ids=[Simuladorid];
+    
     this.SimuladorService.deleteSimulador(Simuladorid).subscribe(
     {
       next: ()=>{
@@ -76,13 +87,13 @@ deleteSimulador(Simuladorid: number){
 ///--------------visualizacion---------------------------
 displayedColumns: string[] = ['id', 'nombre', 'PrecioFinal', 'accions'];
 dataSource = new MatTableDataSource<Simulador>([]);
-constructor() { this.leerTodo(); }
+
 
 leerTodo() { 
   const inicio = this.numeroDePag * this.cantidadPorPagina; 
   const fin = inicio + this.cantidadPorPagina;
 
-  this.SimuladorService.getSimulador().subscribe({
+  this.SimuladorService.getSimulador(this.idUsuario).subscribe({
     next: (simuladores: Simulador[]) =>{
       let datosFiltrados = simuladores;
 
@@ -112,7 +123,32 @@ CambiarPagina(event: any){
 ///--------------Busqueda---------------------------
 textoBuscado= '';
 
+///--------------AGREGAR---------------------------
+readonly dialog = inject(MatDialog);
+agregarSimulado() {
+  ///abre la ventana modal en l formulario
+  const dialogRef = this.dialog.open(AgregarSimuladorComponent, {
+    disableClose: true, // esto hace que si hago click por fuera de la ventana modal no se me cierre
+    autoFocus: true, // esto hace que se ponga el foco del mouse n la veentana que se abre
+    closeOnNavigation: false, //por si se aprieta algo fuera de la ventana
+    position: {top: '30px'},
+    width: '70vw',// Ancho del 80% del viewport
+    maxHeight: '80vh',
+    data: {
+      tipo: 'CREAR',
+      idUsuario: this.idUsuario // Pasa el idUsuario al diálogo
+    }
+  });
 
+  //resultado y funcion de la ventana 
+  dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  
+}
+
+
+///--------------MODAL---------------------------
 
 
 }
