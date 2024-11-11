@@ -20,3 +20,47 @@
     width: calc(100% - 5rem);
     margin-left: 5rem;
   }
+
+  /* Estilo para el body cuando el aside está abierto */
+.body {
+  width: calc(100% - 5rem); /* Esto ajusta el ancho dependiendo del espacio ocupado por el aside */
+  margin-left: 5rem;
+  z-index: 0;
+  position: relative;
+  transition: all 0.5s ease; /* Suaviza la transición */
+  background: white;
+  padding: 3rem;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: auto;
+}
+
+/* Estilo para el body cuando el aside está cerrado */
+.body-trimmed {
+  width: calc(100% - 16.5625rem); /* El cuerpo se ajusta cuando el aside está completamente desplegado */
+  margin-left: 16.5625rem;
+}
+
+/* Para pantallas medianas, ajusta el contenido */
+.body-md-screen {
+  width: calc(100% - 5rem);
+  margin-left: 5rem;
+}
+
+/* Estilo para el aside, controlando su transición */
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16.5625rem; /* Ajusta el tamaño del aside */
+  height: 100%;
+  background-color: #333;
+  transition: width 0.3s ease, margin-left 0.3s ease;
+  z-index: 1;
+}
+
+/* Estilo cuando el aside está colapsado */
+aside.collapsed {
+  width: 5rem;
+}
+
