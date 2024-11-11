@@ -18,6 +18,11 @@ export class ControlAccesoService {
     return this.loginStatus;
   }
 
+  public SetLogginStatus(estado:boolean){
+    this.loginStatus=estado;
+  }
+
+  
   public getUserId(){
     return this.userId;
   }
@@ -32,7 +37,7 @@ export class ControlAccesoService {
           // Si el usuario es encontrado y la contraseña es correcta
           this.userId = user.id;  // Guardamos el ID del usuario
           }
-          localStorage.setItem('token', '' + user.id);  // Almacenamos el ID en el localStorage como token
+          this.loginStatus=true;
           this.loginStatus = true;  // Marcamos que el usuario ha iniciado sesión
           return user;  // Devolvemos el usuario encontrado
         } else {
