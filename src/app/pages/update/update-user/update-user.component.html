@@ -74,6 +74,18 @@
                             >{{ isPasswordVisible ? '' : '' }}
                             <i class="fas" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
                         </a>
+                        <div *ngIf="formularioUpdateUserData.controls['newPassword'].invalid" 
+                        class="alert alert-danger">
+                        
+                            <div  class="error" *ngIf="formularioUpdateUserData.controls['newPassword'].getError('required')">
+                                Contraseña requerida
+                            </div>
+            
+                            <div class="error" *ngIf="formularioUpdateUserData.controls['newPassword'].hasError('minlength')">
+                                La contraseña debe tener al menos 8 caracteres
+                              </div>
+                    </div>
+
                     </div>
                 </div>
 
@@ -87,6 +99,17 @@
                             >{{ isPasswordVisible ? '' : '' }}
                             <i class="fas" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
                         </a>
+                    </div>
+                    <div *ngIf="formularioUpdateUserData.controls['repiteNewPassword'].invalid" 
+                        class="alert alert-danger">
+                        
+                            <div  class="error" *ngIf="formularioUpdateUserData.controls['repiteNewPassword'].getError('required')">
+                                Contraseña requerida
+                            </div>
+            
+                            <div class="error" *ngIf="formularioUpdateUserData.controls['repiteNewPassword'].hasError('minlength')">
+                                La contraseña debe tener al menos 8 caracteres
+                              </div>
                     </div>
                 </div>
             </div>
