@@ -25,7 +25,7 @@ export class ControlAccesoService {
   public validarLogin(userEmail: string, password: string): Observable<User> {
     return this.http.get<User[]>(`${this.url}?email=${userEmail}`).pipe(  // Filtramos por email en el backend
       map(users => {
-        const user = users.find(u => u.password === password); // Comprobamos que la contraseña coincida
+        const user = users.find(u => u.password === password&& !u.deletedAt); // Comprobamos que la contraseña coincida y deletedAt en null
         if (user) {
           console.log(user);
           if(user.id){
