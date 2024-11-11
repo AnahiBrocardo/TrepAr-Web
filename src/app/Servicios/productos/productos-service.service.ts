@@ -13,26 +13,24 @@ export class ProductoServiceService {
 
   urlBase: string = 'http://localhost:3000/productos'
 
-  getProductos(): Observable <UsuariosxProductos[]>{
-    return this.http.get<UsuariosxProductos[]>(this.urlBase)
-  }
-
-  // Obtener un usuario por su userId
-  obtenerUsuarioPorId(userId: string): Observable<UsuariosxProductos[]> {
-    return this.http.get<UsuariosxProductos[]>(`${this.urlBase}?id=${userId}`);
-  }
-  
-
-postProductos(producto: UsuariosxProductos): Observable<UsuariosxProductos>{
-  return this.http.post<UsuariosxProductos>(`${this.urlBase}`, producto);
+getProductos(idUsuario: string): Observable <ProductoInterface[]>{
+  return this.http.get<ProductoInterface[]>(`${this.urlBase}?idUsuario=${idUsuario}`);  
 }
 
-putProductos(producto: UsuariosxProductos): Observable<UsuariosxProductos> {
-return this.http.put<UsuariosxProductos>(`${this.urlBase}/${producto.id}`, producto)
+getProductoById(id:string | null): Observable<ProductoInterface>{
+  return this.http.get<ProductoInterface>(`${this.urlBase}/${id}`)
 }
 
-deleteProductosbyId (id: string | undefined): Observable<void>{
-  return this.http.delete<void>(`${this.urlBase}/${id}`);
+postProductos(producto: ProductoInterface): Observable<ProductoInterface>{
+  return this.http.post<ProductoInterface>(`${this.urlBase}`, producto);
+}
+
+putProductos(id:number | undefined, producto: ProductoInterface): Observable<ProductoInterface> {
+return this.http.put<ProductoInterface>(`${this.urlBase}/${producto.id}`, producto)
+}
+
+deleteProductosbyId (id: string | undefined): Observable<ProductoInterface>{
+  return this.http.delete<ProductoInterface>(`${this.urlBase}/${id}`);
 }
 
 }
