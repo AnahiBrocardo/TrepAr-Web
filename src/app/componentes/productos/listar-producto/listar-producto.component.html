@@ -1,5 +1,5 @@
 <div *ngIf="productos.length > 0; else noProductos" class="producto-lista">
-  <h3>Lista de productos</h3>
+  <h3>Lista de mis productos</h3>
   <div class="productos-container">
     <div *ngFor="let producto of productos" class="producto-card">
       <img [src]= "'assets/img/shapes.png'" alt="Imagen del producto" class="producto-imagen">

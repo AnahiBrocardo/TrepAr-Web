@@ -1,34 +1,41 @@
 <div class="container">
-    <div class="productos">
-       <h2>Agregar un nuevo producto</h2>
-       <form [formGroup]="formulario" (ngSubmit)="addProducto()">
+   <div class="productos">
+      <h2>Agregar un nuevo producto</h2>
 
-          <div class="form-group">
-             <label for="nombre">Nombre:</label>
-             <input type="text" id="nombre" formControlName="nombre" />
-          </div>
+      <!-- Descripción introductoria -->
+      <p class="intro-text">
+         Aquí puedes agregar un nuevo producto a tu inventario y llevar un registro de ellos. 
+         Por favor, completa los siguientes campos con los detalles del producto que deseas ofrecer, como nombre, categoría, descripción y precio. Asegúrate de que toda la información sea precisa antes de agregar el producto.
+      </p>
 
-          <div class="form-group">
-             <label for="categoria">Categoría:</label>
-             <select id="categoria" formControlName="categoria">
-                <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
-             </select>
-          </div>
+      <form [formGroup]="formulario" (ngSubmit)="addProducto()">
 
-          <div class="form-group">
-             <label for="descripcion">Descripción:</label>
-             <input type="text" id="descripcion" formControlName="descripcion" />
-          </div>
+         <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" formControlName="nombre" />
+         </div>
 
-          <div class="form-group">
-             <label for="precio">Precio:</label>
-             <input type="number" id="precio" formControlName="precio" />
-          </div>
-          
-          <button type="submit" [disabled]="formulario.invalid">Agregar Producto</button>
-       </form>
-    </div>
- </div>
- <div>
-   <app-listar-producto></app-listar-producto>
- </div>
+         <div class="form-group">
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" formControlName="categoria">
+               <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+            </select>
+         </div>
+
+         <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" formControlName="descripcion" />
+         </div>
+
+         <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" formControlName="precio" />
+         </div>
+         
+         <button type="submit" [disabled]="formulario.invalid">Agregar Producto</button>
+      </form>
+   </div>
+</div>
+<div>
+  <app-listar-producto></app-listar-producto>
+</div>
