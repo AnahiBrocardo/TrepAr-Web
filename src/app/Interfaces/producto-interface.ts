@@ -1,5 +1,6 @@
 export interface ProductoInterface {
     id?:string,
+    idUser: string,
     nombre:string,
     categoria: string;
     descripcion: string; 
