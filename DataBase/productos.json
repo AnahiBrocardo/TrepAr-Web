@@ -1,0 +1,22 @@
+{
+  "productos": [
+    {
+      "id": "e503",
+      "idUser": "7750",
+      "nombre": "Televisor",
+      "categoria": "Electrónica",
+      "descripcion": "Es cuadrada",
+      "precio": 40000000,
+      "deletedAt": false
+    },
+    {
+      "id": "7a95",
+      "idUser": "1",
+      "nombre": "velas",
+      "categoria": "Hogar",
+      "descripcion": "necesito cera e hilo encerado",
+      "precio": 4399,
+      "deletedAt": false
+    }
+  ]
+}

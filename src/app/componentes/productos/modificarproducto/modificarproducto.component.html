@@ -1,0 +1,24 @@
+<form [formGroup]="formulario" (ngSubmit)="actualizarProducto()">
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" formControlName="nombre">
+    </div>
+    <div>
+      <label for="categoria">Categoría:</label>
+      <input id="categoria" formControlName="categoria">
+    </div>
+    <div>
+      <label for="descripcion">Descripción:</label>
+      <input id="descripcion" formControlName="descripcion">
+    </div>
+    <div>
+      <label for="precio">Precio:</label>
+      <input id="precio" formControlName="precio">
+    </div>
+    <div>
+      <label for="deletedAt">Eliminado:</label>
+      <input type="checkbox" id="deletedAt" formControlName="deletedAt">
+    </div>
+    <button type="submit" [disabled]="formulario.invalid">Guardar Cambios</button>
+  </form>
+  
