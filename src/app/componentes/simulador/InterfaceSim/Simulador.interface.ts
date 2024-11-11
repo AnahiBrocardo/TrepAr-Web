@@ -1,7 +1,7 @@
 import { GastoFijo } from './GastoFijo.interface';
 import { MateriaPrima } from './MateriaPrima.interface';
 export interface Simulador{
-    id: number,
+    id: string,
     nombre: string,
     precioMP: number,
     cantidadMP: number,

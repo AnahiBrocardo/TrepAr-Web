@@ -52,7 +52,7 @@ export class AgregarSimuladorComponent implements OnInit {
   //inicializa el formulario
   initForm() {
     this.formulario = this.fb.nonNullable.group({
-      id: [generateIncrementalId()],
+    
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       precioMP: [[0, [Validators.required]]],
       cantidadUsadaMP: [0, [Validators.required]],
@@ -70,6 +70,32 @@ export class AgregarSimuladorComponent implements OnInit {
       this.calcularTodo();
     });
   }
+
+
+//----------------------- FUNCIONES
+
+addSimulador(){
+  if(this.formulario.invalid) return;
+  const simulado= this.formulario.getRawValue();
+  this.addSimuladorBD(simulado);
+  this.emitirSimulacion.emit(simulado);
+}
+
+addSimuladorBD(Simulador: Simulador){
+  this.SimuladorService.postSimulador(Simulador).subscribe(
+    {
+      next: (Simulador: Simulador) =>{
+        alert('Simulador guardada....')
+      },
+      error: (e: Error)=>{
+          console.log(e.message);
+      }
+    }
+  )
+ }
+
+
+
 
 
 ///-------------------------FUNCIONALIDADES DE LA CALCULADORA DE COSTO-----
