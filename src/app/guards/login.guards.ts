@@ -7,10 +7,4 @@ export const loginGuard = () => { //retorna un valor booleano que indica si la n
   const router = inject(Router);
   const loginService = inject(ControlAccesoService);
 
-  if (loginService.getUserId() === -1) {//si el ID es -1, esto indica que el usuario no está autenticado
-    router.navigateByUrl('');
-    return false;
-  } else { 
-    return true;
-  }
 }
