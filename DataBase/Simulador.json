@@ -64,6 +64,45 @@
       "Ganancia": 20,
       "PrecioFinal": 0,
       "habilitado": true
+    },
+    {
+      "id": "4208",
+      "idUsuario": "",
+      "nombre": "prasss",
+      "precioMP": 12,
+      "cantidadUsadaMP": 0,
+      "UnidadDeCompraMP": 4,
+      "valorGF": 2000,
+      "CantidadProductoMensual": 200,
+      "Ganancia": 30,
+      "PrecioFinal": 0,
+      "habilitado": true
+    },
+    {
+      "id": "8568",
+      "idUsuario": "",
+      "nombre": "sasa",
+      "precioMP": 14,
+      "cantidadUsadaMP": 0,
+      "UnidadDeCompraMP": 1,
+      "valorGF": 10,
+      "CantidadProductoMensual": 1,
+      "Ganancia": 20,
+      "PrecioFinal": 28.799999999999997,
+      "habilitado": true
+    },
+    {
+      "id": "b128",
+      "idUsuario": "",
+      "nombre": "tatatata",
+      "precioMP": 15,
+      "cantidadUsadaMP": 0,
+      "UnidadDeCompraMP": 5,
+      "valorGF": 99,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 30,
+      "PrecioFinal": 68.25,
+      "habilitado": true
     }
   ]
 }

@@ -2,7 +2,7 @@ import { Simulador } from './../../InterfaceSim/Simulador.interface';
 import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { SimuladorService } from '../../../../../Servicios/Simulador.service';
 import { AgregarSimuladorComponent } from "../agregar-simulador/agregar-simulador.component";
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -37,13 +37,18 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 export class ListarSimuladorComponent implements OnInit  {
 listaSimulacions: Simulador[]= [];
 SimuladorService= inject(SimuladorService);
-idUsuario: string = ''
-constructor(private route: ActivatedRoute) { }
+idUsuario: string = '';
+
+constructor(private route: ActivatedRoute,  private router: Router) { }
+
 ngOnInit(): void {
   this.idUsuario = this.route.snapshot.paramMap.get('id') || '';
   if (this.idUsuario) { this.listarTodasSimulaciones(this.idUsuario); }
 
 }
+ // Método para navegar a AgrgarSimuladorComponent 
+navigateToAgrgarSimulador(): void { 
+  if (this.idUsuario) { this.router.navigate([`/agregar-simulador/${this.idUsuario}`]); } } 
 ///----------------LISTAR TODAS LAS SIMULACIONES HECHAS----------------
 listarTodasSimulaciones(idUsuario: string){
   this.SimuladorService.getSimulador(idUsuario).subscribe(

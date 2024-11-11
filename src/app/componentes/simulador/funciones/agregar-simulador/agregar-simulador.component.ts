@@ -32,19 +32,18 @@ export class AgregarSimuladorComponent implements OnInit {
   SimuladorService= inject(SimuladorService) ;
   precioConGanancia: number = 0;
   idUsuario: string= '';
-  
   @Output() emitirSimulacion: EventEmitter<Simulador> = new EventEmitter();
 
   constructor(
     private dialogRef: MatDialogRef<AgregarSimuladorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private route: ActivatedRoute
-  ){ this.initForm();
-    this.idUsuario = data.idUsuario;
+  ){ 
+    this.initForm();
    }
 
   ngOnInit(): void {
     this.idUsuario = this.route.snapshot.paramMap.get('id') || '';
-    this.listenFormChanges();
+    //this.listenFormChanges();
   };
   
   cancelar(){
@@ -59,7 +58,7 @@ export class AgregarSimuladorComponent implements OnInit {
   //inicializa el formulario
   initForm() {
     this.formulario = this.fb.nonNullable.group({
-      idUsuario: [this.idUsuario],
+      idUsuario: [0],
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       precioMP: [[0, [Validators.required]]],
       cantidadUsadaMP: [0, [Validators.required]],
@@ -67,16 +66,15 @@ export class AgregarSimuladorComponent implements OnInit {
       valorGF: [0, [Validators.required]],
       CantidadProductoMensual: [0, [Validators.required]],
       Ganancia: [0, [Validators.required]],
-      PrecioFinal: [this.precioConGanancia],
+      PrecioFinal: [0],
       habilitado: [true]
     });
   }
-  listenFormChanges() {
+  //listenFormChanges() {
     // Recalcula cada vez que cambie un valor relevante en el formulario
-    this.formulario.valueChanges.subscribe(() => {
-      this.calcularTodo();
-    });
-  }
+   // this.formulario.valueChanges.subscribe(() => {
+     // this.calcularTodo();
+    //});}
 
 
 //----------------------- FUNCIONES
@@ -84,8 +82,11 @@ export class AgregarSimuladorComponent implements OnInit {
 addSimulador(){
   if(this.formulario.invalid) return;
   const simulado= this.formulario.getRawValue();
+  simulado.idUsuario = this.idUsuario; // Añadir idUsuario al objeto simulador 
+  simulado.PrecioFinal = this.precioConGanancia;
   this.addSimuladorBD(simulado);
   this.emitirSimulacion.emit(simulado);
+  this.dialogRef.close();
 }
 
 addSimuladorBD(Simulador: Simulador){
