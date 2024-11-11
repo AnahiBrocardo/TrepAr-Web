@@ -103,3 +103,12 @@
   .sidenav-nav ul {
     list-style-type: none;
   }
+
+  #logout{
+    margin-left: 1rem;
+    margin-bottom: 2.5em;
+  }
+
+  .botonLogOut{
+    border-radius: 10px;
+  }

@@ -31,6 +31,7 @@ export class ControlAccesoService {
           // Si el usuario es encontrado y la contraseña es correcta
           this.loginStatus = true;// Marcamos que el usuario ha iniciado sesión
           this.userIdSubject.next(user.id); // Actualizamos el BehaviorSubject con el ID
+          localStorage.setItem('token', 'token');
           }
           return user;  // Devolvemos el usuario encontrado
         } else {

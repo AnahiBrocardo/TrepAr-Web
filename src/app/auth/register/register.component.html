@@ -3,7 +3,7 @@
     <form [formGroup]="formularioRegistrase" (ngSubmit)="signIn()">
         <div class="item">
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre"name="nombre" formControlName="nombre">
+            <input type="text" id="nombre"name="nombre" placeholder="Nombre" formControlName="nombre">
             <div *ngIf="formularioRegistrase.controls['nombre'].invalid && (formularioRegistrase.controls['nombre'].dirty || formularioRegistrase.controls['nombre'].touched)" 
             class="alert alert-danger">
             
@@ -15,7 +15,7 @@
 
         <div class="item">
             <label for="apellido">Apellido</label>
-            <input type="text" id="apellido"name="apellido"  formControlName="apellido">
+            <input type="text" id="apellido"name="apellido" placeholder="Apellido" formControlName="apellido">
             <div *ngIf="formularioRegistrase.controls['apellido'].invalid && (formularioRegistrase.controls['apellido'].dirty || formularioRegistrase.controls['apellido'].touched)" 
             class="alert alert-danger">
             
@@ -27,7 +27,7 @@
 
         <div class="item">
             <label for="email">Correo Electrónico</label>
-            <input type="email" id="email" name="email" formControlName="email">
+            <input type="email" id="email" name="email" placeholder="Correo eletronico" formControlName="email">
             <div *ngIf="formularioRegistrase.controls['email'].invalid && (formularioRegistrase.controls['email'].dirty || formularioRegistrase.controls['email'].touched)" 
             class="alert alert-danger">
             
@@ -44,7 +44,7 @@
         <div class="item">
             <label for="contrasena">Contraseña</label>
             <div class="password-container">
-                <input [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Ingrese su contraseña" formControlName="password">
+                <input [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Contraseña" formControlName="password">
                 <a  
                     class="botonMostrarOcultar" 
                     (click)="togglePasswordVisibility()"

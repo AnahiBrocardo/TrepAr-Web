@@ -5,7 +5,8 @@
       "nombre": "Juan ",
       "apellido": "Perez",
       "email": "juan.perez@example.com",
-      "password": "12312345"
+      "password": "12345678",
+      "deletedAt": "2024-11-11T00:46:37.183Z"
     },
     {
       "id": "2",

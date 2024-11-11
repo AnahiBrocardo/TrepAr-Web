@@ -81,7 +81,7 @@ export class SettingsComponent implements OnInit{
       confirmButtonText: "Si, eliminar!"
     }).then((result) => {
       if (result.isConfirmed) {
-       this.deleteUsuario();
+       this.verificarPassword();
         Swal.fire({
           title: "Cuenta eliminada",
           text: "",
@@ -90,6 +90,59 @@ export class SettingsComponent implements OnInit{
         this.router.navigateByUrl('');
       }
     });
+}
+
+async verificarPassword() {
+  try {
+    const result = await Swal.fire({
+      title: "Ingrese contraseña, para poder eliminar la cuenta...",
+      input: "password",
+      inputAttributes: {
+        autocapitalize: "off"
+      },
+      showCancelButton: true,
+      confirmButtonText: "Aceptar",
+      showLoaderOnConfirm: true,
+      preConfirm: (password) => {
+        return new Promise((resolve, reject) => {
+          if (password) {
+            if(this.userId){
+            // Verificar si la contraseña ingresada es correcta
+            this.userService.getUserById(this.userId).subscribe({
+              next: (user) => {
+                if (user.password===password) {
+                  resolve(password);  
+                  
+                } else {
+                  reject('La contraseña ingresada no es correcta');
+                  Swal.fire('Error', 'La contraseña ingresada no es correcta');
+                }
+              },
+              error: (err: Error) => {
+                reject(`Error al verificar la contraseña: ${err.message}`);
+                console.error("Error al verificar la contraseña:", err);
+              }
+            });
+          } else {
+            reject('Por favor, ingrese su contraseña');
+          }
+        }
+        });
+      },
+      allowOutsideClick: () => !Swal.isLoading()
+    });
+
+    if (result.isConfirmed) {
+      this.deleteUsuario(); 
+      Swal.fire({
+        title: `Cuenta Eliminada`,
+        text: ``
+      });
+    //ver si se cierra sesion 
+    }
+  } catch (error) {
+    Swal.showValidationMessage(`Solicitud fallida: ${error}`);
+  }
 }
 }
 
