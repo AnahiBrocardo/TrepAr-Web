@@ -37,7 +37,6 @@ export class ControlAccesoService {
           // Si el usuario es encontrado y la contraseña es correcta
           this.userId = user.id;  // Guardamos el ID del usuario
           }
-          this.loginStatus=true;
           this.loginStatus = true;  // Marcamos que el usuario ha iniciado sesión
           return user;  // Devolvemos el usuario encontrado
         } else {
