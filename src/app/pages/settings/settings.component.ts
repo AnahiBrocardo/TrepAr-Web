@@ -60,7 +60,8 @@ export class SettingsComponent implements OnInit{
       this.userService.updateUser(this.userData).subscribe({
         next: () => {
           console.log('Usuario eliminado exitosamente');
-          //iria el router y eliminar el token 
+          localStorage.removeItem('token');
+          this.router.navigateByUrl('');
         },
         error: (err: Error) => {
           console.error('Error al actualizar el usuario:', err);

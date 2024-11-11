@@ -65,8 +65,10 @@ export class SidenavComponent implements OnInit{
   closeSidenav(): void {
     this.changeIsLeftSidebarCollapsed.emit(true);
   }
+
   redirigir(){
-    this.router.navigate(['/']); //se redirige
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('');
   }
   
 
