@@ -110,5 +110,7 @@
   }
 
   .botonLogOut{
+    margin-top: 5vh;
+    padding: 12px;
     border-radius: 10px;
   }
