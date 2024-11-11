@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductoServiceService } from '../../../Servicios/productos/productos-service.service';
 import { CommonModule } from '@angular/common';
 import { ProductoInterface, UsuariosxProductos } from '../../../Interfaces/producto-interface';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-listar-producto',
@@ -43,25 +44,7 @@ export class ListarProductoComponent implements OnInit{
       }
     });
   }
-  
-  deleteProducto(idEliminar: string | undefined)
-  {
-    this.productoServices.obtenerUsuarioPorId(this.userId).subscribe(usuario => {
-      if (usuario) {
-        const indice = usuario[0].productoInterface.findIndex(item => item.id === idEliminar);
-    
-        // Si encontramos el producto, lo eliminama
-      if (indice !== -1) {
-      usuario[0].productoInterface.splice(indice, 1);
-      // Llamamos al servicio para eliminar el producto en el servidor
-      this.productoServices.deleteProductosbyId(idEliminar).subscribe(response => {
-      }, 
-     )}
-    }
-  
 
-    });
-  }
 
   /*
 //Sector del servidor productoUserServices
