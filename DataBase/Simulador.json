@@ -155,6 +155,84 @@
       "Ganancia": 40,
       "PrecioFinal": 14,
       "habilitado": true
+    },
+    {
+      "id": "f940",
+      "idUsuario": "",
+      "nombre": "hola",
+      "precioMP": 500,
+      "cantidadUsadaMP": 0,
+      "UnidadDeCompraMP": 50,
+      "valorGF": 1000,
+      "CantidadProductoMensual": 10,
+      "Ganancia": 30,
+      "PrecioFinal": 143,
+      "habilitado": true
+    },
+    {
+      "id": "242f",
+      "idUsuario": "",
+      "nombre": "nuvo",
+      "precioMP": 600,
+      "cantidadUsadaMP": 0,
+      "UnidadDeCompraMP": 6,
+      "valorGF": 600,
+      "CantidadProductoMensual": 60,
+      "Ganancia": 30,
+      "PrecioFinal": 143,
+      "habilitado": true
+    },
+    {
+      "id": "ad7f",
+      "idUsuario": "",
+      "nombre": "6000",
+      "precioMP": 50,
+      "cantidadUsadaMP": 0,
+      "UnidadDeCompraMP": 6,
+      "valorGF": 6000,
+      "CantidadProductoMensual": 50,
+      "Ganancia": 30,
+      "PrecioFinal": 166.83333333333334,
+      "habilitado": true
+    },
+    {
+      "id": "d2ff",
+      "idUsuario": "",
+      "nombre": "sjjcvbdvs",
+      "precioMP": 10,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 10,
+      "valorGF": 600,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 30,
+      "PrecioFinal": 391.3,
+      "habilitado": true
+    },
+    {
+      "id": "8354",
+      "idUsuario": "",
+      "nombre": "diuf",
+      "precioMP": 10,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 1,
+      "valorGF": 1,
+      "CantidadProductoMensual": 1,
+      "Ganancia": 30,
+      "PrecioFinal": 14.3,
+      "habilitado": true
+    },
+    {
+      "id": "c95c",
+      "idUsuario": "8672",
+      "nombre": "dwfvggrg",
+      "precioMP": 10,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 1,
+      "valorGF": 55,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 30,
+      "PrecioFinal": 48.75,
+      "habilitado": true
     }
   ]
 }

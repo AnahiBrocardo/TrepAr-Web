@@ -9,7 +9,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-agregar-simulador',
@@ -27,54 +27,62 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './agregar-simulador.component.css'
 })
 export class AgregarSimuladorComponent implements OnInit {
-  formulario!: FormGroup; 
+  
   fb= inject(FormBuilder);
   SimuladorService= inject(SimuladorService) ;
   precioConGanancia: number = 0;
   idUsuario: string= '';
+  ruoter = inject(Router);
+  activated= inject(ActivatedRoute);
   @Output() emitirSimulacion: EventEmitter<Simulador> = new EventEmitter();
 
   constructor(
     private dialogRef: MatDialogRef<AgregarSimuladorComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private route: ActivatedRoute
+    @Inject(MAT_DIALOG_DATA) public data: { tipo: string; idUsuario: string }
+  
   ){ 
-    this.initForm();
+    this.idUsuario = data.idUsuario;
    }
 
-  ngOnInit(): void {
-    this.idUsuario = this.route.snapshot.paramMap.get('id') || '';
-    //this.listenFormChanges();
-  };
+   ngOnInit(): void {
+    console.log(this.idUsuario);
+  }
   
+  activarRuta(idUsuario: string){
+    this.SimuladorService.getSimulador(idUsuario).subscribe({
+      next: (Simulador: Simulador[]) =>{
+        
+      }, error: (e:Error)=>{
+        console.log(e.message);
+      }
+    })  }
+
+
   cancelar(){
     this.dialogRef.close();
   }
   
   guardar(){
-    this.emitirSimulacion.emit(this.formulario.value);
+    //this.emitirSimulacion.emit(this.formulario.value);
     this.dialogRef.close();
   }
 
   //inicializa el formulario
-  initForm() {
-    this.formulario = this.fb.nonNullable.group({
+  
+    formulario = this.fb.nonNullable.group({
       idUsuario: '',
       nombre: ['', [Validators.required, Validators.minLength(3)]],
-      precioMP: [[0, [Validators.required]]],
-      cantidadUsadaMP: [0, [Validators.required]],
+      precioMP: [0, [Validators.required]],
+      cantidadMP: [0, [Validators.required]],
       UnidadDeCompraMP: [0, [Validators.required]],
       valorGF: [0, [Validators.required]],
       CantidadProductoMensual: [0, [Validators.required]],
       Ganancia: [0, [Validators.required]],
       PrecioFinal: [0],
-      habilitado: [true]
-    });
-  }
-  //listenFormChanges() {
-    // Recalcula cada vez que cambie un valor relevante en el formulario
-   // this.formulario.valueChanges.subscribe(() => {
-     // this.calcularTodo();
-    //});}
+      habilitado: true
+    })
+ 
+  
 
 
 //----------------------- FUNCIONES
@@ -85,12 +93,12 @@ addSimulador(){
   simulado.idUsuario = this.idUsuario; // Añadir idUsuario al objeto simulador 
   simulado.PrecioFinal = this.precioConGanancia;
   this.addSimuladorBD(simulado);
-  this.emitirSimulacion.emit(simulado);
+  //this.emitirSimulacion.emit(simulado);
   this.dialogRef.close();
 }
 
-addSimuladorBD(Simulador: Simulador){
-  this.SimuladorService.postSimulador(Simulador).subscribe(
+addSimuladorBD(simulador: Simulador){
+  this.SimuladorService.postSimulador(simulador).subscribe(
     {
       next: (Simulador: Simulador) =>{
         alert('Simulador guardada....')

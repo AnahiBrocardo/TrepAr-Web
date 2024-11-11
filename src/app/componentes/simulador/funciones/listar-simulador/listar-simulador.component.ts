@@ -42,13 +42,13 @@ idUsuario: string = '';
 constructor(private route: ActivatedRoute,  private router: Router) { }
 
 ngOnInit(): void {
+  console.log(this.idUsuario);
   this.idUsuario = this.route.snapshot.paramMap.get('id') || '';
   if (this.idUsuario) { this.listarTodasSimulaciones(this.idUsuario); }
 
 }
  // Método para navegar a AgrgarSimuladorComponent 
-navigateToAgrgarSimulador(): void { 
-  if (this.idUsuario) { this.router.navigate([`/agregar-simulador/${this.idUsuario}`]); } } 
+
 ///----------------LISTAR TODAS LAS SIMULACIONES HECHAS----------------
 listarTodasSimulaciones(idUsuario: string){
   this.SimuladorService.getSimulador(idUsuario).subscribe(
