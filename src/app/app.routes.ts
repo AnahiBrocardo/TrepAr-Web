@@ -27,7 +27,8 @@ export const routes: Routes = [
             {path: 'settings/:id', component: SettingsComponent},
             {path: 'simulador/:id', component: SimuladorComponent },
             {path: 'simulador/agregar-Simulador', component: AgregarSimuladorComponent},
-            { path: 'simulador/listar-simulador/:id', component: ListarSimuladorComponent }
+            { path: 'simulador/listar-simulador/:id', component: ListarSimuladorComponent },
+            { path: 'simulador/agregar-simulador/:id', component: AgregarSimuladorComponent }
         ]
     }, 
    {path: '**', redirectTo: '', pathMatch: 'full'} //si pone cualquier otra cosa lo redirige a vacio '', osea a la landing

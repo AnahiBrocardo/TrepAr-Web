@@ -9,6 +9,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-agregar-simulador',
@@ -30,13 +31,19 @@ export class AgregarSimuladorComponent implements OnInit {
   fb= inject(FormBuilder);
   SimuladorService= inject(SimuladorService) ;
   precioConGanancia: number = 0;
+  idUsuario: string= '';
+  
   @Output() emitirSimulacion: EventEmitter<Simulador> = new EventEmitter();
+
   constructor(
     private dialogRef: MatDialogRef<AgregarSimuladorComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any 
-  ){ this.initForm(); }
+    @Inject(MAT_DIALOG_DATA) public data: any, private route: ActivatedRoute
+  ){ this.initForm();
+    this.idUsuario = data.idUsuario;
+   }
 
   ngOnInit(): void {
+    this.idUsuario = this.route.snapshot.paramMap.get('id') || '';
     this.listenFormChanges();
   };
   
@@ -52,7 +59,7 @@ export class AgregarSimuladorComponent implements OnInit {
   //inicializa el formulario
   initForm() {
     this.formulario = this.fb.nonNullable.group({
-    
+      idUsuario: [this.idUsuario],
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       precioMP: [[0, [Validators.required]]],
       cantidadUsadaMP: [0, [Validators.required]],
@@ -60,7 +67,7 @@ export class AgregarSimuladorComponent implements OnInit {
       valorGF: [0, [Validators.required]],
       CantidadProductoMensual: [0, [Validators.required]],
       Ganancia: [0, [Validators.required]],
-      PrecioFinal: [0, [Validators.required]],
+      PrecioFinal: [this.precioConGanancia],
       habilitado: [true]
     });
   }

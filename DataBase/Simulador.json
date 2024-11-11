@@ -1,19 +1,6 @@
 {
   "simuladores": [
     {
-      "id": "1",
-      "idUsuario": "8672",
-      "nombre": "Simulador Alpha",
-      "precioMP": 100,
-      "cantidadMP": 20,
-      "UnidadDeCompraMP": 500,
-      "valorGF": 300,
-      "CantidadProductoMensual": 1000,
-      "Ganancia": 25,
-      "PrecioFinal": 150,
-      "habilitado": true
-    },
-    {
       "id": "2",
       "idUsuario": "8300",
       "nombre": "Simulador Beta",
@@ -37,6 +24,45 @@
       "CantidadProductoMensual": 1500,
       "Ganancia": 20,
       "PrecioFinal": 250,
+      "habilitado": true
+    },
+    {
+      "id": "2049",
+      "idUsuario": null,
+      "nombre": "vela",
+      "precioMP": 100,
+      "cantidadUsadaMP": 0,
+      "UnidadDeCompraMP": 10,
+      "valorGF": 600,
+      "CantidadProductoMensual": 100,
+      "Ganancia": 30,
+      "PrecioFinal": 0,
+      "habilitado": true
+    },
+    {
+      "id": "301c",
+      "idUsuario": null,
+      "nombre": "miel",
+      "precioMP": 500,
+      "cantidadUsadaMP": 0,
+      "UnidadDeCompraMP": 2,
+      "valorGF": 999,
+      "CantidadProductoMensual": 50,
+      "Ganancia": 30,
+      "PrecioFinal": 0,
+      "habilitado": true
+    },
+    {
+      "id": "af40",
+      "idUsuario": "",
+      "nombre": "gggg",
+      "precioMP": 12,
+      "cantidadUsadaMP": 0,
+      "UnidadDeCompraMP": 1,
+      "valorGF": 11,
+      "CantidadProductoMensual": 1,
+      "Ganancia": 20,
+      "PrecioFinal": 0,
       "habilitado": true
     }
   ]
