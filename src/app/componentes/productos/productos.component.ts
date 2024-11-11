@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoServiceService } from '../../Servicios/productos/productos-service.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductoInterface, UsuariosxProductos } from '../../Interfaces/producto-interface';
@@ -17,6 +17,7 @@ export class ProductosComponent implements OnInit {
   
   activated= inject(ActivatedRoute);
   userId: string='';
+  router= inject(Router);
 
   @Output() emitirProducto: EventEmitter<ProductoInterface> = new EventEmitter();
 
@@ -67,7 +68,9 @@ export class ProductosComponent implements OnInit {
       {
         next: (producto: ProductoInterface) => {
           console.log(producto); 
-          alert('Tarea Guardada')
+          alert('Tarea Guardada');
+          this.router.navigateByUrl(`dashboard/${this.userId}`);
+
         },
         error: (e: Error) => {
           console.log(e.message); 
