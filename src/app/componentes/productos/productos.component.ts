@@ -68,7 +68,7 @@ export class ProductosComponent implements OnInit {
       {
         next: (producto: ProductoInterface) => {
           console.log(producto); 
-          alert('Tarea Guardada');
+          alert('Producto Guardado');
           this.router.navigateByUrl(`dashboard/${this.userId}`);
 
         },
