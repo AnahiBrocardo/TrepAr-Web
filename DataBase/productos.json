@@ -10,12 +10,21 @@
       "deletedAt": false
     },
     {
-      "id": "7a95",
+      "id": "cd25",
       "idUser": "1",
-      "nombre": "velas",
+      "nombre": "Vela",
       "categoria": "Hogar",
-      "descripcion": "necesito cera e hilo encerado",
-      "precio": 4399,
+      "descripcion": "Velas aromaticas",
+      "precio": 2000,
+      "deletedAt": false
+    },
+    {
+      "id": "dd13",
+      "idUser": "1",
+      "nombre": "Escencia",
+      "categoria": "Hogar",
+      "descripcion": "De 500ml, olor lavanda",
+      "precio": 1500,
       "deletedAt": false
     }
   ]
