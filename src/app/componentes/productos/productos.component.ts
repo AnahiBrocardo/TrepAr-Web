@@ -70,7 +70,7 @@ export class ProductosComponent implements OnInit {
         const usuarioExistente = usuarios[0];
         usuarioExistente.productoInterface.push(nuevoProducto); // Agregar producto al final del arreglo
 
-        // Actualizar usuario con el nuevo producto
+        // Actualizar usuario con el nuevo producto, sino me crea otro objeto pero que ahora contenga ambas
         this.productoService.putProductos(usuarioExistente).subscribe((usuarioActualizado) => {
           console.log('Usuario actualizado con nuevo producto', usuarioActualizado);
           this.formulario.reset();

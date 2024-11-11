@@ -43,5 +43,54 @@ export class ListarProductoComponent implements OnInit{
       }
     });
   }
-   
+  
+  deleteProducto(idEliminar: string | undefined)
+  {
+    this.productoServices.obtenerUsuarioPorId(this.userId).subscribe(usuario => {
+      if (usuario) {
+        const indice = usuario[0].productoInterface.findIndex(item => item.id === idEliminar);
+    
+        // Si encontramos el producto, lo eliminama
+      if (indice !== -1) {
+      usuario[0].productoInterface.splice(indice, 1);
+      // Llamamos al servicio para eliminar el producto en el servidor
+      this.productoServices.deleteProductosbyId(idEliminar).subscribe(response => {
+      }, 
+     )}
+    }
+  
+
+    });
+  }
+
+  /*
+//Sector del servidor productoUserServices
+productoUserService = inject(ProductosUserServicesService)
+productoInterface: ProductoInterface[] = [];
+elementoEspecifico: ProductoInterface | undefined;
+
+obtenerDatos(): void {
+  // Llamar a la API para obtener el arreglo completo productoInterface
+  this.productoUserService.getProductoInterface(this.userId).subscribe(data => {
+    this.productoInterface = data;
+  });
+}
+
+obtenerUnProductoxId(idproducto: string)
+{
+   // Llamar a la API para obtener un elemento específico dentro de productoInterface
+   this.productoUserService.getElementoProductoInterface(this.userId, idproducto).subscribe(data => {
+    this.elementoEspecifico = data;
+  });
+}
+
+// Método para eliminar un elemento dentro de productoInterface
+eliminarElemento(elementoId: string | undefined): void {
+  this.productoUserService.deleteElementoProductoInterface(this.userId, elementoId).subscribe( usuario => {
+    console.log('Elemento eliminado');
+    this.obtenerDatos(); // Vuelves a cargar los productos después de eliminar
+  }, error => {
+    console.error('Error al eliminar elemento', error);
+  });
+ }*/
 }

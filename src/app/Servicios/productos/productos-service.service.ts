@@ -31,4 +31,8 @@ putProductos(producto: UsuariosxProductos): Observable<UsuariosxProductos> {
 return this.http.put<UsuariosxProductos>(`${this.urlBase}/${producto.id}`, producto)
 }
 
+deleteProductosbyId (id: string | undefined): Observable<void>{
+  return this.http.delete<void>(`${this.urlBase}/${id}`);
+}
+
 }

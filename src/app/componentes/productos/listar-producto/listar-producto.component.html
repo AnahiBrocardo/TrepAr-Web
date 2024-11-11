@@ -6,6 +6,7 @@
       <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
       <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
       <p><strong>Precio:</strong> {{ producto.precio | currency }}</p>
+      <a href="javascript:void(0);" (click)="deleteProducto(producto.id)">Eliminar</a>
       <hr>
     </li>
   </ul>
