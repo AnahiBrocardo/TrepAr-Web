@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { ProductoInterface, UsuariosxProductos } from '../../../Interfaces/producto-interface';
 import { of, switchMap } from 'rxjs';
 import { ModificarSimuladorComponent } from '../../simulador/funciones/modificar-simulador/modificar-simulador.component';
+import { MatIconModule } from '@angular/material/icon'; 
 
 @Component({
   selector: 'app-listar-producto',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './listar-producto.component.html',
   styleUrl: './listar-producto.component.css'
 })
