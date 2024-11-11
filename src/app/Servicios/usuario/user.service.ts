@@ -38,10 +38,6 @@ export class UserService {
   }
 
 
-  deleteUser(id: string): Observable<User> {
-    return this.http.delete<User>(`${this.url}/${id}`);
-  }
-
 
   getUserById(id: string):Observable<User>{
     return this.http.get<User>(`${this.url}/${id}`);
@@ -52,6 +48,9 @@ export class UserService {
   } 
   
   
-
+ // Método para verificar si un email ya está en uso
+ checkEmailExists(email: string): Observable<User> {
+  return this.http.get<User>(`${this.url}/?email=${email}`);
+}
 
 }
