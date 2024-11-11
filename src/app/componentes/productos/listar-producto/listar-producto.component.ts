@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoServiceService } from '../../../Servicios/productos/productos-service.service';
 import { CommonModule } from '@angular/common';
 import { ProductoInterface, UsuariosxProductos } from '../../../Interfaces/producto-interface';
 import { of, switchMap } from 'rxjs';
+import { ModificarSimuladorComponent } from '../../simulador/funciones/modificar-simulador/modificar-simulador.component';
 
 @Component({
   selector: 'app-listar-producto',
@@ -13,6 +14,7 @@ import { of, switchMap } from 'rxjs';
   styleUrl: './listar-producto.component.css'
 })
 export class ListarProductoComponent implements OnInit{
+  router = inject(Router);  // Inyectamos el router
   activated= inject(ActivatedRoute);
   userId: string='';
   
@@ -45,4 +47,22 @@ export class ListarProductoComponent implements OnInit{
     )
   }
 
+  // Función para eliminar un producto
+  eliminarProducto(id: string | undefined) {
+    this.productoServices.deleteProductosbyId(id).subscribe({
+      next: () => {
+        // Después de eliminar, actualizamos la lista de productos
+        this.productos = this.productos.filter(producto => producto.id !== id);
+        alert('Producto eliminado correctamente');
+      },
+      error: (e) => {
+        console.log(e.message);
+        alert('Error al eliminar el producto');
+      }
+    });
+  }
+
+  editarProducto(id: string ) {
+    this.router.navigate(['/producto/editar', id]);  // Redirige a la página de edición con el id
+  }
 }

@@ -10,6 +10,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { InicioSesionPageComponent } from './pages/auth/inicio-sesion-page/inicio-sesion-page.component';
 import { RegistrarsePageComponent } from './pages/auth/registrarse-page/registrarse-page.component';
 import { ProductoComponent } from './pages/Producto/producto/producto.component';
+import { ModificarproductoComponent } from './componentes/productos/modificarproducto/modificarproducto.component';
 
 export const routes: Routes = [
    { path: '', component: LandingPageComponent},

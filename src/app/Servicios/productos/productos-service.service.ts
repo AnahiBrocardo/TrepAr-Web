@@ -14,7 +14,7 @@ export class ProductoServiceService {
   urlBase: string = 'http://localhost:3000/productos'
 
 getProductos(idUsuario: string): Observable <ProductoInterface[]>{
-  return this.http.get<ProductoInterface[]>(`${this.urlBase}?idUsuario=${idUsuario}`);  
+  return this.http.get<ProductoInterface[]>(`${this.urlBase}?idUser=${idUsuario}`);  
 }
 
 getProductoById(id:string | null): Observable<ProductoInterface>{
@@ -25,7 +25,7 @@ postProductos(producto: ProductoInterface): Observable<ProductoInterface>{
   return this.http.post<ProductoInterface>(`${this.urlBase}`, producto);
 }
 
-putProductos(id:number | undefined, producto: ProductoInterface): Observable<ProductoInterface> {
+putProductos(id:string | undefined, producto: ProductoInterface): Observable<ProductoInterface> {
 return this.http.put<ProductoInterface>(`${this.urlBase}/${producto.id}`, producto)
 }
 

@@ -26,6 +26,7 @@ export class ProductosComponent implements OnInit {
       const id= param.get('id');
       if(id){
         this.userId=id;
+        this.formulario.patchValue({ idUser: this.userId });  // Actualiza el idUser en el formulario
       }
     }
    })
@@ -40,7 +41,7 @@ export class ProductosComponent implements OnInit {
     /*No va a aceptar nincun campo que sea nulo con el nonnull.. */
     formulario = this.fb.nonNullable.group(
       {
-        idUser: this.userId,
+        idUser: '',
         nombre: ['', Validators.required],
         categoria: ['', Validators.required],
         descripcion: ['', Validators.required],
