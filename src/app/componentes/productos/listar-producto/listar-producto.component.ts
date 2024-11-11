@@ -23,57 +23,26 @@ export class ListarProductoComponent implements OnInit{
         if(id){
           this.userId=id;
           console.log('UserId obtenido:', this.userId); // Verifica que el userId se obtiene correctamente
-          this.obtenerProductos(); // Llamamos a obtenerProductos después de asignar el userId
+          this.obtenerProductos(this.userId); // Llamamos a obtenerProductos después de asignar el userId
         }
       }
     })
   }
 
   productoServices = inject(ProductoServiceService)
-  
-  
   productos: ProductoInterface[] = []; // Aquí se almacenarán los productos del usuario
-  obtenerProductos() {
-    this.productoServices.obtenerUsuarioPorId(this.userId).subscribe(usuario => {
-      if (usuario) {
-        console.log('Productos encontrados:', usuario[0].productoInterface); //solo devuelve los datos asignados con ese usuario y por eso siempre me devuelve 1 porque se supone que es unico
-        this.productos = usuario[0].productoInterface; // Asignamos los productos del usuario
-      } else {
-        console.log('Usuario no encontrado');
-        this.productos = []; // Si no se encuentra el usuario, asignamos un arreglo vacío
+  
+  
+  obtenerProductos(idUsuario: string) {
+    this.productoServices.getProductos(idUsuario).subscribe(
+      {
+        next: (producto: ProductoInterface[]) => {
+          this.productos = producto; 
+        }, error: (e:Error)=>{
+          console.log(e.message); 
+        }
       }
-    });
+    )
   }
 
-
-  /*
-//Sector del servidor productoUserServices
-productoUserService = inject(ProductosUserServicesService)
-productoInterface: ProductoInterface[] = [];
-elementoEspecifico: ProductoInterface | undefined;
-
-obtenerDatos(): void {
-  // Llamar a la API para obtener el arreglo completo productoInterface
-  this.productoUserService.getProductoInterface(this.userId).subscribe(data => {
-    this.productoInterface = data;
-  });
-}
-
-obtenerUnProductoxId(idproducto: string)
-{
-   // Llamar a la API para obtener un elemento específico dentro de productoInterface
-   this.productoUserService.getElementoProductoInterface(this.userId, idproducto).subscribe(data => {
-    this.elementoEspecifico = data;
-  });
-}
-
-// Método para eliminar un elemento dentro de productoInterface
-eliminarElemento(elementoId: string | undefined): void {
-  this.productoUserService.deleteElementoProductoInterface(this.userId, elementoId).subscribe( usuario => {
-    console.log('Elemento eliminado');
-    this.obtenerDatos(); // Vuelves a cargar los productos después de eliminar
-  }, error => {
-    console.error('Error al eliminar elemento', error);
-  });
- }*/
 }
