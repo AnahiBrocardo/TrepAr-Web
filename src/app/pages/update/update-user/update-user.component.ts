@@ -5,11 +5,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ControlAccesoService } from '../../../Servicios/auth/control-acceso.service';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-update-user',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './update-user.component.html',
   styleUrl: './update-user.component.css'
 })
@@ -21,17 +22,17 @@ export class UpdateUserComponent implements OnInit {
   isPasswordVisible = false; // Controla la visibilidad de la contraseña
   isPasswordChangeVisible = false;
   currentPasswordCorrect: boolean = true; // Indicador de si la contraseña es correcta
+  password: string = ''; // Aquí deberías asignar el valor real de la contraseña
 
   fb = inject(FormBuilder);
+  router=inject(Router);
 
   formularioUpdateUserData = this.fb.nonNullable.group({
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    newPassword: ['', Validators.minLength(8)],
-    confirmPassword: ['', Validators.minLength(8)],
-    currentPassword: ['', Validators.required] // Para la contraseña actual
+    newPassword: ['', [Validators.required, Validators.minLength(8)]],
+    repiteNewPassword: ['', [Validators.required, Validators.minLength(8)]],
   });
 
   ngOnInit(): void {
@@ -52,11 +53,11 @@ export class UpdateUserComponent implements OnInit {
     this.userService.getUserById(id).subscribe({
       next: (user: User) => {
         this.userData = user;
+        this.password= user.password;
         this.formularioUpdateUserData.patchValue({
           nombre: user.nombre,
           apellido: user.apellido,
-          email: user.email,
-          password: user.password
+          email: user.email
         });
       },
       error: (e: Error) => {
@@ -69,36 +70,12 @@ export class UpdateUserComponent implements OnInit {
     this.isPasswordChangeVisible = !this.isPasswordChangeVisible;
   }
 
-  // Validar si la contraseña actual es correcta
-  validateCurrentPassword() {
-    const currentPassword = this.formularioUpdateUserData.get('currentPassword')?.value;
-
-    if (currentPassword) {
-      this.controlAccesoService.validPassword(this.userData?.email || '', currentPassword).subscribe({
-        next: (isValid) => {
-          this.currentPasswordCorrect = isValid;
-
-          if (!isValid) {
-            this.formularioUpdateUserData.get('currentPassword')?.setErrors({ incorrectPassword: true });
-          }
-        }
-      });
-    }
-  }
-
   togglePasswordVisibility() {
     this.isPasswordVisible = !this.isPasswordVisible;
   }
 
   actualizarDatos() {
-    if(this.isPasswordChangeVisible){
-      this.validateCurrentPassword();
-      // Si la contraseña actual es incorrecta, no procedemos
-    if (!this.currentPasswordCorrect) {
-      return;
-    } 
-    }
-      const email = this.formularioUpdateUserData.get('email')?.value; //se obtiene el email del form
+     const email = this.formularioUpdateUserData.get('email')?.value; //se obtiene el email del form
 
       if (email && email !== this.userData?.email) {
         // Verificar si el email ya está en uso y no pertenece al usuario actual
@@ -130,47 +107,52 @@ export class UpdateUserComponent implements OnInit {
 
   // Método para validar contraseñas y actualizar usuario
   private validarYActualizarUsuario() {
-    const currentPassword = this.formularioUpdateUserData.get('currentPassword')?.value;
-    const newPassword = this.formularioUpdateUserData.get('newPassword')?.value;
-    const confirmPassword = this.formularioUpdateUserData.get('confirmPassword')?.value;
-
-    // Primero, verificamos que la contraseña actual coincida con la contraseña de la base de datos
-    if (currentPassword && this.userData?.password) {
-      if (currentPassword !== this.userData.password) {
-        // Si la contraseña no coincide con la de la base de datos, mostramos un error
-        this.formularioUpdateUserData.get('currentPassword')?.setErrors({ incorrectPassword: true });
-        return; // Salimos de la función si la contraseña es incorrecta
-      }
+    if(this.isPasswordChangeVisible){
+      const newPasswordRepeted = this.formularioUpdateUserData.get('repiteNewPassword')?.value;
+      const newPassword = this.formularioUpdateUserData.get('newPassword')?.value;
+      
+      // Verificar si las contraseñas coinciden
+    if (newPasswordRepeted !== newPassword) {
+      alert('Las contraseñas no coinciden');
+      return; // Salimos si no coinciden
     }
-    // Luego, verificamos si las contraseñas coinciden
-    if (newPassword && newPassword !== confirmPassword) {
-      // Si las contraseñas no coinciden, mostramos un error
-      this.formularioUpdateUserData.get('confirmPassword')?.setErrors({ passwordMismatch: true });
-    } else {
-      // Si las contraseñas coinciden o no se cambiaron, proceder a actualizar el usuario
-      this.actualizarUsuario();
+    this.pedirContraseñaYActualizar();
+    }else{
+      this.pedirContraseñaYActualizar();
     }
+   
   }
 
   // Método para preparar los datos del usuario y enviarlos al servicio
   private actualizarUsuario() {
+
     const nombre = this.formularioUpdateUserData.get('nombre')?.value;
     const apellido = this.formularioUpdateUserData.get('apellido')?.value;
     const email = this.formularioUpdateUserData.get('email')?.value;
-    const password = this.formularioUpdateUserData.get('password')?.value;
     const newPassword = this.formularioUpdateUserData.get('newPassword')?.value;
 
-    if (email && newPassword) {
+    let contrasenia: string='';
+    if(newPassword){
+      contrasenia= newPassword;
+    }else{
+      if(this.userData?.password){
+      contrasenia= this.userData?.password;}
+    }
+
+    if (email && contrasenia) {
       const updatedUser: User = {
+        id:this.userId,
         nombre: nombre || ' ',
         apellido: apellido || ' ',
         email: email || ' ',
-        password: newPassword || '' // Usar la nueva contraseña si fue modificada
+        password: contrasenia// Usar la nueva contraseña si fue modificada
       };
 
       this.userService.updateUser(updatedUser).subscribe({
         next: () => {
           console.log('Datos actualizados exitosamente');
+           // Después de actualizar, navegar a la página de configuración (Settings)
+        this.router.navigateByUrl(`dashboard/${this.userId}`);
         },
         error: (err: Error) => {
           console.error('Error al actualizar datos:', err);
@@ -179,39 +161,58 @@ export class UpdateUserComponent implements OnInit {
     }
   }
 
-  pedirContraseñaYActualizar() {
-    // Usar SweetAlert2 para pedir la contraseña nuevamente
-    Swal.fire({
-      title: "Por favor vuelva a ingresar su contraseña",
+  
+async pedirContraseñaYActualizar() {
+  try {
+    const result = await Swal.fire({
+      title: "Ingrese contraseña, para guardar los cambios...",
       input: "password",
-      inputLabel: "Contraseña",
-      inputPlaceholder: "Ingresa tu contraseña",
       inputAttributes: {
-        maxlength: "10",
-        autocapitalize: "off",
-        autocorrect: "off"
-      }
-    }).then(({ value: password }) => {
-      if (password) {
-        // Verificar si la contraseña ingresada es correcta
-        this.controlAccesoService.validPassword(this.userData?.email || '', password).subscribe({
-          next: (isValid) => {
-            if (isValid) {
-              // Si la contraseña es válida, proceder con la actualización de los datos
-              this.actualizarUsuario();
-            } else {
-              // Si la contraseña es incorrecta, mostrar un error
-              Swal.fire('Error', 'La contraseña ingresada no es correcta');
-            }
-          },
-          error: (err: Error) => {
-            console.error("Error al verificar la contraseña:", err);
+        autocapitalize: "off"
+      },
+      showCancelButton: true,
+      confirmButtonText: "Aceptar",
+      showLoaderOnConfirm: true,
+      preConfirm: (password) => {
+        return new Promise((resolve, reject) => {
+          if (password) {
+            if(this.userId){
+            // Verificar si la contraseña ingresada es correcta
+            this.userService.getUserById(this.userId).subscribe({
+              next: (user) => {
+                if (user.password===password) {
+                  // Si la contraseña es válida, proceder con la actualización de los datos
+                  resolve(password);  // Asegúrate de resolver la promesa si la contraseña es correcta
+                  
+                } else {
+                  reject('La contraseña ingresada no es correcta');
+                  Swal.fire('Error', 'La contraseña ingresada no es correcta');
+                }
+              },
+              error: (err: Error) => {
+                reject(`Error al verificar la contraseña: ${err.message}`);
+                console.error("Error al verificar la contraseña:", err);
+              }
+            });
+          } else {
+            reject('Por favor, ingrese su contraseña');
           }
+        }
         });
-      } else {
-        // Si no se ingresa contraseña, mostrar un error
-        Swal.fire('Error', 'La contraseña es requerida');
-      }
+      },
+      allowOutsideClick: () => !Swal.isLoading()
     });
+
+    if (result.isConfirmed) {
+      this.actualizarUsuario();  // Realizar la actualización del usuario
+      Swal.fire({
+        title: `Cambios guardados exitosamente`,
+        text: `Los datos han sido actualizados correctamente.`
+      });
+    }
+  } catch (error) {
+    Swal.showValidationMessage(`Solicitud fallida: ${error}`);
   }
 }
+}
+

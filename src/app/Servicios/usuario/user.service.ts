@@ -37,10 +37,10 @@ export class UserService {
     return this.http.put<User>(`${this.url}/${user.id}`, user);
   }
 
-
+  /*
   deleteUser(id: string): Observable<User> {
     return this.http.delete<User>(`${this.url}/${id}`);
-  }
+  }*/
 
 
   getUserById(id: string):Observable<User>{

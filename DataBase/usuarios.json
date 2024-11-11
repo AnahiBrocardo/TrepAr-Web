@@ -2,12 +2,10 @@
   "users": [
     {
       "id": "1",
-      "email": "juan.perez@example.com",
-      "password": "securepassword123",
-      "nombre": "Juan",
+      "nombre": "Juan ",
       "apellido": "Perez",
-      "createdAt": "2024-01-10T10:00:00Z",
-      "deletedAt": null
+      "email": "juan.perez@example.com",
+      "password": "12312345"
     },
     {
       "id": "2",

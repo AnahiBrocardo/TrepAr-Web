@@ -21,11 +21,11 @@ export class ControlAccesoService {
   public getUserId(): Observable<string> {
     return this.userIdSubject.asObservable(); // Nos suscribimos al BehaviorSubject para obtener el ID
   }
-  
+
   public validarLogin(userEmail: string, password: string): Observable<User> {
     return this.http.get<User[]>(`${this.url}?email=${userEmail}`).pipe(  // Filtramos por email en el backend
       map(users => {
-        const user = users.find(u => u.password === password); // Comprobamos que la contraseña coincida
+        const user = users.find(u => u.password === password && !u.deletedAt); // Comprobamos que la contraseña coincida y deletedAt en null
         if (user) {
           if(user.id){
           // Si el usuario es encontrado y la contraseña es correcta
@@ -42,27 +42,6 @@ export class ControlAccesoService {
     );
   }
   
-
-  public validPassword(userEmail: string, password: string): Observable<boolean> { //retorna true o false indicando si la contraseña es válida o no
-    let validPassword = false;
-
-    try {
-      // Obtener usuarios desde localStorage (el localStorage se usa para almacenar una lista de usuarios previamente registrados)
-      const users: User[] = JSON.parse(window.localStorage.getItem('users') || '[]');
-      
-      // Buscar el usuario por su email
-      const found = users.find((user) => user.email === userEmail);
-  
-      // Verificar si el usuario fue encontrado y la contraseña es correcta
-      if (found && found.password === password) {
-        validPassword = true;
-      }
-    } catch (error) {
-      console.error('Error al recuperar los usuarios de localStorage', error);
-    }
-  
-    return of(validPassword);
-  }
 
    private manejadorError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -100,6 +79,6 @@ export class ControlAccesoService {
     this.loginStatus = false; // Cambiamos el estado de login
     console.log('Sesión cerrada correctamente');
   }
-
-  }
+ 
+}
   

@@ -32,7 +32,7 @@
             <!-- Barra desplegable con el formulario de modificar y el botón Eliminar -->
             <div *ngIf="mostrarFormulario" class="form-container">
                 <!-- Botón de Eliminar que aparece al lado del botón de Modificar -->
-                <button class="btn btn-delete">Eliminar cuenta</button>
+                <button (click)="verificacionEliminacion()" class="btn btn-delete">Eliminar cuenta</button>
             </div>
         </div>
         
