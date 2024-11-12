@@ -26,6 +26,33 @@
       "descripcion": "De 500ml, olor lavanda",
       "precio": 1500,
       "deletedAt": false
+    },
+    {
+      "id": "f4b4",
+      "idUser": "8672",
+      "nombre": "BarritasChoco",
+      "categoria": "Ropa",
+      "descripcion": "choooooco",
+      "precio": 500,
+      "deletedAt": false
+    },
+    {
+      "id": "7bf6",
+      "idUser": "8672",
+      "nombre": "nuvitoooo",
+      "categoria": "Hogar",
+      "descripcion": "auxilio",
+      "precio": 12222,
+      "deletedAt": false
+    },
+    {
+      "id": "7012",
+      "idUser": "8672",
+      "nombre": "sasasa",
+      "categoria": "Electrónica",
+      "descripcion": "ni idiea",
+      "precio": 600,
+      "deletedAt": false
     }
   ]
 }
