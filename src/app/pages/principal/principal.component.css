@@ -45,3 +45,10 @@ h2{
   font-size: 1.5em;
   margin-bottom: 5vh;
 }
+
+img{
+  width: 85%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10%
+}
