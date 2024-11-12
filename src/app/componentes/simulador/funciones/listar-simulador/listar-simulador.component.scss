@@ -39,8 +39,25 @@
      display: flex; 
      flex-direction: column; }
   .custom-dialog-content { 
+    
         flex: 1; 
         overflow-y: auto; /* Permite el desplazamiento vertical si el contenido se desborda */ 
         padding: 20px; /* Ajusta según tus necesidades */
     }
     .custom-dialog-footer { padding: 10px; text-align: right; /* Alinea el contenido del pie de página a la derecha */ }
+
+    mat-toolbar {
+        background-color: transparent !important;
+        box-shadow: none; /* Elimina la sombra, si existe */
+    }
+
+    .container-fluid .row {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .mat-form-field, button {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    

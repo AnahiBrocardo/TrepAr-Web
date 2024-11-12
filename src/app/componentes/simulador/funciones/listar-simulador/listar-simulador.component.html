@@ -9,20 +9,26 @@
 </ul>
 </section>-->
 <mat-toolbar>
- <div class=" container-fluid">
-    <div class="row">
-        <div class="col-6" >
-        <button mat-fab extended class="my-2" (click)="agregarSimulado()"><mat-icon>note_add</mat-icon>Crear</button>
-        </div>
-        <div class="col-6">
-        <mat-form-field appearance="fill">
-            <mat-label> Buscar</mat-label>
-            <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" (keyup.enter)="leerTodo()"   matInput>
-            <mat-icon matSuffix>search</mat-icon>
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <!-- Columna para el botón Crear -->
+      <div class="col-auto">
+        <button mat-fab extended class="my-2" (click)="agregarSimulado()">
+          <mat-icon>note_add</mat-icon> Crear
+        </button>
+      </div>
+  
+      <!-- Columna para la barra de búsqueda, con margen izquierdo para alineación -->
+      <div class="col ms-2">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Buscar</mat-label>
+          <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" (keyup.enter)="leerTodo()" matInput>
+          <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
-        </div>
+      </div>
     </div>
- </div>   
+  </div>
+   
 </mat-toolbar>
 <div class="conteineer-fuid my-3">
  <div class="row">

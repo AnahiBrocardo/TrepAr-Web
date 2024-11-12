@@ -112,11 +112,12 @@ object-fit: contain; /* Ajusta la imagen dentro del contenedor sin distorsionarl
 .botonLogOut {
   border-radius: 5px;
   margin-top: 30vh;
-  padding: 10px;
+  padding: 15px;
   background-color: rgb(255, 255, 255);
   cursor: pointer; /* Cambia el cursor a un puntero */
   transition: background-color 0.3s ease; /* Suaviza la transición del hover */
   border: 2px solid rgb(169, 169, 169); /* Agrega borde gris */
+  border-radius: 30px;
 }
 
 .botonLogOut:hover {
