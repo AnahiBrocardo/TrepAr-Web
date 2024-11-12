@@ -26,7 +26,7 @@ export const routes: Routes = [
         path: 'dashboard/:id', 
         component: DashboardComponent,
         children: [
-
+            { path: '', redirectTo: 'principal', pathMatch: 'full'},
             {path: 'principal', component: PrincipalComponent, canActivate:[loginGuard]},
             {path: 'producto/:id', component: ProductoComponent,canActivate:[loginGuard]},
             {path: 'simulador/:id', component: SimuladorComponent,canActivate:[loginGuard] },
