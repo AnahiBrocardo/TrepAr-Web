@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@
 import { ControlAccesoService } from '../../Servicios/auth/control-acceso.service';
 import { CommonModule } from '@angular/common';
 import { User } from '../../Interfaces/user.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -43,8 +44,6 @@ export class LoginComponent implements OnInit{
     if (emailForm && passwordForm) {
     this.loginService.validarLogin(emailForm,passwordForm).subscribe({ //lamamos a servicio, pansandole por parametro los datos del formulario
       next: (userData)=> {//se ejecuta cada vez que el Observable emite un valor
-        console.log(userData);
-        console.log("Login completo");
         this.router.navigateByUrl(`dashboard/${userData.id}`);// Redirige al usuario a la ruta '/dashboard' utilizando el método navigateByUrl
         this.formularioLogin.reset();//reseteamos los campos del form
       },
@@ -58,7 +57,7 @@ export class LoginComponent implements OnInit{
   }else{
 
       this.formularioLogin.markAllAsTouched();// Marca todos los controles del formulario como 'touched', es decir, se considera que el usuario ha interactuado con ellos.
-    alert("Error al ingresar los datos");
+      Swal.fire("Error al ingresar los datos");   
   }
   }
 }
