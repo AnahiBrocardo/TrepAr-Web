@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ProductoInterface, UsuariosxProductos } from '../../Interfaces/producto-interface';
 import { CommonModule } from '@angular/common';
 import { ListarProductoComponent } from './listar-producto/listar-producto.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productos',
@@ -68,8 +69,8 @@ export class ProductosComponent implements OnInit {
       {
         next: (producto: ProductoInterface) => {
           console.log(producto); 
-          alert('Producto Guardado');
-          this.router.navigateByUrl(`dashboard/${this.userId}`);
+          Swal.fire("Producto Guardado");
+          location.reload();
 
         },
         error: (e: Error) => {

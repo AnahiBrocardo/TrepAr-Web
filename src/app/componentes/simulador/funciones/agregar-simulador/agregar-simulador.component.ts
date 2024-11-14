@@ -10,6 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-simulador',
@@ -93,15 +94,18 @@ addSimulador(){
   simulado.idUsuario = this.idUsuario; // Añadir idUsuario al objeto simulador 
   simulado.PrecioFinal = this.precioConGanancia;
   this.addSimuladorBD(simulado);
-  //this.emitirSimulacion.emit(simulado);
   this.dialogRef.close();
+  location.reload();
+  //this.emitirSimulacion.emit(simulado);
+ 
 }
 
 addSimuladorBD(simulador: Simulador){
   this.SimuladorService.postSimulador(simulador).subscribe(
     {
       next: (Simulador: Simulador) =>{
-        alert('Simulador guardada....')
+        Swal.fire("Simulacion guardada correctamente....");
+        
       },
       error: (e: Error)=>{
           console.log(e.message);
@@ -140,8 +144,9 @@ calcularTodo() {
   const gastoFijoPorUnidad = this.calcularGastoPorUnidad();
   const ganancia = this.formulario.get('Ganancia')?.value || 30;
   const costoTotal = costoFijoPorUnidad + gastoFijoPorUnidad;
- // Calcular el precio final con ganancia 
-  return this.precioConGanancia = costoTotal * (1 + ganancia / 100); 
+ // Calcular el precio final con ganancia y mantenerlo como número con 4 decimales
+ this.precioConGanancia = parseFloat((costoTotal * (1 + ganancia / 100)).toFixed(2));
+ return this.precioConGanancia;
  
 }
 

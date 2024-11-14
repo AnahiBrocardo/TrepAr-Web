@@ -87,10 +87,12 @@ export class UpdateUserComponent implements OnInit {
   // Método para verificar si el email ya está en uso
   private verificarEmailUnico(email: string) {
     this.userService.checkEmailExists(email).subscribe({
-      next: (existingUser: User | null) => {
+      next: (existingUsers) => {
+        const existingUser= existingUsers[0];
+
         if (existingUser && existingUser.id !== this.userId) {
           // Si el email ya está en uso por otro usuario, mostramos un error
-          this.formularioUpdateUserData.get('email')?.setErrors({ emailExists: true }); // error personalizado
+          Swal.fire("El email ingresado ya esta en uso");
         } else {
           // Si el email es único o pertenece al usuario actual, se valida el resto de los campos
           this.validarYActualizarUsuario();
@@ -110,7 +112,7 @@ export class UpdateUserComponent implements OnInit {
       
       // Verificar si las contraseñas coinciden
     if (newPasswordRepeted !== newPassword) {
-      alert('Las contraseñas no coinciden');
+      Swal.fire("Las contraseñas no coinciden");
       return; // Salimos si no coinciden
     }
     this.pedirContraseñaYActualizar();
@@ -147,9 +149,7 @@ export class UpdateUserComponent implements OnInit {
 
       this.userService.updateUser(updatedUser).subscribe({
         next: () => {
-          console.log('Datos actualizados exitosamente');
-           // Después de actualizar, navegar a la página de configuración (Settings)
-        this.router.navigateByUrl(`dashboard/${this.userId}`);
+          location.reload();
         },
         error: (err: Error) => {
           console.error('Error al actualizar datos:', err);

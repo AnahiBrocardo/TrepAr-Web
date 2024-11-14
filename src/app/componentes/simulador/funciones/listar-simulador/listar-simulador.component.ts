@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-simulador',
@@ -68,22 +68,32 @@ agregarLista(simulador: Simulador){
 }
 ///----------------ELIMINAR UNA SIMULACION HECHAS-----------------------
 
-deleteSimulador(Simuladorid: number){
-  let confirmacion= confirm('¿Esta seguro de eliminar esta simulacion de Costo?');
-  if(confirmacion){
-    
-    this.SimuladorService.deleteSimulador(Simuladorid).subscribe(
-    {
-      next: ()=>{
-        console.log('Actualizado');
-      }, 
-      error:(e:Error)=>{
-        console.log('No se elimino');
-      }
+deleteSimulador(Simuladorid: number) {
+  Swal.fire({
+    title: "¿Esta seguro de eliminar esta simulacion de costo?",
+    text: "¡No podrás revertirlo!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, eliminar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.SimuladorService.deleteSimulador(Simuladorid).subscribe({
+        next: () => {
+          Swal.fire("Simulacion eliminada correctamente");
+          location.reload();
+        },
+        error: (e: Error) => {
+          console.log('No se elimino');
+        }
+      });
     }
-  )
-  }
+  }).catch((error) => {
+    console.log(error); // Si ocurre algún error en la verificación de la contraseña, no eliminar
+  });
 }
+
 ///--------------visualizacion---------------------------
 displayedColumns: string[] = ['id', 'nombre', 'PrecioFinal', 'accions'];
 dataSource = new MatTableDataSource<Simulador>([]);
