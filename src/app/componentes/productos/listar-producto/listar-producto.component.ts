@@ -14,6 +14,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule, NgModel } from '@angular/forms';
 import { ProductosComponent } from '../productos.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-producto',
@@ -40,7 +41,7 @@ export class ListarProductoComponent implements OnInit{
         const id= param.get('id');
         if(id){
           this.userId=id;
-          console.log('UserId obtenido:', this.userId); // Verifica que el userId se obtiene correctamente
+         // console.log('UserId obtenido:', this.userId); // Verifica que el userId se obtiene correctamente
           this.obtenerProductos(this.userId); // Llamamos a obtenerProductos después de asignar el userId
           this.leerTodo();
         }
@@ -65,19 +66,32 @@ export class ListarProductoComponent implements OnInit{
   }
 
   // Función para eliminar un producto
-  eliminarProducto(id: string | undefined) {
-    this.productoServices.deleteProductosbyId(id).subscribe({
-      next: () => {
-        // Después de eliminar, actualizamos la lista de productos
-        this.productos = this.productos.filter(producto => producto.id !== id);
-        alert('Producto eliminado correctamente');
-      },
-      error: (e) => {
-        console.log(e.message);
-        alert('Error al eliminar el producto');
-      }
-    });
-  }
+eliminarProducto(id: string | undefined) {
+  Swal.fire({
+    title: "¿Estás seguro que deseas eliminar este producto?",
+    text: "¡No podrás revertirlo!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, eliminar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.productoServices.deleteProductosbyId(id).subscribe({
+        next: () => {
+          // Después de eliminar, actualizamos la lista de productos
+          this.productos = this.productos.filter(producto => producto.id !== id);
+        },
+        error: (e) => {
+          console.log(e.message);
+        }
+      });
+    }
+  }).catch((error) => {
+    console.log(error); // Si ocurre algún error en la verificación de la contraseña, no eliminar
+  });
+}
+
 
   editarProducto(id: string ) {
     this.router.navigate(['/producto/editar', id]);  // Redirige a la página de edición con el id
@@ -87,12 +101,10 @@ export class ListarProductoComponent implements OnInit{
   dataSource = new MatTableDataSource<ProductoInterface>();
   
 leerTodo() { 
-  console.log("Texto buscado:", this.textoBuscado); // Verifica el valor de textoBuscado
   
   this.productoServices.getProductos(this.userId).subscribe({
     next: (productos: ProductoInterface[]) => {
-      console.log("Productos recibidos:", productos); // Verifica que los productos se reciben correctamente
-
+     
       let datosFiltrados = productos;
 
       // Filtrar productos por el texto buscado
@@ -104,7 +116,6 @@ leerTodo() {
 
       // Verifica los productos filtrados
       this.productos = datosFiltrados;
-      console.log("Productos filtrados:", this.productos); 
 
       // Actualiza dataSource para reflejar los datos filtrados
       //this.dataSource.data = datosFiltrados;

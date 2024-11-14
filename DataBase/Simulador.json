@@ -233,6 +233,19 @@
       "Ganancia": 30,
       "PrecioFinal": 48.75,
       "habilitado": true
+    },
+    {
+      "id": "b46a",
+      "idUsuario": "1",
+      "nombre": "Chocolate",
+      "precioMP": 1500,
+      "cantidadMP": 5,
+      "UnidadDeCompraMP": 20,
+      "valorGF": 20,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 20,
+      "PrecioFinal": 462,
+      "habilitado": true
     }
   ]
 }

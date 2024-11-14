@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../Servicios/usuario/user.service';
 import { User } from '../../Interfaces/user.interface';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -50,17 +51,17 @@ export class RegisterComponent {
       next: (users: User[]) => {
         // Verificar si el correo electrónico ya está registrado
         if (this.emailExists(users, userEmail)) {
-          alert('Usuario ya está registrado');
+          Swal.fire("Usuario ya está registrado");
         } else {
           // Si el correo no existe, agregar al nuevo usuario
           this.userService.addUser(newUser).subscribe({
             next: (user) => {
-              alert('Registro exitoso. Redirigiendo al inicio de sesión...');
+              Swal.fire("Registro exitoso. Redirigiendo al inicio de sesión...");
               this.router.navigate(['/acceso']);
             },
             error: (error) => {
               console.error('Error al registrar al usuario', error);
-              alert('Hubo un problema al registrar el usuario. Intenta de nuevo.');
+              Swal.fire("Hubo un problema al registrar el usuario. Intenta de nuevo");
             }
           });
         }

@@ -4,6 +4,8 @@ import { ProductoServiceService } from '../../../Servicios/productos/productos-s
 import { ProductoInterface } from '../../../Interfaces/producto-interface';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-modificarproducto',
   standalone: true,
@@ -75,7 +77,7 @@ export class ModificarproductoComponent {
     this.productoServices.putProductos(this.productoId, productoActualizado).subscribe({
       next: (producto: ProductoInterface) => {
         console.log('Producto actualizado:', producto);
-        alert('Producto actualizado correctamente');
+        Swal.fire("Producto actualizado correctamente");
       },
       error: (e) => {
         console.log(e.message);

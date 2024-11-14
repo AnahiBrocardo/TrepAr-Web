@@ -19,15 +19,6 @@
       "deletedAt": false
     },
     {
-      "id": "dd13",
-      "idUser": "1",
-      "nombre": "Escencia",
-      "categoria": "Hogar",
-      "descripcion": "De 500ml, olor lavanda",
-      "precio": 1500,
-      "deletedAt": false
-    },
-    {
       "id": "f4b4",
       "idUser": "8672",
       "nombre": "BarritasChoco",
@@ -52,6 +43,15 @@
       "categoria": "Electrónica",
       "descripcion": "ni idiea",
       "precio": 600,
+      "deletedAt": false
+    },
+    {
+      "id": "4cb9",
+      "idUser": "1",
+      "nombre": "Vela",
+      "categoria": "Hogar",
+      "descripcion": "Velas aromaticas",
+      "precio": 1500,
       "deletedAt": false
     }
   ]

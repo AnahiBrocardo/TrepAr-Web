@@ -60,6 +60,24 @@
       "password": "12345678",
       "createdAt": "2024-11-10T02:07:58.900Z",
       "deletedAt": null
+    },
+    {
+      "id": "e83e",
+      "nombre": "Adrian",
+      "apellido": "Lopez",
+      "email": "adrian@mail.com",
+      "password": "12345678",
+      "createdAt": "2024-11-14T13:15:28.342Z",
+      "deletedAt": null
+    },
+    {
+      "id": "aef1",
+      "nombre": "Anahi",
+      "apellido": "patito",
+      "email": "ana@gmail.com",
+      "password": "12345688",
+      "createdAt": "2024-11-14T13:30:41.887Z",
+      "deletedAt": "2024-11-14T13:31:01.461Z"
     }
   ]
 }
