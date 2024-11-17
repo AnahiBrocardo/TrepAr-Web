@@ -53,6 +53,15 @@
       "descripcion": "Velas aromaticas",
       "precio": 1500,
       "deletedAt": false
+    },
+    {
+      "id": "c4fa",
+      "idUser": "1",
+      "nombre": "chocolate",
+      "categoria": "Alimentos",
+      "descripcion": "con almendras",
+      "precio": 1500,
+      "deletedAt": false
     }
   ]
 }
