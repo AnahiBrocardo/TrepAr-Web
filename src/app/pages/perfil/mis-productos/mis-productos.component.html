@@ -1,0 +1,30 @@
+<div *ngIf="productos.length > 0; else noProductos" class="producto-lista">
+    <div class="col-6">
+      <mat-form-field appearance="fill">
+          <mat-label> Buscar</mat-label>
+          <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" (keyup)="leerTodo()" matInput>
+          <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      </div>
+    <h3>Productos</h3>
+    <div class="productos-container">
+      <div *ngFor="let producto of productos" class="producto-card">
+        <img [src]= "'assets/img/shapes.png'" alt="Imagen del producto" class="producto-imagen">
+        <div class="producto-info">
+          <h4>{{ producto.nombre }}</h4>
+          <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+          <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+          <p><strong>Precio:</strong> {{ producto.precio | currency }}</p>
+        </div>
+        <button class="eliminar-boton" (click)="eliminarProducto(producto.id)">
+          <mat-icon>delete</mat-icon> Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mensaje alternativo si no hay productos -->
+  <ng-template #noProductos>
+    <p>No hay productos disponibles para este usuario.</p>
+  </ng-template>
+  

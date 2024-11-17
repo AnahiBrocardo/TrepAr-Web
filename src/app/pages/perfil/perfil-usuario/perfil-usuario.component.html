@@ -1,0 +1,20 @@
+<section>
+    <div class="profile-section">
+        <div class="profile-image">
+          <img src="../../../../../assets/img/imagenPerfil.webp" alt="Imagen de perfil">
+          <p>{{perfilData.userName}}</p>
+        </div>
+        <div class="profile-description">
+            <h2>Descripcion</h2>
+            <p>{{perfilData.descripcion}}</p>
+        </div>
+        <div class="profile-contact">
+          <h2>Contacto</h2>
+          <span>Pais: {{perfilData.pais}}</span>
+          <span>Ciudad: {{perfilData.ciudad}}</span>
+          <span>Telefono: {{perfilData.telefono}}</span>
+        </div>
+    </div>
+
+    <app-mis-productos [userId]="idUser"></app-mis-productos>
+</section>

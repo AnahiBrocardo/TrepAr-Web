@@ -1,3 +1,4 @@
+import { Perfil } from './Interfaces/perfil.interface';
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
@@ -15,6 +16,7 @@ import { loginGuard } from './guards/auth.guards';
 import { logOutGuard } from './guards/auth.guards.logOut';
 import { AgregarSimuladorComponent } from './componentes/simulador/funciones/agregar-simulador/agregar-simulador.component';
 import { ListarSimuladorComponent } from './componentes/simulador/funciones/listar-simulador/listar-simulador.component';
+import { PerfilUsuarioComponent } from './pages/perfil/perfil-usuario/perfil-usuario.component';
 
 
 
@@ -32,8 +34,8 @@ export const routes: Routes = [
             {path: 'simulador/:id', component: SimuladorComponent,canActivate:[loginGuard] },
             {path: 'settings/:id', component: SettingsComponent,canActivate:[loginGuard]},
             { path: 'simulador/listar-simulador/:id', component: ListarSimuladorComponent, canActivate:[loginGuard] },
-            { path: 'agregar-simulador/:id', component: AgregarSimuladorComponent,canActivate:[loginGuard] }
-
+            { path: 'agregar-simulador/:id', component: AgregarSimuladorComponent,canActivate:[loginGuard] },
+            {path: 'perfil/:id', component: PerfilUsuarioComponent,canActivate:[loginGuard]},
         ],
         canActivate:[loginGuard] //si estoy loggeado puedo acceder a esta ruta
 

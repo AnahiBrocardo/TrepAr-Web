@@ -1,0 +1,41 @@
+.profile-section {
+    display: flex;
+    gap: 20px; /* Espacio entre columnas */
+    padding: 20px;
+    background-color: #f9f9f9ef; /* Color de fondo */
+  }
+  
+  .profile-image img {
+    max-width: 100%;
+    border-radius: 50%; /* Hacer la imagen circular */
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Para mantener la proporción de la imagen */
+  }
+  
+  .profile-description,
+  .profile-contact {
+    flex: 1; /* Ajusta para ocupar espacio proporcional */
+  }
+  
+  .profile-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .profile-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+  }
+  
+  p {
+    margin: 5px 0;
+  }
+  

@@ -93,8 +93,8 @@ eliminarProducto(id: string | undefined) {
 }
 
 
-  editarProducto(id: string ) {
-    this.router.navigate(['/producto/editar', id]);  // Redirige a la página de edición con el id
+  editarProducto(id: string | undefined) {
+    //aca toda la logica de modificar
   }
 
   textoBuscado: string = '';
@@ -126,6 +126,5 @@ leerTodo() {
   });
 }
 
-  
   
 }
