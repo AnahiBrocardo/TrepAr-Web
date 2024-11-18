@@ -1,20 +1,56 @@
-<section>
-    <div class="profile-section">
-        <div class="profile-image">
-          <img src="../../../../../assets/img/imagenPerfil.webp" alt="Imagen de perfil">
-          <p>{{perfilData.userName}}</p>
-        </div>
-        <div class="profile-description">
-            <h2>Descripcion</h2>
-            <p>{{perfilData.descripcion}}</p>
-        </div>
-        <div class="profile-contact">
-          <h2>Contacto</h2>
-          <span>Pais: {{perfilData.pais}}</span>
-          <span>Ciudad: {{perfilData.ciudad}}</span>
-          <span>Telefono: {{perfilData.telefono}}</span>
-        </div>
-    </div>
+<div class="container">
+  <div class="row ">
+    <div class="col-12 ">
+      <div class="my-2">
 
-    <app-mis-productos [userId]="idUser"></app-mis-productos>
-</section>
+        <!-- Inicio de contenido personalizado -->
+        <div class="row datos-perfil align-items-center">
+          <!-- Sección de imagen y nombre de usuario -->
+          <div class="col-md-3 text-center ">
+            <div class="avatar avatar-xl">
+              <img src="../../../../../assets/img/usuario.png" alt="Imagen de perfil" class="avatar-img rounded-circle">
+            </div>
+          </div>
+
+          <!-- Sección de descripción y contacto -->
+          <div class="col">
+            <div class="row">
+              <div class="col-md-7">
+                <h4 class="mb-1">{{perfilData.userName}}</h4>
+                <span class="badge rounded-pill text-bg-dark mb-3">
+                  {{perfilData.pais}}, {{perfilData.ciudad}}</span>
+                <p class="text-muted">{{perfilData.descripcion}}</p>
+                
+              </div>
+              <div class="col">                
+                <p class="mb-1 text-muted">
+                  <i class="fa-solid fa-phone"></i>
+                  {{perfilData.telefono}}
+                </p>
+                <p>
+                  <i class="fa-brands fa-linkedin"></i>
+                  <a  [href]="perfilData.linkLinkedIn" target="_blank" rel="noopener noreferrer"> LinkedIn </a>
+                </p>
+                <p>
+                  <i class="fa-brands fa-instagram"></i>
+                  <a  [href]="perfilData.linkInstagram" target="_blank" rel="noopener noreferrer"> Instagram </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <!-- Línea divisoria -->
+         <hr class="divider">
+
+        <!-- Sección de productos -->
+        <div class="row">
+          <div class="col-12">
+            <app-mis-productos [userId]="idUser"></app-mis-productos>
+          </div>
+        </div>
+        <!-- Fin de contenido personalizado -->
+      </div>
+    </div>
+  </div>
+</div>

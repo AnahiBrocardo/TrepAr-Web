@@ -1,41 +1,47 @@
-.profile-section {
-    display: flex;
-    gap: 20px; /* Espacio entre columnas */
-    padding: 20px;
-    background-color: #ffffff59; /* Color de fondo */
-  }
-  
-  .profile-image img {
-    max-width: 100%;
-    border-radius: 50%; /* Hacer la imagen circular */
-    width: 150px;
-    height: 150px;
-    object-fit: cover; /* Para mantener la proporción de la imagen */
-  }
-  
-  .profile-description,
-  .profile-contact {
-    flex: 1; /* Ajusta para ocupar espacio proporcional */
-  }
-  
-  .profile-description {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .profile-contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  h2 {
-    margin: 0 0 10px 0;
-    font-size: 1.5em;
-  }
-  
-  p {
-    margin: 5px 0;
-  }
-  
+.container {
+  background-color: rgba(255, 255, 255, 0.76); /* Fondo blanco con 90% de opacidad */
+  border-radius: 5px; /* Bordes ligeramente redondeados */
+  padding: 30px; /* Espaciado interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para resaltar */
+  width: 100%;
+}
+
+.datos-perfil{
+margin-bottom: 10vh;
+}
+
+.avatar-xl img {
+  width: 150px;
+}
+.rounded-circle {
+  border-radius: 50% !important;
+}
+img {
+  vertical-align: middle;
+}
+.text-muted {
+  color: #3b3b3b !important;
+}
+.text-muted {
+  font-weight: 400;
+}
+
+
+
+.divider {
+  margin-top: 5px;
+  border: none; /* Sin borde por defecto */
+  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Línea superior gris tenue */
+  margin: 10px 0; /* Espaciado vertical */
+}
+
+
+a {
+  text-decoration: none; /* Elimina la subrayado del enlace */
+  color: inherit; /* Mantiene el color por defecto del texto */
+  cursor: pointer; /* Cambia el cursor cuando pasa sobre el enlace */
+}
+
+a:hover {
+  color: #88d9df; 
+}

@@ -22,9 +22,9 @@ export class PerfilUsuarioComponent implements OnInit {
     pais: 'Argentina',
     ciudad: 'Mar del Plata',
     linkInstagram: '',
-    linkLinkedIn: '',
+    linkLinkedIn: 'https://www.linkedin.com/in/anahi-brocardo/',
     linkWeb: '',
-    telefono: ''
+    telefono: '+542266494325'
   };
   servicioPerfil= inject(PerfilService);
 
