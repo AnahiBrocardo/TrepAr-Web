@@ -1,12 +1,13 @@
+import { ProductoInterface } from './../../../Interfaces/producto-interface';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { ProductoServiceService } from '../../../Servicios/productos/productos-service.service';
 import { CommonModule } from '@angular/common';
-import { ProductoInterface } from '../../../Interfaces/producto-interface';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { AgregarProductoPerfilComponent } from '../agregar-producto-perfil/agregar-producto-perfil.component';
 
 @Component({
   selector: 'app-mis-productos',
@@ -16,14 +17,13 @@ import Swal from 'sweetalert2';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    FormsModule
-  ],
+    FormsModule,
+    AgregarProductoPerfilComponent
+],
   templateUrl: './mis-productos.component.html',
   styleUrls: ['./mis-productos.component.css']
 })
 export class MisProductosComponent implements OnInit {
-
-  
   productoServices = inject(ProductoServiceService);
   productos: ProductoInterface[] = [];
   textoBuscado: string = '';
@@ -82,12 +82,59 @@ export class MisProductosComponent implements OnInit {
     });
   }
 
-  cambiarPrivacidad(producto: ProductoInterface): void {
-    producto.privado = !producto.privado;
+  cambiarPrivacidad(idProducto: string | undefined): void {
+    if(idProducto){
+    this.productoServices.getProductoById(idProducto).subscribe({
+      next: (producto: ProductoInterface) => {
+        // Cambiar la privacidad del producto
+        producto.privado = !producto.privado;
+  
+        // Actualizar el producto en el servidor
+        this.productoServices.putProductos(this.userId, producto).subscribe({
+          next: () => {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 1000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+              }
+            });
+  
+            Toast.fire({
+              icon: 'success',
+              title: 'La privacidad del producto se actualizó correctamente'
+            });
+          },
+          error: (e: Error) => {
+            Swal.fire({
+              title: 'Error',
+              text: 'No se pudo actualizar la privacidad del producto. Inténtalo nuevamente.',
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+            });
+            console.error(e);
+          }
+        });
+      },
+      error: (e: Error) => {
+        Swal.fire({
+          title: 'Error',
+          text: 'No se pudo obtener la información del producto. Inténtalo nuevamente.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
+        console.error(e);
+      }
+    });
+  }
   }
   
-
-  agregarProducto(){
-
+  abrirModal() {
+    
   }
-}
+    
+  }

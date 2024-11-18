@@ -4,11 +4,18 @@
       <div class="my-2">
 
         <!-- Inicio de contenido personalizado -->
-        <div class="row datos-perfil align-items-center">
+        <div class="row datos-perfil align-items-center ">
           <!-- Sección de imagen y nombre de usuario -->
           <div class="col-md-3 text-center ">
             <div class="avatar avatar-xl">
-              <img src="../../../../../assets/img/usuario.png" alt="Imagen de perfil" class="avatar-img rounded-circle">
+               <!-- Ícono para cambiar la imagen -->
+               <button  class="btn btn-light position-absolute top-0 start-0 translate-middle" aria-label="Subir imagen" (click)="guardarImagen()">
+                <i class="fa-solid fa-upload"></i>
+              </button>
+              <!-- Imagen de perfil -->
+              <img  [src]="perfilData.imagePerfil || 'assets/img/usuario.png'" alt="Imagen de perfil" class="avatar-img rounded-circle">
+              
+    
             </div>
           </div>
 
@@ -23,25 +30,23 @@
                 
               </div>
               <div class="col">                
-                <p class="mb-1 text-muted">
+                <p class="mb-3 text-muted">
                   <i class="fa-solid fa-phone"></i>
                   {{perfilData.telefono}}
                 </p>
-                <p>
+                <p class="mb-3">
                   <i class="fa-brands fa-linkedin"></i>
-                  <a  [href]="perfilData.linkLinkedIn" target="_blank" rel="noopener noreferrer"> LinkedIn </a>
+                  <a [href]="perfilData.linkLinkedIn" target="_blank" rel="noopener noreferrer"> LinkedIn </a>
                 </p>
-                <p>
+                <p class="mb-3">
                   <i class="fa-brands fa-instagram"></i>
-                  <a  [href]="perfilData.linkInstagram" target="_blank" rel="noopener noreferrer"> Instagram </a>
+                  <a [href]="perfilData.linkInstagram" target="_blank" rel="noopener noreferrer"> Instagram </a>
                 </p>
               </div>
+              
             </div>
           </div>
         </div>
-
-         <!-- Línea divisoria -->
-         <hr class="divider">
 
         <!-- Sección de productos -->
         <div class="row">

@@ -8,14 +8,34 @@
 
 .datos-perfil{
 margin-bottom: 10vh;
+min-height: 35vh; /* O usa height: 500px; según lo que necesites */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave en la parte inferior */
 }
 
-.avatar-xl img {
-  width: 150px;
+.avatar {
+  position: relative;
 }
+
+.avatar img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.avatar button {
+  border: none;
+  cursor: pointer;
+}
+
+
+input {
+  max-width: 250px;
+}
+
 .rounded-circle {
   border-radius: 50% !important;
 }
+
 img {
   vertical-align: middle;
 }
@@ -24,15 +44,6 @@ img {
 }
 .text-muted {
   font-weight: 400;
-}
-
-
-
-.divider {
-  margin-top: 5px;
-  border: none; /* Sin borde por defecto */
-  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Línea superior gris tenue */
-  margin: 10px 0; /* Espaciado vertical */
 }
 
 

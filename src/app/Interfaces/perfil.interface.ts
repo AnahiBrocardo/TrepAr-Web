@@ -8,5 +8,7 @@ export interface Perfil{
     linkInstagram:string,
     linkLinkedIn: string,
     linkWeb: string,
-    telefono: string
+    telefono: string,
+    listaFavoritos?:string [],
+    imagePerfil?: string
 }
