@@ -6,6 +6,7 @@ export interface ProductoInterface {
     descripcion: string; 
     precio: string; 
     deletedAt: boolean | null
+    privado?: boolean;
 }
 
 export interface UsuariosxProductos{

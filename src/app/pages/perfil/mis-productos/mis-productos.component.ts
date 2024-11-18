@@ -23,6 +23,7 @@ import Swal from 'sweetalert2';
 })
 export class MisProductosComponent implements OnInit {
 
+  
   productoServices = inject(ProductoServiceService);
   productos: ProductoInterface[] = [];
   textoBuscado: string = '';
@@ -79,5 +80,14 @@ export class MisProductosComponent implements OnInit {
         console.error('Error al obtener los productos:', error);
       }
     });
+  }
+
+  cambiarPrivacidad(producto: ProductoInterface): void {
+    producto.privado = !producto.privado;
+  }
+  
+
+  agregarProducto(){
+
   }
 }
