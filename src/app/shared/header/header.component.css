@@ -1,58 +1,24 @@
-
-:root{
+:root {
     --naranja: #F7BD56;
     --blanco: white;
-}
-
-.header{
-    box-sizing: border-box;
-    font-size: 18px;
-    background-color: transparent;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-    padding: 5px 25px;
-    position: fixed;
-    top: 0;         /* Se coloca en la parte superior */
-    left: 0;        /* Alineación a la izquierda */
-    width: 100%;    /* Asegura que el header ocupe todo el ancho */
-    z-index: 1000;  /* Valor alto para que se muestre sobre otros elementos */
-}
-
-.logo a {
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-    color: white ;
-}
-
-.logo img {
-    height: 150px; /* Ajusta la altura según necesites */
-    width: auto;  /* Mantiene la proporción */
-}
-
-
-.header .nav-link li {
-    list-style-type: none;
-}
-
-.header .nav-link a {
-    text-decoration: none;
-    color: white;
-    padding: 9px 25px;
-    background-color: #f6ae8e;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-   
-}
-
-.nav-link a:hover {
-    opacity: 0.5; /* Cambia la opacidad al pasar el mouse */
-}
-
-.nav-link a:active {
-    opacity: 0.7; /* Cambia la opacidad al hacer clic (opcional) */
-}
-
+  }
+  
+  .logo {
+    height: 15vh;
+    /* Ajusta la altura según necesites */
+    width: auto;
+    /* Mantiene la proporción */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nabvar-size {
+    height: 10vh;
+    /* Ajusta la altura según necesites */
+    width: 100%;
+    /* Mantiene la proporción */
+    align-content: center;
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  

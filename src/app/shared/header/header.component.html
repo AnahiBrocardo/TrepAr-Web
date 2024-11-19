@@ -1,26 +1,12 @@
-<!--<header class="header">
-    <div class="logo">
-    <a href="#">TrepAr</a>
+<nav class="navbar bg-dark border-body fixed-top nabvar-size" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img class="logo" src="/assets/img/logo nav.png" alt="Logo de TrepAr">
+    </a>
+
+    <div *ngIf="isHome" class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <a class="btn btn-primary" href="/acceso" role="button">Acceder</a>
     </div>
-    <nav>
-        <ul class="nav-link">
-        <li>
-        <a href="/acceso">Acceder</a>
-        <a href="/dashboard">perfil</a>
-        </li>
-        </ul>
-    </nav>
-</header>--!-->
-<header class="header">
-    <div class="logo">
-      <a routerLink="/"></a>
-      <img src="/assets/img/logo nav.png" alt="Logo de TrepAr">
-    </div>
-    <nav>
-      <ul class="nav-link">
-        <li>
-          <a href="/acceso">Acceder</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  </div>
+</nav>
+
