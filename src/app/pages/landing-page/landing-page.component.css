@@ -1,128 +1,224 @@
-
 .mi-imagen-inicio {
-    position: relative; 
-    width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho */
-    height: auto; 
-    overflow: hidden; /* Opcional: oculta el desbordamiento si la imagen es más grande */
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(60%);
+}
+
+@media (max-width: 768px) {
+  .mi-imagen-inicio {
+    height: 70vh;
+    padding: 0;
+    margin: 0;
   }
-  
-  .mi-imagen-inicio img {
-    width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
-    height: auto; /* Mantiene la proporción de aspecto de la imagen */
-    display: block; /* Elimina el espacio debajo de la imagen */
-    object-fit: cover;
+}
+
+.carousel-caption {
+  color: white;
+
+  z-index: 10;
+}
+
+
+@media (max-width: 768px) {
+  .carousel-caption {
+    font-size: 1em;
   }
-
-  .overlay {
-    position: absolute; /* Se coloca sobre la imagen */
-    top: 0; /* Alinea en la parte superior */
-    left: 0; /* Alinea a la izquierda */
-    right: 0; /* Alinea a la derecha */
-    bottom: 0; /* Alinea en la parte inferior */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con 50% de transparencia */
-    z-index: 1; /* Asegura que el overlay esté por encima de la imagen */
 }
-  .texto-centrado {
-    position: absolute; /* Posiciona el texto sobre la imagen */
-    top: 50%; /* Coloca el texto en la mitad vertical del contenedor */
-    left: 50%; /* Coloca el texto en la mitad horizontal del contenedor */
-    transform: translate(-50%, -50%); /* Centra el texto ajustando su tamaño */
-    color: white; /* Color del texto (blanco para contraste) */
-    font-size: 6.5vh; /* Tamaño del texto */
-    text-align: center; /* Centra el texto dentro de su contenedor */
-    z-index: 2; /* Asegura que el texto esté por encima del overlay */
+
+.p-carrousel {
+  font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+  .p-carrousel {
+    font-size: 1em;
   }
+}
 
-  .texto-pequeno {
-    font-size: 0.5em; /* Ajusta el tamaño como prefieras */
-    color: white; /* Ajusta el color según prefieras */
-    margin-top: 10px; /* Añade un margen superior para separarlo del texto principal */
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
   }
-  
-  .about-card {
-    background-color: #a7dcdf; /* Color de fondo */
-    border-radius: 70px; /* Bordes redondeados */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    padding: 20px; /* Espaciado interno */
-    max-width: 1200px; /* Ancho máximo de la tarjeta */
-    margin: 100px auto 40px auto; /* Centrado horizontal, distancia con la section anterior*/
-    text-align: center; /* Centrado del texto */
-    margin-bottom: 40px; /* Espaciado inferior */
-    position: relative; /* Para posicionar al gatito */
 }
 
-.about-card h2 {
-    font-size: 24px; /* Tamaño del título */
-    margin-bottom: 10px; /* Espaciado inferior */
-    color: black;
+.b-example-divider {
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
 }
 
-.about-card p {
-    font-size: 16px; /* Tamaño del texto */
-    line-height: 1.5; /* Altura de línea para mejor legibilidad */
-    margin-bottom: 15px; /* Espaciado inferior */
-    color: black;
+.b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
 }
 
-.about-card .team {
-    margin-top: 20px; /* Espacio superior para separar del texto anterior */
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
 }
 
-.about-card .team h3 {
-    font-size: 20px; /* Tamaño del subtítulo */
-    margin-bottom: 10px; /* Espaciado inferior */
-    color: black;
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
 }
 
-.about-card .team ul {
-    list-style-type: none; /* Eliminar viñetas de la lista */
-    padding: 0; /* Eliminar padding */
-}
-
-.about-card .team li {
-    font-size: 16px; /* Tamaño del texto de la lista */
-    margin: 5px 0; /* Espaciado vertical entre elementos de la lista */
-  
-}
-
-.hanging-cat {
-  position: absolute;
-  top: -60px; /* Ajusta según el tamaño del gatito */
-  right: -20px; /* Ajusta para colgarlo de la esquina */
-  width: 170px; /* Ajusta el tamaño del gatito */
-  transform: rotate(0deg); /* Gira un poco para darle efecto de colgar */
-}
-
-.icon-row {
+.nav-scroller .nav {
   display: flex;
-  justify-content: space-around;
-  margin-top: 40px;
-  flex-wrap: wrap;
-  color: #ff9c6e;
-}
-
-.icon-item {
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
   text-align: center;
-  max-width: 200px;
-  margin: 20px;
-  transition: transform 0.3s; /* Efecto al pasar el mouse */
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 
-.icon-item:hover {
-  transform: translateY(-10px); /* Efecto de elevación */
+.btn-bd-primary {
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
 }
 
-.icon-item i {
-  font-size: 3rem; /* Tamaño del ícono */
-  color: #17333e;
+.bd-mode-toggle {
+  z-index: 1500;
 }
 
-.icon-item h4 {
-  margin-top: 10px;
-  font-size: 1.5rem;
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
 }
 
-.icon-item p {
-  font-size: 1rem;
-  color: #666; /* Color gris para el texto descriptivo */
+.items-column {
+  background-color: white;
+  /* Color inicial */
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  padding: 1%;
+}
+
+.items-column:hover {
+  background-color: #ffcc80;
+  transform: translateY(-5px);
+  color: rgb(36, 35, 33);
+}
+
+.items-big-box {
+  justify-content: space-between;
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.titulo-box {
+  padding-top: 1vh;
+}
+
+@media (min-width: 768px) {
+  .titulo-box {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .titulo-box {
+    font-size: 2rem;
+  }
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 40vh;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.image-container:hover img {
+  filter: brightness(95%);
+}
+
+.team{
+  justify-content: space-between;
+}
+
+.items-team {
+  justify-content: space-between;
+  padding-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.links-team{
+  justify-content: space-around;
+}
+
+.link-icon{
+  color: #ffffff;
+}
+
+.link-icon:hover{
+  color: #ffb950;
+}
+
+.landing-page{
+  margin-bottom: 3vh;
 }

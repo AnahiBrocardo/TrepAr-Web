@@ -1,56 +1,136 @@
-<section  class="mi-imagen-inicio"> 
-    <img src="assets/img/inicio.jpg" alt="Imagen representativa de inicio de TrepAr">
-    <div class="overlay"></div>
-    <div class="texto-centrado">
-        <h1>Bienvenido a TrepAr!</h1>
-        <p class="texto-pequeno">
-        TrepAr esta diseñado para ofrecer a los emprendedores una solución 
-        integral que facilite la gestión de sus actividades clave, mejorando su organización 
-        permitiéndoles concentrarse en el crecimiento de sus negocios.
-        </p>
-      </div>
-</section >
-
-<section>
-  <!-- Sección de íconos representativos -->
-  <div class="icon-row">
-      <div class="icon-item">
-          <i class="fas fa-rocket"></i> <!--Se pueden cambiar los iconos -->
-          <h4>Impulso</h4>
-          <p>Facilitamos el análisis de tus costos.</p>
-      </div>
-      <div class="icon-item">
-          <i class="fas fa-users"></i>
-          <h4>Colaboración</h4>
-          <p>Conectamos emprendedores para construir redes sólidas.</p>
-      </div>
-      <div class="icon-item">
-          <i class="fas fa-chart-line"></i>
-          <h4>Crecimiento</h4>
-          <p>Cultivamos el crecimiento personal y profesional.</p>
-      </div>
-      <div class="icon-item">
-          <i class="fas fa-lightbulb"></i>
-          <h4>Creatividad</h4>
-          <p>Fomentamos un entorno donde las ideas pueden florecer y evolucionar.</p>
-      </div>
-  </div>
-</section>
-
-<section>
-  <div class="about-card">
-    <h2>Sobre Nosotros</h2>
-    <p>
-      Somos un grupo de estudiantes de la Universidad Tecnológica Nacional en Mar del Plata, apasionadas por la tecnología y el diseño, comprometidas en crear herramientas que hagan la diferencia para emprendedores como vos. Sabemos que emprender es un camino lleno de desafíos y que la organización es clave para alcanzar el éxito. Por eso, nuestro objetivo es facilitar la gestión de tus actividades, para que puedas enfocarte en hacer crecer tu proyecto sin preocupaciones.
-    </p>
-    <div class="team">
-      <h3>Nuestro Equipo</h3>
-      <ul>
-        <li>Anahi Brocardo - Desarroladora</li>
-        <li>Julieta Alijas - Desarrolladora</li>
-        <li>Ayelen Ibañez - Desarroladora</li>
-      </ul>
+<div class="landing-page">
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
-    <img src="assets/img/gatito.png" alt="Gatito colgando" class="hanging-cat">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="5000">
+        <img src="assets/img/inicio.jpg" class="d-block w-100 mi-imagen-inicio"
+          alt="Imagen representativa de inicio de TrepAr">
+        <div class="carousel-caption">
+          <h2>¡Bienvenido a TrepAr!</h2>
+          <p class="p-carrousel">TrepAr ofrece a los emprendedores una solución
+            integral que facilita la gestión de sus actividades clave.</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="assets/img/inicio2.jpg" class="d-block w-100 mi-imagen-inicio"
+          alt="Imagen representativa de inicio de TrepAr">
+        <div class="carousel-caption">
+          <h2>¡Descubre TrepAr!</h2>
+          <p>Simplificamos la gestión de productos, simulación de precios y
+            conexión con otros emprendedores.</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="assets/img/inicio3.jpg" class="d-block w-100 mi-imagen-inicio"
+          alt="Imagen representativa de inicio de TrepAr">
+        <div class="carousel-caption">
+          <h2>¡Conéctate con TrepAr!</h2>
+          <p>Ofrecemos una plataforma integral para gestionar productos, simular precios
+            y crear una red colaborativa de emprendedores.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-</section>
+
+  <div class="row items-big-box shadow-lg container-fluid">
+    <div class="col-md-3 ms-auto items-column">
+      <i class="fas fa-rocket fa-3x"></i>
+      <h4 class="titulo-box">Impulso</h4>
+      <p>Facilitamos el análisis de tus costos.</p>
+    </div>
+    <div class="col-md-3 ms-auto items-column">
+      <i class="fas fa-users fa-3x"></i>
+      <h4 class="titulo-box">Colaboración</h4>
+      <p>Conectamos emprendedores para construir redes sólidas.</p>
+    </div>
+    <div class="col-md-3 ms-auto items-column">
+      <i class="fas fa-chart-line fa-3x"></i>
+      <h4 class="titulo-box">Crecimiento</h4>
+      <p>Cultivamos el crecimiento personal y profesional.</p>
+    </div>
+    <div class="col-md-3 ms-auto items-column">
+      <i class="fas fa-lightbulb fa-3x"></i>
+      <h4 class="titulo-box">Creatividad</h4>
+      <p>Fomentamos un entorno donde las ideas pueden florecer y evolucionar.</p>
+    </div>
+  </div>
+
+  <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 shadow-lg container-fluid">
+    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+      <h2 class="display-4 fw-bold lh-1 text-body-emphasis">Sobre Nosotros</h2>
+      <p class="lead"> Somos un grupo de estudiantes de la Universidad Tecnológica Nacional en Mar del Plata, apasionadas
+        por la tecnología y el diseño, comprometidas en crear herramientas que hagan la diferencia para emprendedores como
+        vos. Sabemos que emprender es un camino lleno de desafíos y que la organización es clave para alcanzar el éxito.
+        Por eso, nuestro objetivo es facilitar la gestión de tus actividades, para que puedas enfocarte en hacer crecer tu
+        proyecto sin preocupaciones.</p>
+    </div>
+    <div class="col-lg-4 p-0 overflow-hidden shadow-lg"> <img class="rounded-lg-3" src="assets/img/student.jpg"
+        alt="Imagen estudiante en computadora" width="720"> </div>
+  </div>
+
+  <section id="team" class="container-fluid mt-5 mb-0">
+    <div class="container section-title">
+      <h2 class="display-4 fw-bold lh-1 text-body-emphasis">Nuestro Equipo</h2>
+    </div>
+
+    <div class="row items-team shadow-lg team container-fluid">
+      <div class="col-md-4 ms-auto">
+        <div class="image-container">
+          <img src="assets/img/team-1.jpg" alt="Imagen de ejemplo">
+          <div class="overlay">
+            <h4>Anahi Brocardo</h4>
+            <p>Desarrolladora</p>
+            <div class="links-team">
+              <a href="https://www.linkedin.com/in/anahi-brocardo/" target=”_blank”>
+                <i class="fa-brands fa-linkedin-in fa-lg ms-2 me-2 link-icon"></i></a>
+              <a href="https://github.com/AnahiBrocardo" target=”_blank”>
+                <i class="fa-brands fa-github fa-lg ms-2 me-2 link-icon"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 ms-auto">
+        <div class="image-container">
+          <img src="assets/img/team-1.jpg" alt="Imagen de ejemplo">
+          <div class="overlay">
+            <h4>Julieta Alijas</h4>
+            <p>Desarroladora</p>
+            <div class="links-team">
+              <a href="https://github.com/JulietaAlijas" target=”_blank”>
+                <i class="fa-brands fa-github fa-lg ms-2 me-2 link-icon"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 ms-auto">
+        <div class="image-container">
+          <img src="assets/img/team-1.jpg" alt="Imagen de ejemplo">
+          <div class="overlay">
+            <h4>Ayelen Ibañez</h4>
+            <p>Desarroladora</p>
+            <div class="links-team">
+              <a href="https://www.linkedin.com/in/ayelen-iba%C3%B1ez-6a04ba212/" target=”_blank”>
+                <i class="fa-brands fa-linkedin-in fa-lg ms-2 me-2 link-icon"></i></a>
+              <a href="https://github.com/ayelenn08" target=”_blank”>
+                <i class="fa-brands fa-github fa-lg ms-2 me-2 link-icon" ></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>
