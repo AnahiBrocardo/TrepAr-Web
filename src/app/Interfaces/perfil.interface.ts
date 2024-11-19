@@ -3,7 +3,7 @@ export interface Perfil{
     idUser:string,
     userName:string,
     descripcion:string,
-    pais: string;
+    provincia: string;
     ciudad:string,
     linkInstagram:string,
     linkLinkedIn: string,

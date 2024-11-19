@@ -10,15 +10,16 @@ export class PerfilService {
    urlBase="http://localhost:3003/perfiles";
    
   constructor(private http: HttpClient) { }
-  getPerfiles(idUser:string): Observable<Perfil[]>{
+
+  getPerfiles(): Observable<Perfil[]>{
     return this.http.get<Perfil[]>(`${this.urlBase}`);
   }
   //obtener perfil del usuario, mediante el idUser
-  getPerfilByIdUser(idUser:string): Observable<Perfil>{
-    return this.http.get<Perfil>(`${this.urlBase}/${idUser}`);
+  getPerfilByIdUser(idUser:string): Observable<Perfil[]>{
+    return this.http.get<Perfil[]>(`${this.urlBase}?idUser=${idUser}`);
   }
 
-  agregarPerfilByIdUser(perfil:Perfil): Observable<Perfil>{
+  agregarPerfil(perfil:Perfil): Observable<Perfil>{
     return this.http.post<Perfil>(`${this.urlBase}`, perfil);
   }
 

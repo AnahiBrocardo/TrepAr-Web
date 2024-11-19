@@ -16,7 +16,7 @@
         <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
           <div class="card bg-glass">
             <div class="card-body px-4 py-5 px-md-5">
-              <form [formGroup]="formularioRegistrase" (ngSubmit)="signIn()">
+              <form *ngIf="!showProfileForm" [formGroup]="formularioRegistrase" (ngSubmit)="validarFormularioRegistro()">
                 <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="nombre">Nombre*</label>
                   <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre"
@@ -58,7 +58,7 @@
   
   
                 <div data-mdb-input-init class="form-outline mb-4"> <label class="form-label"
-                    for="password">Password</label>
+                    for="password">Contraseña</label>
                   <div class="password-container">
                     <input [type]="isPasswordVisible ? 'text' : 'password'"
                       placeholder="******" formControlName="password" class="form-control" /> <a
@@ -86,10 +86,10 @@
               </form>
 
                <!-- Segundo formulario de perfil -->
-            <form *ngIf="showProfileForm" [formGroup]="formularioPerfil" (ngSubmit)="saveProfile()">
+            <form *ngIf="showProfileForm" [formGroup]="formularioPerfil" (ngSubmit)="validarFormularioPerfil()">
               <div class="form-outline mb-4">
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="username">Username*</label>
+                  <label class="form-label" for="username">Nombre de usuario (o emprendimiento)*</label>
                   <input type="text" id="username" formControlName="username" class="form-control" placeholder="Nombre de usuario" />
                   <div *ngIf="formularioPerfil.controls['username'].invalid && (formularioPerfil.controls['username'].dirty || formularioPerfil.controls['username'].touched)" class="alert alert-danger">
                     <div class="error" *ngIf="formularioPerfil.controls['username'].getError('required')">
@@ -114,50 +114,73 @@
               </div>
 
               <div class="form-outline mb-4">
-                <label class="form-label" for="pais">País*</label>
-                <input type="text" id="pais" formControlName="pais" class="form-control" placeholder="País" />
-                <div *ngIf="formularioPerfil.controls['pais'].invalid && (formularioPerfil.controls['pais'].dirty || formularioPerfil.controls['pais'].touched)" class="alert alert-danger">
-                  <div class="error" *ngIf="formularioPerfil.controls['pais'].getError('required')">
-                    País requerido
+                <label class="form-label" for="provincia">Provincia*</label>
+                <select id="provincia" formControlName="provincia" class="form-control" (change)="onProvinciaChange($event)">
+                  <option value="" disabled selected>Selecciona una provincia</option>
+                  <option *ngFor="let provincia of provincias" [value]="provincia">{{provincia}}</option>
+                </select>
+                <div *ngIf="formularioPerfil.controls['provincia'].invalid && (formularioPerfil.controls['provincia'].dirty || formularioPerfil.controls['provincia'].touched)" class="alert alert-danger">
+                  <div class="error" *ngIf="formularioPerfil.controls['provincia'].getError('required')">
+                    Provincia requerida
                   </div>
                 </div>
               </div>
 
               <div class="form-outline mb-4">
                 <label class="form-label" for="ciudad">Ciudad*</label>
-                <input type="text" id="ciudad" formControlName="ciudad" class="form-control" placeholder="Ciudad" />
+                <select id="ciudad" formControlName="ciudad" class="form-control">
+                  <option value="" disabled selected>Selecciona una ciudad</option>
+                  <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ ciudad }}</option>
+                </select>
                 <div *ngIf="formularioPerfil.controls['ciudad'].invalid && (formularioPerfil.controls['ciudad'].dirty || formularioPerfil.controls['ciudad'].touched)" class="alert alert-danger">
                   <div class="error" *ngIf="formularioPerfil.controls['ciudad'].getError('required')">
-                    Ciudad requerida
+                    l requerida
                   </div>
                 </div>
               </div>
+              
 
                 <!-- Campos opcionales -->
               <div class="form-outline mb-4">
-              <label class="form-label" for="linkInstagram">Instagram</label>
-              <input type="text" id="linkInstagram" formControlName="linkInstagram" class="form-control" placeholder="Link de Instagram" />
-              </div>
+              <label class="form-label" for="linkInstagram">Enlace de Instagram</label>
+              <input type="text" id="linkInstagram" formControlName="linkInstagram" class="form-control" placeholder="https://instagram.com/tu-perfil" />
+              
+              <div *ngIf="formularioPerfil.get('linkInstagram')?.invalid && formularioPerfil.get('linkInstagram')?.touched" class="text-danger">
+                Ingresa un enlace válido de Instagram (por ejemplo, https://instagram.com/tu-perfil).
+              </div> 
+            </div>
 
               <div class="form-outline mb-4">
               <label class="form-label" for="linkLinkedIn">LinkedIn</label>
-              <input type="text" id="linkLinkedIn" formControlName="linkLinkedIn" class="form-control" placeholder="Link de LinkedIn" />
-              </div>
+              <input type="text" id="linkLinkedIn" formControlName="linkLinkedIn" class="form-control" placeholder="https://linkedin.com/in/tu-perfil" />
+              <div *ngIf="formularioPerfil.get('linkLinkedIn')?.invalid && formularioPerfil.get('linkLinkedIn')?.touched" class="text-danger">
+                Ingresa un enlace válido de LinkedIn (por ejemplo, https://linkedin.com/in/tu-perfil).
+              </div>   
+            </div>
 
               <div class="form-outline mb-4">
               <label class="form-label" for="linkWeb">Sitio Web</label>
-              <input type="text" id="linkWeb" formControlName="linkWeb" class="form-control" placeholder="Link de tu sitio web" />
-              </div>
+              <input type="text" id="linkWeb" formControlName="linkWeb" class="form-control" placeholder="https://www.tusitio.com" />
+              <div *ngIf="formularioPerfil.get('linkWeb')?.invalid && formularioPerfil.get('linkWeb')?.touched" class="text-danger">
+                Ingresa una URL válida (por ejemplo, https://www.tusitio.com).
+              </div>  
+            </div>
 
               <div class="form-outline mb-4">
               <label class="form-label" for="telefono">Teléfono</label>
               <input type="text" id="telefono" formControlName="telefono" class="form-control" placeholder="Número de teléfono" />
-              </div>
+              <div *ngIf="formularioPerfil.get('telefono')?.invalid && formularioPerfil.get('telefono')?.touched" class="text-danger">
+                Ingresa un número de teléfono válido (por ejemplo, para Argentina,+54 9 11 6123-4567 o 011 6123-4567).
+              </div> 
+            </div>
 
               <div class="form-outline mb-4">
-              <label class="form-label" for="imagePerfil">Imagen de perfil</label>
-              <input type="file" id="imagePerfil" formControlName="imagePerfil" class="form-control" />
-              </div>
+              <label class="form-label" for="imagePerfil">Ingresa una URL para la imagen de perfil</label>
+              <input type="file" id="imagePerfil" formControlName="imagePerfil" class="form-control" placeholder="https://ejemplo.com/imagen.jpg" />
+              <div *ngIf="formularioPerfil.get('imagePerfil')?.invalid && formularioPerfil.get('imagePerfil')?.touched" class="text-danger">
+                La imagen debe tener un formato válido (.jpg, .jpeg, .png, .gif, .bmp, .webp).
+              </div>  
+            </div>
 
               <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
                 Registrarse
