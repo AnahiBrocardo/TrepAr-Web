@@ -4,7 +4,6 @@ import { ProductoServiceService } from '../../../Servicios/productos/productos-s
 import { CommonModule } from '@angular/common';
 import { ProductoInterface, UsuariosxProductos } from '../../../Interfaces/producto-interface';
 import { of, switchMap } from 'rxjs';
-import { ModificarSimuladorComponent } from '../../simulador/funciones/modificar-simulador/modificar-simulador.component';
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';

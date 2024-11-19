@@ -22,7 +22,7 @@ import { ActivatedRoute, Router } from '@angular/router';
      MatFormFieldModule,
      MatInputModule,
      MatIconModule,
-    MatMiniFabButton],
+    ],
   templateUrl: './agregar-simulador.component.html',
   styleUrl: './agregar-simulador.component.css'
 })
@@ -30,22 +30,30 @@ export class AgregarSimuladorComponent implements OnInit {
   
   fb= inject(FormBuilder);
   SimuladorService= inject(SimuladorService) ;
-  precioConGanancia: number = 0;
+  tipo: string = ''; // Indica si es CREAR o EDITAR
   idUsuario: string= '';
   ruoter = inject(Router);
   activated= inject(ActivatedRoute);
+
   @Output() emitirSimulacion: EventEmitter<Simulador> = new EventEmitter();
 
   constructor(
     private dialogRef: MatDialogRef<AgregarSimuladorComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { tipo: string; idUsuario: string }
+    @Inject(MAT_DIALOG_DATA)public data: any
   
   ){ 
     this.idUsuario = data.idUsuario;
+    this.tipo = data.tipo;
+    // Si es edición, prellenar el formulario con los datos del simulador
+    if (this.tipo === 'EDITAR' && data.simulador) {
+      this.formulario.patchValue(data.simulador); // Rellena el formulario con los datos del simulador
+      this.precioConGanancia = data.simulador.PrecioFinal || 0; // Opcional, si el precio ya está calculado
+    }
    }
 
-   ngOnInit(): void {
-    console.log(this.idUsuario);
+  ngOnInit(): void {
+    console.log('Modo:', this.tipo);
+    console.log('ID Usuario:', this.idUsuario);
   }
   
   activarRuta(idUsuario: string){
@@ -62,14 +70,25 @@ export class AgregarSimuladorComponent implements OnInit {
     this.dialogRef.close();
   }
   
-  guardar(){
-    //this.emitirSimulacion.emit(this.formulario.value);
-    this.dialogRef.close();
+  guardar() {
+    if (this.formulario.invalid) return;
+
+    const simulador = this.formulario.getRawValue();
+    simulador.idUsuario = this.idUsuario; // Asegúrate de asignar el ID de usuario
+    simulador.PrecioFinal = this.precioConGanancia; // Calcula el precio final
+
+    if (this.tipo === 'CREAR') {
+      this.addSimuladorBD(simulador); // Crear un nuevo simulador
+    } else if (this.tipo === 'EDITAR') {
+      this.updateSimuladorBD(simulador); // Actualizar un simulador existente
+    }
+
+    this.dialogRef.close(simulador); // Devuelve el simulador al componente padre
   }
 
+
   //inicializa el formulario
-  
-    formulario = this.fb.nonNullable.group({
+  formulario = this.fb.nonNullable.group({
       idUsuario: '',
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       precioMP: [0, [Validators.required]],
@@ -86,17 +105,16 @@ export class AgregarSimuladorComponent implements OnInit {
 
 
 //----------------------- FUNCIONES
-
-addSimulador(){
-  if(this.formulario.invalid) return;
-  const simulado= this.formulario.getRawValue();
-  simulado.idUsuario = this.idUsuario; // Añadir idUsuario al objeto simulador 
-  simulado.PrecioFinal = this.precioConGanancia;
-  this.addSimuladorBD(simulado);
+//addSimulador(){
+  //if(this.formulario.invalid) return;
+  //const simulado= this.formulario.getRawValue();
+  //simulado.idUsuario = this.idUsuario; // Añadir idUsuario al objeto simulador 
+  //simulado.PrecioFinal = this.precioConGanancia;
+  //this.addSimuladorBD(simulado);
   //this.emitirSimulacion.emit(simulado);
-  this.dialogRef.close();
-}
-
+  //this.dialogRef.close();
+//}
+//-----------Crear un nuevo simulador
 addSimuladorBD(simulador: Simulador){
   this.SimuladorService.postSimulador(simulador).subscribe(
     {
@@ -109,13 +127,24 @@ addSimuladorBD(simulador: Simulador){
     }
   )
  }
+//----------Actualizar un simulador existente
+updateSimuladorBD(simulador: Simulador) {
+  this.SimuladorService.putSimulador(simulador.idUsuario, simulador).subscribe({
+    next: (simuladorActualizado: Simulador) => {
+      alert('Simulador actualizado correctamente.');
+    },
+    error: (e: Error) => {
+      console.error('Error al actualizar el simulador:', e.message);
+    }
+  });
+}
 
 
 
 
 
 ///-------------------------FUNCIONALIDADES DE LA CALCULADORA DE COSTO-----
-
+precioConGanancia: number = 0;
 //sta sta bin
 calcularGastoPorUnidad(): number {
   const cantidadMensual = this.formulario.get('CantidadProductoMensual')?.value || 1;

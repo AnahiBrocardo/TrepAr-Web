@@ -233,6 +233,19 @@
       "Ganancia": 30,
       "PrecioFinal": 48.75,
       "habilitado": true
+    },
+    {
+      "id": "7405",
+      "idUsuario": "8672",
+      "nombre": "producto2",
+      "precioMP": 500,
+      "cantidadMP": 30,
+      "UnidadDeCompraMP": 600,
+      "valorGF": 600,
+      "CantidadProductoMensual": 100,
+      "Ganancia": 40,
+      "PrecioFinal": 43.4,
+      "habilitado": true
     }
   ]
 }
