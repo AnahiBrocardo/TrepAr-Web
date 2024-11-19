@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit{
   router= inject(Router);
   acivated= inject(ActivatedRoute);
   isPasswordVisible = false; // Controla la visibilidad de la contraseña
-  
+
     ngOnInit(): void {
     }
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit{
 
   //metodo login, que se va a llamar cuando el usuario presione el boton de iniciar sesion
   login(){
-    
+
     if(this.formularioLogin.valid){ //si el formulario es valido
     // Obtén los valores del formulario en variables
     const emailForm = this.formularioLogin.get('email')?.value;
@@ -49,15 +49,23 @@ export class LoginComponent implements OnInit{
       },
       error: (errorData)=> {
         console.log(errorData);
-        this.loginError="Error, usuarios y/o contraseña incorrectos. Por favor ingrese los datos nuevamente";
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Usuario y/o contraseña incorrectos. Por favor ingrese los datos nuevamente"
+        });
       }
     });
-    
-    
+
+
   }else{
 
       this.formularioLogin.markAllAsTouched();// Marca todos los controles del formulario como 'touched', es decir, se considera que el usuario ha interactuado con ellos.
-      Swal.fire("Error al ingresar los datos");   
+      Swal.fire({
+        icon: "error",
+        title: "Opps...",
+        text: "Error al ingresar los datos"
+      });
   }
   }
 }

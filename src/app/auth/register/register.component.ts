@@ -51,17 +51,39 @@ export class RegisterComponent {
       next: (users: User[]) => {
         // Verificar si el correo electrónico ya está registrado
         if (this.emailExists(users, userEmail)) {
-          Swal.fire("Usuario ya está registrado");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "El usuario ya está registrado",
+          });
         } else {
           // Si el correo no existe, agregar al nuevo usuario
           this.userService.addUser(newUser).subscribe({
             next: (user) => {
-              Swal.fire("Registro exitoso. Redirigiendo al inicio de sesión...");
+              const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+              });
+              Toast.fire({
+                icon: "success",
+                title: "Registro exitoso."
+              });
               this.router.navigate(['/acceso']);
             },
             error: (error) => {
               console.error('Error al registrar al usuario', error);
-              Swal.fire("Hubo un problema al registrar el usuario. Intenta de nuevo");
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Hubo un problema al registrar el usuario. Intenta de nuevo",
+              });
             }
           });
         }

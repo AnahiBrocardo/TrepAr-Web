@@ -6,6 +6,8 @@
   filter: brightness(60%);
 }
 
+
+
 @media (max-width: 768px) {
   .mi-imagen-inicio {
     height: 70vh;
@@ -86,7 +88,7 @@
   overflow-x: auto;
   text-align: center;
   white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
 }
 
 .btn-bd-primary {
@@ -160,7 +162,7 @@
   position: relative;
   width: 100%;
   max-width: 400px;
-  height: 40vh;
+  height: 80vh;
 }
 
 .image-container img {
