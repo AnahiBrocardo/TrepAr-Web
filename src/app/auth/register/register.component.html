@@ -56,21 +56,6 @@
                     </div>
                 </div>
   
-                <!--
-                <div class="item">
-                    <label for="contrasena">Contraseña</label>
-  
-                    <div class="password-container">
-                        <input [type]="isPasswordVisible ? 'text' : 'password'" placeholder="******" formControlName="password">
-                        <a
-                            class="botonMostrarOcultar"
-                            (click)="togglePasswordVisibility()"
-                            >{{ isPasswordVisible ? '' : '' }}
-                            <i class="fas" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
-                        </a>
-                    </div>
-  
-                </div> -->
   
                 <div data-mdb-input-init class="form-outline mb-4"> <label class="form-label"
                     for="password">Password</label>
@@ -93,17 +78,99 @@
                 </div>
   
                 <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
-                  Registrarse
+                  Aceptar
                 </button>
                 <section class="mt-2">
                   ¿Ya tienes una cuenta? <a href="/acceso">Iniciar sesión</a>
                 </section>
               </form>
-            </div>
+
+               <!-- Segundo formulario de perfil -->
+            <form *ngIf="showProfileForm" [formGroup]="formularioPerfil" (ngSubmit)="saveProfile()">
+              <div class="form-outline mb-4">
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="username">Username*</label>
+                  <input type="text" id="username" formControlName="username" class="form-control" placeholder="Nombre de usuario" />
+                  <div *ngIf="formularioPerfil.controls['username'].invalid && (formularioPerfil.controls['username'].dirty || formularioPerfil.controls['username'].touched)" class="alert alert-danger">
+                    <div class="error" *ngIf="formularioPerfil.controls['username'].getError('required')">
+                      Nombre de usuario requerido
+                    </div>
+                    <div class="error" *ngIf="formularioPerfil.controls['username'].hasError('minlength')">
+                      El nombre de usuario debe tener al menos 3 caracteres
+                    </div>
+                    <div class="error" *ngIf="formularioPerfil.controls['username'].hasError('maxlength')">
+                      El nombre de usuario no puede tener más de 20 caracteres
+                    </div>
+                  </div>
+                </div>
+
+                <label class="form-label" for="descripcion">Descripción*</label>
+                <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Breve descripción sobre ti"></textarea>
+                <div *ngIf="formularioPerfil.controls['descripcion'].invalid && (formularioPerfil.controls['descripcion'].dirty || formularioPerfil.controls['descripcion'].touched)" class="alert alert-danger">
+                  <div class="error" *ngIf="formularioPerfil.controls['descripcion'].getError('required')">
+                    Descripción requerida
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="pais">País*</label>
+                <input type="text" id="pais" formControlName="pais" class="form-control" placeholder="País" />
+                <div *ngIf="formularioPerfil.controls['pais'].invalid && (formularioPerfil.controls['pais'].dirty || formularioPerfil.controls['pais'].touched)" class="alert alert-danger">
+                  <div class="error" *ngIf="formularioPerfil.controls['pais'].getError('required')">
+                    País requerido
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="ciudad">Ciudad*</label>
+                <input type="text" id="ciudad" formControlName="ciudad" class="form-control" placeholder="Ciudad" />
+                <div *ngIf="formularioPerfil.controls['ciudad'].invalid && (formularioPerfil.controls['ciudad'].dirty || formularioPerfil.controls['ciudad'].touched)" class="alert alert-danger">
+                  <div class="error" *ngIf="formularioPerfil.controls['ciudad'].getError('required')">
+                    Ciudad requerida
+                  </div>
+                </div>
+              </div>
+
+                <!-- Campos opcionales -->
+              <div class="form-outline mb-4">
+              <label class="form-label" for="linkInstagram">Instagram</label>
+              <input type="text" id="linkInstagram" formControlName="linkInstagram" class="form-control" placeholder="Link de Instagram" />
+              </div>
+
+              <div class="form-outline mb-4">
+              <label class="form-label" for="linkLinkedIn">LinkedIn</label>
+              <input type="text" id="linkLinkedIn" formControlName="linkLinkedIn" class="form-control" placeholder="Link de LinkedIn" />
+              </div>
+
+              <div class="form-outline mb-4">
+              <label class="form-label" for="linkWeb">Sitio Web</label>
+              <input type="text" id="linkWeb" formControlName="linkWeb" class="form-control" placeholder="Link de tu sitio web" />
+              </div>
+
+              <div class="form-outline mb-4">
+              <label class="form-label" for="telefono">Teléfono</label>
+              <input type="text" id="telefono" formControlName="telefono" class="form-control" placeholder="Número de teléfono" />
+              </div>
+
+              <div class="form-outline mb-4">
+              <label class="form-label" for="imagePerfil">Imagen de perfil</label>
+              <input type="file" id="imagePerfil" formControlName="imagePerfil" class="form-control" />
+              </div>
+
+              <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+                Registrarse
+              </button>
+              <section class="mt-2">
+                ¿Ya tienes una cuenta? <a href="/acceso">Iniciar sesión</a>
+              </section>
+            </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </section>
   
   

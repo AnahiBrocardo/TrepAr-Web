@@ -10,7 +10,9 @@ export class PerfilService {
    urlBase="http://localhost:3003/perfiles";
    
   constructor(private http: HttpClient) { }
-
+  getPerfiles(idUser:string): Observable<Perfil[]>{
+    return this.http.get<Perfil[]>(`${this.urlBase}`);
+  }
   //obtener perfil del usuario, mediante el idUser
   getPerfilByIdUser(idUser:string): Observable<Perfil>{
     return this.http.get<Perfil>(`${this.urlBase}/${idUser}`);
@@ -23,5 +25,10 @@ export class PerfilService {
   actualizarPerfilByIdUser(idUser:string, perfil:Perfil): Observable<Perfil>{
     return this.http.put<Perfil>(`${this.urlBase}/${idUser}`, perfil);
   }
+
+  // Método para verificar si un email ya está en uso
+ checkUserNameExists(username: string): Observable<Perfil[]> {
+  return this.http.get<Perfil[]>(`${this.urlBase}?username=${username}`);
+}
 
 }

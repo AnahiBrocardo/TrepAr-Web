@@ -18,6 +18,7 @@ export class RegisterComponent {
  router= inject(Router);
  userService= inject(UserService);
  isPasswordVisible = false; // Controla la visibilidad de la contraseña
+  showProfileForm: boolean = false;// Variable para controlar la visibilidad del formulario de perfil
 
  formularioRegistrase= this.fb.nonNullable.group({
   nombre: ['', Validators.required],
@@ -25,6 +26,21 @@ export class RegisterComponent {
   email: ['', [Validators.required, Validators.email]],
   password: ['', [Validators.required, Validators.minLength(8)]]
  })
+
+ // Formulario de perfil
+ formularioPerfil = this.fb.group({
+  username:['', [Validators.required,Validators.minLength(3), Validators.maxLength(20)]],
+  descripcion: ['', [Validators.required]],
+  pais: ['', [Validators.required]],
+  ciudad: ['', [Validators.required]],
+  linkInstagram:[''],
+  linkLinkedIn: [''],
+  linkWeb: [''],
+  telefono: [''],
+  imagePerfil:['']
+
+});
+
 
  signIn() {
   if (this.formularioRegistrase.invalid) {
