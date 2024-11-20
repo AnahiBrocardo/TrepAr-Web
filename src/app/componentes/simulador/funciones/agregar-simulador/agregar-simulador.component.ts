@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-agregar-simulador',
   standalone: true,
@@ -173,6 +174,5 @@ calcularTodo() {
 
 
 }
-let lastId = 0; 
-export function generateIncrementalId(): string { lastId += 1; return `ID${lastId}`; }
+
   

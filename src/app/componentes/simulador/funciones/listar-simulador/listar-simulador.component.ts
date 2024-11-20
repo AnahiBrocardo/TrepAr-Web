@@ -141,9 +141,9 @@ agregarSimulado() {
     disableClose: true, // esto hace que si hago click por fuera de la ventana modal no se me cierre
     autoFocus: true, // esto hace que se ponga el foco del mouse n la veentana que se abre
     closeOnNavigation: false, //por si se aprieta algo fuera de la ventana
-    position: {top: '30px'},
-    width: '70vw',// Ancho del 80% del viewport
-    maxHeight: '80vh',
+    position: {top: '10vh'},
+    width: '80vw',// Ancho del 80% del viewport
+    maxHeight: '90vh',
     data: {
       tipo: 'CREAR',
       idUsuario: this.idUsuario // Pasa el idUsuario al diálogo
@@ -164,9 +164,9 @@ editarSimulador(simulador: Simulador) {
     disableClose: true,
     autoFocus: true,
     closeOnNavigation: false,
-    position: { top: '30px' },
-    width: '70vw',
-    maxHeight: '80vh',
+    position: { top: '10vh' },
+    width: '80vw',
+    maxHeight: '90vh',
     data: {
       tipo: 'EDITAR', // Modo edición
       simulador: simulador,// Pasa los datos del simulador
