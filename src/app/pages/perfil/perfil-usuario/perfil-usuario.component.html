@@ -6,6 +6,8 @@
   <span class="visually-hidden">Dismiss</span>
 </button>
 
+<app-editar-perfil [userId]="idUser" *ngIf="vistaPerfil"></app-editar-perfil>
+
   <div class="row "  *ngIf="!vistaPerfil">
     <div class="col-12 ">
       <div class="my-2">

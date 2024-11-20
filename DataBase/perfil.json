@@ -1,7 +1,6 @@
 {
   "perfiles": [
     {
-      "id": "a576",
       "idUser": "f5ef",
       "userName": "YasaiBaga",
       "descripcion": "Emprendimiento de comida vegetariana",
@@ -10,8 +9,10 @@
       "linkInstagram": "",
       "linkLinkedIn": "",
       "linkWeb": "",
-      "telefono": "",
-      "imagePerfil": ""
+      "telefono": "2234574158",
+      "imagePerfil": "",
+      "listaFavoritos": [],
+      "id": "a576"
     },
     {
       "id": "8c40",

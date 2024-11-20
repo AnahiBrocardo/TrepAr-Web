@@ -8,11 +8,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { lastValueFrom } from 'rxjs';
+import { EditarPerfilComponent } from '../editar-perfil/editar-perfil.component';
 
 @Component({
   selector: 'app-perfil-usuario',
   standalone: true,
-  imports: [MisProductosComponent, CommonModule, FormsModule],
+  imports: [MisProductosComponent, CommonModule, FormsModule, EditarPerfilComponent],
   templateUrl: './perfil-usuario.component.html',
   styleUrl: './perfil-usuario.component.css'
 })

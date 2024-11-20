@@ -23,8 +23,8 @@ export class PerfilService {
     return this.http.post<Perfil>(`${this.urlBase}`, perfil);
   }
 
-  actualizarPerfilByIdUser(idUser:string, perfil:Perfil): Observable<Perfil>{
-    return this.http.put<Perfil>(`${this.urlBase}/${idUser}`, perfil);
+  actualizarPerfilByIdUser(idPerfil:string, perfil:Perfil): Observable<Perfil>{
+    return this.http.put<Perfil>(`${this.urlBase}/${idPerfil}`, perfil);
   }
 
   // Método para verificar si un email ya está en uso

@@ -1,0 +1,103 @@
+<form [formGroup]="formularioActualizacionPerfil" (ngSubmit)="validarFormularioPerfil()">
+    <h3 class="title">Actualizacion de perfil</h3>
+    <div class="form-outline mb-4">
+      <div class="form-outline mb-4">
+        <label class="form-label" for="username">Nombre de usuario (o emprendimiento)*</label>
+        <input type="text" id="username" formControlName="username" class="form-control" placeholder="Nombre de usuario" />
+        <div *ngIf="formularioActualizacionPerfil.controls['username'].invalid && (formularioActualizacionPerfil.controls['username'].dirty || formularioActualizacionPerfil.controls['username'].touched)" class="alert alert-danger">
+          <div class="error" *ngIf="formularioActualizacionPerfil.controls['username'].getError('required')">
+            Nombre de usuario requerido
+          </div>
+          <div class="error" *ngIf="formularioActualizacionPerfil.controls['username'].hasError('minlength')">
+            El nombre de usuario debe tener al menos 3 caracteres
+          </div>
+          <div class="error" *ngIf="formularioActualizacionPerfil.controls['username'].hasError('maxlength')">
+            El nombre de usuario no puede tener más de 20 caracteres
+          </div>
+        </div>
+      </div>
+
+      <label class="form-label" for="descripcion">Descripción*</label>
+      <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Breve descripción sobre ti"></textarea>
+      <div *ngIf="formularioActualizacionPerfil.controls['descripcion'].invalid && (formularioActualizacionPerfil.controls['descripcion'].dirty || formularioActualizacionPerfil.controls['descripcion'].touched)" class="alert alert-danger">
+        <div class="error" *ngIf="formularioActualizacionPerfil.controls['descripcion'].getError('required')">
+          Descripción requerida
+        </div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="provincia">Provincia*</label>
+      <select id="provincia" formControlName="provincia" class="form-control" (change)="onProvinciaChange($event)">
+        <option value="" disabled selected>Selecciona una provincia</option>
+        <option *ngFor="let provincia of provincias" [value]="provincia">{{provincia}}</option>
+      </select>
+      <div *ngIf="formularioActualizacionPerfil.controls['provincia'].invalid && (formularioActualizacionPerfil.controls['provincia'].dirty || formularioActualizacionPerfil.controls['provincia'].touched)" class="alert alert-danger">
+        <div class="error" *ngIf="formularioActualizacionPerfil.controls['provincia'].getError('required')">
+          Provincia requerida
+        </div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="ciudad">Ciudad*</label>
+      <select id="ciudad" formControlName="ciudad" class="form-control">
+        <option value="" disabled>Selecciona una ciudad</option>
+        <option *ngFor="let ciudad of ciudades" [value]="ciudad" [selected]="ciudad === formularioActualizacionPerfil.get('ciudad')?.value">
+          {{ ciudad }}
+        </option>
+      </select>
+      
+      <div *ngIf="formularioActualizacionPerfil.controls['ciudad'].invalid && (formularioActualizacionPerfil.controls['ciudad'].dirty || formularioActualizacionPerfil.controls['ciudad'].touched)" class="alert alert-danger">
+        <div class="error" *ngIf="formularioActualizacionPerfil.controls['ciudad'].getError('required')">
+          l requerida
+        </div>
+      </div>
+    </div>
+    
+
+      <!-- Campos opcionales -->
+    <div class="form-outline mb-4">
+    <label class="form-label" for="linkInstagram">Enlace de Instagram</label>
+    <input type="text" id="linkInstagram" formControlName="linkInstagram" class="form-control" placeholder="https://instagram.com/tu-perfil" />
+    
+    <div *ngIf="formularioActualizacionPerfil.get('linkInstagram')?.invalid && formularioActualizacionPerfil.get('linkInstagram')?.touched" class="text-danger">
+      Ingresa un enlace válido de Instagram (por ejemplo, https://instagram.com/tu-perfil).
+    </div> 
+  </div>
+
+    <div class="form-outline mb-4">
+    <label class="form-label" for="linkLinkedIn">LinkedIn</label>
+    <input type="text" id="linkLinkedIn" formControlName="linkLinkedIn" class="form-control" placeholder="https://linkedin.com/in/tu-perfil" />
+    <div *ngIf="formularioActualizacionPerfil.get('linkLinkedIn')?.invalid && formularioActualizacionPerfil.get('linkLinkedIn')?.touched" class="text-danger">
+      Ingresa un enlace válido de LinkedIn (por ejemplo, https://linkedin.com/in/tu-perfil).
+    </div>   
+  </div>
+
+    <div class="form-outline mb-4">
+    <label class="form-label" for="linkWeb">Sitio Web</label>
+    <input type="text" id="linkWeb" formControlName="linkWeb" class="form-control" placeholder="https://www.tusitio.com" />
+    <div *ngIf="formularioActualizacionPerfil.get('linkWeb')?.invalid && formularioActualizacionPerfil.get('linkWeb')?.touched" class="text-danger">
+      Ingresa una URL válida (por ejemplo, https://www.tusitio.com).
+    </div>  
+  </div>
+
+    <div class="form-outline mb-4">
+    <label class="form-label" for="telefono">Teléfono</label>
+    <input type="text" id="telefono" formControlName="telefono" class="form-control" placeholder="Número de teléfono" />
+    <div *ngIf="formularioActualizacionPerfil.get('telefono')?.invalid && formularioActualizacionPerfil.get('telefono')?.touched" class="text-danger">
+      Ingresa un número de teléfono válido (por ejemplo, para Argentina,+54 9 11 6123-4567 o 011 6123-4567).
+    </div> 
+  </div>
+
+    <div class="form-outline mb-4">
+    <label class="form-label" for="imagePerfil">Ingresa una URL para la imagen de perfil</label>
+    <input type="text" id="imagePerfil" formControlName="imagePerfil" class="form-control" placeholder="https://ejemplo.com/imagen.jpg" />
+    <div *ngIf="formularioActualizacionPerfil.get('imagePerfil')?.invalid && formularioActualizacionPerfil.get('imagePerfil')?.touched" class="text-danger">
+      La imagen debe tener un formato válido (.jpg, .jpeg, .png, .gif, .bmp, .webp).
+    </div>  
+  </div>
+
+    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+      Guardar Cambios
+    </button>

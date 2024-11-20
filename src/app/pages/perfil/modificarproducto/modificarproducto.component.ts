@@ -88,13 +88,17 @@ export class ModificarproductoComponent implements OnInit{
 
     this.productoServices.putProductos(this.productoId, productoActualizado).subscribe({
       next: (producto: ProductoInterface) => {
-        console.log('Producto actualizado:', producto);
         Swal.fire("Producto actualizado correctamente");
         location.reload();
       },
       error: (e) => {
         console.log(e.message);
-        alert('Error al actualizar el producto');
+        Swal.fire({
+          title: 'Error!',
+          text: 'Error al actualizar el producto',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
       }
     });
   }

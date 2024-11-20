@@ -42,7 +42,7 @@ getProvinciaIdByNombre(nombreProvincia: string): Observable<string | null> {
 
 // Método para obtener provincias
 getLocalidadesIdProvincia(idProvincia: string): Observable<any> {
-  const url = `https://apis.datos.gob.ar/georef/api/localidades?provincia=${idProvincia}&campos=id,nombre&max=200`;
+  const url = `https://apis.datos.gob.ar/georef/api/localidades?provincia=${idProvincia}&campos=id,nombre&max=400`;
   return this.http.get<any>(url);
 }
 
