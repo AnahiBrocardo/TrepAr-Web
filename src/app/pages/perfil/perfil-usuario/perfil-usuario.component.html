@@ -1,5 +1,14 @@
+
 <div class="container">
-  <div class="row ">
+  
+  <button *ngIf="vistaPerfil" class="btn btn-outline-primary p-2 lh-1 button-edit" type="button" (click)="editarPerfil()">
+  Volver
+  <span class="visually-hidden">Dismiss</span>
+
+  
+</button>
+
+  <div class="row "  *ngIf="!vistaPerfil">
     <div class="col-12 ">
       <div class="my-2">
 
@@ -7,7 +16,11 @@
         <div class="row datos-perfil align-items-center ">
           <!-- Sección de imagen y nombre de usuario -->
           <div class="col-md-3 text-center ">
-            <div class="avatar avatar-xl">
+           <button class="btn btn-outline-primary rounded-circle p-2 lh-1 button-edit" type="button" (click)="editarPerfil()">
+            <i class="fa-solid fa-pen-to-square" ></i>
+            <span class="visually-hidden">Dismiss</span>
+          </button>
+            <div class="avatar avatar-xl" >
                <!-- Ícono para cambiar la imagen -->
                <button  class="btn btn-light position-absolute top-0 start-0 translate-middle" aria-label="Subir imagen" (click)="guardarImagen()">
                 <i class="fa-solid fa-upload"></i>
@@ -49,7 +62,7 @@
         </div>
 
         <!-- Sección de productos -->
-        <div class="row">
+        <div class="row"  *ngIf="!vistaPerfil">
           <div class="col-12">
             <app-mis-productos [userId]="idUser"></app-mis-productos>
           </div>

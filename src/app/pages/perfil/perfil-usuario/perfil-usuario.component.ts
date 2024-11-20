@@ -21,6 +21,7 @@ export class PerfilUsuarioComponent implements OnInit {
 
   isLoading: boolean = true;
   idUser: string='';
+  vistaPerfil: boolean=false;
   perfilData?: Perfil;
 
   private cdr = inject(ChangeDetectorRef);
@@ -107,5 +108,7 @@ export class PerfilUsuarioComponent implements OnInit {
       Swal.fire('Error', 'No se pudo procesar la solicitud. Inténtalo más tarde.', 'error');
     });
   }
-  
+  editarPerfil(){
+   this.vistaPerfil=!this.vistaPerfil;
+  }
 }

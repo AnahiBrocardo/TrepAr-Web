@@ -56,3 +56,8 @@ a {
 a:hover {
   color: #88d9df; 
 }
+
+.button-edit{
+  /* align-self: flex-end; */
+
+}
