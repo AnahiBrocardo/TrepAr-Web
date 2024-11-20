@@ -31,7 +31,7 @@ deleteSimulador(id: number | undefined): Observable<Simulador> {
   return this.http.delete<Simulador>(`${this.urlBase}/${id}`)
 }
 
-putSimulador(id: number | null, Simulador: Simulador): Observable<Simulador> {
+putSimulador(id: string | null, Simulador: Simulador): Observable<Simulador> {
   return this.http.put<Simulador>(`${this.urlBase}/${id}`, Simulador)
 }
 }

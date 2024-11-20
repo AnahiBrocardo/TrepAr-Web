@@ -158,7 +158,30 @@ agregarSimulado() {
 }
 
 
-///--------------MODAL---------------------------
+///--------------MODIFICAR---------------------------
+editarSimulador(simulador: Simulador) {
+  const dialogRef = this.dialog.open(AgregarSimuladorComponent, {
+    disableClose: true,
+    autoFocus: true,
+    closeOnNavigation: false,
+    position: { top: '30px' },
+    width: '70vw',
+    maxHeight: '80vh',
+    data: {
+      tipo: 'EDITAR', // Modo edición
+      simulador: simulador,// Pasa los datos del simulador
+      idUsuario: this.idUsuario
+    }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      console.log('Simulador actualizado:', result);
+      // Aquí puedes actualizar la lista de simuladores
+      this.listarTodasSimulaciones(this.idUsuario); //Método para recargar la lista
+    }
+  });
+}
 
 
 }
