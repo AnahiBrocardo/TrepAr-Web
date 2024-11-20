@@ -1,24 +1,11 @@
-<div *ngIf="productos.length > 0; else noProductos" class="producto-lista">
-  <div class="productos-header">
+<div class="producto-lista">
+  <div class="productos-header" *ngIf="!booleanModificarProducto">
     <h3>Productos</h3>
-    <button type="button" class="btn btn-outline-success"  (click)="abrirModal()"> Agregar producto </button>
-    <!-- Modal de Bootstrap -->
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="myModalLabel">Agregar Producto</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <app-agregar-producto-perfil [userId]="userId"></app-agregar-producto-perfil>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <mat-form-field  class="buscar">
+    <button type="button" class="btn btn-outline-success" *ngIf="!booleanAgregar" (click)="modificarBooleanAgregar()"> Agregar producto </button>
+    <button type="button" class="btn btn-outline-success" *ngIf="booleanAgregar" (click)="modificarBooleanAgregar()"> Volver </button>
+    <app-agregar-producto-perfil [userId]="userId" *ngIf="booleanAgregar" ></app-agregar-producto-perfil>
+    
+    <mat-form-field  class="buscar" *ngIf="!booleanAgregar">
       <mat-label>Buscar</mat-label>
       <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" (keyup)="leerTodo()" matInput>
       <mat-icon matSuffix>search</mat-icon>
@@ -27,37 +14,46 @@
   </div>
 
   <!-- Contenedor de productos -->
-  <div class="productos-container">
-    <div *ngFor="let producto of productos" class="col-md-4 mb-4">
+  <div class="productos-container"  *ngIf="!booleanAgregar && !booleanModificarProducto">
+    <div *ngFor="let producto of productos" class="col-md-4 mb-4" >
       <div class="card">
         <img [src]="producto.imagen ? producto.imagen : 'assets/img/imagen-por-defecto.jpg'" alt="Imagen del producto" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title">{{ producto.nombre }}</h5>
+          <div class="card-title">
+            <h5 class="nombre-producto">{{ producto.nombre }}</h5>
+            <button 
+            *ngIf="producto.id"
+            class="btn btn-link p-0 ms-2 text-primary" 
+           (click)="modificarProducto(producto.id)">
+            <i class="fa-solid fa-pen-to-square"></i>
+            Editar
+            </button>
+          </div>
+          
           <p class="card-text"><strong>Categoría:</strong> {{ producto.categoria }}</p>
           <p class="card-text"><strong>Descripción:</strong> {{ producto.descripcion }}</p>
           <p class="card-text"><strong>Precio:</strong> {{ producto.precio | currency }}</p>
 
-          <!-- Botones de acción -->
           <div class="d-flex justify-content-between">
             <button 
-          class="btn btn-sm d-flex align-items-center justify-content-center" 
-          [ngClass]="producto.privado ? 'btn-secondary' : 'btn-primary'" 
-          (click)="cambiarPrivacidad(producto.id)">
-          <mat-icon>{{ producto.privado ? 'visibility_off' : 'visibility' }}</mat-icon>
-          <span class="ms-1">{{ producto.privado ? 'Privado' : 'Público' }}</span>
-          </button>
+              class="btn btn-sm d-flex align-items-center justify-content-center" 
+              [ngClass]="producto.privado ? 'btn-secondary' : 'btn-primary'" 
+              (click)="cambiarPrivacidad(producto.id)">
+              <mat-icon>{{ producto.privado ? 'visibility_off' : 'visibility' }}</mat-icon>
+              <span class="ms-1">{{ producto.privado ? 'Privado' : 'Público' }}</span>
+            </button>
 
             <button class="btn btn-danger btn-sm d-flex align-items-center justify-content-center" (click)="eliminarProducto(producto.id)">
               <mat-icon>delete</mat-icon><span class="ms-1">Eliminar</span>
             </button>
-            
+
+          </div>
           </div>
         </div>
       </div>
     </div>
+    <div>
+      <button type="button" class="btn btn-outline-success" *ngIf="booleanModificarProducto" (click)="modificarBooleanModificar()"> Volver </button>
+    <app-modificarproducto [productoId]="productoId"  [idUser]="userId" *ngIf="booleanModificarProducto"></app-modificarproducto>
+    </div>
   </div>
-</div>
-
-<ng-template #noProductos>
-  <p>No hay productos disponibles para este usuario.</p>
-</ng-template>

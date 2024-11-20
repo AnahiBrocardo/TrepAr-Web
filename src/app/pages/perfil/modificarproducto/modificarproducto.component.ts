@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoServiceService } from '../../../Servicios/productos/productos-service.service';
 import { ProductoInterface } from '../../../Interfaces/producto-interface';
@@ -13,32 +13,40 @@ import Swal from 'sweetalert2';
   templateUrl: './modificarproducto.component.html',
   styleUrl: './modificarproducto.component.css'
 })
-export class ModificarproductoComponent {
+
+
+export class ModificarproductoComponent implements OnInit{
+  @Input() 
+  productoId!: string; 
+
+  @Input() 
+  idUser!: string;
+  
   activated = inject(ActivatedRoute);
   productoServices = inject(ProductoServiceService);
   fb = inject(FormBuilder);
-  
-  userId: string = '';
-  productoId: string = '';
+
+
   producto: ProductoInterface | null = null;
 
   // Formulario reactivo
   formulario = this.fb.group({
+    idUser:[''],
     nombre: ['', Validators.required],
     categoria: ['', Validators.required],
     descripcion: ['', Validators.required],
     precio: ['', Validators.required],
-    deletedAt: [false]
+    deletedAt: [false],
+    privado: [false],
+    imagen: ['']
   });
 
+
+ 
+  
   ngOnInit(): void {
-    this.activated.paramMap.subscribe({
-      next: (param) => {
-        this.productoId = param.get('id')!;
-        this.userId = param.get('userId')!;
-        this.obtenerProducto(this.productoId);
-      }
-    });
+    this.formulario.patchValue({ idUser: this.idUser });
+    this.obtenerProducto(this.productoId);
   }
 
   // Obtener el producto que se desea editar
@@ -51,7 +59,9 @@ export class ModificarproductoComponent {
           categoria: producto.categoria,
           descripcion: producto.descripcion,
           precio: producto.precio,
-          deletedAt: producto.deletedAt
+          privado: producto.privado,
+          imagen: producto.imagen
+          
         });
       },
       error: (e) => {
@@ -66,18 +76,21 @@ export class ModificarproductoComponent {
 
     const productoActualizado: ProductoInterface = {
       id: this.productoId,
-      idUser: this.userId,
+      idUser: this.idUser,
       nombre: this.formulario.value.nombre || '',  // Si es null o undefined, usa una cadena vacía
       categoria: this.formulario.value.categoria || '',
       descripcion: this.formulario.value.descripcion || '',
       precio: this.formulario.value.precio || '',
-      deletedAt: this.formulario.value.deletedAt || false
+      deletedAt:false,
+      privado: this.formulario.value.privado || false,
+      imagen: this.formulario.value.imagen || ''
     };
 
     this.productoServices.putProductos(this.productoId, productoActualizado).subscribe({
       next: (producto: ProductoInterface) => {
         console.log('Producto actualizado:', producto);
         Swal.fire("Producto actualizado correctamente");
+        location.reload();
       },
       error: (e) => {
         console.log(e.message);

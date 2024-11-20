@@ -1,5 +1,26 @@
 {
   "productos": [
-   
+    {
+      "id": "1634",
+      "idUser": "0a2e",
+      "nombre": "Remeron marrón",
+      "categoria": "Ropa",
+      "descripcion": "Remeron de algodón, color marron. Talles disponibles: S, M, XL, XXL.",
+      "precio": "10000",
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/709/396/products/overchoco-9abd584f4ce541a73517156986142429-240-0.png"
+    },
+    {
+      "id": "5a9a",
+      "idUser": "0a2e",
+      "nombre": "Jean Mom",
+      "categoria": "Ropa",
+      "descripcion": "Jean color azul",
+      "precio": 20000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/721/837/products/img_9154-d2be51bf0b4ccfc17817116637511473-1024-1024.jpg"
+    }
   ]
 }

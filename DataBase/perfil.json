@@ -12,6 +12,32 @@
       "linkWeb": "",
       "telefono": "",
       "imagePerfil": ""
+    },
+    {
+      "id": "8c40",
+      "idUser": "f7f8",
+      "userName": "Mosai",
+      "descripcion": "Emprendimiento de jabones artesanales",
+      "provincia": "Buenos Aires",
+      "ciudad": "Mar del Plata",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "",
+      "imagePerfil": ""
+    },
+    {
+      "id": "40f3",
+      "idUser": "0a2e",
+      "userName": "Mua",
+      "descripcion": "Venta de ropa femenina",
+      "provincia": "Buenos Aires",
+      "ciudad": "Mar del Plata",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "2234414785",
+      "imagePerfil": "https://pub-static.fotor.com/assets/projects/pages/d5bdd0513a0740a8a38752dbc32586d0/fotor-03d1a91a0cec4542927f53c87e0599f6.jpg"
     }
   ]
 }

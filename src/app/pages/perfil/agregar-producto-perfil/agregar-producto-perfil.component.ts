@@ -20,6 +20,7 @@ export class AgregarProductoPerfilComponent implements OnInit{
   userId!: string; // Declarar explícitamente la propiedad
   
   ngOnInit(): void {
+    this.formulario.patchValue({ idUser: this.userId });
   }
 
   activated= inject(ActivatedRoute);
@@ -41,7 +42,7 @@ export class AgregarProductoPerfilComponent implements OnInit{
         descripcion: ['', Validators.required],
         precio: ['', Validators.required],
         deletedAt: false,
-        privado: true,
+        privado: [true, Validators.required],
         imagen:['']
       }
     )

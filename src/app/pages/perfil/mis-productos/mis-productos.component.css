@@ -19,9 +19,17 @@
   padding: 2vw;
 }
 
+
+.nombre-producto{
+ font-size: 1.2rem;
+ font-weight: bold;
+ color: #353434;
+}
+
 .card-title {
-  font-size: 1.2em;
   font-weight: bold;
+  display:flex;
+  justify-content:space-between;
 }
 
 .card-text {
@@ -33,4 +41,15 @@
 .no-productos {
   text-align: center;
   font-size: 1.2em;
+}
+
+.buscar{
+  width:28vw;
+  margin-left: 23vw;
+}
+
+.card-img-top {
+  object-fit: cover; /* Mantiene el aspecto sin deformar */
+  width: 100%; /* Ajusta la anchura al contenedor */
+  max-height: 45vh; /* Altura máxima */
 }

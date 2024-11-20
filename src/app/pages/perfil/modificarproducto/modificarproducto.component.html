@@ -1,4 +1,5 @@
 <form [formGroup]="formulario" (ngSubmit)="actualizarProducto()">
+  <h3>Modificar Producto</h3>
     <div>
       <label for="nombre">Nombre:</label>
       <input id="nombre" formControlName="nombre">
@@ -15,10 +16,21 @@
       <label for="precio">Precio:</label>
       <input id="precio" formControlName="precio">
     </div>
-    <div>
-      <label for="deletedAt">Eliminado:</label>
-      <input type="checkbox" id="deletedAt" formControlName="deletedAt">
+
+    <div class="form-group">
+      <label for="imagen"> Imagen:</label>
+      <input type="text" id="imagen" formControlName="imagen" class="form-control" placeholder="Introduce la URL de la imagen" />
     </div>
+    
+
+    <div class="form-group">
+      <label for="privacidad">* Privacidad :</label>
+      <select id="privacidad" formControlName="privado" class="form-control">
+        <option value="true">Privado</option>
+        <option value="false">Público</option>
+      </select>
+    </div>
+
     <button type="submit" [disabled]="formulario.invalid">Guardar Cambios</button>
   </form>
   

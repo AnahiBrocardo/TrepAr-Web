@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AgregarProductoPerfilComponent } from '../agregar-producto-perfil/agregar-producto-perfil.component';
+import { ModificarproductoComponent } from '../modificarproducto/modificarproducto.component';
 
 @Component({
   selector: 'app-mis-productos',
@@ -18,7 +19,8 @@ import { AgregarProductoPerfilComponent } from '../agregar-producto-perfil/agreg
     MatIconModule,
     MatInputModule,
     FormsModule,
-    AgregarProductoPerfilComponent
+    AgregarProductoPerfilComponent,
+    ModificarproductoComponent
 ],
   templateUrl: './mis-productos.component.html',
   styleUrls: ['./mis-productos.component.css']
@@ -27,6 +29,10 @@ export class MisProductosComponent implements OnInit {
   productoServices = inject(ProductoServiceService);
   productos: ProductoInterface[] = [];
   textoBuscado: string = '';
+  booleanAgregar:boolean=false;
+  booleanModificarProducto:boolean=false;
+  productoId:string= '';
+
   @Input() userId!: string; // Declarar explícitamente la propiedad
   
   ngOnInit(): void {
@@ -83,58 +89,58 @@ export class MisProductosComponent implements OnInit {
   }
 
   cambiarPrivacidad(idProducto: string | undefined): void {
-    if(idProducto){
-    this.productoServices.getProductoById(idProducto).subscribe({
-      next: (producto: ProductoInterface) => {
-        // Cambiar la privacidad del producto
-        producto.privado = !producto.privado;
-  
-        // Actualizar el producto en el servidor
-        this.productoServices.putProductos(this.userId, producto).subscribe({
-          next: () => {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 1000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-              }
-            });
-  
-            Toast.fire({
-              icon: 'success',
-              title: 'La privacidad del producto se actualizó correctamente'
-            });
-          },
-          error: (e: Error) => {
-            Swal.fire({
-              title: 'Error',
-              text: 'No se pudo actualizar la privacidad del producto. Inténtalo nuevamente.',
-              icon: 'error',
-              confirmButtonText: 'Aceptar'
-            });
-            console.error(e);
-          }
-        });
-      },
-      error: (e: Error) => {
-        Swal.fire({
-          title: 'Error',
-          text: 'No se pudo obtener la información del producto. Inténtalo nuevamente.',
-          icon: 'error',
-          confirmButtonText: 'Aceptar'
-        });
-        console.error(e);
-      }
-    });
-  }
+    if (idProducto) {
+      this.productoServices.getProductoById(idProducto).subscribe({
+        next: (producto: ProductoInterface) => {
+          const nuevaPrivacidad = !producto.privado; // Cambiar la privacidad
+          this.productoServices.putProductos(this.userId, { ...producto, privado: nuevaPrivacidad }).subscribe({
+            next: () => {
+              // Actualizar la privacidad localmente
+              producto.privado = nuevaPrivacidad;
+              Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Cambios guardados',
+                showConfirmButton: false,
+                timer: 3000
+              });
+              location.reload();
+            },
+            error: (e: Error) => {
+              console.error(e);
+              Swal.fire({
+                title: 'Error',
+                text: 'No se pudo actualizar la privacidad del producto.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+              });
+            }
+          });
+        },
+        error: (e: Error) => {
+          console.error(e);
+          Swal.fire({
+            title: 'Error',
+            text: 'No se pudo obtener el producto.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          });
+        }
+      });
+    }
   }
   
-  abrirModal() {
-    
+  modificarBooleanAgregar(){
+    this.booleanAgregar=!this.booleanAgregar;
   }
     
+  modificarProducto(idProducto:string){
+    this.booleanModificarProducto=!this.booleanModificarProducto;
+    this.productoId= idProducto;
+  }
+
+  modificarBooleanModificar(){
+    this.booleanModificarProducto=!this.booleanModificarProducto;
+  }
   }

@@ -176,7 +176,7 @@
 
               <div class="form-outline mb-4">
               <label class="form-label" for="imagePerfil">Ingresa una URL para la imagen de perfil</label>
-              <input type="file" id="imagePerfil" formControlName="imagePerfil" class="form-control" placeholder="https://ejemplo.com/imagen.jpg" />
+              <input type="text" id="imagePerfil" formControlName="imagePerfil" class="form-control" placeholder="https://ejemplo.com/imagen.jpg" />
               <div *ngIf="formularioPerfil.get('imagePerfil')?.invalid && formularioPerfil.get('imagePerfil')?.touched" class="text-danger">
                 La imagen debe tener un formato válido (.jpg, .jpeg, .png, .gif, .bmp, .webp).
               </div>  

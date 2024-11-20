@@ -8,6 +8,24 @@
       "password": "12345678",
       "createdAt": "2024-11-19T19:28:45.251Z",
       "deletedAt": null
+    },
+    {
+      "id": "f7f8",
+      "nombre": "Anahi",
+      "apellido": "Brocardo",
+      "email": "ana@gmail.com",
+      "password": "12345678",
+      "createdAt": "2024-11-19T21:16:15.423Z",
+      "deletedAt": null
+    },
+    {
+      "id": "0a2e",
+      "nombre": "Monica",
+      "apellido": "Fernandez",
+      "email": "moni@mail.com",
+      "password": "11111111",
+      "createdAt": "2024-11-19T21:35:55.285Z",
+      "deletedAt": null
     }
   ]
 }
