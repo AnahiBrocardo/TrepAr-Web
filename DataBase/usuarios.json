@@ -26,6 +26,15 @@
       "password": "11111111",
       "createdAt": "2024-11-19T21:35:55.285Z",
       "deletedAt": null
+    },
+    {
+      "id": "0eec",
+      "nombre": "Maria",
+      "apellido": "Lopez",
+      "email": "maria@mail.com",
+      "password": "12345678",
+      "createdAt": "2024-11-20T12:22:41.919Z",
+      "deletedAt": null
     }
   ]
 }

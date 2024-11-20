@@ -37,11 +37,6 @@ export class SidenavComponent implements OnInit{
       label: 'Simulador',
     },
     {
-      routeLink: `producto/:id`,
-      icon: 'fal fa-box-open',
-      label: 'Producto',
-    },
-    {
       routeLink: 'settings/:id',
       icon: 'fal fa-cog',
       label: 'Settings',
@@ -58,10 +53,9 @@ export class SidenavComponent implements OnInit{
 
   // Método para actualizar las rutas con el idUser
   updateRoutes(id:string): void {
-    this.items[2].routeLink = `producto/${id}`; // Rutas dependientes de idUser
     this.items[1].routeLink = `simulador/${id}`;
-    this.items[3].routeLink = `settings/${id}`;
-    this.items[4].routeLink = `perfil/${id}`;
+    this.items[2].routeLink = `settings/${id}`;
+    this.items[3].routeLink = `perfil/${id}`;
   }
 
   toggleCollapse(): void {

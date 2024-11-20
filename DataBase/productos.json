@@ -21,6 +21,28 @@
       "deletedAt": false,
       "privado": false,
       "imagen": "https://acdn.mitiendanube.com/stores/721/837/products/img_9154-d2be51bf0b4ccfc17817116637511473-1024-1024.jpg"
+    },
+    {
+      "id": "a595",
+      "idUser": "0eec",
+      "nombre": "Remeron ",
+      "categoria": "Ropa",
+      "descripcion": "Remeron de algodón, color marron. Talles disponibles: S, M, XL, XXL.",
+      "precio": 10000,
+      "deletedAt": false,
+      "privado": true,
+      "imagen": "https://acdn.mitiendanube.com/stores/709/396/products/overchoco-9abd584f4ce541a73517156986142429-240-0.png"
+    },
+    {
+      "id": "fa98",
+      "idUser": "0eec",
+      "nombre": "Vela",
+      "categoria": "Ropa",
+      "descripcion": "f",
+      "precio": 10000,
+      "deletedAt": false,
+      "privado": true,
+      "imagen": ""
     }
   ]
 }

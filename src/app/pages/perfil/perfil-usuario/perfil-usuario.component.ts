@@ -2,7 +2,6 @@ import { Perfil } from './../../../Interfaces/perfil.interface';
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PerfilService } from '../../../Servicios/perfil/perfil.service';
-import { ListarProductoComponent } from '../../../componentes/productos/listar-producto/listar-producto.component';
 import { MisProductosComponent } from '../mis-productos/mis-productos.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
