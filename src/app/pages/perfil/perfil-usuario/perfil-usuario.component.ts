@@ -58,56 +58,6 @@ export class PerfilUsuarioComponent implements OnInit {
   }
   
 
-   guardarImagen() { //ver porque fallla!!!
-    Swal.fire({
-      title: 'Introduce la URL de la imagen',
-      input: 'url',
-      inputPlaceholder: 'https://ejemplo.com/imagen.png',
-      inputAttributes: {
-        'aria-label': 'URL de la imagen'
-      },
-      showCancelButton: true,
-      confirmButtonText: 'Guardar',
-      cancelButtonText: 'Cancelar',
-      showLoaderOnConfirm: true,
-      preConfirm: async (url) => {
-        // Validar la URL ingresada
-        if (!url || !/^https?:\/\/.+\.(jpg|jpeg|png|gif)$/i.test(url)) {
-          Swal.showValidationMessage('Por favor, introduce una URL válida de imagen.');
-          return Promise.reject(); // Detener ejecución si la URL no es válida
-        }
-  
-        // Asegurarse de que los datos del perfil están cargados
-        if (!this.perfilData) {
-          Swal.showValidationMessage('Datos de perfil no disponibles.');
-          return Promise.reject(); // Detener ejecución si no hay datos del perfil
-        }
-  
-        try {
-          // Actualizar la imagen en el perfil
-          this.perfilData.imagePerfil = url;
-          await lastValueFrom(this.servicioPerfil.actualizarPerfilByIdUser(this.idUser, this.perfilData));
-        } catch (error) {
-          console.error('Error al actualizar la imagen:', error);
-          Swal.showValidationMessage('No se pudo actualizar la imagen. Inténtalo más tarde.');
-          return Promise.reject(); // Detener ejecución si falla la actualización
-        }
-      }
-    }).then((result) => {
-      // Si el usuario confirma, mostrar mensaje de éxito
-      if (result.isConfirmed) {
-        Swal.fire('Imagen actualizada', 'La imagen de perfil ha sido modificada.', 'success');
-      } 
-      // Si el usuario cancela, mostrar mensaje de cancelación
-      else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire('Operación cancelada', 'La imagen no ha sido modificada.', 'info');
-      }
-    }).catch((error) => {
-      // Manejar errores globales (opcional)
-      console.error('Error general:', error);
-      Swal.fire('Error', 'No se pudo procesar la solicitud. Inténtalo más tarde.', 'error');
-    });
-  }
   editarPerfil(){
    this.vistaPerfil=!this.vistaPerfil;
   }

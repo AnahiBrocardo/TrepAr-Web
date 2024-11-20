@@ -4,8 +4,6 @@
   <button *ngIf="vistaPerfil" class="btn btn-outline-primary p-2 lh-1 button-edit" type="button" (click)="editarPerfil()">
   Volver
   <span class="visually-hidden">Dismiss</span>
-
-  
 </button>
 
   <div class="row "  *ngIf="!vistaPerfil">
@@ -21,10 +19,6 @@
             <span class="visually-hidden">Dismiss</span>
           </button>
             <div class="avatar avatar-xl" >
-               <!-- Ícono para cambiar la imagen -->
-               <button  class="btn btn-light position-absolute top-0 start-0 translate-middle" aria-label="Subir imagen" (click)="guardarImagen()">
-                <i class="fa-solid fa-upload"></i>
-              </button>
               <!-- Imagen de perfil -->
               <img  [src]="perfilData?.imagePerfil || 'assets/img/usuario.png'" alt="Imagen de perfil" class="avatar-img rounded-circle">
               
