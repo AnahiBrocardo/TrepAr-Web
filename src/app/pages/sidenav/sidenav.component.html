@@ -1,23 +1,20 @@
 <div
-  class="sidenav"
+  class="sidenav text-bg-dark"
   [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''"
 >
   <div class="logo-container">
-    <button class="logo" (click)="toggleCollapse()">
+    <button class="logo" (click)="toggleCollapse()" aria-label="Abrir o cerrar menú">
       <i class="fal fa-bars"></i>
     </button>
     @if (!isLeftSidebarCollapsed()) {
       <div class="logo-text">
         <img src="/assets/img/logo nav2.png" alt="Logo de TrepAr">
       </div>
-      <button class="btn-close" (click)="closeSidenav()">
-        <i class="fal fa-times close-icon"></i>.
-      </button>
     }
   </div>
   <div class="sidenav-nav">
     @for (item of items; track $index) {
-      
+
       <li class="sidenav-nav-item">
         <a
           class="sidenav-nav-link"
@@ -31,10 +28,12 @@
           }
         </a>
       </li>
-    
     }
-    <section id="logout">
-    <button class="botonLogOut" (click)="redirigir()">Salir</button>
-    </section>
   </div>
+  <section class="container-fluid" id="logout">
+    <button class="btn btn-outline-light rounded-circle p-3 lh-1" type="button" (click)="redirigir()">
+      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+      <span class="visually-hidden">Dismiss</span>
+    </button>
+  </section>
 </div>
