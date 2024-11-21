@@ -53,3 +53,12 @@
   width: 100%; /* Ajusta la anchura al contenedor */
   max-height: 45vh; /* Altura máxima */
 }
+
+
+.filtro{
+margin-bottom: 2vh;
+}
+
+.custom-select{
+  width:9vw;
+}

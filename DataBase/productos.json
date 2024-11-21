@@ -8,7 +8,7 @@
       "descripcion": "Remeron de algodón, color marron. Talles disponibles: S, M, XL, XXL.",
       "precio": "10000",
       "deletedAt": false,
-      "privado": false,
+      "privado": true,
       "imagen": "https://acdn.mitiendanube.com/stores/709/396/products/overchoco-9abd584f4ce541a73517156986142429-240-0.png"
     },
     {

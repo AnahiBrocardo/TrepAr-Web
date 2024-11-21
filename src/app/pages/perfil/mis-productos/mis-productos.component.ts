@@ -29,6 +29,7 @@ export class MisProductosComponent implements OnInit {
   productoServices = inject(ProductoServiceService);
   productos: ProductoInterface[] = [];
   textoBuscado: string = '';
+  filtro: string= '';
   booleanAgregar:boolean=false;
   booleanModificarProducto:boolean=false;
   productoId:string= '';
@@ -37,6 +38,7 @@ export class MisProductosComponent implements OnInit {
   
   ngOnInit(): void {
     this.obtenerProductos(this.userId);
+    this.filtrar();
   }
 
   obtenerProductos(idUsuario: string) {
@@ -81,6 +83,7 @@ export class MisProductosComponent implements OnInit {
               producto.nombre.toLowerCase().includes(this.textoBuscado.toLowerCase())
             )
           : productos;
+
       },
       error: (error) => {
         console.error('Error al obtener los productos:', error);
@@ -143,4 +146,24 @@ export class MisProductosComponent implements OnInit {
   modificarBooleanModificar(){
     this.booleanModificarProducto=!this.booleanModificarProducto;
   }
+
+  
+  filtrar(){
+    this.productoServices.getProductos(this.userId).subscribe({
+      next: (productos: ProductoInterface[]) => {
+        // Filtrar los productos según el valor seleccionado
+        if (this.filtro === 'privados') {
+          this.productos = productos.filter(producto => producto.privado === true);
+        } else if (this.filtro === 'publicos') {
+          this.productos = productos.filter(producto => producto.privado === false);
+        } else {
+          this.productos = productos; // Mostrar todos los productos
+        }
+      },
+      error: (e: Error) => {
+        console.error('Error al filtrar los productos:', e.message);
+      }
+    });
   }
+
+}
