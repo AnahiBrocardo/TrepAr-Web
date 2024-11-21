@@ -2,10 +2,21 @@
   <div class="navbar-content">
     <a class="navbar-brand">
       <i class="fa-solid fa-user-group" style="color: #ffffff;"></i>
-      Comunidad TrepAr</a>
+      Comunidad TrepAr
+    </a>
     <form class="search-form d-flex" role="search">
       <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
       <button class="btn btn-outline-light" type="submit">Buscar</button>
+
+      <!-- Desplegable para filtros -->
+       <div class="filtros">
+        <select class="form-select form-select-sm ms-2 fs-10 custom-select"  aria-label="Filtro de búsqueda">
+          <option value="emprendedores" selected>Emprendedor</option>
+          <option value="productos">Productos</option>
+          <option value="categorias">Categorías</option>
+        </select>
+       </div>
+      
     </form>
   </div>
 </nav>

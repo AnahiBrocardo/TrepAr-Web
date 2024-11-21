@@ -1,9 +1,10 @@
+
 <div class="comunidad-container" *ngIf="visibilidadComunidad">
-    <app-barra-busqueda-principal></app-barra-busqueda-principal>
+  <app-barra-busqueda-principal (infoBusqueda)="onSearchDataReceived($event)"></app-barra-busqueda-principal>
     <div class="row container">
       <div class="col-md-4" *ngFor="let perfil of perfiles">
         <div class="card-container">
-          <div class="card" style="width: 18rem;">
+          <div class="card" style="width: 20rem;">
             <img [src]="perfil.imagePerfil ? perfil.imagePerfil : 'assets/img/usuario.png'" class="card-img-top" alt="Foto de perfil">
             <div class="card-body">
               <h5 class="card-title">{{ perfil.userName }}</h5>
@@ -29,9 +30,9 @@
   
   <!-- Condición para mostrar el perfil y el botón de volver -->
   <div *ngIf="!visibilidadComunidad">
-    <div class="container">
+    
       <button type="button" class="btn btn-outline-dark" (click)="cambiarVisibilidad()">Volver</button>
       <app-perfil-comunidad [userId]="userId" [perfilSeleccionadoIdPerfil]="perfilSeleccionadoId"></app-perfil-comunidad>
-    </div>
+    
   </div>
   

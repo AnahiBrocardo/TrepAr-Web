@@ -16,6 +16,9 @@ export class ComunidadPrincipalComponent implements OnInit{
   @Input()
   userId?:string;
 
+  // Propiedades para almacenar los datos recibidos de la barra de busqueda
+  textoBusqueda: string = '';
+  filtro: string = 'emprendedores';
 
   visibilidadComunidad:boolean=true;
   perfilSeleccionadoId:string='';
@@ -52,5 +55,7 @@ export class ComunidadPrincipalComponent implements OnInit{
   cambiarVisibilidad(){
     this.visibilidadComunidad=!this.visibilidadComunidad;
   }
+
+ 
 }
 

@@ -4,21 +4,20 @@
   }
   
   .navbar {
-    background-color: rgba(0, 0, 0, 0.6); /* Negro con 60% de transparencia */
+    background-color: rgba(0, 0, 0, 0.87); /* Negro con 60% de transparencia */
     color: white; /* Color del texto */
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between; /* Espacio entre los elementos */
     align-items: center;
     z-index: 10;
-    box-shadow: 0 6px 10px rgba(161, 161, 161, 0.3); /* Sombra suave */
+    box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
   }
   
   .navbar-content {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 1200px; /* Limitar el ancho máximo si es necesario */
   }
   
   .navbar-brand {
@@ -32,5 +31,9 @@
   }
   
   .form-control{
-    width: 20vw;
+    width: 18vw;
+  }
+
+  .custom-select {
+    width: 9vw; /* Ajusta el valor según lo necesites */
   }

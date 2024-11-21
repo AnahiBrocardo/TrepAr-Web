@@ -1,82 +1,90 @@
-    <div class="row">
-      <div class="col-12">
-        <div class="my-2">
-          <!-- Sección de imagen y nombre de usuario -->
-          <div class="row datos-perfil align-items-center">
-            <div class="col-md-3 text-center">
-              <div class="avatar avatar-xl">
-                <!-- Imagen de perfil -->
-                <img [src]="perfilSeleccionado?.imagePerfil || 'assets/img/usuario.png'" alt="Imagen de perfil" class="avatar-img rounded-circle">
-              </div>
-            </div>
-  
-            <!-- Sección de descripción y contacto -->
-            <div class="col">
-              <div class="row">
-                <div class="col-md-7">
-                  <h4 class="mb-1">{{perfilSeleccionado?.userName}}</h4>
-                  <span class="badge rounded-pill text-bg-dark mb-3">
-                    {{perfilSeleccionado?.provincia}}, {{perfilSeleccionado?.ciudad}}</span>
-                  <p class="text-muted">{{perfilSeleccionado?.descripcion}}</p>
-                </div>
-                <div class="col">
-                  <p class="mb-3 text-muted">
-                    <i class="fa-solid fa-phone"></i>
-                    {{perfilSeleccionado?.telefono}}
-                  </p>
-                  <p class="mb-3">
-                    <i class="fa-brands fa-linkedin"></i>
-                    <a [href]="perfilSeleccionado?.linkLinkedIn" target="_blank" rel="noopener noreferrer"> LinkedIn </a>
-                  </p>
-                  <p class="mb-3">
-                    <i class="fa-brands fa-instagram"></i>
-                    <a [href]="perfilSeleccionado?.linkInstagram" target="_blank" rel="noopener noreferrer"> Instagram </a>
-                  </p>
-                </div>
-              </div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="my-2">
+        <!-- Sección de imagen, nombre de usuario e ícono de marcador -->
+        <div class="row datos-perfil align-items-center">
+          <div class="col-md-3 text-center">
+            <div class="avatar avatar-xl">
+              <!-- Imagen de perfil -->
+              <img [src]="perfilSeleccionado?.imagePerfil || 'assets/img/usuario.png'" alt="Imagen de perfil" class="avatar-img rounded-circle">
+              <!-- Ícono de correo -->
+              <a class="correo-icon">
+                <i class="fa-solid fa-envelope fa-2xl correo" style="color: #0d6efd;"></i>
+              </a>
             </div>
           </div>
-  
-          <!-- Sección de productos -->
-          <div class="row" >
-            <div class="col-12">
-                <div class="headerProductos">
-                <div class="tituloProducto">
-                    <h3>Productos</h3>
-                </div>
-                <div>
-                    <mat-form-field  class="buscar">
-                        <mat-label>Buscar producto</mat-label>
-                        <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" (keyup)="leerTodo()" matInput>
-                        <mat-icon matSuffix>search</mat-icon>
-                      </mat-form-field>
-                </div>
+
+          <!-- Sección de descripción y contacto -->
+          <div class="col position-relative">
+            <div class="row">
+              <div class="col-md-7">
+                <h4 class="mb-1">{{perfilSeleccionado?.userName}}</h4>
+                <span class="badge rounded-pill text-bg-dark mb-3">
+                  {{perfilSeleccionado?.provincia}}, {{perfilSeleccionado?.ciudad}}
+                </span>
+                <p class="text-muted">{{perfilSeleccionado?.descripcion}}</p>
+              </div>
+              <div class="col">
+                <p class="mb-3 text-muted" *ngIf="perfilSeleccionado?.telefono">
+                  <i class="fa-solid fa-phone"></i>
+                  {{perfilSeleccionado?.telefono}}
+                </p>
+                <p class="mb-3" *ngIf="perfilSeleccionado?.linkLinkedIn">
+                  <i class="fa-brands fa-linkedin"></i>
+                  <a [href]="perfilSeleccionado?.linkLinkedIn" target="_blank" rel="noopener noreferrer"> LinkedIn </a>
+                </p>
+                <p class="mb-3" *ngIf="perfilSeleccionado?.linkInstagram">
+                  <i class="fa-brands fa-instagram"></i>
+                  <a [href]="perfilSeleccionado?.linkInstagram" target="_blank" rel="noopener noreferrer"> Instagram </a>
+                </p>
+              </div>
             </div>
-              <!-- Contenedor de productos -->
-              <div class="productos-container">
-               
-                <!-- Mensaje si no hay productos -->
-                <div class="alert alert-warning" *ngIf="listaProductos.length === 0">
-                  No hay productos cargados.
-                </div>
-                <div *ngFor="let producto of listaProductos" class="col-md-4 mb-4">
-                  <div class="card">
-                    <img [src]="producto.imagen ? producto.imagen : 'assets/img/imagen-por-defecto.jpg'" alt="Imagen del producto" class="card-img-top">
-                    <div class="card-body">
-                      <div class="card-title">
-                        <h5 class="nombre-producto">{{ producto.nombre }}</h5>
-                      </div>
-                      <p class="card-text"><strong>Categoría:</strong> {{ producto.categoria }}</p>
-                      <p class="card-text"><strong>Descripción:</strong> {{ producto.descripcion }}</p>
-                      <p class="card-text"><strong>Precio:</strong> ${{ producto.precio }}</p>
+
+            <!-- Ícono de marcador -->
+        <i class="fa-solid fa-bookmark fa-2xl icono-marcador" title="Guardar perfil"></i>
+          </div>
+        </div>
+
+        <!-- Sección de productos -->
+        <div class="row">
+          <div class="col-12">
+            <div class="headerProductos">
+              <div class="tituloProducto">
+                <h3>Productos</h3>
+              </div>
+              <div>
+                <mat-form-field class="buscar">
+                  <mat-label>Buscar producto</mat-label>
+                  <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" (keyup)="leerTodo()" matInput>
+                  <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- Contenedor de productos -->
+            <div class="productos-container">
+              <!-- Mensaje si no hay productos -->
+              <div class="alert alert-warning" *ngIf="listaProductos.length === 0">
+                No hay productos cargados.
+              </div>
+              <div *ngFor="let producto of listaProductos" class="col-md-4 mb-4">
+                <div class="card">
+                  <img [src]="producto.imagen ? producto.imagen : 'assets/img/imagen-por-defecto.jpg'" alt="Imagen del producto" class="card-img-top">
+                  <div class="card-body">
+                    <div class="card-title">
+                      <h5 class="nombre-producto">{{ producto.nombre }}</h5>
                     </div>
+                    <p class="card-text"><strong>Categoría:</strong> {{ producto.categoria }}</p>
+                    <p class="card-text"><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+                    <p class="card-text"><strong>Precio:</strong> ${{ producto.precio }}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Fin de sección de productos -->
         </div>
+        <!-- Fin de sección de productos -->
       </div>
     </div>
-  
+  </div>
+</div>

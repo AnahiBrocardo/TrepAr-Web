@@ -5,12 +5,11 @@
 }
 
 .card {
-    margin-top: 5hv;
-    margin-bottom: 5hv;
-    min-height: 10hv;  /* Ajusta la altura mínima de las tarjetas */
-    max-height:12hv;
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  margin-left: 0.8vw;
+  justify-content: space-between; /* Ajusta el espacio entre los elementos dentro de la tarjeta */
+  flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente fila si no caben */
+
   }
   
   .card-body {
@@ -37,10 +36,10 @@
     align-items: center;
   }
 
-  .container {
-    background-color: rgba(255, 255, 255, 0.945); /* Fondo blanco con 90% de opacidad */
-    border-radius: 5px; /* Bordes ligeramente redondeados */
-    padding: 25px; /* Espaciado interno */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para resaltar */
-    width: 100%;
+  .correo{ 
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .correo:hover { 
+    transform: scale(1.1); /* Efecto de ampliación al pasar el cursor */
   }
