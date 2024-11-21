@@ -24,15 +24,15 @@ export const routes: Routes = [
     {path: 'acceso', component: InicioSesionPageComponent, canActivate:[logOutGuard]},
     {path: 'registrarse', component: RegistrarsePageComponent,canActivate:[logOutGuard]},
     {
-        path: 'dashboard/:id', 
+        path: 'dashboard', 
         component: DashboardComponent,
         children: [
-            {path: 'principal/:id', component: PrincipalComponent, canActivate:[loginGuard]},
-            {path: 'simulador/:id', component: SimuladorComponent,canActivate:[loginGuard] },
-            {path: 'settings/:id', component: SettingsComponent,canActivate:[loginGuard]},
-            { path: 'simulador/listar-simulador/:id', component: ListarSimuladorComponent, canActivate:[loginGuard] },
-            { path: 'agregar-simulador/:id', component: AgregarSimuladorComponent,canActivate:[loginGuard] },
-            {path: 'perfil/:id', component: PerfilUsuarioComponent,canActivate:[loginGuard]},
+            {path: 'principal', component: PrincipalComponent, canActivate:[loginGuard]},
+            {path: 'simulador', component: SimuladorComponent,canActivate:[loginGuard] },
+            {path: 'settings', component: SettingsComponent,canActivate:[loginGuard]},
+            { path: 'simulador/listar-simulador', component: ListarSimuladorComponent, canActivate:[loginGuard] },
+            { path: 'agregar-simulador', component: AgregarSimuladorComponent,canActivate:[loginGuard] },
+            {path: 'perfil', component: PerfilUsuarioComponent,canActivate:[loginGuard]},
         ],
         canActivate:[loginGuard] //si estoy loggeado puedo acceder a esta ruta
 

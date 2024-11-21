@@ -13,7 +13,7 @@ export const logOutGuard = () => { //retorna un valor booleano que indica si la 
   }else{
     // Si el usuario ya está logueado (token existe), redirigimos al dashboard
     const userId = service.getUserId(); // Aquí deberías obtener el ID real del usuario
-    router.navigateByUrl(`dashboard/${userId}`);
+    router.navigateByUrl(`dashboard`);
     return false;
   }
 }

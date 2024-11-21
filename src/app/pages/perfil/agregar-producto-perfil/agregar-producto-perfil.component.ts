@@ -62,7 +62,6 @@ export class AgregarProductoPerfilComponent implements OnInit{
     this.productoService.postProductos(producto).subscribe(
       {
         next: (producto: ProductoInterface) => {
-          console.log(producto); 
           Swal.fire("Producto Guardado");
           location.reload();
 

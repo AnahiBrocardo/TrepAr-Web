@@ -15,10 +15,6 @@ export class SidenavComponent implements OnInit{
   router= inject(Router);
   
   ngOnInit(): void {
-  // se llama al metodo para actualizar las rutas una vez que el idUser esté definido
-  if (this.idUser) {
-    this.updateRoutes(this.idUser);
-  }
   }
 
 
@@ -27,37 +23,29 @@ export class SidenavComponent implements OnInit{
 
   items = [
     {
-      routeLink: 'principal/:id',
+      routeLink: 'principal',
       icon: 'fal fa-home',
       label: 'Principal',
     },
         {
-      routeLink: 'simulador/:id',
+      routeLink: 'simulador',
       icon: 'fal fa-file',
       label: 'Simulador',
     },
     {
-      routeLink: 'settings/:id',
+      routeLink: 'settings',
       icon: 'fal fa-cog',
       label: 'Settings',
     },
     {
-      routeLink: 'perfil/:id',
+      routeLink: 'perfil',
       icon: 'fal fa-cog',
       label: 'Perfil',
     },
     
   ];
 
-  
 
-  // Método para actualizar las rutas con el idUser
-  updateRoutes(id:string): void {
-    this.items[0].routeLink = `principal/${id}`;
-    this.items[1].routeLink = `simulador/${id}`;
-    this.items[2].routeLink = `settings/${id}`;
-    this.items[3].routeLink = `perfil/${id}`;
-  }
 
   toggleCollapse(): void {
     this.changeIsLeftSidebarCollapsed.emit(!this.isLeftSidebarCollapsed());
@@ -68,6 +56,7 @@ export class SidenavComponent implements OnInit{
   }
 
   redirigir(){
+    localStorage.removeItem('userId'); //se elimina el token del idusuario 
     localStorage.removeItem('token'); //se elimina el token del usuario 
     this.router.navigate(['/']).then(() => {//navega a la página de inicio
       window.location.reload();//Refresca la página completamente 

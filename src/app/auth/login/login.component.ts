@@ -44,8 +44,12 @@ export class LoginComponent implements OnInit{
     if (emailForm && passwordForm) {
     this.loginService.validarLogin(emailForm,passwordForm).subscribe({ //lamamos a servicio, pansandole por parametro los datos del formulario
       next: (userData)=> {//se ejecuta cada vez que el Observable emite un valor
-        this.router.navigateByUrl(`dashboard/${userData.id}`);// Redirige al usuario a la ruta '/dashboard' utilizando el método navigateByUrl
-        this.formularioLogin.reset();//reseteamos los campos del form
+        if(userData.id){
+          localStorage.setItem('userId',userData.id);
+          this.router.navigateByUrl(`dashboard`);// Redirige al usuario a la ruta '/dashboard' utilizando el método navigateByUrl
+          this.formularioLogin.reset();//reseteamos los campos del form
+        }
+        
       },
       error: (errorData)=> {
         console.log(errorData);

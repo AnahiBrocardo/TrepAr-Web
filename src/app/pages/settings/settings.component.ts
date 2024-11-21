@@ -25,15 +25,8 @@ export class SettingsComponent implements OnInit{
   userId: string='';
 
   ngOnInit(): void {
-   this.activated.paramMap.subscribe({
-    next:(param)=>{
-      const id= param.get('id');
-      if(id){
-        this.userId=id;
-      }
-      this.usuarioData(this.userId);
-    }
-   })
+    this.userId = localStorage.getItem('userId') || '';
+    this.usuarioData(this.userId);
   }
 
   usuarioData(id:string){
@@ -61,6 +54,7 @@ export class SettingsComponent implements OnInit{
         next: () => {
           console.log('Usuario eliminado exitosamente');
           localStorage.removeItem('token');
+          localStorage.removeItem('userId');
           this.router.navigateByUrl('');
         },
         error: (err: Error) => {

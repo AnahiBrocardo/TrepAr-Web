@@ -16,15 +16,7 @@ export class PrincipalComponent implements OnInit{
  activated= inject(ActivatedRoute);
 
   ngOnInit(): void {
-    this.activated.paramMap.subscribe({
-      next:(param)=>{
-        const id= param.get('id');
-        if(id){
-          this.userId=id;
-        }
-      }
-     })
-     console.log('user id'+this.userId);
+    this.userId = localStorage.getItem('userId') || '';
   }
 
 

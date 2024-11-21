@@ -29,15 +29,8 @@ export class PerfilUsuarioComponent implements OnInit {
   servicioPerfil= inject(PerfilService);
 
   ngOnInit(): void {
-    this.activated.paramMap.subscribe({
-     next:(param)=>{
-       const id= param.get('id');
-       if(id){
-         this.idUser=id;
-        this.obtenerDatosPerfil(this.idUser);
-       }
-     }
-    })
+    this.idUser = localStorage.getItem('userId') || '';
+    this.obtenerDatosPerfil(this.idUser);
    }
 
 
@@ -46,7 +39,6 @@ export class PerfilUsuarioComponent implements OnInit {
       next: (perfilArray: Perfil[]) => {
         if (perfilArray.length > 0) {
           this.perfilData = perfilArray[0]; // Acceder al primer elemento del array
-          console.log(this.perfilData);
         } else {
           console.error('El perfil no existe o no se encontró.');
         }

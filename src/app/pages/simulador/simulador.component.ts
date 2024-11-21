@@ -14,9 +14,10 @@ export class SimuladorComponent implements OnInit{
   constructor(private route: ActivatedRoute, private router: Router) {} 
   
   ngOnInit(): void { // Obtener el idUser del parámetro de ruta 
-    this.idUser = this.route.snapshot.paramMap.get('id') || '';}
-  
+    this.idUser = localStorage.getItem('userId') || '';
+  }
    // Método para navegar a ListarSimuladorComponent 
    navigateToListarSimulador(): void { 
-    if (this.idUser) { this.router.navigate([`/listar-simulador/${this.idUser}`]); } } 
+    if (this.idUser) { this.router.navigate([`/listar-simulador`]); }
+   } 
 }
