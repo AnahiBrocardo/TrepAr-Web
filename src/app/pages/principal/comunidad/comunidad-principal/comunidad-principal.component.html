@@ -1,0 +1,37 @@
+<div class="comunidad-container" *ngIf="visibilidadComunidad">
+    <app-barra-busqueda-principal></app-barra-busqueda-principal>
+    <div class="row container">
+      <div class="col-md-4" *ngFor="let perfil of perfiles">
+        <div class="card-container">
+          <div class="card" style="width: 18rem;">
+            <img [src]="perfil.imagePerfil ? perfil.imagePerfil : 'assets/img/usuario.png'" class="card-img-top" alt="Foto de perfil">
+            <div class="card-body">
+              <h5 class="card-title">{{ perfil.userName }}</h5>
+              <p class="card-text ubicacion">
+                {{ perfil.provincia }}, {{ perfil.ciudad }}
+              </p>
+              <p class="card-text">
+                {{ perfil.descripcion }}
+              </p>
+  
+              <div class="enlaces">
+                <a class="btn btn-primary" (click)="seleccionPerfil(perfil.id || '')" >Ir a perfil</a>
+                <a>
+                  <i class="fa-solid fa-envelope fa-2xl correo" style="color: #0d6efd;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Condición para mostrar el perfil y el botón de volver -->
+  <div *ngIf="!visibilidadComunidad">
+    <div class="container">
+      <button type="button" class="btn btn-outline-dark" (click)="cambiarVisibilidad()">Volver</button>
+      <app-perfil-comunidad [userId]="userId" [perfilSeleccionadoIdPerfil]="perfilSeleccionadoId"></app-perfil-comunidad>
+    </div>
+  </div>
+  

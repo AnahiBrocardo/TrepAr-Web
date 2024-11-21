@@ -1,0 +1,88 @@
+
+  .datos-perfil{
+    margin-bottom: 10vh;
+    min-height: 35vh; /* O usa height: 500px; según lo que necesites */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave en la parte inferior */
+    margin-top: 2vh;
+    }
+    
+    .avatar {
+      position: relative;
+    }
+    
+    .avatar img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .rounded-circle {
+        border-radius: 50% !important;
+      }
+      
+      img {
+        vertical-align: middle;
+      }
+      .text-muted {
+        color: #3b3b3b !important;
+      }
+      .text-muted {
+        font-weight: 400;
+      }
+
+
+      .producto-lista{
+        margin-top: 10hv;
+      }
+      
+      .productos-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Coloca las tarjetas en un grid */
+        gap: 20px;
+      }
+      
+      .card {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(56, 46, 46, 0.1);
+        width: 22vw;
+      }
+      
+      .card-body {
+        padding: 2vw;
+      }
+      
+      
+      .nombre-producto{
+       font-size: 1.2rem;
+       font-weight: bold;
+       color: #353434;
+      }
+      
+      .card-title {
+        font-weight: bold;
+        display:flex;
+        justify-content:space-between;
+      }
+      
+      .card-text {
+        font-size: 1em;
+        color: #555;
+      }
+      
+      
+      .no-productos {
+        text-align: center;
+        font-size: 1.2em;
+      }
+
+
+      .headerProductos{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 3vh;
+      }
+
+      .buscar{
+        width: 30vw;
+      }

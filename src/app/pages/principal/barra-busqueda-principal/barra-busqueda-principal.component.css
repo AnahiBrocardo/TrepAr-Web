@@ -1,0 +1,36 @@
+:host {
+    display: block;
+    width: 100%;
+  }
+  
+  .navbar {
+    background-color: rgba(0, 0, 0, 0.6); /* Negro con 60% de transparencia */
+    color: white; /* Color del texto */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center;
+    z-index: 10;
+    box-shadow: 0 6px 10px rgba(161, 161, 161, 0.3); /* Sombra suave */
+  }
+  
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px; /* Limitar el ancho máximo si es necesario */
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  .search-form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-control{
+    width: 20vw;
+  }

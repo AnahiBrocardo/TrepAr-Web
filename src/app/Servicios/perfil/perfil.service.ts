@@ -14,6 +14,11 @@ export class PerfilService {
   getPerfiles(): Observable<Perfil[]>{
     return this.http.get<Perfil[]>(`${this.urlBase}`);
   }
+
+getPerfilByIdPerfil(idPerfil:string): Observable<Perfil[]>{
+  return this.http.get<Perfil[]>(`${this.urlBase}?id=${idPerfil}`);
+}
+
   //obtener perfil del usuario, mediante el idUser
   getPerfilByIdUser(idUser:string): Observable<Perfil[]>{
     return this.http.get<Perfil[]>(`${this.urlBase}?idUser=${idUser}`);

@@ -15,7 +15,7 @@ import { logOutGuard } from './guards/auth.guards.logOut';
 import { AgregarSimuladorComponent } from './componentes/simulador/funciones/agregar-simulador/agregar-simulador.component';
 import { ListarSimuladorComponent } from './componentes/simulador/funciones/listar-simulador/listar-simulador.component';
 import { PerfilUsuarioComponent } from './pages/perfil/perfil-usuario/perfil-usuario.component';
-import { PrincipalComponent } from './pages/principal/principal.component';
+import { PrincipalComponent } from './pages/principal/principal.page/principal.component';
 
 
 
@@ -27,8 +27,7 @@ export const routes: Routes = [
         path: 'dashboard/:id', 
         component: DashboardComponent,
         children: [
-            { path: '', redirectTo: 'principal', pathMatch: 'full'},
-            {path: 'principal', component: PrincipalComponent, canActivate:[loginGuard]},
+            {path: 'principal/:id', component: PrincipalComponent, canActivate:[loginGuard]},
             {path: 'simulador/:id', component: SimuladorComponent,canActivate:[loginGuard] },
             {path: 'settings/:id', component: SettingsComponent,canActivate:[loginGuard]},
             { path: 'simulador/listar-simulador/:id', component: ListarSimuladorComponent, canActivate:[loginGuard] },

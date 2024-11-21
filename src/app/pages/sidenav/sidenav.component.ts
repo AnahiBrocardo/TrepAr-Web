@@ -27,7 +27,7 @@ export class SidenavComponent implements OnInit{
 
   items = [
     {
-      routeLink: 'principal',
+      routeLink: 'principal/:id',
       icon: 'fal fa-home',
       label: 'Principal',
     },
@@ -53,6 +53,7 @@ export class SidenavComponent implements OnInit{
 
   // Método para actualizar las rutas con el idUser
   updateRoutes(id:string): void {
+    this.items[0].routeLink = `principal/${id}`;
     this.items[1].routeLink = `simulador/${id}`;
     this.items[2].routeLink = `settings/${id}`;
     this.items[3].routeLink = `perfil/${id}`;

@@ -1,5 +1,11 @@
 
-  
+  :host {
+  display: flex;
+  flex-direction: column; /* Organiza el contenido verticalmente si hay varios elementos */
+  height: 100%; /* Ocupa todo el alto disponible */
+  width: 100%; /* Ocupa todo el ancho disponible */
+}
+
   .body-trimmed {
     width: calc(100% - 16.5625rem);
     margin-left: 16.5625rem;
@@ -19,6 +25,7 @@
   transition: all 0.5s ease; /* Suaviza la transición */
   background: linear-gradient(135deg, #a7dcdf81, #ffdcccc2);
   padding: 3rem;
+  padding-top: 4vh !important;
   box-sizing: border-box;
   height: 100vh;
   overflow: auto;
