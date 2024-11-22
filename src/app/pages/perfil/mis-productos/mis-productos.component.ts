@@ -38,6 +38,7 @@ export class MisProductosComponent implements OnInit {
   
   ngOnInit(): void {
     this.obtenerProductos(this.userId);
+    this.filtro='todos';
     this.filtrar();
   }
 
@@ -152,6 +153,7 @@ export class MisProductosComponent implements OnInit {
     this.productoServices.getProductos(this.userId).subscribe({
       next: (productos: ProductoInterface[]) => {
         // Filtrar los productos según el valor seleccionado
+
         if (this.filtro === 'privados') {
           this.productos = productos.filter(producto => producto.privado === true);
         } else if (this.filtro === 'publicos') {
