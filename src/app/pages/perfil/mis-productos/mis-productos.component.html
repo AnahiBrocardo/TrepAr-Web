@@ -11,7 +11,7 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
 
-    <div class="filtro">
+    <div class="filtro" *ngIf="!booleanAgregar && !booleanModificarProducto">
       <p> Filtar por </p>
     <select  [(ngModel)]="filtro"  (change)="filtrar()"  class="form-select form-select-sm ms-2 fs-10 custom-select"  aria-label="Filtro de búsqueda">
       <option value="todos" selected>Todos</option>
