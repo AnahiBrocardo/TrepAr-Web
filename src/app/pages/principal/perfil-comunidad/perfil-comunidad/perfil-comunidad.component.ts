@@ -88,7 +88,7 @@ listaProductos:ProductoInterface[]=[];
 
   volverComunidad(){
     localStorage.removeItem('idPerfilSeleccionado');
-    this.router.navigateByUrl('comunidad')
+    this.router.navigateByUrl('dashboard/comunidad');
 
   }
 }
