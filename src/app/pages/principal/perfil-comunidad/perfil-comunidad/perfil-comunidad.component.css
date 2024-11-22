@@ -4,6 +4,7 @@
     padding: 25px; /* Espaciado interno */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para resaltar */
     width: 100%;
+    margin-top: 10vh;
   }
 
   .datos-perfil{

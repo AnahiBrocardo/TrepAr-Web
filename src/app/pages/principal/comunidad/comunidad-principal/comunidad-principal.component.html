@@ -1,5 +1,5 @@
 
-<div class="comunidad-container" *ngIf="visibilidadComunidad">
+<div class="comunidad-container" >
   <app-barra-busqueda-principal ></app-barra-busqueda-principal>
     <div class="row container">
       <div class="col-md-4" *ngFor="let perfil of perfiles">
@@ -27,12 +27,4 @@
       </div>
     </div>
   </div>
-  
-  <!-- Condición para mostrar el perfil y el botón de volver -->
-  <div *ngIf="!visibilidadComunidad">
-    
-      <button type="button" class="btn btn-outline-dark" (click)="cambiarVisibilidad()">Volver</button>
-      <app-perfil-comunidad [userId]="userId" [perfilSeleccionadoIdPerfil]="perfilSeleccionadoId"></app-perfil-comunidad>
-    
-  </div>
-  
+ 

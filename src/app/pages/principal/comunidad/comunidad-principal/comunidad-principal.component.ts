@@ -3,12 +3,12 @@ import { Perfil } from '../../../../Interfaces/perfil.interface';
 import { PerfilService } from '../../../../Servicios/perfil/perfil.service';
 import { CommonModule } from '@angular/common';
 import { BarraBusquedaPrincipalComponent } from '../../barra-busqueda-principal/barra-busqueda-principal.component';
-import { PerfilComunidadComponent } from '../../perfil-comunidad/perfil-comunidad/perfil-comunidad.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comunidad-principal',
   standalone: true,
-  imports: [CommonModule, BarraBusquedaPrincipalComponent,PerfilComunidadComponent],
+  imports: [CommonModule, BarraBusquedaPrincipalComponent],
   templateUrl: './comunidad-principal.component.html',
   styleUrl: './comunidad-principal.component.css'
 })
@@ -16,11 +16,11 @@ export class ComunidadPrincipalComponent implements OnInit{
   @Input()
   userId?:string;
 
+  router= inject(Router);
+
   // Propiedades para almacenar los datos recibidos de la barra de busqueda
   textoBusqueda: string = '';
   filtro: string = 'emprendedores';
-
-  visibilidadComunidad:boolean=true;
   perfilSeleccionadoId:string='';
 
   perfiles: Perfil[]=[
@@ -39,23 +39,10 @@ export class ComunidadPrincipalComponent implements OnInit{
         console.log(e);
       }
     })
-    console.log(this.visibilidadComunidad);
   }
 
   seleccionPerfil(perfilSeleccionadoId:string){
-
-    this.visibilidadComunidad=!this.visibilidadComunidad;
-
-    if(perfilSeleccionadoId){
-      this.perfilSeleccionadoId=perfilSeleccionadoId;
-    }
-    
+    localStorage.setItem('idPerfilSeleccionado', perfilSeleccionadoId);
+    this.router.navigateByUrl('dashboard/comunidad/perfil');
   }
-
-  cambiarVisibilidad(){
-    this.visibilidadComunidad=!this.visibilidadComunidad;
-  }
-
- 
 }
-

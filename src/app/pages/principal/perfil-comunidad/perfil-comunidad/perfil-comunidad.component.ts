@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-comunidad',
@@ -22,14 +23,15 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './perfil-comunidad.component.css'
 })
 export class PerfilComunidadComponent implements OnInit{
-@Input()
+
 userId?:string;
 
-@Input()
 perfilSeleccionadoIdPerfil?:string;
 
 perfilSeleccionado?:Perfil;
 textoBuscado: string = '';
+
+router= inject(Router);
 
 perfilService= inject(PerfilService);
 productoService= inject(ProductoServiceService);
@@ -37,6 +39,8 @@ productoService= inject(ProductoServiceService);
 listaProductos:ProductoInterface[]=[];
 
   ngOnInit(): void {
+    this.perfilSeleccionadoIdPerfil= localStorage.getItem('idPerfilSeleccionado') || '';
+    this.userId=localStorage.getItem('userId') || '';
     this.obtenerDatosPerfil();
   }
 
@@ -80,5 +84,11 @@ listaProductos:ProductoInterface[]=[];
               producto.nombre.toLowerCase().includes(this.textoBuscado.toLowerCase())
             )
           : this.listaProductos;
+  }
+
+  volverComunidad(){
+    localStorage.removeItem('idPerfilSeleccionado');
+    this.router.navigateByUrl('comunidad')
+
   }
 }

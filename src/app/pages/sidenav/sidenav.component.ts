@@ -23,9 +23,9 @@ export class SidenavComponent implements OnInit{
 
   items = [
     {
-      routeLink: 'principal',
+      routeLink: 'comunidad',
       icon: 'fal fa-home',
-      label: 'Principal',
+      label: 'Comunidad',
     },
         {
       routeLink: 'simulador',
@@ -41,8 +41,7 @@ export class SidenavComponent implements OnInit{
       routeLink: 'perfil',
       icon: 'fal fa-cog',
       label: 'Perfil',
-    },
-    
+    }
   ];
 
 
