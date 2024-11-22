@@ -8,7 +8,7 @@ export const logOutGuard = () => { //retorna un valor booleano que indica si la 
   const router = inject(Router);
   const service= inject(ControlAccesoService);
 
-  if(!localStorage.getItem('token')){ //si no existe un token
+  if(!localStorage.getItem('token') && !localStorage.getItem('userId')){ //si no existe un token
     return true;
   }else{
     // Si el usuario ya está logueado (token existe), redirigimos al dashboard

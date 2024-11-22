@@ -8,7 +8,7 @@ export const loginGuard = () => { //retorna un valor booleano que indica si la n
   const router = inject(Router);
   const loginService = inject(ControlAccesoService);
 
-  if(loginService.getLogginStatus() || localStorage.getItem('token')){
+  if(localStorage.getItem('token') && localStorage.getItem('userId')){
     localStorage.setItem('token','123');
     return true;
   }else{
