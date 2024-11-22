@@ -124,11 +124,22 @@
         top: 2vh; /* Espacio desde el borde superior, adaptado a la altura de la pantalla */
         right: 2vw; /* Espacio desde el borde derecho, adaptado al ancho de la pantalla */
         margin-right: 15px; /* Ajuste adicional para margen */
-        color: #878787;
         cursor: pointer;
         transition: color 0.3s ease; /* Transición suave del color */
       }
+
+      .favorito{
+        color: #FFD43B;
+      }
+
+      .noFavorito{
+        color: #878787;
+      }
       
-      .icono-marcador:hover {
-        color: #eecf60; /* Color más claro al pasar el cursor */
+      .favorito:hover{
+        color: #878787; /* Color gris */
+      }
+
+      .noFavorito:hover{
+        color: #eecf60; /* Color amarillo */
       }

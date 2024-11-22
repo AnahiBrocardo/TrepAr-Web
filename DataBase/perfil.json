@@ -25,7 +25,8 @@
       "linkLinkedIn": "",
       "linkWeb": "",
       "telefono": "",
-      "imagePerfil": ""
+      "imagePerfil": "",
+      "listaFavoritos": []
     },
     {
       "id": "40f3",
@@ -38,7 +39,8 @@
       "linkLinkedIn": "",
       "linkWeb": "",
       "telefono": "2234414785",
-      "imagePerfil": "https://pub-static.fotor.com/assets/projects/pages/d5bdd0513a0740a8a38752dbc32586d0/fotor-03d1a91a0cec4542927f53c87e0599f6.jpg"
+      "imagePerfil": "https://pub-static.fotor.com/assets/projects/pages/d5bdd0513a0740a8a38752dbc32586d0/fotor-03d1a91a0cec4542927f53c87e0599f6.jpg",
+      "listaFavoritos": []
     },
     {
       "id": "3b37",
@@ -51,7 +53,22 @@
       "linkLinkedIn": "",
       "linkWeb": "",
       "telefono": "",
-      "imagePerfil": "https://pub-static.fotor.com/assets/projects/pages/d5bdd0513a0740a8a38752dbc32586d0/fotor-03d1a91a0cec4542927f53c87e0599f6.jpg"
+      "imagePerfil": "https://pub-static.fotor.com/assets/projects/pages/d5bdd0513a0740a8a38752dbc32586d0/fotor-03d1a91a0cec4542927f53c87e0599f6.jpg",
+      "listaFavoritos": []
+    },
+    {
+      "id": "fbac",
+      "idUser": "9512",
+      "userName": "Vibras crochet",
+      "descripcion": "Emprendimiento de tejidos",
+      "provincia": "Buenos Aires",
+      "ciudad": "Balcarce",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "",
+      "imagePerfil": "https://marketplace.canva.com/EAFthiXidL8/2/0/1600w/canva-logo-costura-y-crochet-ilustrado-femenino-rosa-LHtyeEHZZ9w.jpg",
+      "listaFavoritos": []
     }
   ]
 }

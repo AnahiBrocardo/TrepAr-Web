@@ -60,7 +60,7 @@ showProfileForm: boolean = false;// Variable para controlar la visibilidad del f
   telefono: ['',[Validators.pattern(/^[+]?[0-9]{1,4}?[-.\s]?[0-9]{1,3}[-.\s]?[0-9]{1,4}[-.\s]?[0-9]{1,4}$/)]], 
   /*^[+]?[0-9]{1,4}?: Permite un prefijo de país opcional [-.\s]?: Permite guiones, puntos o espacios como separadores.
   [0-9]{1,3}: Permite uno a tres dígitos para la parte del número. */
-  imagePerfil:['',[Validators.pattern(/^.*\.(jpg|jpeg|png|gif|bmp|webp)$/i)]]
+  imagePerfil:['',[Validators.pattern(/^.*\.(jpg|jpeg|png|gif|bmp|webp)$/i)]],
 
 });
 
@@ -237,6 +237,7 @@ togglePasswordVisibility() {
           linkWeb: profileFormValue.linkWeb ?? '',
           telefono: profileFormValue.telefono ?? '',
           imagePerfil: profileFormValue.imagePerfil ?? '',
+          listaFavoritos: []
         };
 
         this.perfilService.agregarPerfil(newProfile).subscribe({

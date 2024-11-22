@@ -35,6 +35,15 @@
       "password": "12345678",
       "createdAt": "2024-11-20T12:22:41.919Z",
       "deletedAt": null
+    },
+    {
+      "id": "9512",
+      "nombre": "Maru",
+      "apellido": "Lopez",
+      "email": "maru@mail.com",
+      "password": "12345678",
+      "createdAt": "2024-11-22T19:16:40.606Z",
+      "deletedAt": null
     }
   ]
 }
