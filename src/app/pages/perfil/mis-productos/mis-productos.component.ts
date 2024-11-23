@@ -21,7 +21,7 @@ import { ModificarproductoComponent } from '../modificarproducto/modificarproduc
     FormsModule,
     AgregarProductoPerfilComponent,
     ModificarproductoComponent
-],
+  ],
   templateUrl: './mis-productos.component.html',
   styleUrls: ['./mis-productos.component.css']
 })
@@ -29,14 +29,16 @@ export class MisProductosComponent implements OnInit {
   productoServices = inject(ProductoServiceService);
   productos: ProductoInterface[] = [];
   textoBuscado: string = '';
-  booleanAgregar:boolean=false;
-  booleanModificarProducto:boolean=false;
-  productoId:string= '';
+  filtro: string = 'todos';
+  booleanAgregar: boolean = false;
+  booleanModificarProducto: boolean = false;
+  productoId: string = '';
 
   @Input() userId!: string; // Declarar explícitamente la propiedad
-  
+
   ngOnInit(): void {
     this.obtenerProductos(this.userId);
+    this.filtrar();
   }
 
   obtenerProductos(idUsuario: string) {
@@ -78,9 +80,10 @@ export class MisProductosComponent implements OnInit {
       next: (productos: ProductoInterface[]) => {
         this.productos = this.textoBuscado
           ? productos.filter(producto =>
-              producto.nombre.toLowerCase().includes(this.textoBuscado.toLowerCase())
-            )
+            producto.nombre.toLowerCase().includes(this.textoBuscado.toLowerCase())
+          )
           : productos;
+
       },
       error: (error) => {
         console.error('Error al obtener los productos:', error);
@@ -90,57 +93,82 @@ export class MisProductosComponent implements OnInit {
 
   cambiarPrivacidad(idProducto: string | undefined): void {
     if (idProducto) {
-      this.productoServices.getProductoById(idProducto).subscribe({
-        next: (producto: ProductoInterface) => {
-          const nuevaPrivacidad = !producto.privado; // Cambiar la privacidad
-          this.productoServices.putProductos(this.userId, { ...producto, privado: nuevaPrivacidad }).subscribe({
-            next: () => {
-              // Actualizar la privacidad localmente
-              producto.privado = nuevaPrivacidad;
-              Swal.fire({
-                toast: true,
-                position: 'top-end',
-                icon: 'success',
-                title: 'Cambios guardados',
-                showConfirmButton: false,
-                timer: 3000
+      Swal.fire({
+        title: "¿Esta seguro?",
+        text: "¿Desea cambiar la privacidad del producto?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.productoServices.getProductoById(idProducto).subscribe({
+            next: (producto: ProductoInterface) => {
+              const nuevaPrivacidad = !producto.privado; // Cambiar la privacidad
+              this.productoServices.putProductos(this.userId, { ...producto, privado: nuevaPrivacidad }).subscribe({
+                next: () => {
+                  // Actualizar la privacidad localmente
+                  producto.privado = nuevaPrivacidad;
+                  this.obtenerProductos(this.userId);
+                },
+                error: (e: Error) => {
+                  console.error(e);
+                  Swal.fire({
+                    title: 'Error',
+                    text: 'No se pudo actualizar la privacidad del producto.',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                  });
+                }
               });
-              location.reload();
             },
             error: (e: Error) => {
               console.error(e);
               Swal.fire({
                 title: 'Error',
-                text: 'No se pudo actualizar la privacidad del producto.',
+                text: 'No se pudo obtener el producto.',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
               });
             }
           });
-        },
-        error: (e: Error) => {
-          console.error(e);
-          Swal.fire({
-            title: 'Error',
-            text: 'No se pudo obtener el producto.',
-            icon: 'error',
-            confirmButtonText: 'Aceptar'
-          });
         }
       });
+
     }
   }
-  
-  modificarBooleanAgregar(){
-    this.booleanAgregar=!this.booleanAgregar;
-  }
-    
-  modificarProducto(idProducto:string){
-    this.booleanModificarProducto=!this.booleanModificarProducto;
-    this.productoId= idProducto;
+
+  modificarBooleanAgregar() {
+    this.booleanAgregar = !this.booleanAgregar;
   }
 
-  modificarBooleanModificar(){
-    this.booleanModificarProducto=!this.booleanModificarProducto;
+  modificarProducto(idProducto: string) {
+    this.booleanModificarProducto = !this.booleanModificarProducto;
+    this.productoId = idProducto;
   }
+
+  modificarBooleanModificar() {
+    this.booleanModificarProducto = !this.booleanModificarProducto;
   }
+
+
+  filtrar() {
+    this.productoServices.getProductos(this.userId).subscribe({
+      next: (productos: ProductoInterface[]) => {
+        // Filtrar los productos según el valor seleccionado
+        if (this.filtro === 'privados') {
+          this.productos = productos.filter(producto => producto.privado === true);
+        } else if (this.filtro === 'publicos') {
+          this.productos = productos.filter(producto => producto.privado === false);
+        } else {
+          this.productos = productos; // Mostrar todos los productos
+        }
+      },
+      error: (e: Error) => {
+        console.error('Error al filtrar los productos:', e.message);
+      }
+    });
+  }
+
+}

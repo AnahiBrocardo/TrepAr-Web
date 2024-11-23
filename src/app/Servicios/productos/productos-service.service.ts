@@ -13,6 +13,10 @@ export class ProductoServiceService {
 
   urlBase: string = 'http://localhost:3002/productos'
 
+  getAllProductos(): Observable <ProductoInterface[]>{
+    return this.http.get<ProductoInterface[]>(`${this.urlBase}`);  
+  }
+
 getProductos(idUsuario: string): Observable <ProductoInterface[]>{
   return this.http.get<ProductoInterface[]>(`${this.urlBase}?idUser=${idUsuario}`);  
 }

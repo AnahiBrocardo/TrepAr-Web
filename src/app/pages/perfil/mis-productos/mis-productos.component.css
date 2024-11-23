@@ -1,55 +1,115 @@
-.producto-lista{
-  margin-top: 10hv;
+.producto-lista {
+  width: 80%;
+  background-color: rgb(255, 255, 255);
+  margin-top: 0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .productos-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Coloca las tarjetas en un grid */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  /* Coloca las tarjetas en un grid */
   gap: 20px;
 }
 
-.card {
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(56, 46, 46, 0.1);
-  width: 22vw;
-}
-
-.card-body {
-  padding: 2vw;
-}
-
-
-.nombre-producto{
- font-size: 1.2rem;
- font-weight: bold;
- color: #353434;
-}
-
-.card-title {
+.nombre-producto {
+  font-size: 1.2rem;
   font-weight: bold;
-  display:flex;
-  justify-content:space-between;
+  color: #353434;
+  margin-bottom: 0;
 }
-
-.card-text {
-  font-size: 1em;
-  color: #555;
-}
-
 
 .no-productos {
   text-align: center;
-  font-size: 1.2em;
 }
 
-.buscar{
-  width:28vw;
+.buscar {
+  width: 28vw;
   margin-left: 23vw;
 }
 
-.card-img-top {
-  object-fit: cover; /* Mantiene el aspecto sin deformar */
-  width: 100%; /* Ajusta la anchura al contenedor */
-  max-height: 45vh; /* Altura máxima */
+.filtro {
+  margin-bottom: 2vh;
+}
+
+.custom-select {
+  width: 9vw;
+}
+
+.filtros-productos {
+  justify-content: space-between;
+}
+
+.imagen-no-productos {
+  width: 40%;
+  margin-bottom: 0;
+}
+
+.card-text.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.image-container {
+  position: relative;
+}
+
+.edit-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.icon-edit:hover{
+  color: rgb(113, 162, 253);
+}
+
+.custom-badge {
+  padding: 5px 7px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: normal;
+  width: 40%;
+  align-self: center;
+}
+
+.card-size{
+  height: 100%;
+}
+
+.product-description{
+  height: 15vh;
+}
+
+@media (max-width: 786px) {
+  .filtros-productos {
+    flex-direction: column;
+  }
+
+  .texto-no-producto {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .producto-lista {
+    width: 100%;
+    margin-bottom: 0 !important;
+    border-radius: 0;
+  }
+
+  .imagen-no-productos {
+    width: 70%;
+  }
+}
+
+@media (max-width: 425px) {
+  .texto-titulo {
+    font-size: 1.5rem;
+  }
 }

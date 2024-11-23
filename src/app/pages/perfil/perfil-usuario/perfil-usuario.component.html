@@ -1,70 +1,71 @@
-
-<div class="container">
-  
-  <button *ngIf="vistaPerfil" class="btn btn-outline-primary p-2 lh-1 button-edit" type="button" (click)="editarPerfil()">
-  Volver
-  <span class="visually-hidden">Dismiss</span>
-</button>
-
-<app-editar-perfil [userId]="idUser" *ngIf="vistaPerfil"></app-editar-perfil>
-
-  <div class="row "  *ngIf="!vistaPerfil">
-    <div class="col-12 ">
-      <div class="my-2">
-
-        <!-- Inicio de contenido personalizado -->
-        <div class="row datos-perfil align-items-center ">
-          <!-- Sección de imagen y nombre de usuario -->
-          <div class="col-md-3 text-center ">
-           <button class="btn btn-outline-primary rounded-circle p-2 lh-1 button-edit" type="button" (click)="editarPerfil()">
-            <i class="fa-solid fa-pen-to-square" ></i>
-            <span class="visually-hidden">Dismiss</span>
-          </button>
-            <div class="avatar avatar-xl" >
-              <!-- Imagen de perfil -->
-              <img  [src]="perfilData?.imagePerfil || 'assets/img/usuario.png'" alt="Imagen de perfil" class="avatar-img rounded-circle">
-              
-    
-            </div>
-          </div>
-
-          <!-- Sección de descripción y contacto -->
-          <div class="col" >
-            <div class="row">
-              <div class="col-md-7">
-                <h4 class="mb-1" >{{perfilData?.userName}}</h4>
-                <span class="badge rounded-pill text-bg-dark mb-3">
-                  {{perfilData?.provincia}}, {{perfilData?.ciudad}}</span>
-                <p class="text-muted">{{perfilData?.descripcion}}</p>
-                
-              </div>
-              <div class="col">                
-                <p class="mb-3 text-muted">
-                  <i class="fa-solid fa-phone"></i>
-                  {{perfilData?.telefono}}
-                </p>
-                <p class="mb-3">
-                  <i class="fa-brands fa-linkedin"></i>
-                  <a [href]="perfilData?.linkLinkedIn" target="_blank" rel="noopener noreferrer"> LinkedIn </a>
-                </p>
-                <p class="mb-3">
-                  <i class="fa-brands fa-instagram"></i>
-                  <a [href]="perfilData?.linkInstagram" target="_blank" rel="noopener noreferrer"> Instagram </a>
-                </p>
-              </div>
-              
-            </div>
-          </div>
+<div class="container-fluid" *ngIf="!vistaPerfil">
+  <div class="profile-banner">
+  </div>
+  <div class="profile-container-info">
+    <div class="profile-edit-btn">
+      <!-- <button class="btn btn-primary">Editar Perfil</button> -->
+      <button class="btn btn-outline-dark rounded-circle p-2 lh-1 button-edit position-absolute"
+      style="top: 10px; right: 20px;" type="button" (click)="editarPerfil()"> <i
+        class="fa-solid fa-pen-to-square"></i> <span class="visually-hidden">Dismiss</span>
+      </button>
+    </div>
+    <div class="profile-content">
+      <img [src]="perfilData?.imagePerfil || 'assets/img/usuario.png'" alt="Imagen de perfil" class="profile-photo">
+      <h2 class="contact-name">{{perfilData?.userName}}</h2>
+      <span class="badge rounded-pill text-bg-dark custom-badge">
+        {{perfilData?.provincia}}, {{perfilData?.ciudad}}
+      </span>
+      <p class="contact-item contact-description">{{perfilData?.descripcion}}</p>
+      <div *ngIf="perfilData?.telefono" class="contact-item">
+        <i class="fa-solid fa-phone"></i> {{perfilData?.telefono}}
+      </div>
+      <div class="contact-info mt-2">
+        <div *ngIf="perfilData?.linkLinkedIn" class="contact-item">
+          <a [href]="perfilData?.linkLinkedIn" target="_blank" rel="noopener noreferrer"
+          class="btn btn-light rounded-pill p-2">
+            <i class="fa-brands fa-linkedin fa-lg me-2" style="color: #0e76a8;"></i>
+            LinkedIn
+          </a>
         </div>
-
-        <!-- Sección de productos -->
-        <div class="row"  *ngIf="!vistaPerfil">
-          <div class="col-12">
-            <app-mis-productos [userId]="idUser"></app-mis-productos>
-          </div>
+        <div *ngIf="perfilData?.linkWeb" class="contact-item">
+          <a [href]="perfilData?.linkWeb" target="_blank" rel="noopener noreferrer"
+          class="btn btn-light rounded-pill p-2">
+            <i class="fa-solid fa-globe fa-lg me-2" style="color: #133a7e;"></i>
+            Web
+          </a>
         </div>
-        <!-- Fin de contenido personalizado -->
+        <div *ngIf="perfilData?.linkInstagram" class="contact-item">
+          <a [href]="perfilData?.linkInstagram" target="_blank" rel="noopener noreferrer"
+          class="btn btn-light rounded-pill p-2">
+            <i class="fa-brands fa-instagram fa-lg me-2" style="color: #C13584;"></i>
+            Instagram
+          </a>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="row" *ngIf="!vistaPerfil">
+    <div class="col-12">
+      <app-mis-productos [userId]="idUser"></app-mis-productos>
+    </div>
+  </div>
 </div>
+
+<div *ngIf="vistaPerfil">
+  <section class="container-fluid titulo-modificar-perfil">
+    <h6 class="pt-4 border-bottom d-flex flex-column
+    flex-md-row justify-content-between align-items-center texto-titulo">
+      <div>
+        <i class="fa-solid fa-user me-2"></i>Actualizacion de perfil
+      </div>
+      <button type="button" class="btn btn-outline-primary m-2 mt-md-0 p-1"
+      (click)="editarPerfil()">
+        Volver
+      </button>
+    </h6>
+  </section>
+
+  <app-editar-perfil [userId]="idUser"></app-editar-perfil>
+</div>
+

@@ -43,7 +43,7 @@ constructor(private route: ActivatedRoute,  private router: Router) { }
 
 ngOnInit(): void {
   console.log(this.idUsuario);
-  this.idUsuario = this.route.snapshot.paramMap.get('id') || '';
+  this.idUsuario = localStorage.getItem('userId') || '';
   if (this.idUsuario) { this.listarTodasSimulaciones(this.idUsuario); }
 
 }

@@ -16,9 +16,9 @@ import Swal from 'sweetalert2';
 })
 export class AgregarProductoPerfilComponent implements OnInit{
 
-  @Input() 
+  @Input()
   userId!: string; // Declarar explícitamente la propiedad
-  
+
   ngOnInit(): void {
     this.formulario.patchValue({ idUser: this.userId });
   }
@@ -26,12 +26,12 @@ export class AgregarProductoPerfilComponent implements OnInit{
   activated= inject(ActivatedRoute);
   router= inject(Router);
 
-  
+
   fb= inject(FormBuilder)
   productoService= inject(ProductoServiceService)
 
   /*Contenidos de la barra desplegable */
-  categorias: string[] = ['Electrónica', 'Ropa', 'Hogar', 'Libros', 'Belleza', 'Juguetes', 'Deportes', 'Automotores', 'Alimentos', 'Mascotas', 'Otro']; 
+  categorias: string[] = ['Electrónica', 'Ropa', 'Hogar', 'Libros', 'Belleza', 'Juguetes', 'Deportes', 'Automotores', 'Alimentos', 'Mascotas', 'Otro'];
 
     /*No va a aceptar nincun campo que sea nulo con el nonnull.. */
     formulario = this.fb.nonNullable.group(
@@ -46,34 +46,47 @@ export class AgregarProductoPerfilComponent implements OnInit{
         imagen:['']
       }
     )
-    
+
   addProducto()
   {
-   
-    if(this.formulario.invalid) return; 
+
+    if(this.formulario.invalid) return;
 
     const nuevoProducto = this.formulario.getRawValue();
     this.addProductoDB(nuevoProducto)
 
-     
+
   };
 
   addProductoDB (producto: ProductoInterface){
     this.productoService.postProductos(producto).subscribe(
       {
         next: (producto: ProductoInterface) => {
-          console.log(producto); 
-          Swal.fire("Producto Guardado");
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Producto Guardado"
+          });
           location.reload();
 
         },
         error: (e: Error) => {
-          console.log(e.message); 
+          console.log(e.message);
         }
       }
     )
   }
-  
+
 
 
 }

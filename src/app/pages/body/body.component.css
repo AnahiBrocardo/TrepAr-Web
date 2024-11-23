@@ -1,24 +1,35 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  /* Organiza el contenido verticalmente si hay varios elementos */
+  height: 100%;
+  /* Ocupa todo el alto disponible */
+  width: 100%;
+  /* Ocupa todo el ancho disponible */
+}
 
-  
-  .body-trimmed {
-    width: calc(100% - 16.5625rem);
-    margin-left: 16.5625rem;
-  }
-  
-  .body-md-screen {
-    width: calc(100% - 5rem);
-    margin-left: 5rem;
-  }
+.body-trimmed {
+  width: calc(100% - 16.5625rem);
+  margin-left: 16.5625rem;
+}
 
-  /* Estilo para el body cuando el aside está abierto */
+.body-md-screen {
+  width: calc(100% - 5rem);
+  margin-left: 5rem;
+}
+
+/* Estilo para el body cuando el aside está abierto */
 .body {
-  width: calc(100% - 5rem); /* Esto ajusta el ancho dependiendo del espacio ocupado por el aside */
+  width: calc(100% - 5rem);
+  /* Esto ajusta el ancho dependiendo del espacio ocupado por el aside */
   margin-left: 5rem;
   z-index: 0;
   position: relative;
-  transition: all 0.5s ease; /* Suaviza la transición */
+  transition: all 0.5s ease;
+  /* Suaviza la transición */
   background: linear-gradient(135deg, #a7dcdf81, #ffdcccc2);
-  padding: 3rem;
+  padding: 0;
+  padding-top: 4vh !important;
   box-sizing: border-box;
   height: 100vh;
   overflow: auto;
@@ -26,7 +37,8 @@
 
 /* Estilo para el body cuando el aside está cerrado */
 .body-trimmed {
-  width: calc(100% - 16.5625rem); /* El cuerpo se ajusta cuando el aside está completamente desplegado */
+  width: calc(100% - 16.5625rem);
+  /* El cuerpo se ajusta cuando el aside está completamente desplegado */
   margin-left: 16.5625rem;
 }
 
@@ -41,7 +53,8 @@ aside {
   position: fixed;
   top: 0;
   left: 0;
-  width: 16.5625rem; /* Ajusta el tamaño del aside */
+  width: 16.5625rem;
+  /* Ajusta el tamaño del aside */
   height: 100%;
   background-color: #333;
   transition: width 0.3s ease, margin-left 0.3s ease;
@@ -52,4 +65,3 @@ aside {
 aside.collapsed {
   width: 5rem;
 }
-

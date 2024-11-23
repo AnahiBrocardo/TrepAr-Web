@@ -28,16 +28,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
-
-    this.activated.paramMap.subscribe({
-      next: (param)=>{
-        const id= param.get('id');
-        if(id){
-          this.idUser= id;
-        }
-      console.log(id);
-      }
-    })
+    this.idUser = localStorage.getItem('userId') || '';
     
   }
 
