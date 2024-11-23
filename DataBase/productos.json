@@ -65,6 +65,17 @@
       "deletedAt": false,
       "privado": false,
       "imagen": "https://www.moov.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dw78c49c3d/products/NIFB2348-002/NIFB2348-002-6.JPG"
+    },
+    {
+      "id": "a554",
+      "idUser": "704a",
+      "nombre": "Pan casero",
+      "categoria": "Alimentos",
+      "descripcion": "Lo mas casero y rico de Mar Del Plata",
+      "precio": 1800,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnqvNAUfLrkrI7dnZ2Z_ZO8mHeYCtNGzxWWQ&s"
     }
   ]
 }

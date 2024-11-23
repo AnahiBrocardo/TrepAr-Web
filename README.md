@@ -8,6 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Instalaciones previas
 npm install 
+npm install -g json-server
 ng update @angular/core @angular/cli /*en el caso de tener una version antigua de angular o que no coincida con la version de este proyecto*/
 npm i bootstrap@5.3.3
 npm install sweetalert2
