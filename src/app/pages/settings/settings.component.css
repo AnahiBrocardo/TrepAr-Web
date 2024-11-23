@@ -23,8 +23,8 @@
 }
 
 .icono {
-    width: 85px;
-    height: 85px;
+    width: 10vw;
+    height: 20vh;
     border-radius: 50%; /* Hace el ícono circular */
     margin-bottom: 2vh; /* Espacio entre el ícono y el título */
 }

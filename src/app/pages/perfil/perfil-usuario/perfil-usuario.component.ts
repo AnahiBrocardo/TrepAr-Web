@@ -17,7 +17,6 @@ import { EditarPerfilComponent } from '../editar-perfil/editar-perfil.component'
   styleUrl: './perfil-usuario.component.css'
 })
 export class PerfilUsuarioComponent implements OnInit {
-  activated= inject(ActivatedRoute);
 
   isLoading: boolean = true;
   idUser: string='';
@@ -31,6 +30,7 @@ export class PerfilUsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.idUser = localStorage.getItem('userId') || '';
     this.obtenerDatosPerfil(this.idUser);
+      
    }
 
 
@@ -39,6 +39,7 @@ export class PerfilUsuarioComponent implements OnInit {
       next: (perfilArray: Perfil[]) => {
         if (perfilArray.length > 0) {
           this.perfilData = perfilArray[0]; // Acceder al primer elemento del array
+          console.log(this.perfilData);
         } else {
           console.error('El perfil no existe o no se encontró.');
         }

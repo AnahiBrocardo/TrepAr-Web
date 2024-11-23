@@ -8,7 +8,7 @@
       "descripcion": "Remeron de algodón, color marron. Talles disponibles: S, M, XL, XXL.",
       "precio": "10000",
       "deletedAt": false,
-      "privado": true,
+      "privado": false,
       "imagen": "https://acdn.mitiendanube.com/stores/709/396/products/overchoco-9abd584f4ce541a73517156986142429-240-0.png"
     },
     {
@@ -67,15 +67,15 @@
       "imagen": "https://www.moov.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dw78c49c3d/products/NIFB2348-002/NIFB2348-002-6.JPG"
     },
     {
-      "id": "a554",
-      "idUser": "704a",
-      "nombre": "Pan casero",
-      "categoria": "Alimentos",
-      "descripcion": "Lo mas casero y rico de Mar Del Plata",
-      "precio": 1800,
+      "id": "4428",
+      "idUser": "551f",
+      "nombre": "Sarten",
+      "categoria": "Hogar",
+      "descripcion": "Mainstays Sarten 30Cm",
+      "precio": 80398,
       "deletedAt": false,
       "privado": false,
-      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnqvNAUfLrkrI7dnZ2Z_ZO8mHeYCtNGzxWWQ&s"
+      "imagen": "https://walmartgt.vtexassets.com/arquivos/ids/218001/Mainstays-Sarten-30Cm-1-36510.jpg"
     }
   ]
 }

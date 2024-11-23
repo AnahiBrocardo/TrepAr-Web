@@ -37,12 +37,12 @@
       "deletedAt": null
     },
     {
-      "id": "704a",
-      "nombre": "Ayelen",
-      "apellido": "Ibañez",
-      "email": "ayelen@gmail.com",
+      "id": "551f",
+      "nombre": "Mariano",
+      "apellido": "Lopez",
+      "email": "mariano@gmail.com",
       "password": "12345678",
-      "createdAt": "2024-11-23T00:15:28.711Z",
+      "createdAt": "2024-11-23T17:43:12.408Z",
       "deletedAt": null
     }
   ]

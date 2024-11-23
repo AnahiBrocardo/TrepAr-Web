@@ -1,42 +1,46 @@
-<h2>Agregar un nuevo producto</h2>
-<div class="productos">
+<div class="productos container-fluid">
      <form [formGroup]="formulario" (ngSubmit)="addProducto()">
 
-       <div class="form-group">
+       <div class="form-group elemento-form mb-4">
           <label for="nombre">* Nombre:</label>
           <input type="text" id="nombre" formControlName="nombre" />
        </div>
 
-       <div class="form-group">
+       <div class="form-group mb-4">
           <label for="categoria">* Categoría:</label>
           <select id="categoria" formControlName="categoria">
              <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
           </select>
        </div>
 
-       <div class="form-group">
+       <div class="form-group mb-4">
           <label for="descripcion">* Descripción:</label>
-          <input type="text" id="descripcion" formControlName="descripcion" />
+          <textarea  id="descripcion" formControlName="descripcion"></textarea>
        </div>
 
-       <div class="form-group">
+       <div class="form-group mb-4">
           <label for="precio">* Precio:</label>
           <input type="number" id="precio" formControlName="precio" />
        </div>
 
-       <div class="form-group">
+       <div class="form-group mb-4">
         <label for="imagen"> Imagen:</label>
-        <input type="url" id="imagen" formControlName="imagen" class="form-control" placeholder="Introduce la URL de la imagen" />
+        <input type="url" id="imagen" formControlName="imagen"
+        class="form-control" placeholder="Introduce la URL de la imagen" />
       </div>
-      
-     <div class="form-group">
+
+      <div class="form-group mb-4">
         <label for="privacidad">* Privacidad :</label>
         <select id="privacidad" formControlName="privado" class="form-control">
-          <option value="true">Privado</option>
-          <option value="false">Público</option>
+          <option [ngValue]="true">Privado</option>
+          <option [ngValue]="false">Público</option>
         </select>
       </div>
-             
-       <button type="submit" [disabled]="formulario.invalid">Agregar Producto</button>
+
+      <button type="submit" class="btn btn-success mb-3 mt-2"
+      [disabled]="formulario.invalid">
+        Guardar Producto
+      </button>
+
     </form>
  </div>
