@@ -2,8 +2,8 @@
     <div class="container">
     
         <div class="user-container">
-            <img src="/assets/img/usuario.png" alt="icono user" class="icono">
-            <h3 class="title">Detalle del usuario</h3>
+            <img [src]="imagenPerfil ? imagenPerfil : '/assets/img/usuario.png'" alt="icono user" class="icono">
+            <h3 class="title">Configuracion de cuenta </h3>
         </div>
 
         <ul class="user-info">

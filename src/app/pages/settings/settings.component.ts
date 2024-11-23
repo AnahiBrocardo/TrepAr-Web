@@ -1,10 +1,12 @@
 import { UpdateUserComponent } from './../update/update-user/update-user.component';
 import { Component, inject, OnInit } from '@angular/core';
 import { User } from '../../Interfaces/user.interface';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { UserService } from '../../Servicios/usuario/user.service';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
+import { PerfilService } from '../../Servicios/perfil/perfil.service';
+import { Perfil } from '../../Interfaces/perfil.interface';
 
 @Component({
   selector: 'app-settings',
@@ -21,12 +23,16 @@ export class SettingsComponent implements OnInit{
   mostrarFormulario: boolean = false;
   router= inject(Router);
  
-  activated= inject(ActivatedRoute);
+  perfilSevice= inject(PerfilService);
+
   userId: string='';
+
+  imagenPerfil: string='';
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId') || '';
     this.usuarioData(this.userId);
+    this.obtenerImagenPerfil();
   }
 
   usuarioData(id:string){
@@ -38,6 +44,16 @@ export class SettingsComponent implements OnInit{
         console.log(e);
       }
     })
+  }
+
+  obtenerImagenPerfil(){
+  this.perfilSevice.getPerfilByIdUser(this.userId).subscribe({
+    next: (perfiles:Perfil[])=>{
+      if(perfiles[0].imagePerfil){
+        this.imagenPerfil= perfiles[0].imagePerfil;
+      }
+    }
+  })
   }
 
    // Método para alternar la visibilidad del formulario
