@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ProductoServiceService } from '../../../../Servicios/productos/productos-service.service';
 import { ProductoInterface } from '../../../../Interfaces/producto-interface';
+import { ProductoConUsuario } from '../../../../Interfaces/productoConUsuario';
+import { forkJoin, map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-comunidad-principal',
@@ -33,9 +35,7 @@ export class ComunidadPrincipalComponent implements OnInit{
   perfiles: Perfil[]=[
 
   ];
-  productos: ProductoInterface[]=[
-
-  ];
+  productos: ProductoConUsuario[] = [];
 
 
   favoritos: Set<string> = new Set<string>(); // IDs de perfiles favoritos
@@ -60,18 +60,37 @@ export class ComunidadPrincipalComponent implements OnInit{
     })
   }
 
-  obtenerProductosPublicos(){
-   this.productoService.getAllProductos().subscribe({
-    next: (productosArray: ProductoInterface[]) => {
-      this.productos = productosArray.filter(
-        (producto) => !producto.privado && producto.idUser !== this.userId
-      );
-    },
-    error: (err) => {
-      console.error('Error al obtener los productos:', err);
-    }
-   })
+  obtenerProductosPublicos() {
+    this.productoService.getAllProductos().pipe(
+      // Filtra productos al inicio
+      switchMap((productosArray: ProductoInterface[]) => {
+        const productosFiltrados = productosArray.filter(
+          (producto) => !producto.privado && producto.idUser !== this.userId
+        );
+  
+        // Para cada producto, obtenemos el perfil
+        const observables = productosFiltrados.map((producto) =>
+          this.perfilService.getPerfilByIdUser(producto.idUser).pipe(
+            map((perfilArray) => ({ //Combina cada producto con el perfil devuelto por getPerfilByIdUser
+              producto: producto,
+              userName: perfilArray[0]?.userName || 'Usuario desconocido',
+            }))
+          )
+        );
+        return forkJoin(observables); //Espera a que todas las solicitudes de perfiles (una por cada producto) terminen antes de emitir un único array con los resultados combinados.
+      })
+    ).subscribe({
+      next: (productosConUsuario) => {
+        this.productos = productosConUsuario;
+      },
+      error: (err) => {
+        console.error('Error al obtener los productos o perfiles:', err);
+      },
+    });
   }
+  
+  
+
   // Carga la lista de favoritos del usuario actual
   cargarFavoritos() {
     if (this.userId) {

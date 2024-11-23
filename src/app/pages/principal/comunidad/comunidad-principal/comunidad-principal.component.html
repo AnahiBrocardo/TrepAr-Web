@@ -94,26 +94,25 @@
     </div>
 
     <div class="row" *ngIf="filtroPrincipal === 'productos'" >
-      <div class="col-md-4" *ngFor=" let producto of productos">
+      <div class="col-md-4" *ngFor=" let item  of productos">
         <div class="card-container mb-3">
           <div class="card" style="width: 18rem;">
            
             <img
-              [src]="producto.imagen  || 'assets/img/usuario.png'"
+              [src]="item.producto.imagen  || 'assets/img/usuario.png'"
               class="card-img-top"
               alt="Foto de perfil"
             />
             <div class="card-body">
-              <h5 class="card-title">{{ producto.nombre }}</h5>
-              <p class="card-text"><strong>Categoría:</strong> {{ producto.categoria }}</p>
-              <p class="card-text"><strong>Descripción:</strong> {{ producto.descripcion }}</p>
-              <p class="card-text"><strong>Precio:</strong> {{ producto.precio | currency }}</p>
+              <h5 class="card-title">{{ item.producto.nombre }}</h5>
+              <span class="badge rounded-pill text-bg-dark mb-2">
+               Usuario  {{ item.userName }}</span>
+              <p class="card-text"><strong>Categoría:</strong> {{ item.producto.categoria }}</p>
+              <p class="card-text"><strong>Descripción:</strong> {{ item.producto.descripcion }}</p>
+              <p class="card-text"><strong>Precio:</strong> {{ item.producto.precio | currency }}</p>
     
               <div class="enlaces d-flex justify-content-between">
-                <a class="btn btn-primary" (click)="seleccionPerfilProducto(producto.idUser)">Ir a perfil</a>
-                <a>
-                  <i class="fa-solid fa-envelope fa-2xl correo" style="color: #0d6efd;"></i>
-                </a>
+                <a class="btn btn-primary" (click)="seleccionPerfilProducto(item.producto.idUser)">Ir a perfil</a>
               </div>
             </div>
           </div>
