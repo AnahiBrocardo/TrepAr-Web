@@ -7,14 +7,14 @@
     margin-top: 10vh;
   }
 
-  .datos-perfil{
+.datos-perfil{
     margin-bottom: 10vh;
     min-height: 35vh; /* O usa height: 500px; según lo que necesites */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave en la parte inferior */
     margin-top: 2vh;
     }
     
-    .avatar {
+.avatar {
       position: relative; /* Necesario para posicionar el ícono de manera absoluta */
      display: flex;
      flex-direction: column; /* Asegura que los elementos estén en columna */
@@ -22,113 +22,127 @@
      margin-bottom: 1vh; /* Espaciado inferior */
     }
     
-    .avatar img {
+.avatar img {
       width: 150px;
       height: 150px;
       object-fit: cover;
     }
 
-    .rounded-circle {
+.rounded-circle {
         border-radius: 50% !important;
-      }
+    }
 
-      .correo-icon {
+.correo-icon {
         display: inline-block;
         margin-top: 3vh; /* Espaciado entre la imagen y el ícono */
         text-decoration: none;
         transition: transform 0.2s ease-in-out;
       }
       
-      .correo-icon:hover {
+.correo-icon:hover {
         transform: scale(1.1); /* Efecto de ampliación al pasar el cursor */
       }
       
-      img {
-        vertical-align: middle;
-      }
-      .text-muted {
-        color: #3b3b3b !important;
-      }
-      .text-muted {
-        font-weight: 400;
-      }
+img {
+ vertical-align: middle;
+}
+
+.text-muted {
+ color: #3b3b3b !important;
+}
+
+.text-muted {
+ font-weight: 400;
+}
 
 
-      .producto-lista{
-        margin-top: 10hv;
-      }
+.producto-lista{
+ margin-top: 10hv;
+}
+
+.productos-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente fila si no caben */
+  gap: 2vh; /* Espaciado uniforme entre filas */
+  justify-content: flex-start; /* Las tarjetas se alinean al inicio */
+  padding: 1vw; /* Espacio alrededor del contenedor */
+}
       
-      .productos-container {
-        display: flex;
-        flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente fila si no caben */
-        gap: 2vh; /* Espaciado uniforme entre filas */
-        justify-content: flex-start; /* Las tarjetas se alinean al inicio */
-        padding: 1vw; /* Espacio alrededor del contenedor */
-      }
+.card {
+  flex: 1 1 calc(280px); /* Las tarjetas tienen un ancho mínimo de 280px y crecen proporcionalmente */
+  max-width: 22vw; /* Limita el tamaño máximo a 22% del ancho del contenedor */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(56, 46, 46, 0.1);
+  box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho */
+}
       
-      .card {
-        flex: 1 1 calc(280px); /* Las tarjetas tienen un ancho mínimo de 280px y crecen proporcionalmente */
-        max-width: 22vw; /* Limita el tamaño máximo a 22% del ancho del contenedor */
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(56, 46, 46, 0.1);
-        box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho */
-      }
+
+.card-body {
+  padding: 2vw;
+}
       
-      .card-body {
-        padding: 2vw;
-      }
+.nombre-producto{
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #353434;
+}
       
-      .nombre-producto{
-       font-size: 1.2rem;
-       font-weight: bold;
-       color: #353434;
-      }
+.card-title {
+  font-weight: bold;
+  display:flex;
+  justify-content:space-between;
+}
       
-      .card-title {
-        font-weight: bold;
-        display:flex;
-        justify-content:space-between;
-      }
+.card-text {
+  font-size: 1em;
+  color: #555;
+}
       
-      .card-text {
-        font-size: 1em;
-        color: #555;
-      }
-      
-      
-      .no-productos {
-        text-align: center;
-        font-size: 1.2em;
-      }
+.no-productos {
+  text-align: center;
+  font-size: 1.2em;
+}
 
 
-      .headerProductos{
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 3vh;
-      }
+.headerProductos{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3vh;
+}
 
-      .buscar{
-        width: 30vw;
-      }
-      .card-img-top{
-        width: 100%; /* La imagen ocupará todo el ancho de su contenedor */
-        height: auto; /* Mantiene la proporción de la imagen */
-        max-height: 50vh; /* Limita la altura máxima de la imagen */
-        object-fit: cover; /* Recorta la imagen si es necesario para que llene el espacio */
-      }
+.buscar{
+  width: 30vw;
+}
 
-      .icono-marcador {
-        position: absolute;
-        top: 2vh; /* Espacio desde el borde superior, adaptado a la altura de la pantalla */
-        right: 2vw; /* Espacio desde el borde derecho, adaptado al ancho de la pantalla */
-        margin-right: 15px; /* Ajuste adicional para margen */
-        color: #878787;
-        cursor: pointer;
-        transition: color 0.3s ease; /* Transición suave del color */
-      }
+.card-img-top{
+  width: 100%; /* La imagen ocupará todo el ancho de su contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  max-height: 50vh; /* Limita la altura máxima de la imagen */
+  object-fit: cover; /* Recorta la imagen si es necesario para que llene el espacio */
+}
+
+.icono-marcador {
+  position: absolute;
+  top: 2vh; /* Espacio desde el borde superior, adaptado a la altura de la pantalla */
+  right: 2vw; /* Espacio desde el borde derecho, adaptado al ancho de la pantalla */
+  margin-right: 15px; /* Ajuste adicional para margen */
+  cursor: pointer;
+  transition: color 0.3s ease; /* Transición suave del color */
+}
+
+.favorito{
+  color: #FFD43B;
+}
+
+.noFavorito{
+  color: #878787;
+}
       
-      .icono-marcador:hover {
-        color: #eecf60; /* Color más claro al pasar el cursor */
-      }
+.favorito:hover{
+  color: #878787; /* Color gris */
+}
+
+.noFavorito:hover{
+  color: #eecf60; /* Color amarillo */
+}

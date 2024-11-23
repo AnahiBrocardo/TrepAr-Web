@@ -43,7 +43,19 @@
             </div>
 
          
-        <i class="fa-solid fa-bookmark fa-2xl icono-marcador" title="Guardar perfil"></i>
+            <a class="icono-marcador" (click)="alternarFavorito()">
+              <i
+              *ngIf="isFavorito"
+              class="fa-solid fa-bookmark fa-2xl favorito"
+              title="Quitar de favoritos"
+            ></i>
+          
+            <i
+              *ngIf="!isFavorito"
+              class="fa-solid fa-bookmark fa-2xl noFavorito"
+              title="Guardar perfil"
+            ></i>
+             </a>
           </div>
         </div>
 
