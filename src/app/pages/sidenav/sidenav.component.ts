@@ -41,9 +41,13 @@ export class SidenavComponent implements OnInit{
       routeLink: 'perfil',
       icon: 'fal fa-user',
       label: 'Perfil',
+    },
+    {
+      routeLink: 'preguntas-frecuentes',
+      icon: 'fal fa-circle-question',
+      label: 'Ayuda',
     }
   ];
-
 
 
   toggleCollapse(): void {

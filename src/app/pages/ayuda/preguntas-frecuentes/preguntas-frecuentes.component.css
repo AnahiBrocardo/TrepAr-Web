@@ -1,0 +1,28 @@
+.container{
+    background-color: white;
+}
+
+.titulo{
+    margin-bottom: 4vh;
+    padding:1vh;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* Ajustar el grosor del acordeón */
+.accordion-button {
+    padding: 0.75rem 1.25rem; /* Reducir el padding */
+    font-size: 1rem; /* Ajustar el tamaño de la fuente */
+    line-height: 1.25; /* Ajustar la altura de línea */
+  }
+  
+  .accordion-item {
+    border: 1px solid #ddd; /* Ajustar los bordes */
+    margin-bottom: 1rem; /* Separación entre las preguntas */
+  }
+  
+  
+  .accordion-body {
+    font-size: 0.95rem; /* Reducir el tamaño del texto en las respuestas */
+    padding: 0.75rem 1.25rem; /* Reducir el padding del cuerpo del acordeón */
+  }
+
+  
