@@ -17,6 +17,7 @@ import { ListarSimuladorComponent } from './componentes/simulador/funciones/list
 import { PerfilUsuarioComponent } from './pages/perfil/perfil-usuario/perfil-usuario.component';
 import { PrincipalComponent } from './pages/principal/principal.page/principal.component';
 import { PerfilComunidadComponent } from './pages/principal/perfil-comunidad/perfil-comunidad/perfil-comunidad.component';
+import { PreguntasFrecuentesComponent } from './pages/ayuda/preguntas-frecuentes/preguntas-frecuentes.component';
 
 export const routes: Routes = [
    { path: '', component: LandingPageComponent,canActivate:[logOutGuard]},
@@ -39,6 +40,7 @@ export const routes: Routes = [
             { path: 'simulador/listar-simulador', component: ListarSimuladorComponent },
             { path: 'agregar-simulador', component: AgregarSimuladorComponent},
             {path: 'perfil', component: PerfilUsuarioComponent},
+            {path: 'preguntas-frecuentes', component:PreguntasFrecuentesComponent}
         ],
         canActivate:[loginGuard] //si estoy loggeado puedo acceder a esta ruta
 
