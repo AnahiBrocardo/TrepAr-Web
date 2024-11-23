@@ -13,9 +13,8 @@
   <section class="filtros my-3">
     <div class="containerFiltros">
       <!-- Barra de búsqueda -->
-      <form class="search-form d-flex" role="search" style="flex: 1; max-width: 50%;">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-        <button class="btn btn-outline-dark" type="submit">Buscar</button>
+      <form class="search-form d-flex" role="search" style="flex: 1; max-width: 50%;" (ngSubmit)="filtrarPorBusqueda()">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" name="textoBusqueda" [(ngModel)]="textoBusqueda" (ngModelChange)="filtrarPorBusqueda()">
       </form>
   
       <!-- Filtros -->
@@ -34,8 +33,8 @@
         <!-- Segundo filtro -->
         <select
           class="form-select form-select-sm"
-          (change)="filtrarEmprendedores()"
           [(ngModel)]="filtroSecundario"
+          (change)="filtroPrincipal === 'productos' ? filtrarProductosPorCategoria() : filtrarEmprendedores()"
           aria-label="Filtro secundario"
         >
           <ng-container *ngIf="filtroPrincipal === 'emprendedores'">

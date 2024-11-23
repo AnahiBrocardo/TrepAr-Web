@@ -35,6 +35,15 @@
       "password": "12345678",
       "createdAt": "2024-11-20T12:22:41.919Z",
       "deletedAt": null
+    },
+    {
+      "id": "551f",
+      "nombre": "Mariano",
+      "apellido": "Lopez",
+      "email": "mariano@gmail.com",
+      "password": "12345678",
+      "createdAt": "2024-11-23T17:43:12.408Z",
+      "deletedAt": null
     }
   ]
 }
