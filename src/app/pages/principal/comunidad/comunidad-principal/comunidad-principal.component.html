@@ -1,22 +1,88 @@
 
 <div class="comunidad-container" >
-  <app-barra-busqueda-principal ></app-barra-busqueda-principal>
-    <div class="row container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="fa-solid fa-user-group" style="color: #ffffff;"></i>
+        Comunidad TrepAr
+      </a>
+      
+    </div>
+  </nav>
+
+  <section class="filtros my-3">
+    <div class="containerFiltros">
+      <!-- Barra de búsqueda -->
+      <form class="search-form d-flex" role="search" style="flex: 1; max-width: 50%;">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+        <button class="btn btn-outline-dark" type="submit">Buscar</button>
+      </form>
+  
+      <!-- Filtros -->
+      <div class="d-flex ms-3">
+        <!-- Primer filtro -->
+        <select
+          class="form-select form-select-sm me-2"
+          [(ngModel)]="filtroPrincipal"
+          (change)="cambiarFiltroPrincipal($event)"
+          aria-label="Filtro principal"
+        >
+          <option value="emprendedores" selected>Emprendedores</option>
+          <option value="productos">Productos</option>
+        </select>
+  
+        <!-- Segundo filtro -->
+        <select
+          class="form-select form-select-sm"
+          (change)="filtrarEmprendedores()"
+          [(ngModel)]="filtroSecundario"
+          aria-label="Filtro secundario"
+        >
+          <ng-container *ngIf="filtroPrincipal === 'emprendedores'">
+            <option value="todos" selected>Todos</option>
+            <option value="favoritos">Favoritos</option>
+          </ng-container>
+          <ng-container *ngIf="filtroPrincipal === 'productos'">
+            <option value="" disabled selected>Categorías</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria">
+              {{ categoria }}
+            </option>
+          </ng-container>
+        </select>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="row" *ngIf="filtroPrincipal === 'emprendedores'"  >
       <div class="col-md-4" *ngFor="let perfil of perfiles">
-        <div class="card-container">
+        <div class="card-container mb-3">
           <div class="card" style="width: 18rem;">
-            <img [src]="perfil.imagePerfil ? perfil.imagePerfil : 'assets/img/usuario.png'" class="card-img-top" alt="Foto de perfil">
+            <!-- Ícono de favorito -->
+            <a class="icono-marcador" *ngIf="perfil.id" (click)="alternarFavorito(perfil.id)">
+              <!-- Ícono amarillo si es favorito -->
+              <i
+                *ngIf="esFavorito(perfil.id)"
+                class="fa-solid fa-bookmark fa-2xl favorito"
+                title="Quitar de favoritos"
+              ></i>
+              <!-- Ícono gris si no es favorito -->
+              <i
+                *ngIf="!esFavorito(perfil.id)"
+                class="fa-solid fa-bookmark fa-2xl noFavorito"
+                title="Guardar perfil"
+              ></i>
+            </a>
+            <img
+              [src]="perfil.imagePerfil || 'assets/img/usuario.png'"
+              class="card-img-top"
+              alt="Foto de perfil"
+            />
             <div class="card-body">
               <h5 class="card-title">{{ perfil.userName }}</h5>
-              <p class="card-text ubicacion">
-                {{ perfil.provincia }}, {{ perfil.ciudad }}
-              </p>
-              <p class="card-text">
-                {{ perfil.descripcion }}
-              </p>
-  
-              <div class="enlaces">
-                <a class="btn btn-primary" (click)="seleccionPerfil(perfil.id || '')" >Ir a perfil</a>
+              <p class="card-text ubicacion">{{ perfil.provincia }}, {{ perfil.ciudad }}</p>
+              <p class="card-text">{{ perfil.descripcion }}</p>
+              <div class="enlaces d-flex justify-content-between">
+                <a class="btn btn-primary" (click)="seleccionPerfil(perfil.id || '')">Ir a perfil</a>
                 <a>
                   <i class="fa-solid fa-envelope fa-2xl correo" style="color: #0d6efd;"></i>
                 </a>
@@ -26,5 +92,34 @@
         </div>
       </div>
     </div>
-  </div>
+
+    <div class="row" *ngIf="filtroPrincipal === 'productos'" >
+      <div class="col-md-4" *ngFor=" let producto of productos">
+        <div class="card-container mb-3">
+          <div class="card" style="width: 18rem;">
+           
+            <img
+              [src]="producto.imagen  || 'assets/img/usuario.png'"
+              class="card-img-top"
+              alt="Foto de perfil"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ producto.nombre }}</h5>
+              <p class="card-text"><strong>Categoría:</strong> {{ producto.categoria }}</p>
+              <p class="card-text"><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+              <p class="card-text"><strong>Precio:</strong> {{ producto.precio | currency }}</p>
+    
+              <div class="enlaces d-flex justify-content-between">
+                <a class="btn btn-primary" (click)="seleccionPerfilProducto(producto.idUser)">Ir a perfil</a>
+                <a>
+                  <i class="fa-solid fa-envelope fa-2xl correo" style="color: #0d6efd;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+</div>
  
