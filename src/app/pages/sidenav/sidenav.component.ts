@@ -39,7 +39,7 @@ export class SidenavComponent implements OnInit{
     },
     {
       routeLink: 'perfil',
-      icon: 'fal fa-cog',
+      icon: 'fal fa-user',
       label: 'Perfil',
     }
   ];
