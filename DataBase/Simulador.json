@@ -1,5 +1,17 @@
 {
   "simuladores": [
- 
+    {
+      "id": "1d9a",
+      "idUsuario": "68a4",
+      "nombre": "Crema",
+      "precioMP": 100,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 2,
+      "valorGF": 600,
+      "CantidadProductoMensual": 300,
+      "Ganancia": 30,
+      "PrecioFinal": 67.6,
+      "habilitado": true
+    }
   ]
 }
