@@ -17,7 +17,6 @@ import { EditarPerfilComponent } from '../editar-perfil/editar-perfil.component'
   styleUrl: './perfil-usuario.component.css'
 })
 export class PerfilUsuarioComponent implements OnInit {
-  activated= inject(ActivatedRoute);
 
   isLoading: boolean = true;
   idUser: string='';
@@ -29,15 +28,9 @@ export class PerfilUsuarioComponent implements OnInit {
   servicioPerfil= inject(PerfilService);
 
   ngOnInit(): void {
-    this.activated.paramMap.subscribe({
-     next:(param)=>{
-       const id= param.get('id');
-       if(id){
-         this.idUser=id;
-        this.obtenerDatosPerfil(this.idUser);
-       }
-     }
-    })
+    this.idUser = localStorage.getItem('userId') || '';
+    this.obtenerDatosPerfil(this.idUser);
+      
    }
 
 
