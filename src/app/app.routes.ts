@@ -19,6 +19,7 @@ import { PrincipalComponent } from './pages/principal/principal.page/principal.c
 import { PerfilComunidadComponent } from './pages/principal/perfil-comunidad/perfil-comunidad/perfil-comunidad.component';
 import { PreguntasFrecuentesComponent } from './pages/ayuda/preguntas-frecuentes/preguntas-frecuentes.component';
 import { ChatInternoComponent } from './pages/chat/chat-interno/chat-interno.component';
+import { InicioComponent } from './pages/inicio/inicio/inicio.component';
 
 export const routes: Routes = [
    { path: '', component: LandingPageComponent,canActivate:[logOutGuard]},
@@ -28,6 +29,10 @@ export const routes: Routes = [
         path: 'dashboard', 
         component: DashboardComponent,
         children: [
+            {
+            path: '', // Esta ruta se activará por defecto al ingresar al dashboard
+            component: InicioComponent, // El componente que quieres que se muestre por defecto
+            },
             {
                 path: 'comunidad',
                 component: PrincipalComponent,
@@ -42,7 +47,8 @@ export const routes: Routes = [
             { path: 'agregar-simulador', component: AgregarSimuladorComponent},
             {path: 'perfil', component: PerfilUsuarioComponent},
             {path: 'preguntas-frecuentes', component:PreguntasFrecuentesComponent},
-            {path: 'chat', component:ChatInternoComponent}
+            {path: 'chat', component:ChatInternoComponent},
+            {path: 'inicio', component:InicioComponent}
         ],
         canActivate:[loginGuard] //si estoy loggeado puedo acceder a esta ruta
 
