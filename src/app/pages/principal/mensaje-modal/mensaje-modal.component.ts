@@ -50,10 +50,8 @@ export class MensajeModalComponent implements OnInit{
       this.tipo = this.data.tipo || '';
       this.idUsuario = this.data.idUsuario || '';
       this.idDestino = this.data.idDestino || '';
-      console.log('id destino'+ this.idDestino);
       this.obtenerDatosPerfil();
     }
-    console.log(this.data);
   }
 
   obtenerDatosPerfil(){
