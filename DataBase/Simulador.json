@@ -12,6 +12,19 @@
       "Ganancia": 30,
       "PrecioFinal": 67.6,
       "habilitado": true
+    },
+    {
+      "id": "5088",
+      "idUsuario": "5b43",
+      "nombre": "tes",
+      "precioMP": 600,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 3,
+      "valorGF": 6000,
+      "CantidadProductoMensual": 50,
+      "Ganancia": 30,
+      "PrecioFinal": 416,
+      "habilitado": true
     }
   ]
 }
