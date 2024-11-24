@@ -44,6 +44,15 @@
       "password": "12345678",
       "createdAt": "2024-11-23T17:43:12.408Z",
       "deletedAt": null
+    },
+    {
+      "id": "5b43",
+      "nombre": "Julieta",
+      "apellido": "Alijas",
+      "email": "julietaalijas94@gmail.com",
+      "password": "12345678",
+      "createdAt": "2024-11-24T02:40:35.021Z",
+      "deletedAt": null
     }
   ]
 }

@@ -1,0 +1,81 @@
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 12px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.modal-header {
+  display: flex; /* Usamos flexbox para centrar */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Asegura que el título se mantenga centrado verticalmente */
+  margin-bottom: 12px;
+}
+
+.modal-header h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #118094;
+  margin: 0; /* Elimina cualquier margen extra */
+}
+
+.modal-form .info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.info-row mat-label {
+  font-weight: bold;
+  color: #ce9e56;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+button {
+  min-width: 100px;
+  padding: 8px 16px;
+}
+
+button.cancel-btn {
+  background-color: #f44336; /* Rojo */
+  color: white;
+}
+
+button.send-btn {
+  background-color: #4caf50; /* Verde */
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .modal-container {
+    padding: 10px;
+    max-width: 90%;
+  }
+
+  .modal-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  button {
+    width: 100%;
+  }
+}

@@ -10,9 +10,10 @@
           
               <img [src]="perfilSeleccionado?.imagePerfil || 'assets/img/usuario.png'" alt="Imagen de perfil" class="avatar-img rounded-circle">
            
-              <a class="correo-icon">
-                <i class="fa-solid fa-envelope fa-2xl correo" style="color: #0d6efd;"></i>
+              <a class="chat-icon" (click)="enviarMensaje()">>
+                <i class="fa-solid fa-comments fa-2xl chat" style="color: #e9b034;"></i>
               </a>
+              
             </div>
           </div>
 

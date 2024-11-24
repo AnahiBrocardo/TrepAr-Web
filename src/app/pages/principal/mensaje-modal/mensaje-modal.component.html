@@ -1,0 +1,36 @@
+<div mat-dialog-content class="modal-container">
+  <!-- Título centrado -->
+  <div class="modal-header">
+    <h1>Nuevo Mensaje</h1>
+  </div>
+
+  <!-- Formulario para el mensaje -->
+  <form [formGroup]="formulario" (ngSubmit)="generarMensaje()" class="modal-form">
+    <!-- Información del Destinatario -->
+    <div class="info-row">
+      <mat-label>Para:</mat-label>
+      <!-- Mostrar el nombre del destinatario -->
+      <p>{{ destinatarioName  || 'Usuario Destinatario' }}</p>
+    </div>
+
+    <!-- Campo para el mensaje -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Escribe tu mensaje</mat-label>
+      <textarea matInput formControlName="mensaje" rows="5"></textarea>
+      <mat-error *ngIf="formulario.get('mensaje')?.hasError('required')">
+        El mensaje es requerido.
+      </mat-error>
+      <mat-error *ngIf="formulario.get('mensaje')?.hasError('maxlength')">
+        El mensaje no puede exceder los 500 caracteres.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Botones de acción -->
+    <div class="modal-actions">
+      <button mat-button mat-dialog-close color="warn" (click)="cerrarModal()">Cancelar</button>
+      <button mat-raised-button color="primary" [disabled]="formulario.invalid">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>
