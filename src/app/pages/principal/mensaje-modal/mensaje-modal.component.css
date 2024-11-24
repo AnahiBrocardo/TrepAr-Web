@@ -1,0 +1,54 @@
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: linear-gradient(0deg, #cfecee, #f7ebd4); /* 0deg para que el degradado vaya de abajo hacia arriba */
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h1 {
+  font-size: 1.8rem;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+button[mat-button] {
+  background-color: #269b8b;
+  color: #fff;
+  border: none;
+}
+
+button[mat-button]:hover {
+  background-color: #2673c1;
+}

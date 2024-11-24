@@ -5,7 +5,7 @@ export interface Chat{
         mensaje: string;
         visto?: boolean;
         eliminadoPor?: {
-          idPerfil: string;
+          idPerfil: string| null;
           fechaDeEliminacion: Date | null;
         }[];
  }

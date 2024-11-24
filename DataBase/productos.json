@@ -76,6 +76,17 @@
       "deletedAt": false,
       "privado": false,
       "imagen": "https://walmartgt.vtexassets.com/arquivos/ids/218001/Mainstays-Sarten-30Cm-1-36510.jpg"
+    },
+    {
+      "id": "13a4",
+      "idUser": "5b43",
+      "nombre": "miel",
+      "categoria": "Alimentos",
+      "descripcion": "miel de 1 k",
+      "precio": 6000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://th.bing.com/th/id/OIP.NVoDLhRZ68_sx-jo6kPmoAHaE8?rs=1&pid=ImgDetMain"
     }
   ]
 }

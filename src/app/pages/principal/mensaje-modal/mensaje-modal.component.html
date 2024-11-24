@@ -1,0 +1,33 @@
+<div mat-dialog-content class="modal-container">
+  <!-- Título centrado -->
+  <div class="modal-header">
+    <h1>Nuevo Mensaje</h1>
+  </div>
+
+  <!-- Formulario para el mensaje -->
+  <form [formGroup]="formulario" (ngSubmit)="generarMensaje()" class="modal-form">
+    <!-- Información del Destinatario -->
+    <div class="info-row">
+      <mat-label>Para:</mat-label>
+      <p>{{ destinatarioName || 'Usuario Destinatario' }}</p>
+    </div>
+
+    <!-- Campo de mensaje -->
+    <mat-form-field appearance="outline">
+      <mat-label>Escribe tu mensaje</mat-label>
+      <textarea
+        matInput
+        formControlName="mensaje"
+        rows="5"
+        maxlength="500"
+        placeholder="Hola, me gustaron tus productos!..."
+      ></textarea>
+    </mat-form-field>
+
+    <!-- Botones de acción -->
+    <div class="modal-actions">
+      <button mat-button type="submit" [disabled]="formulario.invalid">Enviar</button>
+      <button mat-button type="button" (click)="cerrarModal()">Cancelar</button>
+    </div>
+  </form>
+</div>
