@@ -1,83 +1,145 @@
 /* Estilo general del diálogo */
-.mat-dialog-container {
-  padding: 16px; /* Espaciado interno del diálogo */
-  border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para mejor diseño */
+::ng-deep .mat-dialog-container {
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(0deg, #cfecee, #f7ebd4) !important; /* 0deg para que el degradado vaya de abajo hacia arriba */
+  position: relative;
 }
 
-/* Título del diálogo */
-h2 {
-  font-size: 2.5rem!important; /* Aumenta el tamaño de la fuente */
-  font-weight: bold;
-  margin-bottom: 16px;
-  color: #10a7b8 !important; /* Cambia el color a #f8deb3 */
-  text-align: center;
-  
+
+/* Botón de cierre */
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: #ebdac1;
+  border-radius: 50%;
+  padding: 8px;
+  border: none;
+  color: white;
 }
 
-h3 {
-  font-size: 1.5rem!important; 
-  color: #10a7b8 !important;
-
+.close-btn:hover {
+  background-color: #d1e98e;
 }
 
-/* Estilo del stepper */
+/* Stepper general */
+.mat-horizontal-stepper {
+  width: 100%;
+  padding: 2rem;
+}
+
 .mat-horizontal-stepper-header {
-  justify-content: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px; /* Espacio entre los pasos */
   margin-bottom: 20px;
-  gap: 20px; /* Aumenta el espacio entre los números de los pasos */
 }
 
-.mat-horizontal-stepper-header-container {
-  gap: 16px; /* Espaciado entre los pasos */
-}
-
-/* Estilo para los números de los pasos en el stepper */
 .mat-step-label {
-  font-size: 1.6rem !important; /* Aumenta el tamaño de la fuente */
-  color: #da3177 !important; /* Cambia el color a #0ba2b3 */
+  font-size: 0.9rem !important;
+  color: #da3177 !important;
   font-weight: bold;
-  text-align: center; /* Centra los números */
-  width: 50px; /* Ancho fijo para el número */
-  display: inline-block; /* Para asegurar que el número quede centrado */
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Número arriba, texto abajo */
+  align-items: center;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .mat-step-label-active {
-  color: #f8deb3 !important; /* Cambia el color del número activo */
+  color: #ffffff !important;
+  background-color: #42ad27 !important;
 }
 
-.mat-stepper-horizontal-line {
-  border-top: 2px solid #42ad27 !important; /* Línea debajo de los pasos */
-  margin: 0 auto;
+/* Estilo de las líneas entre pasos */
+.mat-step-label::before {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: #da3177;
+  width: 100%;
+  margin: 8px 0;
 }
 
-/* Estilo para los botones - Sin color oscuro al pasar el cursor */
+/* Botones de acción en el diálogo */
+.mat-dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 16px;
+}
+
 button {
+  border-radius: 12px;
+  padding: 10px 20px;
   margin: 8px;
-  transition: background-color 0.3s ease !important; /* Agrega una transición suave */
+  font-weight: bold;
+  border: 1px solid #eeab40;
   color: #eeab40 !important;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: transparent !important; /* Elimina el efecto oscuro al hacer hover */
-  
+  background-color: #eeab40 !important;
+  color: white !important;
+  transform: scale(1.05);
 }
 
-/* Contenido del formulario */
+/* Formularios */
 mat-form-field {
-  width: 100%; /* Asegura que los campos ocupen todo el ancho disponible */
-  margin-bottom: 20px; /* Espaciado entre campos */
+  width: 100%;
+  margin-bottom: 12px;
 }
 
-mat-form-field:last-child {
-  margin-bottom: 0;
+mat-form-field input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 8px;
 }
 
-/* Contenedor de botones */
-button:first-child {
-  margin-right: auto; /* Alinea el botón "Anterior" a la izquierda */
+mat-form-field input[type="number"] {
+  text-align: center;
+  height: 36px; /* Ajusta la altura del input */
 }
 
-button:last-child {
-  margin-left: auto; /* Alinea el botón "Siguiente" a la derecha */
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+  height: 16px; /* Ajusta la altura de los botones */
+  margin: 0; /* Elimina el margen innecesario */
+}
+
+/* Evitar que los botones sean demasiado grandes */
+mat-form-field input[type="number"]::-webkit-inner-spin-button {
+  width: 16px;
+}
+/* Título principal (h2) del simulador */
+h2 {
+  font-size: 2rem !important; /* Tamaño más grande */
+  font-weight: bold;
+  text-align: center;
+  color: #0d717e !important; /* Color verde agua */
+  text-transform: uppercase; /* Opcional: para que todo el texto esté en mayúsculas */
+  margin-bottom: 24px; /* Espacio debajo */
+  letter-spacing: 1px; /* Espaciado entre letras para un efecto más elegante */
+}
+
+/* Subtítulos de los pasos (h3) */
+h3 {
+  font-size: 1.4rem; /* Más pequeño que el h2 pero destacado */
+  font-weight: bold;
+  text-align: left; /* Alineado a la izquierda por defecto */
+  color: #1990a0; /* Mismo color que el título principal */
+  margin-bottom: 16px; /* Espacio debajo */
+  text-transform: capitalize; /* Primera letra en mayúscula */
+  border-left: 4px solid #20c997; /* Línea decorativa a la izquierda */
+  padding-left: 12px; /* Espacio entre el texto y la línea */
 }

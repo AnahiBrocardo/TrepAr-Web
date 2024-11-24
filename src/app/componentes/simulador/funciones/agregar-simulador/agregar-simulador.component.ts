@@ -5,13 +5,15 @@ import { SimuladorService } from '../../../../../Servicios/Simulador.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {MatButtonModule, MatMiniFabButton} from '@angular/material/button';
 import {MatDialogModule, MatDialog} from '@angular/material/dialog';
-import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { AsyncPipe } from '@angular/common';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {StepperOrientation, MatStepperModule} from '@angular/material/stepper';
 
 @Component({
   selector: 'app-agregar-simulador',
@@ -24,6 +26,7 @@ import Swal from 'sweetalert2';
      MatFormFieldModule,
      MatInputModule,
      MatIconModule,
+     MatTooltipModule
     ],
   templateUrl: './agregar-simulador.component.html',
   styleUrl: './agregar-simulador.component.css'
@@ -51,6 +54,7 @@ export class AgregarSimuladorComponent implements OnInit {
       this.formulario.patchValue(data.simulador); // Rellena el formulario con los datos del simulador
       this.precioConGanancia = data.simulador.PrecioFinal || 0; // Opcional, si el precio ya está calculado
     }
+    
    }
 
   ngOnInit(): void {
