@@ -105,13 +105,19 @@
                 </div>
 
                 <label class="form-label" for="descripcion">Descripción*</label>
-                <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Breve descripción sobre ti"></textarea>
-                <div *ngIf="formularioPerfil.controls['descripcion'].invalid && (formularioPerfil.controls['descripcion'].dirty || formularioPerfil.controls['descripcion'].touched)" class="alert alert-danger">
-                  <div class="error" *ngIf="formularioPerfil.controls['descripcion'].getError('required')">
-                    Descripción requerida
-                  </div>
-                </div>
-              </div>
+
+        <textarea 
+        id="descripcion"  formControlName="descripcion" 
+        class="form-control" 
+        placeholder="Breve descripción sobre ti"
+        maxlength="410"></textarea>
+       <div *ngIf="formularioPerfil.controls['descripcion'].invalid && (formularioPerfil.controls['descripcion'].dirty || formularioPerfil.controls['descripcion'].touched)" class="alert alert-danger">
+       <div class="error" *ngIf="formularioPerfil.controls['descripcion'].getError('required')">
+         Descripción requerida
+      </div>
+      </div>
+      <p class="caracteresPermitidos">{{ formularioPerfil.controls['descripcion'].value?.length || 0 }} / 410 caracteres</p>
+      </div>
 
               <div class="form-outline mb-4">
                 <label class="form-label" for="provincia">Provincia*</label>
