@@ -19,72 +19,22 @@
       "eliminadoPor": []
     },
     {
-      "id": "9193",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "0a2e",
-      "mensaje": "hola",
-      "visto": false,
-      "fechaDeCreacion": "2024-11-24T05:37:56.542Z",
-      "eliminadoPor": []
-    },
-    {
-      "id": "0840",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "0eec",
-      "mensaje": "Hola, todo bien??\n",
-      "visto": false,
-      "fechaDeCreacion": "2024-11-24T05:48:18.438Z",
-      "eliminadoPor": []
-    },
-    {
-      "id": "bef0",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "0eec",
-      "mensaje": "yo tambien vi tu perfil",
-      "visto": false,
-      "fechaDeCreacion": "2024-11-24T05:57:40.167Z",
-      "eliminadoPor": []
-    },
-    {
-      "id": "1441",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "0a2e",
-      "mensaje": "hol",
-      "visto": false,
-      "fechaDeCreacion": "2024-11-24T05:59:09.403Z",
-      "eliminadoPor": []
-    },
-    {
-      "id": "d259",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "0a2e",
-      "mensaje": "como estas??",
-      "visto": false,
-      "fechaDeCreacion": "2024-11-24T12:53:18.866Z",
-      "eliminadoPor": []
-    },
-    {
-      "id": "17a8",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "0a2e",
-      "mensaje": "holaaa\n",
-      "visto": false,
-      "fechaDeCreacion": "2024-11-24T12:55:22.539Z",
-      "eliminadoPor": []
-    },
-    {
-      "id": "d161",
-      "idUserEmisor": "5b43",
-      "idUserDestinatario": "a576",
-      "fechaDeCreacion": "2024-11-24T14:35:09.541Z",
-      "mensaje": "buenas ",
+      "id": "a05c",
+      "idUserEmisor": "0a2e",
+      "idUserDestinatario": "f7f8",
+      "fechaDeCreacion": "2024-11-24T15:58:59.830Z",
+      "mensaje": "Holaa",
       "visto": true,
-      "eliminadoPor": [
-        {
-          "idPerfil": "",
-          "fechaDeEliminacion": null
-        }
-      ]
+      "eliminadoPor": []
+    },
+    {
+      "id": "de00",
+      "idUserEmisor": "0a2e",
+      "idUserDestinatario": "0eec",
+      "fechaDeCreacion": "2024-11-24T15:59:14.540Z",
+      "mensaje": "Hola velas\n",
+      "visto": true,
+      "eliminadoPor": []
     }
   ]
 }

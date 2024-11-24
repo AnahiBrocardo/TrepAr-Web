@@ -28,13 +28,13 @@
      (click)="seleccionarChat(chat)">
   <div class="d-flex align-items-center">
     <img 
-      [src]="chat.imagen" 
+      [src]="chat.imagen ? chat.imagen : 'assets/img/usuario.png'" 
       class="rounded-circle me-2" 
       alt="{{ chat.username }}" 
       width="40" height="40">
     <div class="flex-grow-1 d-flex justify-content-between align-items-center">
       <div>
-        <div class="fw-bold">{{ chat.username }}</div>
+        <div class="fw-bold">{{ chat.username ? chat.username : 'Nombre no disponible' }}</div>
         <div class="text-muted small">Último mensaje: 
           <span *ngIf="chat.mensajes && chat.mensajes.length > 0">
             {{ chat.mensajes[chat.mensajes.length - 1].mensaje }}
@@ -63,7 +63,7 @@
                 <div class="d-flex align-items-center py-1">
                   <!-- Mostrar la imagen y nombre de usuario del chat seleccionado -->
                   <img 
-                    [src]="currentChat.imagen" 
+                    [src]="currentChat.imagen ? currentChat.imagen : 'assets/img/usuario.png'" 
                     class="rounded-circle me-2" 
                     alt="{{ currentChat.username }}" 
                     width="40" height="40">
