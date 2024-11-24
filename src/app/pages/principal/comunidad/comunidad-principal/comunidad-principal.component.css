@@ -1,111 +1,94 @@
-.comunidad-container{
-    background-color: white;
+.comunidad {
+  width: 90%;
+  margin: 150px auto 0;
+  background-color: white;
+  border-radius: 15px;
+  padding: 2%;
+  position: relative;
+  margin-top: 0 !important;
+}
+
+@media (max-width: 425px) {
+  .producto-lista {
     width: 100%;
-    padding-bottom: 10vh;
+    margin-bottom: 0 !important;
+    border-radius: 0;
+  }
 }
-.containerFiltros{
-  display:flex;
+
+.filtros-perfiles {
   justify-content: space-between;
-  align-items: center;
-  padding: 1vw;
 }
 
-.navbar {
-  background-color: rgba(0, 0, 0, 0.87); /* Negro con 60% de transparencia */
-  color: white; /* Color del texto */
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between; /* Espacio entre los elementos */
-  align-items: center;
-  z-index: 10;
-  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+@media (max-width: 786px) {
+  .filtros-perfiles {
+    flex-direction: column;
+  }
 }
 
-.navbar-content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+.no-perfiles {
+  text-align: center;
 }
 
-.navbar-brand {
-  font-size: 1.5rem;
-  color: white;
+.imagen-no-perfiles {
+  width: 40%;
+  margin-bottom: 0;
 }
 
-.search-form {
-  display: flex;
-  align-items: center;
+@media (max-width: 425px) {
+  .imagen-no-perfiles {
+    width: 70%;
+  }
 }
 
-.form-control{
-  width: 18vw;
+.edit-fav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
 }
 
-.custom-select {
-  width: 9vw; /* Ajusta el valor según lo necesites */
+.icono-marcador {
+  margin-right: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.card {
-  display: flex;
-  margin-left: 0.8vw;
-  justify-content: space-between; /* Ajusta el espacio entre los elementos dentro de la tarjeta */
-  flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente fila si no caben */
+.favorito {
+  color: #FFD43B;
+}
 
-  }
-  
-  .card-body {
-    flex: 1;  /* Hace que el cuerpo de la tarjeta ocupe todo el espacio disponible */
-  }
-  
-  .card-img-top {
-    object-fit: cover;  /* Asegura que la imagen ocupe todo el espacio disponible sin deformarse */
-    max-height: 5hv;  /* Ajusta la altura de la imagen */
-  }
-  
-  .card-container{
-    margin-top:5vh;
-  }
+.noFavorito {
+  color: #878787;
+}
 
-  .ubicacion{
-    font-weight: bold;
-    font-size: 0.9rem;
-  }
+.favorito:hover {
+  color: #878787;
+}
 
-  .enlaces{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.noFavorito:hover {
+  color: #eecf60;
+}
 
-  .correo{ 
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .correo:hover { 
-    transform: scale(1.1); /* Efecto de ampliación al pasar el cursor */
-  }
+.nombre-perfil {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #353434;
+  margin-bottom: 0;
+}
 
-  .icono-marcador {
-    position: absolute;
-    top: 2vh; /* Espacio desde el borde superior, adaptado a la altura de la pantalla */
-    right: 2vw; /* Espacio desde el borde derecho, adaptado al ancho de la pantalla */
-    margin-right: 15px; /* Ajuste adicional para margen */
-    cursor: pointer;
-    transition: color 0.3s ease; /* Transición suave del color */
-  }
+.profile-description {
+  height: 15vh;
+}
 
-  .favorito{
-    color: #FFD43B;
-  }
+.card-text.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 0;
+}
 
-  .noFavorito{
-    color: #878787;
-  }
-  
-  .favorito:hover{
-    color: #878787; /* Color gris */
-  }
-
-  .noFavorito:hover{
-    color: #eecf60; /* Color amarillo */
-  }
+.card-size {
+  height: 100%;
+}

@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoServiceService } from '../../../Servicios/productos/productos-service.service';
 import { ProductoInterface } from '../../../Interfaces/producto-interface';
@@ -16,18 +16,19 @@ import Swal from 'sweetalert2';
 
 
 export class ModificarproductoComponent implements OnInit{
-  @Input() 
-  productoId!: string; 
+  @Input()
+  productoId!: string;
 
-  @Input() 
+  @Input()
   idUser!: string;
-  
+
   activated = inject(ActivatedRoute);
   productoServices = inject(ProductoServiceService);
   fb = inject(FormBuilder);
 
 
   producto: ProductoInterface | null = null;
+  @Output() estadoCambiado = new EventEmitter<boolean>();
 
   // Formulario reactivo
   formulario = this.fb.group({
@@ -42,11 +43,15 @@ export class ModificarproductoComponent implements OnInit{
   });
 
 
- 
-  
+
+
   ngOnInit(): void {
     this.formulario.patchValue({ idUser: this.idUser });
     this.obtenerProducto(this.productoId);
+  }
+
+  cambiarEstado() {
+    this.estadoCambiado.emit(false);
   }
 
   // Obtener el producto que se desea editar
@@ -61,7 +66,7 @@ export class ModificarproductoComponent implements OnInit{
           precio: producto.precio,
           privado: producto.privado,
           imagen: producto.imagen
-          
+
         });
       },
       error: (e) => {
@@ -88,8 +93,22 @@ export class ModificarproductoComponent implements OnInit{
 
     this.productoServices.putProductos(this.productoId, productoActualizado).subscribe({
       next: (producto: ProductoInterface) => {
-        Swal.fire("Producto actualizado correctamente");
-        location.reload();
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Producto actualizado"
+        });
+        this.cambiarEstado();
       },
       error: (e) => {
         console.log(e.message);

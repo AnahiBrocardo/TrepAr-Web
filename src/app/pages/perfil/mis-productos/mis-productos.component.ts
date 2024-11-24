@@ -41,6 +41,18 @@ export class MisProductosComponent implements OnInit {
     this.filtrar();
   }
 
+  actualizarEstadoCrear(nuevoEstado: boolean) {
+    this.booleanAgregar = nuevoEstado;
+    this.obtenerProductos(this.userId);
+    this.filtrar();
+  }
+
+  actualizarEstadoModificar(nuevoEstado: boolean) {
+    this.booleanModificarProducto = nuevoEstado;
+    this.obtenerProductos(this.userId);
+    this.filtrar();
+  }
+
   obtenerProductos(idUsuario: string) {
     this.productoServices.getProductos(idUsuario).subscribe({
       next: (producto: ProductoInterface[]) => {

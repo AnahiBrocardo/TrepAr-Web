@@ -1,103 +1,117 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <button type="button" class="btn btn-outline-dark" (click)="volverComunidad()">Volver</button>
-      <div class="my-2">
+<div class="container-fluid">
+  <div class="profile-banner">
+    <div class="go-back-btn">
+      <button class="btn btn-secondary rounded-circle p-2 lh-1 position-absolute" style="top: 10px; right: 20px;"
+        type="button" (click)="volverComunidad()">
+        <i class="fa-solid fa-arrow-left fa-lg"></i>
+        <span class="visually-hidden">Dismiss</span>
+      </button>
+    </div>
+  </div>
+  <div class="profile-container-info">
+    <div class="fav-edit-btn">
+      <a class="icono-marcador" (click)="alternarFavorito()">
+        <i *ngIf="isFavorito" class="fa-solid fa-bookmark fa-2xl favorito"
+        title="Quitar de favoritos"></i>
 
-        <div class="row datos-perfil align-items-center">
-          <div class="col-md-3 text-center">
-            <div class="avatar avatar-xl">
-          
-              <img [src]="perfilSeleccionado?.imagePerfil || 'assets/img/usuario.png'" alt="Imagen de perfil" class="avatar-img rounded-circle">
-           
-              <a class="chat-icon" (click)="enviarMensaje()">>
-                <i class="fa-solid fa-comments fa-2xl chat" style="color: #e9b034;"></i>
-              </a>
-              
+        <i *ngIf="!isFavorito" class="fa-solid fa-bookmark fa-2xl noFavorito"
+        title="Guardar perfil"></i>
+      </a>
+    </div>
+    <div class="msg-send-btn">
+      <button class="btn btn-primary rounded-circle p-2 btn-send" type="button">
+        <mat-icon>mail_outline</mat-icon>
+        <span class="visually-hidden">Dismiss</span>
+      </button>
+    </div>
+    <div class="profile-content">
+      <img [src]="perfilSeleccionado?.imagePerfil || 'assets/img/usuario.png'" alt="Imagen de perfil"
+        class="profile-photo">
+      <h2 class="contact-name">{{perfilSeleccionado?.userName}}</h2>
+      <span class="badge rounded-pill text-bg-dark custom-badge">
+        {{perfilSeleccionado?.provincia}}, {{perfilSeleccionado?.ciudad}}
+      </span>
+      <p class="contact-item contact-description">{{perfilSeleccionado?.descripcion}}</p>
+      <div *ngIf="perfilSeleccionado?.telefono" class="contact-item">
+        <i class="fa-solid fa-phone"></i> {{perfilSeleccionado?.telefono}}
+      </div>
+      <div class="contact-info mt-2">
+        <div *ngIf="perfilSeleccionado?.linkLinkedIn" class="contact-item">
+          <a [href]="perfilSeleccionado?.linkLinkedIn" target="_blank" rel="noopener noreferrer"
+            class="btn btn-light rounded-pill p-2">
+            <i class="fa-brands fa-linkedin fa-lg me-2" style="color: #0e76a8;"></i>
+            LinkedIn
+          </a>
+        </div>
+        <div *ngIf="perfilSeleccionado?.linkWeb" class="contact-item">
+          <a [href]="perfilSeleccionado?.linkWeb" target="_blank" rel="noopener noreferrer"
+            class="btn btn-light rounded-pill p-2">
+            <i class="fa-solid fa-globe fa-lg me-2" style="color: #133a7e;"></i>
+            Web
+          </a>
+        </div>
+        <div *ngIf="perfilSeleccionado?.linkInstagram" class="contact-item">
+          <a [href]="perfilSeleccionado?.linkInstagram" target="_blank" rel="noopener noreferrer"
+            class="btn btn-light rounded-pill p-2">
+            <i class="fa-brands fa-instagram fa-lg me-2" style="color: #C13584;"></i>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="producto-lista container-fluid mb-3">
+  <div class="productos-header">
+    <h6 class="pt-4 border-bottom d-flex flex-column
+    flex-md-row justify-content-between align-items-center texto-titulo">
+      <div>
+        <i class="fa-solid fa-box me-2"></i>Productos
+      </div>
+      <div>
+        <div class="input-group mb-3">
+          <input [(ngModel)]="textoBuscado" name="textoBuscado"
+          placeholder=" Nombre del producto" (keyup)="leerTodo()" class="form-control" matInput>
+          <span class="input-group-text"><mat-icon matSuffix>search</mat-icon></span>
+        </div>
+      </div>
+    </h6>
+  </div>
+  <div class="no-productos" *ngIf="listaProductos.length === 0">
+    <img class="imagen-no-productos" src="/assets/img/no-products.png"
+    alt="Imagen ilustrativa, no hay productos">
+    <h3 class="featurette-heading fw-normal lh-1 texto-no-producto">
+      <span class="text-body-secondary">No se encontraron productos de
+        {{perfilSeleccionado?.userName}}.</span>
+    </h3>
+  </div>
+
+  <div class="album pb-4">
+    <div class="container-fluid">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        <div class="col mb-3" *ngFor="let producto of listaProductos">
+          <div class="card shadow-sm card-size m-2">
+            <div class="image-container">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="350"
+                [src]="producto.imagen ? producto.imagen : 'assets/img/imagen-por-defecto.jpg'"
+                alt="Imagen del producto" style="object-fit: cover;">
             </div>
-          </div>
-
-      
-          <div class="col position-relative">
-            <div class="row">
-              <div class="col-md-7">
-                <h4 class="mb-1">{{perfilSeleccionado?.userName}}</h4>
-                <span class="badge rounded-pill text-bg-dark mb-3">
-                  {{perfilSeleccionado?.provincia}}, {{perfilSeleccionado?.ciudad}}
-                </span>
-                <p class="text-muted">{{perfilSeleccionado?.descripcion}}</p>
+            <div class="card-body d-flex flex-column p-2">
+              <div class="card-title d-flex justify-content-between align-items-center">
+                <h5 class="nombre-producto">{{ producto.nombre }}</h5>
               </div>
-              <div class="col">
-                <p class="mb-3 text-muted" *ngIf="perfilSeleccionado?.telefono">
-                  <i class="fa-solid fa-phone"></i>
-                  {{perfilSeleccionado?.telefono}}
-                </p>
-                <p class="mb-3" *ngIf="perfilSeleccionado?.linkLinkedIn">
-                  <i class="fa-brands fa-linkedin"></i>
-                  <a [href]="perfilSeleccionado?.linkLinkedIn" target="_blank" rel="noopener noreferrer"> LinkedIn </a>
-                </p>
-                <p class="mb-3" *ngIf="perfilSeleccionado?.linkInstagram">
-                  <i class="fa-brands fa-instagram"></i>
-                  <a [href]="perfilSeleccionado?.linkInstagram" target="_blank" rel="noopener noreferrer"> Instagram </a>
-                </p>
+              <figure class="mt-2 mb-0">
+                <figcaption class="blockquote-footer">
+                  <cite>{{ producto.categoria }}</cite>
+                </figcaption>
+              </figure>
+              <p class="card-text mt-auto">{{ producto.precio | currency }}</p>
+              <div class="overflow-auto product-description">
+                {{ producto.descripcion }}
               </div>
             </div>
-
-         
-            <a class="icono-marcador" (click)="alternarFavorito()">
-              <i
-              *ngIf="isFavorito"
-              class="fa-solid fa-bookmark fa-2xl favorito"
-              title="Quitar de favoritos"
-            ></i>
-          
-            <i
-              *ngIf="!isFavorito"
-              class="fa-solid fa-bookmark fa-2xl noFavorito"
-              title="Guardar perfil"
-            ></i>
-             </a>
           </div>
         </div>
-
-     
-        <div class="row">
-          <div class="col-12">
-            <div class="headerProductos">
-              <div class="tituloProducto">
-                <h3>Productos</h3>
-              </div>
-              <div>
-                <mat-form-field class="buscar">
-                  <mat-label>Buscar producto</mat-label>
-                  <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" (keyup)="leerTodo()" matInput>
-                  <mat-icon matSuffix>search</mat-icon>
-                </mat-form-field>
-              </div>
-            </div>
-            
-            <div class="productos-container">
-              
-              <div class="alert alert-warning" *ngIf="listaProductos.length === 0">
-                No hay productos cargados.
-              </div>
-              <div *ngFor="let producto of listaProductos" class="col-md-4 mb-4">
-                <div class="card">
-                  <img [src]="producto.imagen ? producto.imagen : 'assets/img/imagen-por-defecto.jpg'" alt="Imagen del producto" class="card-img-top">
-                  <div class="card-body">
-                    <div class="card-title">
-                      <h5 class="nombre-producto">{{ producto.nombre }}</h5>
-                    </div>
-                    <p class="card-text"><strong>Categoría:</strong> {{ producto.categoria }}</p>
-                    <p class="card-text"><strong>Descripción:</strong> {{ producto.descripcion }}</p>
-                    <p class="card-text"><strong>Precio:</strong> ${{ producto.precio }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>

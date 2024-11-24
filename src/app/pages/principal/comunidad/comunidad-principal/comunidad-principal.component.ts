@@ -8,11 +8,12 @@ import { ProductoServiceService } from '../../../../Servicios/productos/producto
 import { ProductoInterface } from '../../../../Interfaces/producto-interface';
 import { ProductoConUsuario } from '../../../../Interfaces/productoConUsuario';
 import { forkJoin, map, switchMap } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-comunidad-principal',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,],
   templateUrl: './comunidad-principal.component.html',
   styleUrl: './comunidad-principal.component.css'
 })
@@ -35,7 +36,7 @@ export class ComunidadPrincipalComponent implements OnInit{
   perfiles: Perfil[]=[];
   perfilesOriginales: Perfil[] = [];
   // Variable para almacenar la lista original de productos
-productosOriginales: ProductoConUsuario[] = []; 
+productosOriginales: ProductoConUsuario[] = [];
 
 // Variable para almacenar los productos filtrados que se muestran en la interfaz
 productos: ProductoConUsuario[] = [];
@@ -70,7 +71,7 @@ productos: ProductoConUsuario[] = [];
         const productosFiltrados = productosArray.filter(
           (producto) => !producto.privado && producto.idUser !== this.userId
         );
-  
+
         // Para cada producto, obtenemos el perfil
         const observables = productosFiltrados.map((producto) =>
           this.perfilService.getPerfilByIdUser(producto.idUser).pipe(
@@ -93,8 +94,8 @@ productos: ProductoConUsuario[] = [];
      // Aseguramos que se obtienen todos los productos y los guardamos en productosOriginales
   this.productosOriginales = [...this.productos];  // Guardamos una copia de los productos originales
   }
-  
-  
+
+
 
   // Carga la lista de favoritos del usuario actual
   cargarFavoritos() {
@@ -124,7 +125,7 @@ esFavorito(idPerfil: string): boolean {
   cambiarFiltroPrincipal(event: Event): void {
     const filtroSeleccionado = (event.target as HTMLSelectElement).value;
     this.filtroPrincipal = filtroSeleccionado;
-  
+
     // Cambia el segundo filtro según el valor seleccionado en el primero
     if (this.filtroPrincipal === 'emprendedores') {
       this.filtroSecundario = 'todos'; // Valor predeterminado
@@ -143,7 +144,7 @@ esFavorito(idPerfil: string): boolean {
           if (perfilArray.length > 0 && perfilArray[0].listaFavoritos) {
             const favoritosIds = perfilArray[0].listaFavoritos; // IDs favoritos
             // Filtrar los perfiles favoritos
-            this.perfiles = this.perfilesOriginales.filter(perfil => 
+            this.perfiles = this.perfilesOriginales.filter(perfil =>
               perfil.id && favoritosIds.includes(perfil.id) // Comprobar si el ID está en favoritos
             );
           }
@@ -164,17 +165,17 @@ esFavorito(idPerfil: string): boolean {
     } else {
       this.favoritos.add(idPerfil); // Agregar a favoritos
     }
-  
+
     // Guardar los cambios en la base de datos
     this.actualizarFavoritosEnServidor(idPerfil);
   }
-  
+
   actualizarFavoritosEnServidor(perfilSeleccionadoId: string) {
     if (this.userId && perfilSeleccionadoId) {
       this.perfilService.getPerfilByIdUser(this.userId).subscribe({
         next: (perfilUsuarios: Perfil[]) => {
           const perfil = perfilUsuarios[0];
-  
+
           if (perfil && perfil.listaFavoritos) {
             // Actualizar la lista local de favoritos
             if (this.favoritos.has(perfilSeleccionadoId)) {
@@ -184,7 +185,7 @@ esFavorito(idPerfil: string): boolean {
                 (id) => id !== perfilSeleccionadoId
               ); // Quitar de favoritos
             }
-  
+
             // Enviar la actualización al servidor
             if (perfil.id) {
               this.perfilService.actualizarPerfilByIdUser(perfil.id, perfil).subscribe({
@@ -217,13 +218,13 @@ esFavorito(idPerfil: string): boolean {
         if(perfil.id){
           localStorage.setItem('idPerfilSeleccionado', perfil.id);
           this.router.navigateByUrl('dashboard/comunidad/perfil');
-        }      
+        }
       },
       error: (e:Error) => {
         console.error(e.message);
       },
     })
-    
+
   }
 
   filtrarProductosPorCategoria(): void {
@@ -232,7 +233,7 @@ esFavorito(idPerfil: string): boolean {
       if (this.productosOriginales.length === 0) {
         this.obtenerProductosPublicos();  // Esta función se encargará de cargar los productos originales
       }
-  
+
       if (this.filtroSecundario.toLowerCase() === 'todos') {
         // Si la categoría seleccionada es 'todos', mostramos todos los productos
         this.productos = [...this.productosOriginales];  // Copiamos todos los productos originales
@@ -260,6 +261,6 @@ esFavorito(idPerfil: string): boolean {
       );
     }
   }
-  
-  
+
+
 }
