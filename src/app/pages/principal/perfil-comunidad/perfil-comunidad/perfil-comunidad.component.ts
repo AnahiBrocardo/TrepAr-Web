@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MensajeModalComponent } from '../../mensaje-modal/mensaje-modal.component';
 
 @Component({
   selector: 'app-perfil-comunidad',
@@ -152,4 +154,32 @@ listaProductos:ProductoInterface[]=[];
       });
     }
   }
+
+  ///--------------ENVIAR UN NUEVO MENSAJE---------------------------
+readonly dialog = inject(MatDialog);
+enviarMensaje(){
+  ///abre la ventana modal en l formulario
+  const dialogRef = this.dialog.open(MensajeModalComponent, {
+    disableClose: true, // esto hace que si hago click por fuera de la ventana modal no se me cierre
+    autoFocus: true, // esto hace que se ponga el foco del mouse n la veentana que se abre
+    closeOnNavigation: false, //por si se aprieta algo fuera de la ventana
+    position: {top: '10vh'},
+    width: '80vw',// Ancho del 80% del viewport
+    maxHeight: '90vh',
+    data: {
+      tipo: 'NUEVOMENSAJE',
+      idUsuario: this.userId,// Pasa el idUsuario al diálogo
+      idDestino : this.perfilSeleccionadoIdPerfil
+    }
+  });
+
+  //resultado y funcion de la ventana 
+  dialogRef.afterClosed().subscribe((result: any) => {
+    if (result) {
+      console.log('Resultado del modal:', result);
+      // Realiza acciones adicionales si es necesario
+    }
+  });
+  
+}
 }
