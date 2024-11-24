@@ -1,6 +1,8 @@
 .container{
     background-color: white;
-    border-radius: 8px;
+    border-radius: 15px;
+    margin-top:3vh;
+    width: 80vw;
 }
 
 .titulo{

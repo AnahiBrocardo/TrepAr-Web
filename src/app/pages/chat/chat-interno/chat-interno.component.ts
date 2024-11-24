@@ -30,6 +30,7 @@ export class ChatInternoComponent implements OnInit{
   ngOnInit(): void {
     this.idUser = localStorage.getItem('userId') || '';
     this.obtenerTodosLosChats();
+    console.log()
   }
 
   obtenerTodosLosChats() {
@@ -42,6 +43,7 @@ export class ChatInternoComponent implements OnInit{
   
         // Agrupar los chats por id del otro usuario
         const chatsAgrupados = this.agruparChatsPorUsuario(chatsFiltrados);
+        console.log('Chats agrupados:', chatsAgrupados);
   
         // Crear una lista de observables para obtener los perfiles de los otros usuarios
         const perfilRequests = chatsAgrupados.map((chatGroup) => {
@@ -49,6 +51,7 @@ export class ChatInternoComponent implements OnInit{
           const otroUsuarioId = chatGroup.idUserEmisor === this.idUser
             ? chatGroup.idUserDestinatario
             : chatGroup.idUserEmisor;
+          console.log(otroUsuarioId);
           // Solicitar el perfil del otro usuario
           return this.perfilService.getPerfilByIdUser(otroUsuarioId).pipe(
             map((perfil: Perfil[]) => {
@@ -67,6 +70,7 @@ export class ChatInternoComponent implements OnInit{
                 mensajes: mensajesOrdenados,
                 ultimoMensajeNoVisto,
               };
+              console.log(this.chatsConUsuario);
             })
           );
         });

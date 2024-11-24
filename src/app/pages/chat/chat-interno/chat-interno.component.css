@@ -1,105 +1,141 @@
 .container {
-    background-color: white;
-    width: 80vw;
-    border-radius: 5px;
-    margin-top: 3vh;
-  }
-  
-  .titulo {
-    padding: 3vh;
-  }
-  
-  .chat-messages {
-    display: flex;
-    flex-direction: column;
-    max-height: 80vh; /* Ajusta para no sobrecargar la vista */
-    overflow-y: auto; /* Hace que el chat sea desplazable */
-    padding-right: 1rem; /* Añadido para evitar que el contenido se adhiera a la derecha */
-  }
-  
-  .chat-message-left,
-  .chat-message-right {
-    display: flex;
-    flex-shrink: 0;
-    max-width: 80%; /* Limita el ancho de los mensajes */
-    margin-bottom: 10px; /* Agrega más espacio entre los mensajes */
-  }
-    
-  .chat-message-right {
-    flex-direction: row-reverse;
-    margin-left: auto;
-  }
-  
-  .message-content {
-    background-color: #f8f9fa;
-    border-radius: 12px;
-    padding: 12px 16px;
-    max-width: 80%; /* Evita que los mensajes se expandan demasiado */
-    word-wrap: break-word; /* Asegura que los mensajes largos se ajusten */
-  }
-  
-  .chat-message-left .message-content {
-    background-color: #e9ecef; /* Diferente fondo para los mensajes a la izquierda */
-  }
-  
-  .chat-message-right .message-content {
-    background-color: #007bff; /* Fondo azul para los mensajes del usuario */
-    color: white;
-  }
-  
-  .badge.bg-success {
-    font-size: 0.8rem;
-    padding: 5px 10px;
-  }
-  
-  h1.h3 {
-    font-size: 1.75rem;
-    font-weight: 600;
-  }
-  
-  input.form-control {
-    border-radius: 20px; /* Hacemos los bordes del input más redondeados */
-  }
-  
-  .list-group-item {
-    margin-bottom: 20px; /* Agrega más espacio entre los chats */
-    padding-left: 10px; /* Ajusta el padding para los mensajes */
-    padding-right: 10px;
-  }
-  
-  /* Cambio del cursor al pasar por encima del chat */
-.chat-item {
-    cursor: pointer; /* Cambia el cursor a una mano */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-    border-radius: 8px; /* Bordes redondeados */
-    background-color: #fff; /* Fondo blanco */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .chat-item:hover {
-    transform: translateY(-3px); /* Eleva ligeramente al pasar el cursor */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Aumenta la sombra */
-    background-color: #f0f0f0; /* Color gris claro cuando el mouse pasa sobre el chat */
-  }
-
-  .chat-item:not(:last-child) {
-  margin-bottom: 10px; /* Separación entre elementos */
+  background-color: white;
+  width: 80vw;
+  border-radius: 15px;
+  margin-top: 4vh;
 }
-  
-  div.message-sent {
-    background-color: #cef5d5 !important;
-    text-align: right !important;
-    margin-left: auto !important;
-    width: 40vw !important;
+
+.titulo {
+  padding: 3vh;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+  /* Ajusta para no sobrecargar la vista */
+  overflow-y: auto;
+  /* Hace que el chat sea desplazable */
+  padding-right: 1rem;
+  /* Añadido para evitar que el contenido se adhiera a la derecha */
+}
+
+.chat-message-left,
+.chat-message-right {
+  display: flex;
+  flex-shrink: 0;
+  max-width: 80%;
+  /* Limita el ancho de los mensajes */
+  margin-bottom: 10px;
+  /* Agrega más espacio entre los mensajes */
+}
+
+.chat-message-right {
+  flex-direction: row-reverse;
+  margin-left: auto;
+}
+
+.message-content {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 12px 16px;
+  max-width: 80%;
+  /* Evita que los mensajes se expandan demasiado */
+  word-wrap: break-word;
+  /* Asegura que los mensajes largos se ajusten */
+}
+
+.chat-message-left .message-content {
+  background-color: #e9ecef;
+  /* Diferente fondo para los mensajes a la izquierda */
+}
+
+.chat-message-right .message-content {
+  background-color: #007bff;
+  /* Fondo azul para los mensajes del usuario */
+  color: white;
+}
+
+.badge.bg-success {
+  font-size: 0.8rem;
+  padding: 5px 10px;
+}
+
+h1.h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+input.form-control {
+  border-radius: 20px;
+  /* Hacemos los bordes del input más redondeados */
+}
+
+.list-group-item {
+  margin-bottom: 20px;
+  /* Agrega más espacio entre los chats */
+  padding-left: 10px;
+  /* Ajusta el padding para los mensajes */
+  padding-right: 10px;
+}
+
+/* Cambio del cursor al pasar por encima del chat */
+.chat-item {
+  cursor: pointer;
+  /* Cambia el cursor a una mano */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Sombra ligera */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  background-color: #fff;
+  /* Fondo blanco */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-item:hover {
+  transform: translateY(-3px);
+  /* Eleva ligeramente al pasar el cursor */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  /* Aumenta la sombra */
+  background-color: #f0f0f0;
+  /* Color gris claro cuando el mouse pasa sobre el chat */
+}
+
+.chat-item:not(:last-child) {
+  margin-bottom: 10px;
+  /* Separación entre elementos */
+}
+
+div.message-sent {
+  background-color: #cef5d5 !important;
+  text-align: right !important;
+  margin-left: auto !important;
+  width: 40vw !important;
 }
 
 div.message-received {
-    background-color: #c5f1fc !important;
-    text-align: left !important;
-    margin-right: auto !important;
-    width: 40vw !important;
+  background-color: #c5f1fc !important;
+  text-align: left !important;
+  margin-right: auto !important;
+  width: 40vw !important;
 }
-  
+
 .shadowed-title {
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Efecto de sombra */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  /* Efecto de sombra */
+}
+
+.no-chat {
+  text-align: center;
+}
+
+.imagen-no-chat {
+  width: 40%;
+  margin-bottom: 0;
+}
+
+@media (max-width: 425px) {
+  .imagen-no-chat {
+    width: 70%;
+  }
 }
