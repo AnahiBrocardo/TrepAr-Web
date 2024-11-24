@@ -131,7 +131,7 @@ export class ChatInternoComponent implements OnInit{
 
 seleccionarChat(chatSeleccionado: any) {
   this.currentChat= chatSeleccionado;
-  console.log(this.currentChat);
+   this.marcarMensajeComoVisto(chatSeleccionado);
 }
 
 enviarMensaje() {
@@ -190,4 +190,28 @@ enviarMensaje() {
       textarea.style.overflowY = 'hidden';  // Oculta la barra de desplazamiento si no es necesaria
     }
   }
+
+
+  marcarMensajeComoVisto(chatSeleccionado: any) {
+    // Verificar si hay un último mensaje no visto
+    const ultimoMensaje = chatSeleccionado.mensajes[chatSeleccionado.mensajes.length - 1];
+  
+    if (ultimoMensaje && !ultimoMensaje.visto) {
+      // Actualizar en el servidor
+      ultimoMensaje.visto=true;
+      this.chatService.actualizarChat(ultimoMensaje.id, ultimoMensaje).subscribe({
+        next: () => {
+          console.log('Mensaje marcado como visto en el servidor.');
+  
+          // Actualizar en el array local
+          ultimoMensaje.visto = true;
+          chatSeleccionado.ultimoMensajeNoVisto = false;
+        },
+        error: (err: Error) => {
+          console.error('Error al marcar el mensaje como visto:', err);
+        }
+      });
+    }
+  }
+  
 }

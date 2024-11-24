@@ -6,7 +6,7 @@
   }
   
   .titulo {
-    padding: 2vh;
+    padding: 3vh;
   }
   
   .chat-messages {
@@ -70,12 +70,21 @@
   /* Cambio del cursor al pasar por encima del chat */
 .chat-item {
     cursor: pointer; /* Cambia el cursor a una mano */
-    transition: background-color 0.3s ease-in-out; /* Para suavizar el cambio de color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   
   .chat-item:hover {
+    transform: translateY(-3px); /* Eleva ligeramente al pasar el cursor */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Aumenta la sombra */
     background-color: #f0f0f0; /* Color gris claro cuando el mouse pasa sobre el chat */
   }
+
+  .chat-item:not(:last-child) {
+  margin-bottom: 10px; /* Separación entre elementos */
+}
   
   div.message-sent {
     background-color: #cef5d5 !important;
@@ -91,3 +100,6 @@ div.message-received {
     width: 40vw !important;
 }
   
+.shadowed-title {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Efecto de sombra */
+}
