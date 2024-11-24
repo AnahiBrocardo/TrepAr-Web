@@ -7,7 +7,7 @@ import { Chat } from '../../Interfaces/chat';
   providedIn: 'root'
 })
 export class ChatService {
-  url: string= 'http://localhost:3000/api';
+  url: string= 'http://localhost:3004/chats';
 
    constructor(private http: HttpClient) { }
 

@@ -9,28 +9,25 @@
     <!-- Información del Destinatario -->
     <div class="info-row">
       <mat-label>Para:</mat-label>
-      <!-- Mostrar el nombre del destinatario -->
-      <p>{{ destinatarioName  || 'Usuario Destinatario' }}</p>
+      <p>{{ destinatarioName || 'Usuario Destinatario' }}</p>
     </div>
 
-    <!-- Campo para el mensaje -->
-    <mat-form-field appearance="fill" class="full-width">
+    <!-- Campo de mensaje -->
+    <mat-form-field appearance="outline">
       <mat-label>Escribe tu mensaje</mat-label>
-      <textarea matInput formControlName="mensaje" rows="5"></textarea>
-      <mat-error *ngIf="formulario.get('mensaje')?.hasError('required')">
-        El mensaje es requerido.
-      </mat-error>
-      <mat-error *ngIf="formulario.get('mensaje')?.hasError('maxlength')">
-        El mensaje no puede exceder los 500 caracteres.
-      </mat-error>
+      <textarea
+        matInput
+        formControlName="mensaje"
+        rows="5"
+        maxlength="500"
+        placeholder="Hola, me gustaron tus productos!..."
+      ></textarea>
     </mat-form-field>
 
     <!-- Botones de acción -->
     <div class="modal-actions">
-      <button mat-button mat-dialog-close color="warn" (click)="cerrarModal()">Cancelar</button>
-      <button mat-raised-button color="primary" [disabled]="formulario.invalid">
-        Enviar
-      </button>
+      <button mat-button type="submit" [disabled]="formulario.invalid">Enviar</button>
+      <button mat-button type="button" (click)="cerrarModal()">Cancelar</button>
     </div>
   </form>
 </div>

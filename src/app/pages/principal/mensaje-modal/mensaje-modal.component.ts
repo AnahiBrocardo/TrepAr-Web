@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
   selector: 'app-mensaje-modal',
   standalone: true,
   imports: [ 
-    
+    CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -111,19 +111,43 @@ generarMensaje() {
 
 //-----------AGREGO A LA BASE DE DATOS UN NUEVO MENSAJE
 
-addMensajeBD(Chat: Chat){
-  this.ChatService.sendMessage(Chat).subscribe(
-    {
-      next: (Chat: Chat) =>{
-        Swal.fire("Mensaje guardado correctamente.");
-        
-      },
-      error: (e: Error)=>{
+addMensajeBD(Chat: Chat) {
+  Swal.fire({
+    title: "¿Estás seguro?",
+    text: "Este mensaje será enviado al destinatario.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, enviar",
+    cancelButtonText: "Cancelar",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.ChatService.sendMessage(Chat).subscribe({
+        next: (Chat: Chat) => {
+          Swal.fire({
+            title: "¡Enviado!",
+            text: "Tu mensaje ha sido enviado correctamente.",
+            icon: "success",
+            timer: 1500,
+            showConfirmButton: false,
+          });
+          this.dialogRef.close(Chat); // Cierra el modal al confirmar éxito
+        },
+        error: (e: Error) => {
+          Swal.fire({
+            title: "Error",
+            text: "Ocurrió un problema al enviar el mensaje. Intenta nuevamente.",
+            icon: "error",
+          });
           console.log(e.message);
-      }
+        },
+      });
     }
-  )
- }
+  });
+}
+
+
  cerrarModal(): void {
   this.dialogRef.close(); // Cierra el modal
 }
