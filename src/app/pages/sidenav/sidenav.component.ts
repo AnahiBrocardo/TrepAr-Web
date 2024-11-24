@@ -43,6 +43,11 @@ export class SidenavComponent implements OnInit{
       label: 'Perfil',
     },
     {
+      routeLink: 'chat',
+      icon: 'fal fa-comments',
+      label: 'Chat',
+    },
+    {
       routeLink: 'preguntas-frecuentes',
       icon: 'fal fa-circle-question',
       label: 'Ayuda',

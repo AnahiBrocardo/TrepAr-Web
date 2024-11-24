@@ -1,12 +1,58 @@
 {
-    "chats": [
-      {
-        "idUserlDestinatario": "f5ef",
-        "idUserEmisor": "8c40",
-        "fechaDeCreacion": "2024-11-23T10:00:00Z",
-        "mensaje": "Hola! he visto tu perfil, me encantaria poder conversar.",
-        "visto": false,
-        "eliminadoPor":[]
-      }
-    ]
-  }
+  "chats": [
+    {
+      "id": "1",
+      "idUserDestinatario": "f5ef",
+      "idUserEmisor": "0a2e",
+      "fechaDeCreacion": "2024-11-23T10:00:00Z",
+      "mensaje": "Hola! he visto tu perfil, me encantaria poder conversar.",
+      "visto": true,
+      "eliminadoPor": []
+    },
+    {
+      "id": "2",
+      "idUserDestinatario": "f5ef",
+      "idUserEmisor": "0eec",
+      "fechaDeCreacion": "2024-11-23T10:00:00Z",
+      "mensaje": "Hola! he visto tu perfil",
+      "visto": true,
+      "eliminadoPor": []
+    },
+    {
+      "id": "9193",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "0a2e",
+      "mensaje": "hola",
+      "visto": false,
+      "fechaDeCreacion": "2024-11-24T05:37:56.542Z",
+      "eliminadoPor": []
+    },
+    {
+      "id": "0840",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "0eec",
+      "mensaje": "Hola, todo bien??\n",
+      "visto": false,
+      "fechaDeCreacion": "2024-11-24T05:48:18.438Z",
+      "eliminadoPor": []
+    },
+    {
+      "id": "bef0",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "0eec",
+      "mensaje": "yo tambien vi tu perfil",
+      "visto": false,
+      "fechaDeCreacion": "2024-11-24T05:57:40.167Z",
+      "eliminadoPor": []
+    },
+    {
+      "id": "1441",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "0a2e",
+      "mensaje": "hol",
+      "visto": false,
+      "fechaDeCreacion": "2024-11-24T05:59:09.403Z",
+      "eliminadoPor": []
+    }
+  ]
+}
