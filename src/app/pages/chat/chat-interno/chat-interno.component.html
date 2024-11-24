@@ -8,9 +8,15 @@
             <div class="px-4 py-3 d-none d-md-block">
               <div class="d-flex align-items-center">
                 <div class="flex-grow-1">
-                  <input type="text" class="form-control my-3" placeholder="Search...">
+                  <input 
+                    type="text" 
+                    class="form-control my-3" 
+                    placeholder="Search..." 
+                    [(ngModel)]="filtro" 
+                    (ngModelChange)="filtrarChats()">
                 </div>
               </div>
+              
             </div>
   
             <!-- Lista de chats -->
@@ -69,7 +75,7 @@
                     <div>{{ mensaje.mensaje }}</div>
                     <!-- Fecha de creación con el mismo estilo que el mensaje -->
                     <div class="text-muted small text-nowrap mt-2">
-                      {{ mensaje.fechaDeCreacion | date: 'shortTime' }}
+                      {{ mensaje.fechaDeCreacion | date: 'short' }}
                     </div>
                   </div>
                 </div>

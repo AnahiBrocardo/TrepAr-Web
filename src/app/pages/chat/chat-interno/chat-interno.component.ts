@@ -17,7 +17,10 @@ import { forkJoin, map } from 'rxjs';
 export class ChatInternoComponent implements OnInit{
   
   chats: Chat[] = [];
+  filtro: string = '';
   mensaje: string = ''; // Variable para almacenar el mensaje
+  
+  originalChatsConUsuario: any[] = [];// Variable para guardar los chats originales
   idUser: string = '';
   chatService = inject(ChatService);
   perfilService = inject(PerfilService);
@@ -73,6 +76,7 @@ export class ChatInternoComponent implements OnInit{
           next: (resultados) => {
             // Aplanar el array de resultados y asignarlo a chatsConUsuario
             this.chatsConUsuario = resultados;
+            this.originalChatsConUsuario = [...resultados];
           },
           error: (err) => {
             console.error('Error al obtener los perfiles:', err);
@@ -110,10 +114,24 @@ export class ChatInternoComponent implements OnInit{
     return Object.values(chatGroups);
   }
   
+  filtrarChats(): void {
+    const terminoBusqueda = this.filtro.trim().toLowerCase();
   
+    if (!terminoBusqueda) {
+      // Si no hay texto en el filtro, mostrar todos los chats
+      this.chatsConUsuario = [...this.originalChatsConUsuario];
+      return;
+    }
+  
+    // Filtrar los chats por coincidencia en el nombre de usuario
+    this.chatsConUsuario = this.originalChatsConUsuario.filter(chat =>
+      chat.username.toLowerCase().includes(terminoBusqueda)
+    );
+  }
 
 seleccionarChat(chatSeleccionado: any) {
   this.currentChat= chatSeleccionado;
+  console.log(this.currentChat);
 }
 
 enviarMensaje() {

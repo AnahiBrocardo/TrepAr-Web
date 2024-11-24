@@ -53,6 +53,24 @@
       "visto": false,
       "fechaDeCreacion": "2024-11-24T05:59:09.403Z",
       "eliminadoPor": []
+    },
+    {
+      "id": "d259",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "0a2e",
+      "mensaje": "como estas??",
+      "visto": false,
+      "fechaDeCreacion": "2024-11-24T12:53:18.866Z",
+      "eliminadoPor": []
+    },
+    {
+      "id": "17a8",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "0a2e",
+      "mensaje": "holaaa\n",
+      "visto": false,
+      "fechaDeCreacion": "2024-11-24T12:55:22.539Z",
+      "eliminadoPor": []
     }
   ]
 }
