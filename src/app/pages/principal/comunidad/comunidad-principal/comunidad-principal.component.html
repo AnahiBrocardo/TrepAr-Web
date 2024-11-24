@@ -103,7 +103,8 @@
                     (click)="seleccionPerfil(perfil.id || '')">
                     Ir a perfil
                   </button>
-                  <button class="btn btn-primary btn-sm d-flex align-items-center justify-content-center">
+                  <button class="btn btn-primary btn-sm d-flex align-items-center justify-content-center" 
+                  (click)="enviarMensaje(perfil.idUser)">
                     <mat-icon>mail_outline</mat-icon>
                   </button>
                 </div>

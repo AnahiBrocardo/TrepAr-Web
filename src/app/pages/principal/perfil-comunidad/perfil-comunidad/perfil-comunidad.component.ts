@@ -169,17 +169,10 @@ enviarMensaje(){
     data: {
       tipo: 'NUEVOMENSAJE',
       idUsuario: this.userId,// Pasa el idUsuario al diálogo
-      idDestino : this.perfilSeleccionadoIdPerfil
+      idDestino : this.perfilSeleccionado?.idUser
     }
-  });
-
-  //resultado y funcion de la ventana 
-  dialogRef.afterClosed().subscribe((result: any) => {
-    if (result) {
-      console.log('Resultado del modal:', result);
-      // Realiza acciones adicionales si es necesario
-    }
-  });
-  
+  });  
 }
+
+
 }

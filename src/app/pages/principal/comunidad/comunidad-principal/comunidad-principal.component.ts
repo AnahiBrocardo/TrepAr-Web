@@ -9,6 +9,8 @@ import { ProductoInterface } from '../../../../Interfaces/producto-interface';
 import { ProductoConUsuario } from '../../../../Interfaces/productoConUsuario';
 import { forkJoin, map, switchMap } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { MensajeModalComponent } from '../../mensaje-modal/mensaje-modal.component';
 
 @Component({
   selector: 'app-comunidad-principal',
@@ -23,6 +25,7 @@ export class ComunidadPrincipalComponent implements OnInit{
 
   productoService= inject(ProductoServiceService);
   router= inject(Router);
+  idUserPerfilSeleccionado:string='';
 
   // Propiedades para almacenar los datos recibidos de la barra de busqueda
   textoBusqueda: string = '';
@@ -262,5 +265,23 @@ esFavorito(idPerfil: string): boolean {
     }
   }
 
+   ///--------------ENVIAR UN NUEVO MENSAJE---------------------------
+readonly dialog = inject(MatDialog);
 
+enviarMensaje(idDestinatario: string) {
+  ///abre la ventana modal en l formulario
+  const dialogRef = this.dialog.open(MensajeModalComponent, {
+    disableClose: true, // esto hace que si hago click por fuera de la ventana modal no se me cierre
+    autoFocus: true, // esto hace que se ponga el foco del mouse n la veentana que se abre
+    closeOnNavigation: false, //por si se aprieta algo fuera de la ventana
+    position: {top: '10vh'},
+    width: '80vw',// Ancho del 80% del viewport
+    maxHeight: '90vh',
+    data: {
+      tipo: 'NUEVOMENSAJE',
+      idUsuario: this.userId,// Pasa el idUsuario al diálogo
+      idDestino : idDestinatario
+    }
+  });
+}
 }

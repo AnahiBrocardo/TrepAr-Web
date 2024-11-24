@@ -50,13 +50,15 @@ export class MensajeModalComponent implements OnInit{
       this.tipo = this.data.tipo || '';
       this.idUsuario = this.data.idUsuario || '';
       this.idDestino = this.data.idDestino || '';
+      console.log('id destino'+ this.idDestino);
       this.obtenerDatosPerfil();
     }
+    console.log(this.data);
   }
 
   obtenerDatosPerfil(){
       if(this.idDestino){
-        this.perfilService.getPerfilByIdPerfil(this.idDestino).subscribe({
+        this.perfilService.getPerfilByIdUser(this.idDestino).subscribe({
           next: (perfilArray: Perfil[]) => {
             if (perfilArray.length > 0) {
               this.perfilSeleccionado = perfilArray[0]; 
