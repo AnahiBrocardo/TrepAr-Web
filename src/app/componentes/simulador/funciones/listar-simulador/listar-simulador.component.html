@@ -1,13 +1,4 @@
-<!--<app-agregar-simulador (emitirSimulacion)="agregarLista($event)"></app-agregar-simulador>
-<section>
-<ul>
-    @for (simulado of listaSimulacions; track $index) {
-        <li>id: {{simulado.id}}Nombre: {{simulado.nombre}} Precio: {{simulado.PrecioFinal}}</li>
-        <a href="" (click)="delete(simulado.id)">Eliminar    </a>
-        <a [routerLink]="['/update', tarea.id]">Modificar    </a>
-    }
-</ul>
-</section>-->
+<section class="simulador">
 <mat-toolbar>
   <div class="container-fluid">
     <div class="row align-items-center">
@@ -100,3 +91,4 @@
     </div>
  </div>
 </div>
+</section>
