@@ -1,19 +1,35 @@
 .container {
   background-color: white;
+  margin-top:4vh;
   width: 80vw;
   border-radius: 15px;
-  margin-top: 4vh;
+  height: calc(90vh - 20px);
+  overflow: hidden; /* Evitar desbordamiento */
+}
+
+.card{
+  height: 100%;
+ 
 }
 
 .titulo {
   padding: 3vh;
 }
 
+.col-12.col-lg-5.col-xl-3 {
+  height: 70vh; /* Asegura que ocupe todo el espacio disponible */
+  max-height: 100vh;
+}
+.col-12.col-lg-7.col-xl-9 {
+  height: 70vh; /* Asegura que ocupe todo el espacio */
+  max-height: 100vh;
+}
+
 .chat-messages {
+  height: 40vh;
   display: flex;
   flex-direction: column;
-  max-height: 80vh;
-  /* Ajusta para no sobrecargar la vista */
+  max-height:48vh;
   overflow-y: auto;
   /* Hace que el chat sea desplazable */
   padding-right: 1rem;
@@ -72,7 +88,7 @@ input.form-control {
 }
 
 .list-group-item {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   /* Agrega más espacio entre los chats */
   padding-left: 10px;
   /* Ajusta el padding para los mensajes */
@@ -133,6 +149,30 @@ div.message-received {
   width: 40%;
   margin-bottom: 0;
 }
+
+/* Personaliza el contenedor del scrollbar */
+::-webkit-scrollbar {
+  width: 6px; /* Ancho de la barra de desplazamiento */
+  height: 10px; /* Alto de la barra horizontal, si aplica */
+}
+
+/* Personaliza el fondo de la barra */
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Color del fondo */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Personaliza el pulgar (thumb) */
+::-webkit-scrollbar-thumb {
+  background: #a0a0a0; /* Color del pulgar */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Agrega un efecto al pasar el mouse sobre el pulgar */
+::-webkit-scrollbar-thumb:hover {
+  background: #888; /* Color más oscuro al pasar el mouse */
+}
+
 
 @media (max-width: 425px) {
   .imagen-no-chat {

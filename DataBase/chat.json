@@ -35,6 +35,51 @@
       "mensaje": "Hola velas\n",
       "visto": true,
       "eliminadoPor": []
+    },
+    {
+      "id": "b6c7",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "551f",
+      "fechaDeCreacion": "2024-11-24T23:41:31.733Z",
+      "mensaje": "hola",
+      "visto": true,
+      "eliminadoPor": []
+    },
+    {
+      "id": "7855",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "5b43",
+      "fechaDeCreacion": "2024-11-24T23:41:42.711Z",
+      "mensaje": "holla",
+      "visto": true,
+      "eliminadoPor": []
+    },
+    {
+      "id": "6fb3",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "f7f8",
+      "fechaDeCreacion": "2024-11-24T23:42:19.202Z",
+      "mensaje": "hola mosai, vi tu perfil, y me encantaron tus productos",
+      "visto": true,
+      "eliminadoPor": []
+    },
+    {
+      "id": "ab2f",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "0a2e",
+      "mensaje": "ggg",
+      "visto": false,
+      "fechaDeCreacion": "2024-11-25T00:21:55.026Z",
+      "eliminadoPor": []
+    },
+    {
+      "id": "21b1",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "0a2e",
+      "mensaje": "gggg",
+      "visto": true,
+      "fechaDeCreacion": "2024-11-25T00:21:56.760Z",
+      "eliminadoPor": []
     }
   ]
 }

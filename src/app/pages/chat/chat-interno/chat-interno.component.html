@@ -13,9 +13,9 @@
     </div>
 
     <div class="card" *ngIf="chatsConUsuario.length !== 0">
-      <div class="row g-0">
+      <div class="row g-0 ">
         <!-- Panel de chats -->
-        <div class="col-12 col-lg-5 col-xl-3 border-end">
+        <div class="col-12 col-lg-5 col-xl-3  overflow-auto border-end ">
           <div class="px-4 py-3 d-none d-md-block">
             <div class="d-flex align-items-center">
               <div class="flex-grow-1">
@@ -27,7 +27,7 @@
           </div>
 
           <!-- Lista de chats -->
-          <div *ngFor="let chat of chatsConUsuario" class="list-group-item list-group-item-action border-0 chat-item"
+          <div *ngFor="let chat of chatsConUsuario" class="list-group-item list-group-item-action border-0 chat-item "
             (click)="seleccionarChat(chat)">
             <div class="d-flex align-items-center">
               <img [src]="chat.imagen ? chat.imagen : 'assets/img/usuario.png'" class="rounded-circle me-2"
@@ -57,7 +57,7 @@
         </div>
 
         <!-- Panel del chat seleccionado -->
-        <div class="col-12 col-lg-7 col-xl-9"
+        <div class="col-12 col-lg-7 col-xl-9 overflow-auto"
           *ngIf="currentChat && currentChat.mensajes && currentChat.mensajes.length > 0">
           <div *ngIf="currentChat">
             <div class="py-2 px-4 border-bottom">
