@@ -33,12 +33,38 @@ export class MisProductosComponent implements OnInit {
   booleanAgregar: boolean = false;
   booleanModificarProducto: boolean = false;
   productoId: string = '';
+  currentPageProducto: number = 1;
+  itemsPerPageProducto: number = 4;
 
   @Input() userId!: string; // Declarar explícitamente la propiedad
 
   ngOnInit(): void {
     this.obtenerProductos(this.userId);
     this.filtrar();
+  }
+   
+  get productosPaginados(): ProductoInterface[] {
+    const startIndex = (this.currentPageProducto - 1) * this.itemsPerPageProducto;
+    return this.productos.slice(startIndex, startIndex + this.itemsPerPageProducto);
+  }
+
+ 
+
+totalPagesProducto(): number {
+  return Math.ceil(this.productos.length / this.itemsPerPageProducto);
+}
+
+  goToPreviousPageProducto() {
+    if (this.currentPageProducto > 1) {
+      this.currentPageProducto--;
+    }
+  }
+
+  goToNextPageProducto() {
+    const totalPages = Math.ceil(this.productos.length / this.itemsPerPageProducto);
+    if (this.currentPageProducto < totalPages) {
+      this.currentPageProducto++;
+    }
   }
 
   actualizarEstadoCrear(nuevoEstado: boolean) {

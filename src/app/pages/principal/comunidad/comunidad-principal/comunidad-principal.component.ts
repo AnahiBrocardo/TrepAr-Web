@@ -20,6 +20,7 @@ import { MensajeModalComponent } from '../../mensaje-modal/mensaje-modal.compone
   styleUrl: './comunidad-principal.component.css'
 })
 export class ComunidadPrincipalComponent implements OnInit{
+  Math = Math;
   @Input()
   userId?:string;
 
@@ -48,12 +49,67 @@ productos: ProductoConUsuario[] = [];
 
   perfilService= inject(PerfilService);
 
+// Paginación
+currentPagePerfil: number = 1;
+itemsPerPagePerfil: number = 4;
+currentPageProducto: number = 1;
+itemsPerPageProducto: number = 2;
+
+
   ngOnInit(): void {
    this.obtenerTodosPerfiles();
    this.cargarFavoritos();
    this.obtenerProductosPublicos();
   }
+ 
+  // Propiedades computadas para elementos paginados
+  get perfilesPaginados(): Perfil[] {
+    const startIndex = (this.currentPagePerfil - 1) * this.itemsPerPagePerfil;
+    return this.perfiles.slice(startIndex, startIndex + this.itemsPerPagePerfil);
+  }
 
+  get productosPaginados(): ProductoConUsuario[] {
+    const startIndex = (this.currentPageProducto - 1) * this.itemsPerPageProducto;
+    return this.productos.slice(startIndex, startIndex + this.itemsPerPageProducto);
+  }
+
+
+  // Métodos para navegación en paginación
+  goToPreviousPagePerfil() {
+    if (this.currentPagePerfil > 1) {
+      this.currentPagePerfil--;
+    }
+  }
+
+  goToNextPagePerfil() {
+    const totalPages = Math.ceil(this.perfiles.length / this.itemsPerPagePerfil);
+    if (this.currentPagePerfil < totalPages) {
+      this.currentPagePerfil++;
+    }
+  }
+
+  // Método para calcular el número total de páginas
+totalPagesPerfil(): number {
+  return Math.ceil(this.perfiles.length / this.itemsPerPagePerfil);
+}
+
+totalPagesProducto(): number {
+  return Math.ceil(this.productos.length / this.itemsPerPageProducto);
+}
+
+  goToPreviousPageProducto() {
+    if (this.currentPageProducto > 1) {
+      this.currentPageProducto--;
+    }
+  }
+
+  goToNextPageProducto() {
+    const totalPages = Math.ceil(this.productos.length / this.itemsPerPageProducto);
+    if (this.currentPageProducto < totalPages) {
+      this.currentPageProducto++;
+    }
+  }
+  
   obtenerTodosPerfiles(){
     this.perfilService.getPerfiles().subscribe({
       next: (perfiles: Perfil[])=>{

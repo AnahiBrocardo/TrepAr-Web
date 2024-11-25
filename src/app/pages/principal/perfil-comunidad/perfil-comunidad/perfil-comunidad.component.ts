@@ -38,7 +38,9 @@ router= inject(Router);
 
 perfilService= inject(PerfilService);
 productoService= inject(ProductoServiceService);
+currentPageProducto: number = 1;
 
+itemsPerPageProducto: number = 4;
 listaProductos:ProductoInterface[]=[];
 
   ngOnInit(): void {
@@ -46,6 +48,30 @@ listaProductos:ProductoInterface[]=[];
     this.userId=localStorage.getItem('userId') || '';
     this.obtenerDatosPerfil();
     this.verificarSiEsFavorito();
+  }
+
+  get productosPaginados(): ProductoInterface[] {
+    const startIndex = (this.currentPageProducto - 1) * this.itemsPerPageProducto;
+    return this.listaProductos.slice(startIndex, startIndex + this.itemsPerPageProducto);
+  }
+
+ 
+
+totalPagesProducto(): number {
+  return Math.ceil(this.listaProductos.length / this.itemsPerPageProducto);
+}
+
+  goToPreviousPageProducto() {
+    if (this.currentPageProducto > 1) {
+      this.currentPageProducto--;
+    }
+  }
+
+  goToNextPageProducto() {
+    const totalPages = Math.ceil(this.listaProductos.length / this.itemsPerPageProducto);
+    if (this.currentPageProducto < totalPages) {
+      this.currentPageProducto++;
+    }
   }
 
   obtenerDatosPerfil(){

@@ -82,6 +82,11 @@
   height: 100%;
 }
 
+.custom-pagination-btn {
+  font-size: 0.9rem; 
+  padding: 6px 10px; 
+}
+
 .product-description{
   height: 15vh;
 }
@@ -111,5 +116,16 @@
 @media (max-width: 425px) {
   .texto-titulo {
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .custom-pagination-btn {
+    font-size: 0.8rem; 
+    padding: 4px 6px; 
+  }
+
+  .paginaTexto{
+    font-size: 0.8rem;
   }
 }

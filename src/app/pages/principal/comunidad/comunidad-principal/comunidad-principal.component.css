@@ -8,11 +8,24 @@
   margin-top: 4vh !important;
 }
 
+.paginaTexto{
+  font-size: 0.9rem;
+  color:rgb(80, 80, 80);
+}
+
 @media (max-width: 425px) {
   .producto-lista {
     width: 100%;
     margin-bottom: 0 !important;
     border-radius: 0;
+  }
+
+  .paginaTexto{
+    font-size: 0.6rem;
+  }
+  .custom-pagination-btn {
+    font-size: 0.55rem !important; /* Ajusta el tamaño de la fuente más pequeño */
+    padding: 1px 4px !important; /* Relleno más pequeño */
   }
 }
 
@@ -23,6 +36,13 @@
 @media (max-width: 786px) {
   .filtros-perfiles {
     flex-direction: column;
+  }
+  .paginaTexto{
+    font-size: 0.7rem;
+  }
+  .custom-pagination-btn {
+    font-size: 0.75rem !important; /* Ajusta el tamaño de la fuente */
+    padding: 3px 8px !important; /* Reduce el relleno */
   }
 }
 

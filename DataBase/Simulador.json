@@ -25,6 +25,84 @@
       "Ganancia": 30,
       "PrecioFinal": 416,
       "habilitado": true
+    },
+    {
+      "id": "ea6c",
+      "idUsuario": "f5ef",
+      "nombre": "wwww",
+      "precioMP": 4,
+      "cantidadMP": 3,
+      "UnidadDeCompraMP": 3,
+      "valorGF": 2,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 1,
+      "PrecioFinal": 5.05,
+      "habilitado": true
+    },
+    {
+      "id": "2be4",
+      "idUsuario": "f5ef",
+      "nombre": "wwww",
+      "precioMP": 2,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 2,
+      "valorGF": 2,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 2,
+      "PrecioFinal": 2.04,
+      "habilitado": true
+    },
+    {
+      "idUsuario": "f5ef",
+      "nombre": "alo",
+      "precioMP": 2,
+      "cantidadMP": 2,
+      "UnidadDeCompraMP": 4,
+      "valorGF": 2,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 2,
+      "PrecioFinal": 2.04,
+      "habilitado": true,
+      "id": "ce8d"
+    },
+    {
+      "idUsuario": "f5ef",
+      "nombre": "encendedor",
+      "precioMP": 1,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 1,
+      "valorGF": 4,
+      "CantidadProductoMensual": 1,
+      "Ganancia": 3,
+      "PrecioFinal": 5.15,
+      "habilitado": true,
+      "id": "0e86"
+    },
+    {
+      "id": "89d5",
+      "idUsuario": "f5ef",
+      "nombre": "xxx",
+      "precioMP": 3,
+      "cantidadMP": 2,
+      "UnidadDeCompraMP": 2,
+      "valorGF": 2,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 2,
+      "PrecioFinal": 4.08,
+      "habilitado": true
+    },
+    {
+      "id": "0c06",
+      "idUsuario": "f5ef",
+      "nombre": "velas",
+      "precioMP": 1,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 1,
+      "valorGF": 2,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 2,
+      "PrecioFinal": 2.04,
+      "habilitado": true
     }
   ]
 }

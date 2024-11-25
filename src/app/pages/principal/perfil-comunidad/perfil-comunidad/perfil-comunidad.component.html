@@ -89,7 +89,7 @@
   <div class="album pb-4">
     <div class="container-fluid">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
-        <div class="col mb-3" *ngFor="let producto of listaProductos">
+        <div class="col mb-3" *ngFor="let producto of productosPaginados">
           <div class="card shadow-sm card-size m-2">
             <div class="image-container">
               <img class="bd-placeholder-img card-img-top" width="100%" height="350"
@@ -114,5 +114,10 @@
         </div>
       </div>
     </div>
+  </div>
+  <div  *ngIf="listaProductos.length>0" class="d-flex justify-content-center mt-4">
+    <button (click)="goToPreviousPageProducto()" class="btn custom-pagination-btn btn-primary btn-sm me-3" [disabled]="currentPageProducto === 1">Anterior</button>
+    <span class="mx-2 paginaTexto">Página {{ currentPageProducto }} de {{ totalPagesProducto() }}</span>
+    <button (click)="goToNextPageProducto()" class="btn custom-pagination-btn btn-primary btn-sm me-3" [disabled]="currentPageProducto === totalPagesProducto()">Siguiente</button>
   </div>
 </div>

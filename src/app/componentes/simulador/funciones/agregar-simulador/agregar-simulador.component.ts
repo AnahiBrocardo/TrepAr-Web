@@ -40,6 +40,8 @@ export class AgregarSimuladorComponent implements OnInit {
   idUsuario: string= '';
   ruoter = inject(Router);
   activated= inject(ActivatedRoute);
+  
+  idSimulador:string='';
 
   @Output() emitirSimulacion: EventEmitter<Simulador> = new EventEmitter();
 
@@ -54,6 +56,7 @@ export class AgregarSimuladorComponent implements OnInit {
     this.tipo = data.tipo;
     // Si es edición, prellenar el formulario con los datos del simulador
     if (this.tipo === 'EDITAR' && data.simulador) {
+      this.idSimulador=data.simulador.id;
       this.formulario.patchValue(data.simulador); // Rellena el formulario con los datos del simulador
       this.precioConGanancia = data.simulador.PrecioFinal || 0; // Opcional, si el precio ya está calculado
     }
@@ -122,7 +125,6 @@ addSimuladorBD(simulador: Simulador){
     {
       next: (Simulador: Simulador) =>{
         Swal.fire("Simulacion guardada correctamente....");
-        
       },
       error: (e: Error)=>{
           console.log(e.message);
@@ -132,15 +134,20 @@ addSimuladorBD(simulador: Simulador){
  }
 //----------Actualizar un simulador existente
 updateSimuladorBD(simulador: Simulador) {
-  this.SimuladorService.putSimulador(simulador.idUsuario, simulador).subscribe({
-    next: (simuladorActualizado: Simulador) => {
-      alert('Simulador actualizado correctamente.');
-    },
-    error: (e: Error) => {
-      console.error('Error al actualizar el simulador:', e.message);
-    }
-  });
+  if (this.idSimulador) {
+    this.SimuladorService.putSimulador(this.idSimulador, simulador).subscribe({
+      next: (simuladorActualizado: Simulador) => {
+        Swal.fire("Cambios guardados");
+      },
+      error: (e: Error) => {
+        console.error('Error al actualizar el simulador:', e.message);
+      }
+    });
+  } else {
+    console.error('ID del simulador no encontrado.');
+  }
 }
+
 
 
 
@@ -174,8 +181,7 @@ calcularTodo() {
     this.formulario.get('UnidadDeCompraMP')?.value === 0 ||
     this.formulario.get('valorGF')?.value === 0 ||
     this.formulario.get('CantidadProductoMensual')?.value === 0 ||
-    this.formulario.get('Ganancia')?.value === 0 ||
-    this.formulario.get('PrecioFinal')?.value === 0
+    this.formulario.get('Ganancia')?.value === 0
   ) {
     this.camposIncompletos=true;
     return this.precioConGanancia = 0;

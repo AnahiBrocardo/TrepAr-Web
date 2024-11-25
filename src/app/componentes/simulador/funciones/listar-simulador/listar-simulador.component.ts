@@ -42,7 +42,6 @@ idUsuario: string = '';
 constructor(private route: ActivatedRoute,  private router: Router) { }
 
 ngOnInit(): void {
-  console.log(this.idUsuario);
   this.idUsuario = localStorage.getItem('userId') || '';
   if (this.idUsuario) { this.listarTodasSimulaciones(this.idUsuario); }
 
@@ -82,7 +81,7 @@ deleteSimulador(Simuladorid: number) {
       this.SimuladorService.deleteSimulador(Simuladorid).subscribe({
         next: () => {
           Swal.fire("Simulacion eliminada correctamente");
-          location.reload();
+          this.leerTodo();
         },
         error: (e: Error) => {
           console.log('No se elimino');
@@ -120,9 +119,9 @@ leerTodo() {
 
 ///--------------paginado---------------------------
 cantidadTotal= 0;
-cantidadPorPagina= 10;
+cantidadPorPagina= 8;
 numeroDePag= 0;
-opcionesDePaginado: number[] = [1 , 5, 10 , 20 , 50];
+opcionesDePaginado: number[] = [1 , 5, 8];
 
 CambiarPagina(event: any){
   this.cantidadPorPagina = event.pageSize; 
@@ -152,9 +151,8 @@ agregarSimulado() {
 
   //resultado y funcion de la ventana 
   dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    this.listarTodasSimulaciones(this.idUsuario); //Método para recargar la lista
     });
-  
 }
 
 
@@ -176,8 +174,7 @@ editarSimulador(simulador: Simulador) {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      console.log('Simulador actualizado:', result);
-      // Aquí puedes actualizar la lista de simuladores
+      Swal.fire("Cambios guardados");
       this.listarTodasSimulaciones(this.idUsuario); //Método para recargar la lista
     }
   });
