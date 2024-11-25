@@ -56,7 +56,7 @@ export class MensajeModalComponent implements OnInit{
 
   obtenerDatosPerfil(){
       if(this.idDestino){
-        this.perfilService.getPerfilByIdPerfil(this.idDestino).subscribe({
+        this.perfilService.getPerfilByIdUser(this.idDestino).subscribe({
           next: (perfilArray: Perfil[]) => {
             if (perfilArray.length > 0) {
               this.perfilSeleccionado = perfilArray[0]; 
@@ -86,27 +86,28 @@ generarMensaje() {
 
   const formValues = this.formulario.getRawValue();
 
- // Ajusta `eliminadoPor` para cumplir con la interfaz
- const eliminadoPor = formValues.eliminadoPor.map(item => ({
-  idPerfil: item.idPerfil || '', // Asegura que siempre sea string
-  fechaDeEliminacion: item.fechaDeEliminacion || null // Asegura que sea Date o null
-  }));
+  // Verificar que `perfilSeleccionado` tiene un `idUser`
+  if (!this.perfilSeleccionado?.idUser) {
+    console.error('No se ha seleccionado un perfil válido.');
+    return; // Detener la ejecución si el perfil no es válido
+  }
 
-  // Convierte el valor de `fechaDeCreacion` a un objeto de tipo Date
+  // Crear el mensaje con los valores del formulario y la fecha actual
   const chat: Chat = {
     ...formValues,
     idUserEmisor: this.idUsuario, 
-    idUserDestinatario: this.idDestino,
-    fechaDeCreacion: new Date(), // Establece una fecha válida
-    eliminadoPor
+    idUserDestinatario: this.perfilSeleccionado.idUser,
+    fechaDeCreacion: new Date(), // Establece la fecha actual
+    eliminadoPor: [] // Asegura que `eliminadoPor` sea un array vacío si no se usa
   };
 
-// Convertir fechaDeCreacion a Date 
+  // Si el tipo es 'NUEVOMENSAJE', agregarlo a la base de datos
   if (this.tipo === 'NUEVOMENSAJE') {
-    this.addMensajeBD(chat); // Crear un nuevo mensaje
-  } 
+    this.addMensajeBD(chat); // Crear un nuevo mensaje en la base de datos
+  }
 
-  this.dialogRef.close(chat); // Devuelve el mensaje al componente padre
+  // Cerrar el diálogo y devolver el mensaje al componente padre
+  this.dialogRef.close(chat); 
 }
 
 //-----------AGREGO A LA BASE DE DATOS UN NUEVO MENSAJE

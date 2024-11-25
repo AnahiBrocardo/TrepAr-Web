@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { Chat } from '../../../Interfaces/chat';
 import { ChatService } from '../../../Servicios/chatInterno/chat.service';
 import { PerfilService } from '../../../Servicios/perfil/perfil.service';
@@ -19,62 +19,81 @@ export class ChatInternoComponent implements OnInit{
   chats: Chat[] = [];
   filtro: string = '';
   mensaje: string = ''; // Variable para almacenar el mensaje
-  
+  pantallaCel: boolean = false;
+  mensajes:boolean=false; // Controla si se muestra el panel de mensajes
   originalChatsConUsuario: any[] = [];// Variable para guardar los chats originales
   idUser: string = '';
   chatService = inject(ChatService);
   perfilService = inject(PerfilService);
   currentChat?: any;
   chatsConUsuario: any[] = []; // Asegúrate de que esta variable esté inicializada como un arreglo vacío
-  
+  limitPantallaCel: number = 768; 
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.actualizarPantallaCel();
+  }
+
+  private actualizarPantallaCel(): void {
+    this.pantallaCel = window.innerWidth <= this.limitPantallaCel;
+  }
+
   ngOnInit(): void {
+    this.actualizarPantallaCel();
     this.idUser = localStorage.getItem('userId') || '';
     this.obtenerTodosLosChats();
+  }
+
+   // Método para manejar el cambio entre los paneles
+  toggleMensajes() {
+    this.mensajes = !this.mensajes;
   }
 
   obtenerTodosLosChats() {
     this.chatService.getAllChats().subscribe({
       next: (chats: Chat[]) => {
-        // Filtrar los chats para incluir solo los chats donde el idUser esté involucrado
-        const chatsFiltrados = chats.filter(chat => 
+        // Filtrar los chats relevantes para el usuario actual
+        const chatsFiltrados = chats.filter(chat =>
           chat.idUserEmisor === this.idUser || chat.idUserDestinatario === this.idUser
         );
   
-        // Agrupar los chats por idUserEmisor y idUserDestinatario
+        // Agrupar los chats por id del otro usuario
         const chatsAgrupados = this.agruparChatsPorUsuario(chatsFiltrados);
-        console.log(chatsAgrupados);
+        console.log('Chats agrupados:', chatsAgrupados);
   
-        // Inicializar el array de chatsConUsuario
-        this.chatsConUsuario = [];
-  
-        // Crear una lista de observables para obtener los perfiles de los emisores
-        const perfilRequests = chatsAgrupados.map((chatGroup) =>
-          this.perfilService.getPerfilByIdUser(chatGroup.idUserEmisor).pipe(
-            map((perfilEmisor: Perfil[]) => {
-              // Ordenar los mensajes por fechaDeCreacion
-              const mensajesOrdenados = chatGroup.chats.sort((a: Chat, b: Chat) => {
-                return new Date(a.fechaDeCreacion).getTime() - new Date(b.fechaDeCreacion).getTime();
-              });
+        // Crear una lista de observables para obtener los perfiles de los otros usuarios
+        const perfilRequests = chatsAgrupados.map((chatGroup) => {
+          // Determinar el otro usuario (diferente al actual)
+          const otroUsuarioId = chatGroup.idUserEmisor === this.idUser
+            ? chatGroup.idUserDestinatario
+            : chatGroup.idUserEmisor;
+          console.log(otroUsuarioId);
+          // Solicitar el perfil del otro usuario
+          return this.perfilService.getPerfilByIdUser(otroUsuarioId).pipe(
+            map((perfil: Perfil[]) => {
+              // Ordenar los mensajes por fecha de creación
+              const mensajesOrdenados = chatGroup.chats.sort((a: Chat, b: Chat) =>
+                new Date(a.fechaDeCreacion).getTime() - new Date(b.fechaDeCreacion).getTime()
+              );
   
               // Verificar si el último mensaje no ha sido visto
               const ultimoMensajeNoVisto = mensajesOrdenados.length > 0 && !mensajesOrdenados[mensajesOrdenados.length - 1].visto;
   
-              // Añadir los mensajes y los datos del perfil del emisor al array final
               return {
-                idUser: chatGroup.idUserEmisor,  // Usamos el id del emisor como id del grupo
-                username: perfilEmisor[0]?.userName || 'Nombre no disponible', // Asignar nombre del emisor
-                imagen: perfilEmisor[0]?.imagePerfil || 'default-image.jpg', // Asignar imagen del emisor
-                mensajes: mensajesOrdenados,  // Incluir los mensajes ordenados
-                ultimoMensajeNoVisto: ultimoMensajeNoVisto,  // Propiedad para saber si el último mensaje no fue visto
+                idUser: otroUsuarioId,
+                username: perfil[0]?.userName ,
+                imagen: perfil[0]?.imagePerfil,
+                mensajes: mensajesOrdenados,
+                ultimoMensajeNoVisto,
               };
+              console.log(this.chatsConUsuario);
             })
-          )
-        );
+          );
+        });
   
-        // Usar forkJoin para esperar que todos los perfiles sean obtenidos
+        // Esperar todos los perfiles usando forkJoin
         forkJoin(perfilRequests).subscribe({
           next: (resultados) => {
-            // Aplanar el array de resultados y asignarlo a chatsConUsuario
             this.chatsConUsuario = resultados;
             this.originalChatsConUsuario = [...resultados];
           },
@@ -89,17 +108,18 @@ export class ChatInternoComponent implements OnInit{
     });
   }
   
-
   agruparChatsPorUsuario(chats: Chat[]) {
     const chatGroups: { [key: string]: any } = {};
   
     chats.forEach((chat) => {
-      // Crear una clave única para cada par de usuarios, independientemente de quien sea el emisor o destinatario
-      const key = [chat.idUserEmisor, chat.idUserDestinatario].sort().join('-');
+      // Determinar el id del otro usuario
+      const otroUsuarioId = chat.idUserEmisor === this.idUser
+        ? chat.idUserDestinatario
+        : chat.idUserEmisor;
   
-      // Si no existe una clave para este par de usuarios, la inicializamos
-      if (!chatGroups[key]) {
-        chatGroups[key] = {
+      // Si no existe una clave para este usuario, inicializarla
+      if (!chatGroups[otroUsuarioId]) {
+        chatGroups[otroUsuarioId] = {
           idUserEmisor: chat.idUserEmisor,
           idUserDestinatario: chat.idUserDestinatario,
           chats: [],
@@ -107,7 +127,7 @@ export class ChatInternoComponent implements OnInit{
       }
   
       // Añadir el chat al grupo correspondiente
-      chatGroups[key].chats.push(chat);
+      chatGroups[otroUsuarioId].chats.push(chat);
     });
   
     // Convertir el objeto chatGroups a un array y devolverlo
@@ -131,6 +151,8 @@ export class ChatInternoComponent implements OnInit{
 
 seleccionarChat(chatSeleccionado: any) {
   this.currentChat= chatSeleccionado;
+  console.log(this.mensajes);
+  this.mensajes = !this.mensajes;
    this.marcarMensajeComoVisto(chatSeleccionado);
 }
 

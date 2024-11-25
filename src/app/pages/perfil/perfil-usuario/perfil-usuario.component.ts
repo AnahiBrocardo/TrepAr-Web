@@ -19,22 +19,26 @@ import { EditarPerfilComponent } from '../editar-perfil/editar-perfil.component'
 export class PerfilUsuarioComponent implements OnInit {
 
   isLoading: boolean = true;
-  idUser: string='';
-  vistaPerfil: boolean=false;
+  idUser: string = '';
+  vistaPerfil: boolean = false;
   perfilData?: Perfil;
 
   private cdr = inject(ChangeDetectorRef);
   nuevaImagen: string = ''; // Para almacenar la nueva URL de la imagen
-  servicioPerfil= inject(PerfilService);
+  servicioPerfil = inject(PerfilService);
 
   ngOnInit(): void {
     this.idUser = localStorage.getItem('userId') || '';
     this.obtenerDatosPerfil(this.idUser);
-      
-   }
 
+  }
 
-   obtenerDatosPerfil(id: string) {
+  actualizarEstado(nuevoEstado: boolean) {
+    this.vistaPerfil = nuevoEstado;
+    this.obtenerDatosPerfil(this.idUser);
+  }
+
+  obtenerDatosPerfil(id: string) {
     this.servicioPerfil.getPerfilByIdUser(id).subscribe({
       next: (perfilArray: Perfil[]) => {
         if (perfilArray.length > 0) {
@@ -49,9 +53,9 @@ export class PerfilUsuarioComponent implements OnInit {
       }
     });
   }
-  
 
-  editarPerfil(){
-   this.vistaPerfil=!this.vistaPerfil;
+
+  editarPerfil() {
+    this.vistaPerfil = !this.vistaPerfil;
   }
 }

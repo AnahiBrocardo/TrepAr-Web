@@ -3,7 +3,6 @@
   </div>
   <div class="profile-container-info">
     <div class="profile-edit-btn">
-      <!-- <button class="btn btn-primary">Editar Perfil</button> -->
       <button class="btn btn-outline-dark rounded-circle p-2 lh-1 button-edit position-absolute"
       style="top: 10px; right: 20px;" type="button" (click)="editarPerfil()"> <i
         class="fa-solid fa-pen-to-square"></i> <span class="visually-hidden">Dismiss</span>
@@ -66,6 +65,6 @@
     </h6>
   </section>
 
-  <app-editar-perfil [userId]="idUser"></app-editar-perfil>
+  <app-editar-perfil [userId]="idUser" (estadoCambiado)="actualizarEstado($event)"></app-editar-perfil>
 </div>
 

@@ -1,19 +1,29 @@
-.mat-toolbar .mat-mcd-form--field-subscript-wrappr.mat-mdc-form-field-bottom-aling{
+.simulador {
+    width: 1130px;
+    padding: 1vh;
+    padding-top: 6vh;
+    height: 60vh;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.89);
+    margin: 6vh auto; /* Centra horizontalmente y mantiene el margen superior */
+}
+
+.mat-toolbar .mat-mcd-form--field-subscript-wrappr.mat-mdc-form-field-bottom-aling {
     display: none;
 }
-.mat-mdc-form-field:not(.mat-mdc-paginator-page-size-select){
+.mat-mdc-form-field:not(.mat-mdc-paginator-page-size-select) {
     width: 100%;
 }
 
-.mat-mdc-no-data-row td div.mensaje-no-existen-datos{
+.mat-mdc-no-data-row td div.mensaje-no-existen-datos {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     line-height: 50px;
-    background-color:#f7c8e7ad ;
+    background-color: #f7c8e7ad;
 }
-.mat-mdc-no-data-row td div.mensaje-no-existen-datos .mat-icon{
+.mat-mdc-no-data-row td div.mensaje-no-existen-datos .mat-icon {
     color: #f14c75ad;
 }
 .custom-button {
@@ -26,38 +36,122 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .custom-button mat-icon {
+}
+.custom-button mat-icon {
     font-size: 20px; /* Cambia el tamaño del icono */
-  }
-  .button-container { display: flex; gap: 10px; /* Espacio entre los botones */ }
+}
+.button-container {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+}
+.custom-dialog-container {
+    width: 100%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+.custom-dialog-content {
+    flex: 1;
+    overflow-y: auto; /* Permite el desplazamiento vertical si el contenido se desborda */
+    padding: 20px; /* Ajusta según tus necesidades */
+}
+.custom-dialog-footer {
+    padding: 10px;
+    text-align: right; /* Alinea el contenido del pie de página a la derecha */
+}
 
-  .custom-dialog-container { 
-    width: 100%; max-height: 80vh; 
-    /* Limita la altura máxima al 80% del viewport */
-     display: flex; 
-     flex-direction: column; }
-  .custom-dialog-content { 
-    
-        flex: 1; 
-        overflow-y: auto; /* Permite el desplazamiento vertical si el contenido se desborda */ 
-        padding: 20px; /* Ajusta según tus necesidades */
-    }
-    .custom-dialog-footer { padding: 10px; text-align: right; /* Alinea el contenido del pie de página a la derecha */ }
+mat-toolbar {
+    background-color: transparent !important;
+    box-shadow: none; /* Elimina la sombra, si existe */
+}
 
-    mat-toolbar {
-        background-color: transparent !important;
-        box-shadow: none; /* Elimina la sombra, si existe */
+.container-fluid .col{
+    margin-top:5vh;
+}
+
+.container-fluid .row {
+    margin: 0;
+    padding: 0;
+}
+
+
+.mat-form-field, button {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+@media (max-width: 768px) { 
+.simulador {
+    width: 80vw !important; 
+    padding: 0vh !important; 
+    padding-top: 10vh !important; 
+    height: 60vh !important; 
+    border-radius: 15px !important; 
+    background-color: rgba(255, 255, 255, 0.89) !important; 
+    margin: 6vh auto !important; 
+} 
+/* Botón Crear */ 
+.mat-toolbar .container-fluid .row 
+{ flex-direction: column !important; /* Cambia la dirección de la fila a columna en móviles */ 
+    align-items: flex-start !important; /* Alinea los elementos al principio */ 
+} 
+.mat-toolbar .container-fluid .row .col-auto 
+{ order: 1; /* Poner el botón "Crear" primero */ 
+    width: 100% !important; 
+    margin-bottom: 10px !important; 
+} 
+.mat-toolbar .container-fluid .row .col-md-auto {
+     order: 2; /* Poner la barra de búsqueda después del botón "Crear" */
+      width: 40% !important; 
+    } 
+
+    .mat-form-field { 
+        width: 100% !important; /* Ajusta el ancho de la barra de búsqueda */
+        margin-bottom: 10px !important; } /* Ajustar el contenedor de la tabla */ 
+        .mat-elevation-z8 { width: 90% !important; /* Reducir el tamaño del contenedor en pantallas
+             móviles */ 
+        margin: 0 auto !important; /* Centrar el contenedor horizontalmente */
+     }
+     
     }
 
-    .container-fluid .row {
-        margin: 0;
-        padding: 0;
-    }
-    
-    .mat-form-field, button {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-    
+    @media (max-width: 767px) { 
+        .simulador {
+            width: 80vw !important; 
+            padding: 0vh !important; 
+            padding-top: 10vh !important; 
+            height: 70vh !important; 
+            border-radius: 15px !important; 
+            background-color: rgba(255, 255, 255, 0.89) !important; 
+            margin: 6vh auto !important; 
+        } 
+        /* Botón Crear */ 
+        .mat-toolbar .container-fluid .row 
+        { flex-direction: column !important; /* Cambia la dirección de la fila a columna en móviles */ 
+            align-items: flex-start !important; /* Alinea los elementos al principio */ 
+        } 
+        .mat-toolbar .container-fluid .row .col-auto 
+        { order: 1; /* Poner el botón "Crear" primero */ 
+            width: 100% !important; 
+            margin-bottom: 10px !important; 
+        } 
+        .mat-toolbar .container-fluid .row .col-md-auto {
+             order: 2; /* Poner la barra de búsqueda después del botón "Crear" */
+              width: 70% !important; 
+            } 
+        
+            .mat-form-field { 
+                width: 100% !important; /* Ajusta el ancho de la barra de búsqueda */
+                margin-bottom: 10px !important; } /* Ajustar el contenedor de la tabla */ 
+                .mat-elevation-z8 { width: 90% !important; /* Reducir el tamaño del contenedor en pantallas
+                     móviles */ 
+                margin: 0 auto !important; /* Centrar el contenedor horizontalmente */
+             }
+             
+
+            .mat-elevation-z8 {
+                width: 100% !important;
+              }
+             
+}

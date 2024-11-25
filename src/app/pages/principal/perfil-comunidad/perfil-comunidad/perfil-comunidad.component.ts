@@ -7,12 +7,10 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MensajeModalComponent } from '../../mensaje-modal/mensaje-modal.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-perfil-comunidad',
@@ -20,11 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [CommonModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule,  
-    FormsModule,
-    
-    MatButtonModule,
-    
+    MatInputModule,
+    FormsModule
   ],
   templateUrl: './perfil-comunidad.component.html',
   styleUrl: './perfil-comunidad.component.css'
@@ -58,7 +53,7 @@ listaProductos:ProductoInterface[]=[];
       this.perfilService.getPerfilByIdPerfil(this.perfilSeleccionadoIdPerfil).subscribe({
         next: (perfilArray: Perfil[]) => {
           if (perfilArray.length > 0) {
-            this.perfilSeleccionado = perfilArray[0]; 
+            this.perfilSeleccionado = perfilArray[0];
             this.obtenerDatosDeProducto(this.perfilSeleccionado.idUser);
           } else {
             console.error('El perfil no existe o no se encontró.');
@@ -94,7 +89,7 @@ listaProductos:ProductoInterface[]=[];
             // Verifica si el perfil está en la lista de favoritos
             this.isFavorito = perfilUsuarios[0].listaFavoritos.includes(this.perfilSeleccionadoIdPerfil!);
           }
-          
+
         },
         error: (e) => {
           console.error('Error al verificar favoritos:', e);
@@ -122,7 +117,6 @@ listaProductos:ProductoInterface[]=[];
         next: (perfilUsuarios: Perfil[]) => {
           if (perfilUsuarios[0]) {
             const perfil = perfilUsuarios[0];
-  
             if(perfil.listaFavoritos){
 
             if (this.isFavorito) {
@@ -135,9 +129,9 @@ listaProductos:ProductoInterface[]=[];
               if(this.perfilSeleccionadoIdPerfil){
             perfil.listaFavoritos.push(this.perfilSeleccionadoIdPerfil);
               }
-              
+
             }
-           
+
             if(perfil.id){
             // Actualizar la lista de favoritos en el servidor
             this.perfilService.actualizarPerfilByIdUser(perfil.id, perfil).subscribe({
@@ -161,7 +155,7 @@ listaProductos:ProductoInterface[]=[];
     }
   }
 
-///--------------ENVIAR UN NUEVO MENSAJE---------------------------
+  ///--------------ENVIAR UN NUEVO MENSAJE---------------------------
 readonly dialog = inject(MatDialog);
 enviarMensaje(){
   ///abre la ventana modal en l formulario
@@ -175,19 +169,10 @@ enviarMensaje(){
     data: {
       tipo: 'NUEVOMENSAJE',
       idUsuario: this.userId,// Pasa el idUsuario al diálogo
-      idDestino : this.perfilSeleccionadoIdPerfil
+      idDestino : this.perfilSeleccionado?.idUser
     }
-  });
-
-  //resultado y funcion de la ventana 
-  dialogRef.afterClosed().subscribe((result: any) => {
-    if (result) {
-      console.log('Resultado del modal:', result);
-      // Realiza acciones adicionales si es necesario
-    }
-  });
-  
+  });  
 }
 
-//--------------FIN ENVIAR UN NUEVO MENSAJE---------------------------
+
 }

@@ -29,7 +29,6 @@
   /* Suaviza la transición */
   background: linear-gradient(135deg, #a7dcdf81, #ffdcccc2);
   padding: 0;
-  padding-top: 4vh !important;
   box-sizing: border-box;
   height: 100vh;
   overflow: auto;

@@ -1,118 +1,115 @@
 <section class="content">
-    <div class="container p-0">
-      <div class="shadowed-title">
-        <h5 class="titulo  mb-3">Mensajes</h5>
-      </div>
-      
-      <div class="card">
-        <div class="row g-0">
-          <!-- Panel de chats -->
-          <div class="col-12 col-lg-5 col-xl-3 border-end">
-            <div class="px-4 py-3 d-none d-md-block">
-              <div class="d-flex align-items-center">
-                <div class="flex-grow-1">
-                  <input 
-                    type="text" 
-                    class="form-control my-3" 
-                    placeholder="Search..." 
-                    [(ngModel)]="filtro" 
-                    (ngModelChange)="filtrarChats()">
-                </div>
-              </div>
-              
-            </div>
-  
-            <!-- Lista de chats -->
-            <div *ngFor="let chat of chatsConUsuario" 
-     class="list-group-item list-group-item-action border-0 chat-item" 
-     (click)="seleccionarChat(chat)">
-  <div class="d-flex align-items-center">
-    <img 
-      [src]="chat.imagen" 
-      class="rounded-circle me-2" 
-      alt="{{ chat.username }}" 
-      width="40" height="40">
-    <div class="flex-grow-1 d-flex justify-content-between align-items-center">
-      <div>
-        <div class="fw-bold">{{ chat.username }}</div>
-        <div class="text-muted small">Último mensaje: 
-          <span *ngIf="chat.mensajes && chat.mensajes.length > 0">
-            {{ chat.mensajes[chat.mensajes.length - 1].mensaje }}
-          </span>
-        </div>
-        <div class="text-muted small">Hora: 
-          <span *ngIf="chat.mensajes && chat.mensajes.length > 0">
-            {{ chat.mensajes[chat.mensajes.length - 1].fechaDeCreacion | date: 'shortTime' }}
-          </span>
-        </div>
-      </div>
-      <!-- Notificación de mensaje no visto -->
-       <div *ngIf="chat.ultimoMensajeNoVisto" class="ms-auto align-self-start" >
-        <i class="fa-solid fa-circle" style="color: #ff5e4d;"></i>
-       </div>
-      
+  <div class="container p-0">
+    <div class="shadowed-title">
+      <h5 class="titulo  mb-3">Mensajes</h5>
     </div>
-  </div>
-</div>
+
+    <div class="no-chat pb-2" *ngIf="chatsConUsuario.length === 0 && !mensajes && pantallaCel">
+      <img class="imagen-no-chat" src="/assets/img/no-chats.png"
+      alt="Imagen ilustrativa, no hay chats">
+      <h3 class="featurette-heading fw-normal lh-1 texto-no-producto">
+        <span class="text-body-secondary">No se encontraron mensajes.</span>
+      </h3>
+    </div>
+
+    <!-- Botón "Volver" para pantallas pequeñas cuando mensajes es false -->
+    <div *ngIf="mensajes && pantallaCel" class="col-12 d-flex justify-content-start">
+      <button type="button" class="btn btn-outline-primary" (click)="toggleMensajes()">Volver</button>
+    </div>
+
+    <div class="card" *ngIf="chatsConUsuario.length !== 0">
+      <div class="row g-0 ">
+        <!-- Panel de chats -->
+        <div class="col-12 col-lg-5 col-xl-3  overflow-auto border-end "
+        *ngIf="(!mensajes && pantallaCel) || (!pantallaCel)">
+          <div class="px-4 py-3 d-none d-md-block">
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1">
+                <input type="text" class="form-control my-3" placeholder="Search..." [(ngModel)]="filtro"
+                  (ngModelChange)="filtrarChats()">
+              </div>
+            </div>
+
           </div>
-  
-          <!-- Panel del chat seleccionado -->
-          <div class="col-12 col-lg-7 col-xl-9" *ngIf="currentChat && currentChat.mensajes && currentChat.mensajes.length > 0">
-            <div *ngIf="currentChat">
-              <div class="py-2 px-4 border-bottom">
-                <div class="d-flex align-items-center py-1">
-                  <!-- Mostrar la imagen y nombre de usuario del chat seleccionado -->
-                  <img 
-                    [src]="currentChat.imagen" 
-                    class="rounded-circle me-2" 
-                    alt="{{ currentChat.username }}" 
-                    width="40" height="40">
-                  <div class="flex-grow-1">
-                    <strong>{{ currentChat.username }}</strong>
+
+          <!-- Lista de chats -->
+          <div *ngFor="let chat of chatsConUsuario" class="list-group-item list-group-item-action border-0 chat-item "
+            (click)="seleccionarChat(chat)">
+            <div class="d-flex align-items-center">
+              <img [src]="chat.imagen ? chat.imagen : 'assets/img/usuario.png'" class="rounded-circle me-2"
+                alt="{{ chat.username }}" width="40" height="40">
+              <div class="flex-grow-1 d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="fw-bold">{{ chat.username ? chat.username : 'Nombre no disponible' }}</div>
+                  <div class="text-muted small">Último mensaje:
+                    <span *ngIf="chat.mensajes && chat.mensajes.length > 0">
+                      {{ chat.mensajes[chat.mensajes.length - 1].mensaje }}
+                    </span>
+                  </div>
+                  <div class="text-muted small">Hora:
+                    <span *ngIf="chat.mensajes && chat.mensajes.length > 0">
+                      {{ chat.mensajes[chat.mensajes.length - 1].fechaDeCreacion | date: 'shortTime' }}
+                    </span>
                   </div>
                 </div>
+                <!-- Notificación de mensaje no visto -->
+                <div *ngIf="chat.ultimoMensajeNoVisto" class="ms-auto align-self-start">
+                  <i class="fa-solid fa-circle" style="color: #ff5e4d;"></i>
+                </div>
+
               </div>
-  
-              <!-- Mostrar los mensajes del chat -->
-              <div class="chat-messages p-4">
-                <div *ngFor="let mensaje of currentChat.mensajes" class="pb-4">
-                  <div class="message-content bg-light rounded py-2 px-3"
-                       [ngClass]="{
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel del chat seleccionado -->
+        <div class="col-12 col-lg-7 col-xl-9 overflow-auto"
+        *ngIf="(mensajes && pantallaCel) || (!pantallaCel) && currentChat && currentChat.mensajes && currentChat.mensajes.length > 0">
+          <div *ngIf="currentChat">
+            <div class="py-2 px-4 border-bottom">
+              <div class="d-flex align-items-center py-1">
+                <!-- Mostrar la imagen y nombre de usuario del chat seleccionado -->
+                <img [src]="currentChat.imagen ? currentChat.imagen : 'assets/img/usuario.png'"
+                  class="rounded-circle me-2" alt="{{ currentChat.username }}" width="40" height="40">
+                <div class="flex-grow-1">
+                  <strong>{{ currentChat.username }}</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mostrar los mensajes del chat -->
+            <div class="chat-messages p-4">
+              <div *ngFor="let mensaje of currentChat.mensajes" class="pb-4">
+                <div class="message-content bg-light rounded py-2 px-3" [ngClass]="{
                          'message-sent': mensaje.idUserEmisor === idUser,
                          'message-received': mensaje.idUserEmisor !== idUser
                        }">
-                    <div class="font-weight-bold mb-1">{{ mensaje.nombreEmisor }}</div>
-                    <div>{{ mensaje.mensaje }}</div>
-                    <!-- Fecha de creación con el mismo estilo que el mensaje -->
-                    <div class="text-muted small text-nowrap mt-2">
-                      {{ mensaje.fechaDeCreacion | date: 'short' }}
-                    </div>
+                  <div class="font-weight-bold mb-1">{{ mensaje.nombreEmisor }}</div>
+                  <div>{{ mensaje.mensaje }}</div>
+                  <!-- Fecha de creación con el mismo estilo que el mensaje -->
+                  <div class="text-muted small text-nowrap mt-2">
+                    {{ mensaje.fechaDeCreacion | date: 'short' }}
                   </div>
                 </div>
               </div>
-  
-              <!-- Input para enviar mensaje -->
-              <div class="flex-grow-0 py-3 px-4 border-top">
-                <div class="input-group">
-                  <textarea 
-                    [(ngModel)]="mensaje" 
-                    class="form-control" 
-                    placeholder="Type your message"
-                    rows="1" 
-                    [ngStyle]="{ 'resize': 'none'}"  
-                    (input)="autoResize($event)">
+            </div>
+
+            <!-- Input para enviar mensaje -->
+            <div class="flex-grow-0 py-3 px-4 border-top">
+              <div class="input-group">
+                <textarea [(ngModel)]="mensaje" class="form-control" placeholder="Type your message" rows="1"
+                  [ngStyle]="{ 'resize': 'none'}" (input)="autoResize($event)">
                   </textarea>
-  
-                  <button type="submit" class="btn btn-success mb-3 mt-2" 
-                          [disabled]="!mensaje" (click)="enviarMensaje()">
-                    Enviar
-                  </button>
-                </div>
+
+                <button type="submit" class="btn btn-success mb-3 mt-2" [disabled]="!mensaje" (click)="enviarMensaje()">
+                  Enviar
+                </button>
               </div>
             </div>
           </div>
         </div>
+         
       </div>
     </div>
-  </section>
-  
+  </div>
+</section>

@@ -23,6 +23,11 @@ export class SidenavComponent implements OnInit{
 
   items = [
     {
+      routeLink: 'inicio',
+      icon: 'fal fa-house',
+      label: 'Inicio',
+    },
+    {
       routeLink: 'comunidad',
       icon: 'fal fa-user-group',
       label: 'Comunidad',

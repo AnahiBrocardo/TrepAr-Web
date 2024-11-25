@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductoInterface } from '../../../Interfaces/producto-interface';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,6 +18,7 @@ export class AgregarProductoPerfilComponent implements OnInit{
 
   @Input()
   userId!: string; // Declarar explícitamente la propiedad
+  @Output() estadoCambiado = new EventEmitter<boolean>();
 
   ngOnInit(): void {
     this.formulario.patchValue({ idUser: this.userId });
@@ -29,6 +30,10 @@ export class AgregarProductoPerfilComponent implements OnInit{
 
   fb= inject(FormBuilder)
   productoService= inject(ProductoServiceService)
+
+  cambiarEstado() {
+    this.estadoCambiado.emit(false);
+  }
 
   /*Contenidos de la barra desplegable */
   categorias: string[] = ['Electrónica', 'Ropa', 'Hogar', 'Libros', 'Belleza', 'Juguetes', 'Deportes', 'Automotores', 'Alimentos', 'Mascotas', 'Otro'];
@@ -77,7 +82,7 @@ export class AgregarProductoPerfilComponent implements OnInit{
             icon: "success",
             title: "Producto Guardado"
           });
-          location.reload();
+          this.cambiarEstado();
 
         },
         error: (e: Error) => {

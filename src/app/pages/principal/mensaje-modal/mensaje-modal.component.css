@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  background: linear-gradient(0deg, #cfecee, #f7ebd4); /* 0deg para que el degradado vaya de abajo hacia arriba */
+  background: linear-gradient(0deg, #eefcfd, #fdf6e9); /* 0deg para que el degradado vaya de abajo hacia arriba */
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
