@@ -1,94 +1,93 @@
 <section class="simulador">
-<mat-toolbar>
-  <div class="container-fluid">
-    <div class="row align-items-center">
-      <!-- Columna para el botón Crear -->
-      <div class="col-auto">
-        <button mat-fab extended class="my-2" (click)="agregarSimulado()">
-          <mat-icon>note_add</mat-icon> Crear
-        </button>
+  <mat-toolbar>
+      <div class="container-fluid">
+          <div class="row align-items-center d-flex justify-content-between">
+              <!-- Columna para el botón Crear -->
+              <div class="col-auto col-sm-6 col-md-auto">
+                  <button mat-fab extended class="my-2" (click)="agregarSimulado()" [style.width]="'auto'">
+                      <mat-icon>note_add</mat-icon> Crear
+                  </button>
+              </div>
+
+              <!-- Columna para la barra de búsqueda -->
+              <div class="col-12 col-sm-6 col-md-auto ms-2">
+                  <mat-form-field appearance="fill" class="w-60 w-sm-30">
+                      <mat-label>Buscar</mat-label>
+                      <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" (keyup.enter)="leerTodo()" matInput>
+                      <mat-icon matSuffix>search</mat-icon>
+                  </mat-form-field>
+              </div>
+          </div>
       </div>
-  
-      <!-- Columna para la barra de búsqueda, con margen izquierdo para alineación -->
-      <div class="col ms-2">
-        <mat-form-field appearance="fill" class="w-100">
-          <mat-label>Buscar</mat-label>
-          <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" (keyup.enter)="leerTodo()" matInput>
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
+  </mat-toolbar>
+
+  <div class="container-fluid my-3">
+      <div class="row">
+          <div class="col">
+              <div class="mat-elevation-z8">
+                  <table mat-table [dataSource]="dataSource">
+
+                      <!--- Note that these columns can be defined in any order.
+                            The actual rendered columns are set as a property on the row definition" -->
+                            
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="id">
+                          <th mat-header-cell *matHeaderCellDef> No. </th>
+                          <td mat-cell *matCellDef="let simulado"> {{simulado.id}} </td>
+                      </ng-container>
+
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="nombre">
+                          <th mat-header-cell *matHeaderCellDef> Nombre</th>
+                          <td mat-cell *matCellDef="let simulado"> {{simulado.nombre}} </td>
+                      </ng-container>
+
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="PrecioFinal">
+                          <th mat-header-cell *matHeaderCellDef> Precio</th>
+                          <td mat-cell *matCellDef="let simulado"> {{simulado.PrecioFinal}} </td>
+                      </ng-container>
+
+                      <!-- Symbol Column -->
+                      <ng-container matColumnDef="accions">
+                          <th mat-header-cell *matHeaderCellDef> Accions </th>
+                          <td mat-cell *matCellDef="let simulado">
+                              <div class="button-container">
+                                  <button (click)="deleteSimulador(simulado.id)" matTooltip="Eliminar Producto" mat-mini-fab class="custom-button">
+                                      <mat-icon>delete</mat-icon>
+                                  </button>
+                                  
+                                  <button (click)="editarSimulador(simulado)" matTooltip="Editar" mat-mini-fab class="custom-button">
+                                      <mat-icon>edit</mat-icon>
+                                  </button>
+                              </div>
+                          </td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                      <tr class="mat-row" *matNoDataRow="">
+                          <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                              <div class="mensaje-no-existen-datos">
+                                  <mat-icon class="mx-3">error</mat-icon> No existe el producto que está buscando
+                              </div>
+                          </td>
+                      </tr>
+                  </table>
+                  <div class="paginador">
+                  <mat-paginator
+                      #paginator
+                      (page)="CambiarPagina($event)"
+                      [length]="cantidadTotal"
+                      [pageSize]="cantidadPorPagina"
+                      [showFirstLastButtons]="true"
+                      [pageSizeOptions]="opcionesDePaginado"
+                      [pageIndex]="numeroDePag">
+                  </mat-paginator>
+                </div>
+              </div>
+          </div>
       </div>
-    </div>
   </div>
-   
-</mat-toolbar>
-<div class="conteineer-fuid my-3">
- <div class="row">
-    <div class="col">
-        <div class="mat-elevation-z8">
-          <table mat-table [dataSource]="dataSource">
-
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-                  
-            <!-- Position Column -->
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef> No. </th>
-              <td mat-cell *matCellDef="let simulado"> {{simulado.id}} </td>
-            </ng-container>
-          
-            <!-- Name Column -->
-            <ng-container matColumnDef="nombre">
-              <th mat-header-cell *matHeaderCellDef> Nombre</th>
-              <td mat-cell *matCellDef="let simulado"> {{simulado.nombre}} </td>
-            </ng-container>
-          
-            <!-- Weight Column -->
-            <ng-container matColumnDef="PrecioFinal">
-              <th mat-header-cell *matHeaderCellDef> Precio</th>
-              <td mat-cell *matCellDef="let simulado"> {{simulado.PrecioFinal}} </td>
-            </ng-container>
-          
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="accions">
-              <th mat-header-cell *matHeaderCellDef> Accions </th>
-              <td mat-cell *matCellDef="let simulado"> 
-                <div class="button-container"> 
-                  <button  (click)="deleteSimulador(simulado.id)"  matTooltip="Eliminar Producto" mat-mini-fab class="custom-button"> 
-                    <mat-icon>delete</mat-icon> </button> 
-                  
-                  <button (click)="editarSimulador(simulado)" matTooltip="Editar" mat-mini-fab class="custom-button"> 
-                    <mat-icon>edit</mat-icon> </button>
-                  </div>
-                    
-              </td>
-            </ng-container>
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-            <tr class="mat-row" *matNoDataRow="">
-                 <td class="mat-cell" [attr.colspan]="displayedColumns.length">
-                    <div class="mensaje-no-existen-datos">
-                        <mat-icon class="mx-3">error</mat-icon> No existe el producto que esta buscando
-                    </div>
-                 </td>   
-
-            </tr>
-          </table>
-        <mat-paginator #paginator
-               
-               (page)="CambiarPagina($event)"
-               [length]="cantidadTotal"
-               [pageSize]="cantidadPorPagina"
-               [showFirstLastButtons]="true"
-               [pageSizeOptions]="opcionesDePaginado"
-               [pageIndex]="numeroDePag">
-            </mat-paginator>
-  
-        </div>
-        
-
-    </div>
- </div>
-</div>
 </section>
