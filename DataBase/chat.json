@@ -80,6 +80,24 @@
       "visto": true,
       "fechaDeCreacion": "2024-11-25T00:21:56.760Z",
       "eliminadoPor": []
+    },
+    {
+      "id": "9bf4",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "551f",
+      "mensaje": "hh",
+      "visto": false,
+      "fechaDeCreacion": "2024-11-25T04:08:58.356Z",
+      "eliminadoPor": []
+    },
+    {
+      "id": "2765",
+      "idUserEmisor": "f5ef",
+      "idUserDestinatario": "551f",
+      "mensaje": "hh",
+      "visto": true,
+      "fechaDeCreacion": "2024-11-25T04:09:03.564Z",
+      "eliminadoPor": []
     }
   ]
 }

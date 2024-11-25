@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {StepperOrientation, MatStepperModule} from '@angular/material/stepper';
 
@@ -26,7 +26,8 @@ import {StepperOrientation, MatStepperModule} from '@angular/material/stepper';
      MatFormFieldModule,
      MatInputModule,
      MatIconModule,
-     MatTooltipModule
+     MatTooltipModule,
+     CommonModule
     ],
   templateUrl: './agregar-simulador.component.html',
   styleUrl: './agregar-simulador.component.css'
@@ -41,6 +42,8 @@ export class AgregarSimuladorComponent implements OnInit {
   activated= inject(ActivatedRoute);
 
   @Output() emitirSimulacion: EventEmitter<Simulador> = new EventEmitter();
+
+  camposIncompletos:boolean=false;
 
   constructor(
     private dialogRef: MatDialogRef<AgregarSimuladorComponent>,
@@ -165,12 +168,26 @@ calcularCostoMateriaPrimaPorUnidad(): number {
 }
 
 calcularTodo() {
+  if (
+    this.formulario.get('precioMP')?.value === 0 ||
+    this.formulario.get('cantidadMP')?.value === 0 ||
+    this.formulario.get('UnidadDeCompraMP')?.value === 0 ||
+    this.formulario.get('valorGF')?.value === 0 ||
+    this.formulario.get('CantidadProductoMensual')?.value === 0 ||
+    this.formulario.get('Ganancia')?.value === 0 ||
+    this.formulario.get('PrecioFinal')?.value === 0
+  ) {
+    this.camposIncompletos=true;
+    return this.precioConGanancia = 0;
+  }
+  
   const costoFijoPorUnidad = this.calcularCostoMateriaPrimaPorUnidad();
   const gastoFijoPorUnidad = this.calcularGastoPorUnidad();
   const ganancia = this.formulario.get('Ganancia')?.value || 30;
   const costoTotal = costoFijoPorUnidad + gastoFijoPorUnidad;
  // Calcular el precio final con ganancia y mantenerlo como número con 4 decimales
  this.precioConGanancia = parseFloat((costoTotal * (1 + ganancia / 100)).toFixed(2));
+ this.camposIncompletos=false;
  return this.precioConGanancia;
  
 }

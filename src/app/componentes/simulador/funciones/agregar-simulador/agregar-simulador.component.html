@@ -6,15 +6,15 @@
 
 <mat-dialog-content>
   <form [formGroup]="formulario">
-    <mat-horizontal-stepper [linear]="true" #stepper >
+    <mat-horizontal-stepper [linear]="true" #stepper>
       <!-- Paso 1: Nombre -->
-      <mat-step [stepControl]="formulario.get('nombre')!" >
+      <mat-step [stepControl]="formulario.get('nombre')!">
         <form [formGroup]="formulario">
           <h3>Paso 1: Nombre</h3>
           <mat-form-field>
             <mat-label>Nombre del Producto</mat-label>
             <mat-icon matSuffix matTooltip="Escribe el nombre del producto que deseas agregar.">info</mat-icon>
-            <input matInput formControlName="nombre" placeholder="Escribe el nombre del producto">
+            <input matInput formControlName="nombre" placeholder="Escribe el nombre del producto" (blur)="formulario.get('nombre')?.markAsTouched()">
           </mat-form-field>
           <div>
             <button mat-button matStepperNext type="button">Siguiente</button>
@@ -23,23 +23,29 @@
       </mat-step>
 
       <!-- Paso 2: Materia Prima -->
-      <mat-step [stepControl]="formulario" >
+      <mat-step [stepControl]="formulario">
         <form [formGroup]="formulario">
           <h3>Paso 2: Materia Prima</h3>
           <mat-form-field>
             <mat-label>Precio de Compra</mat-label>
-            <input matInput type="number" formControlName="precioMP" placeholder="Precio total de la materia prima">
+            <input matInput type="number" formControlName="precioMP" placeholder="Precio total de la materia prima" (blur)="formulario.get('precioMP')?.markAsTouched()">
             <mat-icon matSuffix matTooltip="Precio total del insumo o materia prima comprada">info</mat-icon>
+            <mat-error *ngIf="formulario.get('precioMP')?.hasError('required') && formulario.get('precioMP')?.touched">Este campo es obligatorio</mat-error>
+            <mat-error *ngIf="formulario.get('precioMP')?.hasError('min') && formulario.get('precioMP')?.touched">El precio debe ser mayor a 0</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Cantidad Comprada</mat-label>
-            <input matInput type="number" formControlName="UnidadDeCompraMP" placeholder="Cantidad adquirida (kg, unidades)">
+            <input matInput type="number" formControlName="UnidadDeCompraMP" placeholder="Cantidad adquirida (kg, unidades)" (blur)="formulario.get('UnidadDeCompraMP')?.markAsTouched()">
             <mat-icon matSuffix matTooltip="Cantidad total adquirida de este insumo">info</mat-icon>
+            <mat-error *ngIf="formulario.get('UnidadDeCompraMP')?.hasError('required') && formulario.get('UnidadDeCompraMP')?.touched">Este campo es obligatorio</mat-error>
+            <mat-error *ngIf="formulario.get('UnidadDeCompraMP')?.hasError('min') && formulario.get('UnidadDeCompraMP')?.touched">La cantidad comprada debe ser mayor a 0</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Cantidad Utilizada</mat-label>
-            <input matInput type="number" formControlName="cantidadMP" placeholder="Cantidad que usarás (kg, unidades)">
+            <input matInput type="number" formControlName="cantidadMP" placeholder="Cantidad que usarás (kg, unidades)" (blur)="formulario.get('cantidadMP')?.markAsTouched()">
             <mat-icon matSuffix matTooltip="Cantidad que necesitas para tu producto final">info</mat-icon>
+            <mat-error *ngIf="formulario.get('cantidadMP')?.hasError('required') && formulario.get('cantidadMP')?.touched">Este campo es obligatorio</mat-error>
+            <mat-error *ngIf="formulario.get('cantidadMP')?.hasError('min') && formulario.get('cantidadMP')?.touched">La cantidad utilizada debe ser mayor a 0</mat-error>
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious type="button">Anterior</button>
@@ -49,18 +55,22 @@
       </mat-step>
 
       <!-- Paso 3: Costos Fijos -->
-      <mat-step [stepControl]="formulario" >
+      <mat-step [stepControl]="formulario">
         <form [formGroup]="formulario">
           <h3>Paso 3: Gastos Fijos</h3>
           <mat-form-field>
             <mat-label>Monto de Gastos Fijos</mat-label>
-            <input matInput type="number" formControlName="valorGF" placeholder="Costo total de los gastos fijos">
+            <input matInput type="number" formControlName="valorGF" placeholder="Costo total de los gastos fijos" (blur)="formulario.get('valorGF')?.markAsTouched()">
             <mat-icon matSuffix matTooltip="Ejemplo: alquiler, energía, agua, internet">info</mat-icon>
+            <mat-error *ngIf="formulario.get('valorGF')?.hasError('required') && formulario.get('valorGF')?.touched">Este campo es obligatorio</mat-error>
+            <mat-error *ngIf="formulario.get('valorGF')?.hasError('min') && formulario.get('valorGF')?.touched">El costo debe ser mayor a 0</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Cantidad Producida al Mes</mat-label>
-            <input matInput type="number" formControlName="CantidadProductoMensual" placeholder="Número de unidades fabricadas al mes">
+            <input matInput type="number" formControlName="CantidadProductoMensual" placeholder="Número de unidades fabricadas al mes" (blur)="formulario.get('CantidadProductoMensual')?.markAsTouched()">
             <mat-icon matSuffix matTooltip="Cantidad total producida al mes">info</mat-icon>
+            <mat-error *ngIf="formulario.get('CantidadProductoMensual')?.hasError('required') && formulario.get('CantidadProductoMensual')?.touched">Este campo es obligatorio</mat-error>
+            <mat-error *ngIf="formulario.get('CantidadProductoMensual')?.hasError('min') && formulario.get('CantidadProductoMensual')?.touched">La cantidad producida debe ser mayor a 0</mat-error>
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious type="button">Anterior</button>
@@ -75,8 +85,10 @@
           <h3>Paso 4: Ganancia</h3>
           <mat-form-field>
             <mat-label>Porcentaje de Ganancia</mat-label>
-            <input matInput type="number" formControlName="Ganancia" placeholder="Porcentaje de ganancia deseado">
+            <input matInput type="number" formControlName="Ganancia" placeholder="Porcentaje de ganancia deseado" (blur)="formulario.get('Ganancia')?.markAsTouched()">
             <mat-icon matSuffix matTooltip="Porcentaje que se añadirá al costo para obtener tu precio final">info</mat-icon>
+            <mat-error *ngIf="formulario.get('Ganancia')?.hasError('required') && formulario.get('Ganancia')?.touched">Este campo es obligatorio</mat-error>
+            <mat-error *ngIf="formulario.get('Ganancia')?.hasError('min') && formulario.get('Ganancia')?.touched">El porcentaje debe ser mayor a 0</mat-error>
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious type="button">Anterior</button>
@@ -86,8 +98,9 @@
       </mat-step>
 
       <!-- Paso 5: Resultado -->
-      <mat-step >
+      <mat-step>
         <h3>Paso 5: Resultado</h3>
+       <p *ngIf="camposIncompletos" style="color: red;">Por favor, complete todos los campos antes de calcular el precio.</p>
         <h4>Precio Final con Ganancia: ${{ calcularTodo().toFixed(2) }}</h4>
         <div>
           <button mat-button matStepperPrevious type="button">Anterior</button>
@@ -97,5 +110,3 @@
     </mat-horizontal-stepper>
   </form>
 </mat-dialog-content>
-
-

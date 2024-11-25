@@ -46,9 +46,9 @@
                       {{ chat.mensajes[chat.mensajes.length - 1].mensaje }}
                     </span>
                   </div>
-                  <div class="text-muted small">Hora:
+                  <div class="text-muted fecha small">
                     <span *ngIf="chat.mensajes && chat.mensajes.length > 0">
-                      {{ chat.mensajes[chat.mensajes.length - 1].fechaDeCreacion | date: 'shortTime' }}
+                      {{ chat.mensajes[chat.mensajes.length - 1].fechaDeCreacion | date: 'short' }}
                     </span>
                   </div>
                 </div>
@@ -87,7 +87,7 @@
                   <div class="font-weight-bold mb-1">{{ mensaje.nombreEmisor }}</div>
                   <div>{{ mensaje.mensaje }}</div>
                   <!-- Fecha de creación con el mismo estilo que el mensaje -->
-                  <div class="text-muted small text-nowrap mt-2">
+                  <div class="text-muted fecha text-nowrap mt-2">
                     {{ mensaje.fechaDeCreacion | date: 'short' }}
                   </div>
                 </div>

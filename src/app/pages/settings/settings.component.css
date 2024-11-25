@@ -23,11 +23,19 @@
 }
 
 .icono {
-    width: 16vw;
-    height: 20vh;
-    border-radius: 50%; /* Hace el ícono circular */
+    width: 9vw;
+    height: 9vw; /* Igual a width para mantener la proporción circular */
+    border-radius: 50%; /* Hace el contenedor circular */
     margin-bottom: 2vh; /* Espacio entre el ícono y el título */
+    overflow: hidden; /* Asegura que la imagen no sobresalga del contenedor circular */
 }
+
+.icono img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la imagen cubra el área del contenedor sin deformarse */
+}
+
 
 .user-info {
     list-style-type: none;

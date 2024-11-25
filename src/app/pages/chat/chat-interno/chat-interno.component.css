@@ -7,6 +7,10 @@
   overflow: hidden; /* Evitar desbordamiento */
 }
 
+.fecha{
+  font-size: 0.7rem;
+}
+
 .card{
   height: 100%;
  
