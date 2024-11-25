@@ -4,7 +4,7 @@
       <h5 class="titulo  mb-3">Mensajes</h5>
     </div>
 
-    <div class="no-chat pb-2" *ngIf="chatsConUsuario.length === 0">
+    <div class="no-chat pb-2" *ngIf="chatsConUsuario.length === 0 && !mensajes && pantallaCel">
       <img class="imagen-no-chat" src="/assets/img/no-chats.png"
       alt="Imagen ilustrativa, no hay chats">
       <h3 class="featurette-heading fw-normal lh-1 texto-no-producto">
@@ -12,10 +12,16 @@
       </h3>
     </div>
 
+    <!-- Botón "Volver" para pantallas pequeñas cuando mensajes es false -->
+    <div *ngIf="mensajes && pantallaCel" class="col-12 d-flex justify-content-start">
+      <button type="button" class="btn btn-outline-primary" (click)="toggleMensajes()">Volver</button>
+    </div>
+
     <div class="card" *ngIf="chatsConUsuario.length !== 0">
       <div class="row g-0 ">
         <!-- Panel de chats -->
-        <div class="col-12 col-lg-5 col-xl-3  overflow-auto border-end ">
+        <div class="col-12 col-lg-5 col-xl-3  overflow-auto border-end "
+        *ngIf="(!mensajes && pantallaCel) || (!pantallaCel)">
           <div class="px-4 py-3 d-none d-md-block">
             <div class="d-flex align-items-center">
               <div class="flex-grow-1">
@@ -58,7 +64,7 @@
 
         <!-- Panel del chat seleccionado -->
         <div class="col-12 col-lg-7 col-xl-9 overflow-auto"
-          *ngIf="currentChat && currentChat.mensajes && currentChat.mensajes.length > 0">
+        *ngIf="(mensajes && pantallaCel) || (!pantallaCel) && currentChat && currentChat.mensajes && currentChat.mensajes.length > 0">
           <div *ngIf="currentChat">
             <div class="py-2 px-4 border-bottom">
               <div class="d-flex align-items-center py-1">
@@ -102,6 +108,7 @@
             </div>
           </div>
         </div>
+         
       </div>
     </div>
   </div>

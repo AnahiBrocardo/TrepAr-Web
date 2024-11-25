@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { Chat } from '../../../Interfaces/chat';
 import { ChatService } from '../../../Servicios/chatInterno/chat.service';
 import { PerfilService } from '../../../Servicios/perfil/perfil.service';
@@ -19,18 +19,34 @@ export class ChatInternoComponent implements OnInit{
   chats: Chat[] = [];
   filtro: string = '';
   mensaje: string = ''; // Variable para almacenar el mensaje
-  
+  pantallaCel: boolean = false;
+  mensajes:boolean=false; // Controla si se muestra el panel de mensajes
   originalChatsConUsuario: any[] = [];// Variable para guardar los chats originales
   idUser: string = '';
   chatService = inject(ChatService);
   perfilService = inject(PerfilService);
   currentChat?: any;
   chatsConUsuario: any[] = []; // Asegúrate de que esta variable esté inicializada como un arreglo vacío
-  
+  limitPantallaCel: number = 768; 
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.actualizarPantallaCel();
+  }
+
+  private actualizarPantallaCel(): void {
+    this.pantallaCel = window.innerWidth <= this.limitPantallaCel;
+  }
+
   ngOnInit(): void {
+    this.actualizarPantallaCel();
     this.idUser = localStorage.getItem('userId') || '';
     this.obtenerTodosLosChats();
-    console.log()
+  }
+
+   // Método para manejar el cambio entre los paneles
+  toggleMensajes() {
+    this.mensajes = !this.mensajes;
   }
 
   obtenerTodosLosChats() {
@@ -135,6 +151,8 @@ export class ChatInternoComponent implements OnInit{
 
 seleccionarChat(chatSeleccionado: any) {
   this.currentChat= chatSeleccionado;
+  console.log(this.mensajes);
+  this.mensajes = !this.mensajes;
    this.marcarMensajeComoVisto(chatSeleccionado);
 }
 
