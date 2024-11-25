@@ -59,7 +59,6 @@ export class ChatInternoComponent implements OnInit{
   
         // Agrupar los chats por id del otro usuario
         const chatsAgrupados = this.agruparChatsPorUsuario(chatsFiltrados);
-        console.log('Chats agrupados:', chatsAgrupados);
   
         // Crear una lista de observables para obtener los perfiles de los otros usuarios
         const perfilRequests = chatsAgrupados.map((chatGroup) => {
@@ -67,7 +66,7 @@ export class ChatInternoComponent implements OnInit{
           const otroUsuarioId = chatGroup.idUserEmisor === this.idUser
             ? chatGroup.idUserDestinatario
             : chatGroup.idUserEmisor;
-          console.log(otroUsuarioId);
+  
           // Solicitar el perfil del otro usuario
           return this.perfilService.getPerfilByIdUser(otroUsuarioId).pipe(
             map((perfil: Perfil[]) => {
@@ -76,17 +75,20 @@ export class ChatInternoComponent implements OnInit{
                 new Date(a.fechaDeCreacion).getTime() - new Date(b.fechaDeCreacion).getTime()
               );
   
-              // Verificar si el último mensaje no ha sido visto
-              const ultimoMensajeNoVisto = mensajesOrdenados.length > 0 && !mensajesOrdenados[mensajesOrdenados.length - 1].visto;
+              // Verificar si el último mensaje no ha sido leído por el usuario actual
+              const ultimoMensaje = mensajesOrdenados[mensajesOrdenados.length - 1];
+              const ultimoMensajeNoVisto = 
+                ultimoMensaje &&
+                ultimoMensaje.idUserDestinatario === this.idUser &&
+                !ultimoMensaje.visto;
   
               return {
                 idUser: otroUsuarioId,
-                username: perfil[0]?.userName ,
+                username: perfil[0]?.userName,
                 imagen: perfil[0]?.imagePerfil,
                 mensajes: mensajesOrdenados,
-                ultimoMensajeNoVisto,
+                ultimoMensajeNoVisto, // Indicador de notificación de mensaje no leído
               };
-              console.log(this.chatsConUsuario);
             })
           );
         });
@@ -108,6 +110,8 @@ export class ChatInternoComponent implements OnInit{
     });
   }
   
+
+
   agruparChatsPorUsuario(chats: Chat[]) {
     const chatGroups: { [key: string]: any } = {};
   
@@ -151,7 +155,6 @@ export class ChatInternoComponent implements OnInit{
 
 seleccionarChat(chatSeleccionado: any) {
   this.currentChat= chatSeleccionado;
-  console.log(this.mensajes);
   this.mensajes = !this.mensajes;
    this.marcarMensajeComoVisto(chatSeleccionado);
 }
@@ -182,8 +185,6 @@ enviarMensaje() {
     };
       this.chatService.enviarChat(nuevoMensaje).subscribe({
         next: (mensajeEnviado) => {
-          console.log('Mensaje enviado:', mensajeEnviado);
-
           // Actualizar el chat actual con el nuevo mensaje
           this.currentChat.mensajes.push(mensajeEnviado);
           this.mensaje = '';  // Limpiar input después de enviar el mensaje
@@ -218,7 +219,9 @@ enviarMensaje() {
     // Verificar si hay un último mensaje no visto
     const ultimoMensaje = chatSeleccionado.mensajes[chatSeleccionado.mensajes.length - 1];
   
-    if (ultimoMensaje && !ultimoMensaje.visto) {
+    if (ultimoMensaje &&
+      !ultimoMensaje.visto &&
+      ultimoMensaje.idUserDestinatario === this.idUser) {
       // Actualizar en el servidor
       ultimoMensaje.visto=true;
       this.chatService.actualizarChat(ultimoMensaje.id, ultimoMensaje).subscribe({
