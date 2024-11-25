@@ -174,7 +174,7 @@ editarSimulador(simulador: Simulador) {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      Swal.fire("Cambios guardados");
+      
       this.listarTodasSimulaciones(this.idUsuario); //Método para recargar la lista
     }
   });

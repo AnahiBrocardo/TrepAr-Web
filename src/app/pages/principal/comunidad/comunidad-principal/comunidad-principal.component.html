@@ -48,14 +48,14 @@
         </div>
       </div>
     </div>
-    <div class="no-perfiles" *ngIf="perfiles.length === 0">
+    <div class="no-perfiles" *ngIf="perfiles.length === 0 && filtroPrincipal==='emprendedores'">
       <img class="imagen-no-perfiles" src="/assets/img/no-profiles.png"
       alt="Imagen ilustrativa, no hay perfiles">
       <h3 class="featurette-heading fw-normal lh-1 texto-no-producto">
         <span class="text-body-secondary">No se encontraron emprendedores.</span>
       </h3>
     </div>
-    <div class="no-perfiles" *ngIf="productos.length === 0">
+    <div class="no-perfiles" *ngIf="productos.length === 0 && filtroPrincipal==='productos'">
       <img class="imagen-no-perfiles" src="/assets/img/no-products.png"
       alt="Imagen ilustrativa, no hay productos">
       <h3 class="featurette-heading fw-normal lh-1 texto-no-producto">
@@ -151,13 +151,13 @@
       </div>
     </div>
 
-    <div  *ngIf="filtroPrincipal === 'emprendedores'" class="d-flex justify-content-center mt-4">
+    <div  *ngIf="filtroPrincipal === 'emprendedores' && perfiles.length>0" class="d-flex justify-content-center mt-4">
       <button (click)="goToPreviousPagePerfil()" class="btn btn-primary btn-sm me-2" [disabled]="currentPagePerfil === 1">Anterior</button>
       <span class="mx-2 paginaTexto">Página {{ currentPagePerfil }} de {{ totalPagesPerfil() }}</span>
       <button (click)="goToNextPagePerfil()"  class="btn btn-primary btn-sm me-2" [disabled]="currentPagePerfil === totalPagesPerfil()">Siguiente</button>
     </div>
   
-    <div  *ngIf="filtroPrincipal === 'productos'" class="d-flex justify-content-center mt-4">
+    <div  *ngIf="filtroPrincipal === 'productos' && productos.length>0" class="d-flex justify-content-center mt-4">
       <button (click)="goToPreviousPageProducto()" class="btn btn-primary btn-sm me-2" [disabled]="currentPageProducto === 1">Anterior</button>
       <span class="mx-2 paginaTexto">Página {{ currentPageProducto }} de {{ totalPagesProducto() }}</span>
       <button (click)="goToNextPageProducto()" class="btn btn-primary btn-sm me-2" [disabled]="currentPageProducto === totalPagesProducto()">Siguiente</button>

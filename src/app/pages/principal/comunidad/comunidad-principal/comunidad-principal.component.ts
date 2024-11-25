@@ -53,7 +53,7 @@ productos: ProductoConUsuario[] = [];
 currentPagePerfil: number = 1;
 itemsPerPagePerfil: number = 4;
 currentPageProducto: number = 1;
-itemsPerPageProducto: number = 2;
+itemsPerPageProducto: number = 4;
 
 
   ngOnInit(): void {

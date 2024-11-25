@@ -1,85 +1,56 @@
 {
   "perfiles": [
     {
-      "idUser": "f5ef",
-      "userName": "YasaiBaga",
-      "descripcion": "Emprendimiento de comida vegetariana",
-      "provincia": "Buenos Aires",
-      "ciudad": "Mar del Plata",
-      "linkInstagram": "",
-      "linkLinkedIn": "",
-      "linkWeb": "",
-      "telefono": "2234574158",
-      "imagePerfil": "",
-      "listaFavoritos": [
-        "8c40"
-      ],
-      "id": "a576"
-    },
-    {
-      "id": "8c40",
-      "idUser": "f7f8",
-      "userName": "Mosai",
-      "descripcion": "Emprendimiento de jabones artesanales",
+      "id": "a72d",
+      "idUser": "e620",
+      "userName": "BazarTrend",
+      "descripcion": "BazarTrend es un espacio virtual donde la moda, la creatividad y las últimas tendencias se encuentran. Ofrecemos una amplia variedad de productos seleccionados con estilo, pensados para aquellos que buscan lo más actual y exclusivo. Desde accesorios hasta artículos únicos, BazarTrend te trae lo mejor de las tendencias, siempre con calidad y a precios accesibles. ",
       "provincia": "Buenos Aires",
       "ciudad": "Mar del Plata",
       "linkInstagram": "",
       "linkLinkedIn": "",
       "linkWeb": "",
       "telefono": "",
-      "imagePerfil": ""
+      "imagePerfil": "https://www.shutterstock.com/image-illustration/bazaar-text-title-headline-3d-260nw-618167345.jpg"
     },
     {
-      "id": "40f3",
-      "idUser": "0a2e",
-      "userName": "Mua",
-      "descripcion": "Venta de ropa femenina",
+      "id": "d584",
+      "idUser": "43de",
+      "userName": "Estilo Urbano",
+      "descripcion": "Trendy Closet es tu destino para descubrir las últimas tendencias en moda. Ofrecemos una selección de prendas de calidad y estilo único, pensadas para personas que buscan destacar y sentirse cómodas en todo momento. ¡Encuentra lo que te define y luce siempre a la moda con nosotros!",
       "provincia": "Buenos Aires",
-      "ciudad": "Mar del Plata",
+      "ciudad": "Balcarce",
       "linkInstagram": "",
       "linkLinkedIn": "",
       "linkWeb": "",
-      "telefono": "2234414785",
+      "telefono": "2236987458",
       "imagePerfil": "https://pub-static.fotor.com/assets/projects/pages/d5bdd0513a0740a8a38752dbc32586d0/fotor-03d1a91a0cec4542927f53c87e0599f6.jpg"
     },
     {
-      "id": "3b37",
-      "idUser": "0eec",
-      "userName": "Velas",
-      "descripcion": "Emprendimiento de velas.",
-      "provincia": "Ciudad Autónoma de Buenos Aires",
-      "ciudad": "Caballito",
+      "id": "a638",
+      "idUser": "78f8",
+      "userName": "Original ",
+      "descripcion": "\nKicksZone es tu tienda de zapatillas favoritas, donde la comodidad y el estilo se encuentran. Con una variedad de modelos deportivos y urbanos para todos los gustos, te ofrecemos opciones perfectas para cada paso. ¡Descubrí tu par ideal y camina con actitud!",
+      "provincia": "Córdoba",
+      "ciudad": "Córdoba",
       "linkInstagram": "",
       "linkLinkedIn": "",
       "linkWeb": "",
-      "telefono": "",
-      "imagePerfil": "https://pub-static.fotor.com/assets/projects/pages/d5bdd0513a0740a8a38752dbc32586d0/fotor-03d1a91a0cec4542927f53c87e0599f6.jpg"
+      "telefono": "351547896",
+      "imagePerfil": "https://uploads.turbologo.com/uploads/design/preview_image/5269199/preview_image20210629-14837-ajeq2b.png"
     },
     {
-      "id": "a98a",
-      "idUser": "551f",
-      "userName": "Bazar Hogar",
-      "descripcion": "Local de venta de productos de bazar",
+      "id": "b552",
+      "idUser": "cda0",
+      "userName": "Tejidos Utopia",
+      "descripcion": "Te animas a tejer? Tenes mis tutoriales 🧶\nNecesitas algo tejido? Tenes UTOPIA 🥰\nEntregas en MDTe animas a tejer? Tenes mis tutoriales 🧶\nNecesitas algo tejido? Tenes UTOPIA 🥰\nEntregas en MDP zona centro🌊\nEnvios a todo el pais 🚚",
       "provincia": "Buenos Aires",
       "ciudad": "Mar del Plata",
-      "linkInstagram": "",
+      "linkInstagram": "https://www.instagram.com/tejidos.utopia",
       "linkLinkedIn": "",
       "linkWeb": "",
-      "telefono": "",
-      "imagePerfil": "https://static.vecteezy.com/system/resources/previews/004/865/832/non_2x/bazaar-rubber-stamp-red-bazaar-rubber-grunge-stamp-seal-illustration-free-vector.jpg"
-    },
-    {
-      "id": "047b",
-      "idUser": "5b43",
-      "userName": "JuliAlijas",
-      "descripcion": "nuevaaaa",
-      "provincia": "Buenos Aires",
-      "ciudad": "Santa Clara del Mar",
-      "linkInstagram": "",
-      "linkLinkedIn": "",
-      "linkWeb": "",
-      "telefono": "2236958703",
-      "imagePerfil": ""
+      "telefono": "22347854715",
+      "imagePerfil": "https://linktr.ee/og/image/tejidos.utopia.jpg"
     }
   ]
 }

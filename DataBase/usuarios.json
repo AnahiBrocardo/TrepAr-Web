@@ -1,57 +1,39 @@
 {
   "users": [
     {
-      "id": "f5ef",
+      "id": "e620",
       "nombre": "Juan",
-      "apellido": "Perez",
-      "email": "juan.perez@example.com",
+      "apellido": "Lopez",
+      "email": "juan@mail.com",
       "password": "12345678",
-      "createdAt": "2024-11-19T19:28:45.251Z",
+      "createdAt": "2024-11-25T07:42:13.886Z",
       "deletedAt": null
     },
     {
-      "id": "f7f8",
-      "nombre": "Anahi",
-      "apellido": "Brocardo",
-      "email": "ana@gmail.com",
-      "password": "12345678",
-      "createdAt": "2024-11-19T21:16:15.423Z",
-      "deletedAt": null
-    },
-    {
-      "id": "0a2e",
-      "nombre": "Monica",
-      "apellido": "Fernandez",
-      "email": "moni@mail.com",
-      "password": "11111111",
-      "createdAt": "2024-11-19T21:35:55.285Z",
-      "deletedAt": null
-    },
-    {
-      "id": "0eec",
+      "id": "43de",
       "nombre": "Maria",
-      "apellido": "Lopez",
-      "email": "maria@mail.com",
+      "apellido": "Jose",
+      "email": "maria@hotmail.com",
       "password": "12345678",
-      "createdAt": "2024-11-20T12:22:41.919Z",
+      "createdAt": "2024-11-25T08:16:10.814Z",
       "deletedAt": null
     },
     {
-      "id": "551f",
-      "nombre": "Mariano",
-      "apellido": "Lopez",
-      "email": "mariano@gmail.com",
-      "password": "12345678",
-      "createdAt": "2024-11-23T17:43:12.408Z",
+      "id": "78f8",
+      "nombre": "Ana",
+      "apellido": "Gonzales",
+      "email": "ana@gmail.com",
+      "password": "11111111",
+      "createdAt": "2024-11-25T08:29:14.582Z",
       "deletedAt": null
     },
     {
-      "id": "5b43",
+      "id": "cda0",
       "nombre": "Julieta",
-      "apellido": "Alijas",
-      "email": "julietaalijas94@gmail.com",
+      "apellido": "Perez",
+      "email": "juli@gmail.com",
       "password": "12345678",
-      "createdAt": "2024-11-24T02:40:35.021Z",
+      "createdAt": "2024-11-25T08:47:11.802Z",
       "deletedAt": null
     }
   ]

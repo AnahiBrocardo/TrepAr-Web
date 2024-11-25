@@ -62,7 +62,7 @@
     </h3>
   </div>
 
-  <div *ngIf="!booleanAgregar && !booleanModificarProducto" class="album pb-4">
+  <div *ngIf="!booleanAgregar &&  !booleanModificarProducto" class="album pb-4">
     <div class="container-fluid">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
         <div class="col" *ngFor="let producto of productosPaginados">
@@ -112,7 +112,7 @@
       *ngIf="booleanModificarProducto" (estadoCambiado)="actualizarEstadoModificar($event)">
     </app-modificarproducto>
   </div>
-  <div  *ngIf="productos.length>0" class="d-flex justify-content-center mt-4">
+  <div  *ngIf="productos.length>0 && !booleanModificarProducto  && !booleanAgregar" class="d-flex justify-content-center mt-4">
     <button (click)="goToPreviousPageProducto()" class="btn custom-pagination-btn btn-primary btn-sm me-3" [disabled]="currentPageProducto === 1">Anterior</button>
     <span class="mx-2 paginaTexto">Página {{ currentPageProducto }} de {{ totalPagesProducto() }}</span>
     <button (click)="goToNextPageProducto()" class="btn custom-pagination-btn btn-primary btn-sm me-3" [disabled]="currentPageProducto === totalPagesProducto()">Siguiente</button>

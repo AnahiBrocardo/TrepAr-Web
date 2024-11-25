@@ -18,12 +18,13 @@ class="container-fluid formulario-perfil mb-4">
       </div>
 
       <label class="form-label" for="descripcion">Descripción*</label>
-      <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Breve descripción sobre ti"></textarea>
+      <textarea id="descripcion" formControlName="descripcion" maxlength="348" class="form-control" placeholder="Breve descripción sobre ti"></textarea>
       <div *ngIf="formularioActualizacionPerfil.controls['descripcion'].invalid && (formularioActualizacionPerfil.controls['descripcion'].dirty || formularioActualizacionPerfil.controls['descripcion'].touched)" class="alert alert-danger">
         <div class="error" *ngIf="formularioActualizacionPerfil.controls['descripcion'].getError('required')">
           Descripción requerida
         </div>
       </div>
+      <p class="caracteresPermitidos">{{ formularioActualizacionPerfil.controls['descripcion'].value.length || 0 }} / 348 caracteres</p>
     </div>
 
     <div class="form-outline mb-4">

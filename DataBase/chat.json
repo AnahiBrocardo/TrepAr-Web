@@ -1,102 +1,21 @@
 {
   "chats": [
     {
-      "id": "1",
-      "idUserDestinatario": "f5ef",
-      "idUserEmisor": "0a2e",
-      "fechaDeCreacion": "2024-11-23T10:00:00Z",
-      "mensaje": "Hola! he visto tu perfil, me encantaria poder conversar.",
+      "id": "965f",
+      "idUserEmisor": "78f8",
+      "idUserDestinatario": "e620",
+      "fechaDeCreacion": "2024-11-25T08:42:19.503Z",
+      "mensaje": "Hola!, estuve viendo tu perfil, quería saber que otros productos de mascotas tenias disponibles.",
       "visto": true,
       "eliminadoPor": []
     },
     {
-      "id": "2",
-      "idUserDestinatario": "f5ef",
-      "idUserEmisor": "0eec",
-      "fechaDeCreacion": "2024-11-23T10:00:00Z",
-      "mensaje": "Hola! he visto tu perfil",
-      "visto": true,
-      "eliminadoPor": []
-    },
-    {
-      "id": "a05c",
-      "idUserEmisor": "0a2e",
-      "idUserDestinatario": "f7f8",
-      "fechaDeCreacion": "2024-11-24T15:58:59.830Z",
-      "mensaje": "Holaa",
-      "visto": true,
-      "eliminadoPor": []
-    },
-    {
-      "id": "de00",
-      "idUserEmisor": "0a2e",
-      "idUserDestinatario": "0eec",
-      "fechaDeCreacion": "2024-11-24T15:59:14.540Z",
-      "mensaje": "Hola velas\n",
-      "visto": true,
-      "eliminadoPor": []
-    },
-    {
-      "id": "b6c7",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "551f",
-      "fechaDeCreacion": "2024-11-24T23:41:31.733Z",
-      "mensaje": "hola",
-      "visto": true,
-      "eliminadoPor": []
-    },
-    {
-      "id": "7855",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "5b43",
-      "fechaDeCreacion": "2024-11-24T23:41:42.711Z",
-      "mensaje": "holla",
-      "visto": true,
-      "eliminadoPor": []
-    },
-    {
-      "id": "6fb3",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "f7f8",
-      "fechaDeCreacion": "2024-11-24T23:42:19.202Z",
-      "mensaje": "hola mosai, vi tu perfil, y me encantaron tus productos",
-      "visto": true,
-      "eliminadoPor": []
-    },
-    {
-      "id": "ab2f",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "0a2e",
-      "mensaje": "ggg",
+      "id": "026d",
+      "idUserEmisor": "cda0",
+      "idUserDestinatario": "43de",
+      "fechaDeCreacion": "2024-11-25T08:55:54.961Z",
+      "mensaje": "Hola!, vi tu perfil",
       "visto": false,
-      "fechaDeCreacion": "2024-11-25T00:21:55.026Z",
-      "eliminadoPor": []
-    },
-    {
-      "id": "21b1",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "0a2e",
-      "mensaje": "gggg",
-      "visto": true,
-      "fechaDeCreacion": "2024-11-25T00:21:56.760Z",
-      "eliminadoPor": []
-    },
-    {
-      "id": "9bf4",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "551f",
-      "mensaje": "hh",
-      "visto": false,
-      "fechaDeCreacion": "2024-11-25T04:08:58.356Z",
-      "eliminadoPor": []
-    },
-    {
-      "id": "2765",
-      "idUserEmisor": "f5ef",
-      "idUserDestinatario": "551f",
-      "mensaje": "hh",
-      "visto": true,
-      "fechaDeCreacion": "2024-11-25T04:09:03.564Z",
       "eliminadoPor": []
     }
   ]

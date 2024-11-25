@@ -19,6 +19,8 @@ export class ModificarproductoComponent implements OnInit{
   @Input()
   productoId!: string;
 
+  categorias: string[] = ['Electrónica', 'Ropa', 'Hogar', 'Libros', 'Belleza', 'Juguetes', 'Deportes', 'Automotores', 'Alimentos', 'Mascotas', 'Otro'];
+
   @Input()
   idUser!: string;
 
