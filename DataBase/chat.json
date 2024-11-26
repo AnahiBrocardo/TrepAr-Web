@@ -17,6 +17,15 @@
       "mensaje": "Hola!, vi tu perfil",
       "visto": false,
       "eliminadoPor": []
+    },
+    {
+      "id": "983a",
+      "idUserEmisor": "8088",
+      "idUserDestinatario": "43de",
+      "fechaDeCreacion": "2024-11-26T13:03:59.232Z",
+      "mensaje": "hola quiero conocerte!",
+      "visto": false,
+      "eliminadoPor": []
     }
   ]
 }

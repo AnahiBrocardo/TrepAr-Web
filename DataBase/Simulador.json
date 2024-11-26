@@ -12,6 +12,19 @@
       "Ganancia": 20,
       "PrecioFinal": 17920,
       "habilitado": true
+    },
+    {
+      "id": "7c61",
+      "idUsuario": "8088",
+      "nombre": "nuevo1",
+      "precioMP": 1,
+      "cantidadMP": 2,
+      "UnidadDeCompraMP": 5,
+      "valorGF": 6000,
+      "CantidadProductoMensual": 50,
+      "Ganancia": 30,
+      "PrecioFinal": 156.52,
+      "habilitado": true
     }
   ]
 }
