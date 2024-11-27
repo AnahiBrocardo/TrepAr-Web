@@ -199,7 +199,7 @@ export class EditarPerfilComponent implements OnInit {
 
   // Método que verifica si el username ya existe en el array de perfiles
   private usernameExists(perfiles: Perfil[], username: string): boolean {
-    return perfiles.some(perfil => perfil.userName === username && perfil.idUser !== this.userId);
+    return perfiles.some(perfil => perfil.userName.toLowerCase === username.toLowerCase && perfil.idUser !== this.userId);
   }
 
 
