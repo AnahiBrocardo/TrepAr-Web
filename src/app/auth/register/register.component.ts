@@ -57,7 +57,7 @@ showProfileForm: boolean = false;// Variable para controlar la visibilidad del f
   linkInstagram:['',[Validators.pattern(/^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9_.]+$/)]],
   linkLinkedIn: ['',[Validators.pattern(/^(https?:\/\/)?(www\.)?linkedin\.com\/(in|company)\/[a-zA-Z0-9_-]+\/?$/)]],
   linkWeb: ['',[Validators.pattern(/^(https?:\/\/)?([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[a-zA-Z0-9#_-]*)*\/?$/)]],
-  telefono: ['',[Validators.pattern(/^[+]?[0-9]{1,4}?[-.\s]?[0-9]{1,3}[-.\s]?[0-9]{1,4}[-.\s]?[0-9]{1,4}$/)]], 
+  telefono:  ['', [Validators.required, Validators.pattern(/^[+]?(\d{1,4})?[-.\s]?(\d{1,3})[-.\s]?(\d{3})[-.\s]?(\d{4,})$/)]], 
   /*^[+]?[0-9]{1,4}?: Permite un prefijo de país opcional [-.\s]?: Permite guiones, puntos o espacios como separadores.
   [0-9]{1,3}: Permite uno a tres dígitos para la parte del número. */
   imagePerfil:['',[Validators.pattern(/^.*\.(jpg|jpeg|png|gif|bmp|webp)$/i)]]
@@ -164,7 +164,7 @@ validarFormularioRegistro() {
       linkInstagram:formValue.linkInstagram ?? '',
       linkLinkedIn: formValue.linkLinkedIn ?? '',
       linkWeb: formValue.linkWeb ?? '',
-      telefono: formValue.telefono ?? '',
+      telefono: this.normalizarTelefono(formValue.telefono ?? ''),
       imagePerfil: formValue.imagePerfil ?? '',
       listaFavoritos:[]
     };
@@ -199,6 +199,27 @@ private emailExists(users: User[], email: string): boolean {
 // Método que verifica si el username ya existe en el array de perfiles
 private usernameExists(perfiles: Perfil[], username: string): boolean {
   return perfiles.some(perfil => perfil.userName === username);
+}
+//Metodo que transforma el telefono a un formato de telefono util para Whatsapp
+private normalizarTelefono(telefono: string): string {
+  // 1. Eliminar todos los caracteres no numéricos excepto el "+" inicial
+  let numeroLimpio = telefono.replace(/[^0-9+]/g, '');
+
+   // 2. Si no tiene un prefijo internacional, agregar +54 por defecto
+  if (!numeroLimpio.startsWith('+')) {
+    // Si no tiene prefijo, agregar por defecto +54 para Argentina
+    numeroLimpio = '+54' + numeroLimpio;
+  }
+
+  // 3. Añadir "9" después de +54 para móviles si no está presente
+  if (numeroLimpio.startsWith('+54') && !numeroLimpio.includes('9', 3)) {
+    numeroLimpio = numeroLimpio.replace('+54', '+549');
+  }
+
+  // 4. Eliminar ceros iniciales del código de área si existen (por ejemplo, +549011 -> +54911)
+  numeroLimpio = numeroLimpio.replace(/(\+549)(0+)/, '$1');
+
+  return numeroLimpio;
 }
 
 // Método para mostrar el formulario de perfil

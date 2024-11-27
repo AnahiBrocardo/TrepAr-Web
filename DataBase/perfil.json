@@ -49,7 +49,7 @@
       "linkInstagram": "https://www.instagram.com/tejidos.utopia",
       "linkLinkedIn": "",
       "linkWeb": "",
-      "telefono": "22347854715",
+      "telefono": "5492266494325",
       "imagePerfil": "https://linktr.ee/og/image/tejidos.utopia.jpg"
     },
     {
@@ -62,8 +62,22 @@
       "linkInstagram": "",
       "linkLinkedIn": "",
       "linkWeb": "",
-      "telefono": "2236958703",
+      "telefono": "5492236958703",
       "imagePerfil": ""
+    },
+    {
+      "idUser": "1e18",
+      "userName": "Makia",
+      "descripcion": "Apicultores",
+      "provincia": "Buenos Aires",
+      "ciudad": "Santa Clara del Mar",
+      "linkInstagram": "https://www.instagram.com/makia.energia.natural",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "5492235941328",
+      "imagePerfil": "https://hechoenmarchiquita.ar/wp-content/uploads/2023/11/365766551_759580029510210_6153780634206095489_n.jpg",
+      "listaFavoritos": [],
+      "id": "896b"
     }
   ]
 }
