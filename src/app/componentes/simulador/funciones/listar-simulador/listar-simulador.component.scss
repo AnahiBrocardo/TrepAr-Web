@@ -127,7 +127,7 @@ mat-toolbar {
      
     }
 
-    @media (max-width: 424px) { 
+    @media (max-width: 425px) { 
         .simulador {
             width: 90vw !important; 
             padding: 0vh !important; 
@@ -162,6 +162,14 @@ mat-toolbar {
              
             .mat-elevation-z8 {
                 width: 100% !important;
+              }
+
+              .mat-table{
+                width: 30vw !important;
+              }
+
+              .mensaje-no-existen-datos{
+                font-size: 0.7rem
               }
              
 }
