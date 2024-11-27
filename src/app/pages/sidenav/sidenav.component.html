@@ -23,8 +23,11 @@
           [routerLinkActiveOptions]="{ exact: true }"
         >
           <i class="sidenav-link-icon" [class]="item.icon"></i>
+          <i [class]="item.extraIcon" *ngIf="item.extraIcon && mensajesNoVistos"></i>
+         
           @if (!isLeftSidebarCollapsed()) {
             <span class="sidenav-link-text">{{ item.label }}</span>
+            
           }
         </a>
       </li>

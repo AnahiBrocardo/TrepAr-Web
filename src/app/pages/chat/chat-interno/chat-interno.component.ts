@@ -157,6 +157,8 @@ seleccionarChat(chatSeleccionado: any) {
   this.currentChat= chatSeleccionado;
   this.mensajes = !this.mensajes;
    this.marcarMensajeComoVisto(chatSeleccionado);
+   // Notificar al servicio que se debe comprobar si hay mensajes no vistos
+   this.chatService.notifyToCheckMessages();
 }
 
 enviarMensaje() {
@@ -225,9 +227,7 @@ enviarMensaje() {
       // Actualizar en el servidor
       ultimoMensaje.visto=true;
       this.chatService.actualizarChat(ultimoMensaje.id, ultimoMensaje).subscribe({
-        next: () => {
-          console.log('Mensaje marcado como visto en el servidor.');
-  
+        next: () => {  
           // Actualizar en el array local
           ultimoMensaje.visto = true;
           chatSeleccionado.ultimoMensajeNoVisto = false;

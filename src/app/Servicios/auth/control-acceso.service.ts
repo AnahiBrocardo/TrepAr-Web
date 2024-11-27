@@ -32,7 +32,6 @@ export class ControlAccesoService {
       map(users => {
         const user = users.find(u => u.password === password&& !u.deletedAt); // Comprobamos que la contraseña coincida y deletedAt en null
         if (user) {
-          console.log(user);
           if(user.id){
           // Si el usuario es encontrado y la contraseña es correcta
           this.userId = user.id;  // Guardamos el ID del usuario

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Chat } from '../../Interfaces/chat';
 
 @Injectable({
@@ -8,6 +8,8 @@ import { Chat } from '../../Interfaces/chat';
 })
 export class ChatService {
   url: string= 'http://localhost:3004/chats';
+  private _shouldCheckMessages = new BehaviorSubject<boolean>(false);
+  shouldCheckMessages$ = this._shouldCheckMessages.asObservable();
 
    constructor(private http: HttpClient) { }
 
@@ -32,6 +34,16 @@ export class ChatService {
 
   actualizarChat(idChat: string, chat: Chat): Observable<Chat> {
     return this.http.put<Chat>(`${this.url}/${idChat}`, chat);
+  }
+
+   // Método para notificar que deben comprobarse los mensajes
+   notifyToCheckMessages() {
+    this._shouldCheckMessages.next(true);
+  }
+
+  // Método para resetear la notificación
+  resetCheckMessages() {
+    this._shouldCheckMessages.next(false);
   }
 
 }
