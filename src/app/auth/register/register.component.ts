@@ -237,6 +237,7 @@ togglePasswordVisibility() {
           linkWeb: profileFormValue.linkWeb ?? '',
           telefono: profileFormValue.telefono ?? '',
           imagePerfil: profileFormValue.imagePerfil ?? '',
+          listaFavoritos: []
         };
 
         this.perfilService.agregarPerfil(newProfile).subscribe({

@@ -11,6 +11,7 @@
       "linkLinkedIn": "",
       "linkWeb": "",
       "telefono": "",
+      "listaFavoritos": [],
       "imagePerfil": "https://www.shutterstock.com/image-illustration/bazaar-text-title-headline-3d-260nw-618167345.jpg"
     },
     {
@@ -24,6 +25,7 @@
       "linkLinkedIn": "",
       "linkWeb": "",
       "telefono": "2236987458",
+      "listaFavoritos": [],
       "imagePerfil": "https://pub-static.fotor.com/assets/projects/pages/d5bdd0513a0740a8a38752dbc32586d0/fotor-03d1a91a0cec4542927f53c87e0599f6.jpg"
     },
     {
@@ -37,6 +39,7 @@
       "linkLinkedIn": "",
       "linkWeb": "",
       "telefono": "351547896",
+      "listaFavoritos": [],
       "imagePerfil": "https://uploads.turbologo.com/uploads/design/preview_image/5269199/preview_image20210629-14837-ajeq2b.png"
     },
     {
@@ -50,6 +53,7 @@
       "linkLinkedIn": "",
       "linkWeb": "",
       "telefono": "22347854715",
+      "listaFavoritos": [],
       "imagePerfil": "https://linktr.ee/og/image/tejidos.utopia.jpg"
     },
     {
@@ -63,7 +67,36 @@
       "linkLinkedIn": "",
       "linkWeb": "",
       "telefono": "2236958703",
+      "listaFavoritos": [],
       "imagePerfil": ""
+    },
+    {
+      "idUser": "2a91",
+      "userName": "Coffe shop",
+      "descripcion": "cafe malta",
+      "provincia": "Buenos Aires",
+      "ciudad": "Mar de Ajó",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "",
+      "imagePerfil": "https://dthezntil550i.cloudfront.net/f4/latest/f41908291942413280009640715/1280_960/1b2d9510-d66d-43a2-971a-cfcbb600e7fe.png",
+      "listaFavoritos": [],
+      "id": "f04f"
+    },
+    {
+      "id": "c023",
+      "idUser": "ab08",
+      "userName": "chica y limonada",
+      "descripcion": "hola",
+      "provincia": "Chubut",
+      "ciudad": "Acceso Norte",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "",
+      "imagePerfil": "",
+      "listaFavoritos": []
     }
   ]
 }
