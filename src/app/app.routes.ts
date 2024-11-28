@@ -35,7 +35,7 @@ export const routes: Routes = [
             },
             {
                 path: 'comunidad',
-                component: PrincipalComponent,
+                loadComponent:()=>import('./pages/principal/principal.page/principal.component').then(c=> c.PrincipalComponent)
               },
               {
                 path: 'comunidad/perfil',
@@ -48,7 +48,7 @@ export const routes: Routes = [
             {path: 'perfil', component: PerfilUsuarioComponent},
             {path: 'preguntas-frecuentes', component:PreguntasFrecuentesComponent},
             {path: 'chat', component:ChatInternoComponent},
-            {path: 'inicio', component:InicioComponent}
+            {path: 'inicio', loadComponent:()=>import('./pages/inicio/inicio/inicio.component').then(c=> c.InicioComponent)}
         ],
         canActivate:[loginGuard] //si estoy loggeado puedo acceder a esta ruta
 
