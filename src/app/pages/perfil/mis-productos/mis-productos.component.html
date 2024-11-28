@@ -4,27 +4,33 @@
       <i class="fa-solid fa-box me-2"></i>Productos
     </h6>
 
-    <h6 *ngIf="booleanAgregar" class="pt-4 border-bottom d-flex flex-column
-    flex-md-row justify-content-between align-items-center texto-titulo">
+    <h6 *ngIf="booleanAgregar && !booleanModificarProducto" 
+    class="pt-4 border-bottom d-flex flex-column flex-md-row justify-content-between align-items-center texto-titulo">
+    
       <div>
         <i class="fa-solid fa-box me-2"></i>Cargando nuevo producto
       </div>
+
       <button type="button" class="btn btn-outline-primary m-2 mt-md-0"
-      (click)="modificarBooleanAgregar()">
+        (click)="modificarBooleanAgregar()">
         Volver
       </button>
     </h6>
 
-    <h6 *ngIf="booleanModificarProducto" class="pt-4 border-bottom d-flex flex-column
-    flex-md-row justify-content-between align-items-center texto-titulo">
+    <h6 *ngIf="booleanModificarProducto && !booleanAgregar" 
+    class="pt-4 border-bottom d-flex flex-column flex-md-row justify-content-between align-items-center texto-titulo">
+    
       <div>
-        <i class="fa-solid fa-box me-2"></i>Modificando producto
+        <i class="fa-solid fa-box me-2"></i>Actualizando producto
       </div>
+
       <button type="button" class="btn btn-outline-primary m-2 mt-md-0"
-      (click)="modificarBooleanModificar()">
+        (click)="modificarBooleanModificar()">
         Volver
       </button>
     </h6>
+
+
 
     <section *ngIf="!booleanAgregar && !booleanModificarProducto"
     class="d-flex filtros-productos">
@@ -50,9 +56,15 @@
       </div>
     </section>
   </div>
-
-  <app-agregar-producto-perfil [userId]="userId" *ngIf="booleanAgregar"
-  (estadoCambiado)="actualizarEstadoCrear($event)"></app-agregar-producto-perfil>
+  
+  <app-agregar-producto-perfil
+  [userId]="userId"
+  [productoAEditar]="productoAEditar"
+  *ngIf="booleanAgregar || booleanModificarProducto"
+  (estadoCambiadoAgregar)="actualizarEstadoCrear($event)"
+  (productoModificado)="actualizarEstadoModificar($event)"
+>
+</app-agregar-producto-perfil>
 
   <div class="no-productos" *ngIf="productos.length === 0 && !booleanAgregar && !booleanModificarProducto">
     <img class="imagen-no-productos" src="/assets/img/no-products.png"
@@ -107,11 +119,6 @@
     </div>
   </div>
 
-  <div>
-    <app-modificarproducto [productoId]="productoId" [idUser]="userId"
-      *ngIf="booleanModificarProducto" (estadoCambiado)="actualizarEstadoModificar($event)">
-    </app-modificarproducto>
-  </div>
   <div  *ngIf="productos.length>0 && !booleanModificarProducto  && !booleanAgregar" class="d-flex justify-content-center mt-4">
     <button (click)="goToPreviousPageProducto()" class="btn custom-pagination-btn btn-primary btn-sm me-3" [disabled]="currentPageProducto === 1">Anterior</button>
     <span class="mx-2 paginaTexto">Página {{ currentPageProducto }} de {{ totalPagesProducto() }}</span>
