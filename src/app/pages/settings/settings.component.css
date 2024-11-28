@@ -1,5 +1,5 @@
 .container {
-    width: 55%;
+    width: 65%;
     margin: 0 auto;
     background-color: white;
     padding: 20px;
@@ -108,4 +108,47 @@
 
 .btn-delete:hover {
     background-color: #c0392b;
+}
+
+@media (max-width: 1024){
+    .container {
+        width: 80% !important;
+    }
+
+    .icono {
+        width: 10vw !important;
+        height: 10vw !important; /* Igual a width para mantener la proporción circular */
+    }
+}
+
+@media (max-width: 425px){
+    .container {
+        width: 80%;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+    }
+
+    .icono {
+        width: 20vw !important;
+        height: 20vw !important; /* Igual a width para mantener la proporción circular */
+    }
+
+    
+.title {
+    font-size: 1.2rem;
+}
+
+
+.btn-edit {
+    padding: 3px 3px !important;
+    font-size: 0.88rem !important;
+}
+.btn-delete {
+    padding: 3px 3px !important;
+    font-size: 0.88rem !important;
+}
+
 }

@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AgregarProductoPerfilComponent } from '../agregar-producto-perfil/agregar-producto-perfil.component';
-import { ModificarproductoComponent } from '../modificarproducto/modificarproducto.component';
 
 @Component({
   selector: 'app-mis-productos',
@@ -19,8 +18,7 @@ import { ModificarproductoComponent } from '../modificarproducto/modificarproduc
     MatIconModule,
     MatInputModule,
     FormsModule,
-    AgregarProductoPerfilComponent,
-    ModificarproductoComponent
+    AgregarProductoPerfilComponent
   ],
   templateUrl: './mis-productos.component.html',
   styleUrls: ['./mis-productos.component.css']
@@ -33,8 +31,9 @@ export class MisProductosComponent implements OnInit {
   booleanAgregar: boolean = false;
   booleanModificarProducto: boolean = false;
   productoId: string = '';
+  productoAEditar?: ProductoInterface;
   currentPageProducto: number = 1;
-  itemsPerPageProducto: number = 4;
+  itemsPerPageProducto: number = 3;
 
   @Input() userId!: string; // Declarar explícitamente la propiedad
 
@@ -69,16 +68,18 @@ totalPagesProducto(): number {
 
   actualizarEstadoCrear(nuevoEstado: boolean) {
     this.booleanAgregar = nuevoEstado;
-    this.obtenerProductos(this.userId);
-    this.filtrar();
+    this.actualizarProductosYFiltrar();
   }
 
   actualizarEstadoModificar(nuevoEstado: boolean) {
     this.booleanModificarProducto = nuevoEstado;
+    this.actualizarProductosYFiltrar();
+  }
+
+  actualizarProductosYFiltrar() {
     this.obtenerProductos(this.userId);
     this.filtrar();
   }
-
   obtenerProductos(idUsuario: string) {
     this.productoServices.getProductos(idUsuario).subscribe({
       next: (producto: ProductoInterface[]) => {
@@ -179,15 +180,21 @@ totalPagesProducto(): number {
 
   modificarBooleanAgregar() {
     this.booleanAgregar = !this.booleanAgregar;
+    this.productoAEditar = undefined; // Limpia el producto a editar
   }
-
-  modificarProducto(idProducto: string) {
-    this.booleanModificarProducto = !this.booleanModificarProducto;
-    this.productoId = idProducto;
+  modificarProducto(id: string) {
+    this.productoServices.getProductoById(id).subscribe({
+      next: (producto) => {
+        this.productoAEditar = producto;
+        this.booleanModificarProducto = true;
+      },
+      error: (err) => console.error(err)
+    });
   }
 
   modificarBooleanModificar() {
     this.booleanModificarProducto = !this.booleanModificarProducto;
+   
   }
 
 

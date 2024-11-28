@@ -16,27 +16,60 @@ import Swal from 'sweetalert2';
 })
 export class AgregarProductoPerfilComponent implements OnInit{
 
-  @Input()
-  userId!: string; // Declarar explícitamente la propiedad
-  @Output() estadoCambiado = new EventEmitter<boolean>();
+  @Input() userId!: string; // Declarar explícitamente la propiedad
+  
+  @Output() estadoCambiadoAgregar = new EventEmitter<boolean>();
+  @Output() productoModificado = new EventEmitter<boolean>();
+  @Input() productoAEditar?: ProductoInterface; // Para recibir el producto
+  
+  categorias: string[] = [
+    'Electrónica', 'Ropa', 'Hogar', 'Libros', 'Belleza',
+    'Juguetes', 'Deportes', 'Automotores', 'Alimentos',
+    'Mascotas', 'Otro'
+  ];
 
   ngOnInit(): void {
-    this.formulario.patchValue({ idUser: this.userId });
+    if (this.productoAEditar) {
+      // Configura el formulario para edición
+      this.formulario.patchValue({ idUser: this.userId });
+      if(this.productoAEditar.id){
+      this.obtenerProducto(this.productoAEditar.id);
+      }
+     
+    } else {
+      // Configura el formulario para agregar
+      this.formulario.patchValue({ idUser: this.userId });
+    }
   }
 
-  activated= inject(ActivatedRoute);
   router= inject(Router);
-
 
   fb= inject(FormBuilder)
   productoService= inject(ProductoServiceService)
 
-  cambiarEstado() {
-    this.estadoCambiado.emit(false);
-  }
 
-  /*Contenidos de la barra desplegable */
-  categorias: string[] = ['Electrónica', 'Ropa', 'Hogar', 'Libros', 'Belleza', 'Juguetes', 'Deportes', 'Automotores', 'Alimentos', 'Mascotas', 'Otro'];
+
+
+      // Obtener el producto que se desea editar
+  obtenerProducto(id: string) {
+    this.productoService.getProductoById(id).subscribe({
+      next: (producto: ProductoInterface) => {
+        this.productoAEditar = producto;
+        this.formulario.patchValue({
+          nombre: producto.nombre,
+          categoria: producto.categoria,
+          descripcion: producto.descripcion,
+          precio: producto.precio,
+          privado: producto.privado,
+          imagen: producto.imagen
+
+        });
+      },
+      error: (e:Error) => {
+        console.log(e.message);
+      }
+    });
+  }
 
     /*No va a aceptar nincun campo que sea nulo con el nonnull.. */
     formulario = this.fb.nonNullable.group(
@@ -52,19 +85,23 @@ export class AgregarProductoPerfilComponent implements OnInit{
       }
     )
 
-  addProducto()
-  {
+    guardarProducto() {
+      if (this.formulario.invalid) return;
+  
+      const producto = this.formulario.getRawValue();
+  
+      if (this.productoAEditar) {
+        this.actualizarProductoDB(producto);
+      } else {
+        this.agregarProductoDB(producto);
+      }
+    }
 
-    if(this.formulario.invalid) return;
+ 
 
-    const nuevoProducto = this.formulario.getRawValue();
-    this.addProductoDB(nuevoProducto)
-
-
-  };
-
-  addProductoDB (producto: ProductoInterface){
-    this.productoService.postProductos(producto).subscribe(
+  agregarProductoDB (nuevoProducto:ProductoInterface){
+    this.productoService.postProductos(nuevoProducto).subscribe(
+    
       {
         next: (producto: ProductoInterface) => {
           const Toast = Swal.mixin({
@@ -82,7 +119,7 @@ export class AgregarProductoPerfilComponent implements OnInit{
             icon: "success",
             title: "Producto Guardado"
           });
-          this.cambiarEstado();
+          this.estadoCambiadoAgregar.emit(false);
 
         },
         error: (e: Error) => {
@@ -90,8 +127,35 @@ export class AgregarProductoPerfilComponent implements OnInit{
         }
       }
     )
+
+ 
   }
 
+  actualizarProductoDB(producto: ProductoInterface) {
+    const productoActualizado: ProductoInterface = {
+      id: this.productoAEditar?.id,
+      idUser: this.userId,
+      nombre: this.formulario.value.nombre || '',  // Si es null o undefined, usa una cadena vacía
+      categoria: this.formulario.value.categoria || '',
+      descripcion: this.formulario.value.descripcion || '',
+      precio: this.formulario.value.precio || '',
+      deletedAt:false,
+      privado: this.formulario.value.privado || false,
+      imagen: this.formulario.value.imagen || ''
+    };
 
+    if(productoActualizado.id)
+    {
+      this.productoService.putProductos(productoActualizado.id, productoActualizado).subscribe({
+        next: () => {
+          Swal.fire('Producto actualizado con éxito', '', 'success');
+          this.productoModificado.emit(false); // Emitir evento al padre
+        },
+        error: (err:Error) => 
+          console.error(err)
+      });
+    }
+   
+  }
 
 }

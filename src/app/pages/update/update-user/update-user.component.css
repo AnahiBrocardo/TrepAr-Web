@@ -106,3 +106,18 @@ button:hover {
     text-align: left;
     color: #f7261bb1; /* Color de texto rojo suave */ 
 } 
+
+
+@media (max-width: 425px){
+    button {
+        padding: 4px !important;
+       
+        font-size: 0.9rem !important;
+    }
+
+    form {
+        padding: 0 2px;
+    }
+
+    
+}
