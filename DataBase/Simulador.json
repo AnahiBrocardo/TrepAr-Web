@@ -1,30 +1,4 @@
 {
   "simuladores": [
-    {
-      "id": "5588",
-      "idUsuario": "e620",
-      "nombre": "Collar Perro",
-      "precioMP": 11600,
-      "cantidadMP": 3,
-      "UnidadDeCompraMP": 3,
-      "valorGF": 10000,
-      "CantidadProductoMensual": 3,
-      "Ganancia": 20,
-      "PrecioFinal": 17920,
-      "habilitado": true
-    },
-    {
-      "id": "7c61",
-      "idUsuario": "8088",
-      "nombre": "nuevo1",
-      "precioMP": 1,
-      "cantidadMP": 2,
-      "UnidadDeCompraMP": 5,
-      "valorGF": 6000,
-      "CantidadProductoMensual": 50,
-      "Ganancia": 30,
-      "PrecioFinal": 156.52,
-      "habilitado": true
-    }
   ]
 }

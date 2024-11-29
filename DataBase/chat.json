@@ -1,31 +1,4 @@
 {
   "chats": [
-    {
-      "id": "965f",
-      "idUserEmisor": "78f8",
-      "idUserDestinatario": "e620",
-      "fechaDeCreacion": "2024-11-25T08:42:19.503Z",
-      "mensaje": "Hola!, estuve viendo tu perfil, quería saber que otros productos de mascotas tenias disponibles.",
-      "visto": true,
-      "eliminadoPor": []
-    },
-    {
-      "id": "026d",
-      "idUserEmisor": "cda0",
-      "idUserDestinatario": "43de",
-      "fechaDeCreacion": "2024-11-25T08:55:54.961Z",
-      "mensaje": "Hola!, vi tu perfil",
-      "visto": false,
-      "eliminadoPor": []
-    },
-    {
-      "id": "983a",
-      "idUserEmisor": "8088",
-      "idUserDestinatario": "43de",
-      "fechaDeCreacion": "2024-11-26T13:03:59.232Z",
-      "mensaje": "hola quiero conocerte!",
-      "visto": false,
-      "eliminadoPor": []
-    }
   ]
 }
