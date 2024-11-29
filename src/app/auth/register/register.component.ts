@@ -132,6 +132,7 @@ onProvinciaChange(event: Event): void {
 
 validarFormularioRegistro() {
   if (this.formularioRegistrase.invalid) {
+    Swal.fire("Por favor, complete los campos requeridos");
     return;
   }
 
@@ -175,7 +176,9 @@ validarFormularioRegistro() {
 
 
   validarFormularioPerfil(){
+   
     if (this.formularioPerfil.invalid) {
+      Swal.fire("Por favor, complete los campos requeridos");
       return;
     }
     const formValue = this.formularioPerfil.value;
@@ -210,6 +213,7 @@ validarFormularioRegistro() {
           });
         } else {
           this.registerUserAndProfile(); // Guardar usuario y perfil
+          
         }
       }
       },
@@ -240,6 +244,8 @@ togglePasswordVisibility() {
 
  // Registrar el usuario y el perfil
  private registerUserAndProfile() {
+  alert('aca');
+ 
   const userFormValue = this.formularioRegistrase.value;
     const profileFormValue = this.formularioPerfil.value;
 // Normalizar el teléfono antes de usarlo

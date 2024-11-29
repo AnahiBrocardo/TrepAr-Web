@@ -20,7 +20,7 @@
     </div>
     <div class="msg-send-btn">
       <button class="btn btn-primary rounded-circle p-2 btn-send" type="button" (click)="enviarMensaje()">
-        <mat-icon>mail_outline</mat-icon>
+        <mat-icon>chat_bubble_outline</mat-icon>
         <span class="visually-hidden">Dismiss</span>
       </button>
     </div>
@@ -32,9 +32,24 @@
         {{perfilSeleccionado?.provincia}}, {{perfilSeleccionado?.ciudad}}
       </span>
       <p class="contact-item contact-description">{{perfilSeleccionado?.descripcion}}</p>
-      <div *ngIf="perfilSeleccionado?.telefono" class="contact-item">
-        <i class="fa-solid fa-phone"></i> {{perfilSeleccionado?.telefono}}
+
+      <div class="datosContacto">
+        <div *ngIf="mailUsuario" class="contact-item">
+          <i class="fa-regular fa-envelope fa-lg" style="color: #4A4A4A;" ></i> {{mailUsuario}}
+        </div>
+        <div *ngIf="perfilSeleccionado?.telefono" class="contact-item">
+          <div class="whatsapp-container">
+            <i 
+              class="fa-brands fa-whatsapp fa-xl whatsapp" 
+              (click)="openWhatsApp()" 
+              style="color: #00bb2d;" 
+            ></i>
+            <span class="tooltip">Dirigirse a WhatsApp</span>
+          </div>
+          {{perfilSeleccionado?.telefono}}
+        </div>
       </div>
+
       <div class="contact-info mt-2">
         <div *ngIf="perfilSeleccionado?.linkLinkedIn" class="contact-item">
           <a [href]="perfilSeleccionado?.linkLinkedIn" target="_blank" rel="noopener noreferrer"
@@ -57,11 +72,7 @@
             Instagram
           </a>
         </div>
-        <div *ngIf="perfilSeleccionado?.telefono" class="contact-item">
-          <a (click)="openWhatsApp()" class="whatsapp-button">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
-          </a>
-        </div>
+        
       </div>
     </div>
   </div>

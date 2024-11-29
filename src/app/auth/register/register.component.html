@@ -173,12 +173,20 @@
             </div>
 
               <div class="form-outline mb-4">
-              <label class="form-label" for="telefono">Teléfono</label>
+              <label class="form-label" for="telefono">Teléfono *</label>
               <input type="text" id="telefono" formControlName="telefono" class="form-control" placeholder="Número de teléfono" />
-              <div *ngIf="formularioPerfil.get('telefono')?.invalid && formularioPerfil.get('telefono')?.touched" class="text-danger">
-                Ingresa un número de teléfono válido (por ejemplo, para Argentina,+54 9 11 6123-4567 o 011 6123-4567).
-              </div> 
+              <div *ngIf="formularioPerfil.controls['telefono'].invalid && (formularioPerfil.controls['telefono'].dirty || formularioPerfil.controls['telefono'].touched)" class="alert alert-danger">
+                <div class="error" *ngIf="formularioPerfil.controls['telefono'].getError('required')">
+                  Teléfono requerido
+                </div>
+                <div class="error" *ngIf="formularioPerfil.controls['telefono'].hasError('pattern')">
+                  El teléfono debe tener un formato válido (por ejemplo, +123-456-7890)
+                </div>
+              </div>
+              
             </div>
+
+           
 
               <div class="form-outline mb-4">
               <label class="form-label" for="imagePerfil">Ingresa una URL para la imagen de perfil</label>

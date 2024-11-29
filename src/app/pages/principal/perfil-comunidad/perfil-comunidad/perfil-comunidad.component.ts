@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MensajeModalComponent } from '../../mensaje-modal/mensaje-modal.component';
+import { UserService } from '../../../../Servicios/usuario/user.service';
+import { User } from '../../../../Interfaces/user.interface';
 
 @Component({
   selector: 'app-perfil-comunidad',
@@ -35,6 +37,7 @@ perfilSeleccionado?:Perfil;
 textoBuscado: string = '';
 
 router= inject(Router);
+mailUsuario:string='';
 
 perfilService= inject(PerfilService);
 productoService= inject(ProductoServiceService);
@@ -43,11 +46,29 @@ currentPageProducto: number = 1;
 itemsPerPageProducto: number = 4;
 listaProductos:ProductoInterface[]=[];
 
+usuarioService= inject(UserService);
+
   ngOnInit(): void {
     this.perfilSeleccionadoIdPerfil= localStorage.getItem('idPerfilSeleccionado') || '';
     this.userId=localStorage.getItem('userId') || '';
     this.obtenerDatosPerfil();
     this.verificarSiEsFavorito();
+    this.obtenerMail();
+  }
+
+
+  obtenerMail(){
+    if(this.userId){
+      this.usuarioService.getUserById(this.userId).subscribe({
+     next:(user:User)=>{
+     this.mailUsuario= user.email;
+     },
+     error:(e:Error)=>{
+      console.log(e.message);
+     }
+    })
+    }
+    
   }
 
   get productosPaginados(): ProductoInterface[] {
