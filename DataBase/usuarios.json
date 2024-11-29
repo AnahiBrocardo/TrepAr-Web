@@ -1,5 +1,49 @@
 {
   "users": [
-    
+    {
+      "id": "e620",
+      "nombre": "Juan",
+      "apellido": "Lopez",
+      "email": "juan@mail.com",
+      "password": "12345678",
+      "createdAt": "2024-11-25T07:42:13.886Z",
+      "deletedAt": null
+    },
+    {
+      "id": "43de",
+      "nombre": "Maria",
+      "apellido": "Jose",
+      "email": "maria@hotmail.com",
+      "password": "12345678",
+      "createdAt": "2024-11-25T08:16:10.814Z",
+      "deletedAt": null
+    },
+    {
+      "id": "78f8",
+      "nombre": "Ana",
+      "apellido": "Gonzales",
+      "email": "ana@gmail.com",
+      "password": "11111111",
+      "createdAt": "2024-11-25T08:29:14.582Z",
+      "deletedAt": null
+    },
+    {
+      "id": "cda0",
+      "nombre": "Julieta",
+      "apellido": "Perez",
+      "email": "juli@gmail.com",
+      "password": "12345678",
+      "createdAt": "2024-11-25T08:47:11.802Z",
+      "deletedAt": null
+    },
+    {
+      "id": "8088",
+      "nombre": "Julieta",
+      "apellido": "Alijas",
+      "email": "julietaalijas94@gmail.com",
+      "password": "12345678",
+      "createdAt": "2024-11-26T13:02:45.945Z",
+      "deletedAt": null
+    }
   ]
 }

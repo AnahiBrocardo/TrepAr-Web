@@ -1,5 +1,60 @@
 {
   "perfiles": [
-    
+    {
+      "id": "a72d",
+      "idUser": "e620",
+      "userName": "BazarTrend",
+      "descripcion": "BazarTrend es un espacio virtual donde la moda, la creatividad y las últimas tendencias se encuentran. Ofrecemos una amplia variedad de productos seleccionados con estilo, pensados para aquellos que buscan lo más actual y exclusivo. Desde accesorios hasta artículos únicos, BazarTrend te trae lo mejor de las tendencias, siempre con calidad y a precios accesibles. ",
+      "provincia": "Buenos Aires",
+      "ciudad": "Mar del Plata",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "",
+      "listaFavoritos": [],
+      "imagePerfil": "https://www.shutterstock.com/image-illustration/bazaar-text-title-headline-3d-260nw-618167345.jpg"
+    },
+    {
+      "id": "d584",
+      "idUser": "43de",
+      "userName": "Estilo Urbano",
+      "descripcion": "Trendy Closet es tu destino para descubrir las últimas tendencias en moda. Ofrecemos una selección de prendas de calidad y estilo único, pensadas para personas que buscan destacar y sentirse cómodas en todo momento. ¡Encuentra lo que te define y luce siempre a la moda con nosotros!",
+      "provincia": "Buenos Aires",
+      "ciudad": "Balcarce",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "2236987458",
+      "listaFavoritos": [],
+      "imagePerfil": "https://pub-static.fotor.com/assets/projects/pages/d5bdd0513a0740a8a38752dbc32586d0/fotor-03d1a91a0cec4542927f53c87e0599f6.jpg"
+    },
+    {
+      "id": "a638",
+      "idUser": "78f8",
+      "userName": "Original ",
+      "descripcion": "\nKicksZone es tu tienda de zapatillas favoritas, donde la comodidad y el estilo se encuentran. Con una variedad de modelos deportivos y urbanos para todos los gustos, te ofrecemos opciones perfectas para cada paso. ¡Descubrí tu par ideal y camina con actitud!",
+      "provincia": "Córdoba",
+      "ciudad": "Córdoba",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "351547896",
+      "listaFavoritos": [],
+      "imagePerfil": "https://uploads.turbologo.com/uploads/design/preview_image/5269199/preview_image20210629-14837-ajeq2b.png"
+    },
+    {
+      "id": "b552",
+      "idUser": "cda0",
+      "userName": "Tejidos Utopia",
+      "descripcion": "Te animas a tejer? Tenes mis tutoriales 🧶\nNecesitas algo tejido? Tenes UTOPIA 🥰\nEntregas en MDTe animas a tejer? Tenes mis tutoriales 🧶\nNecesitas algo tejido? Tenes UTOPIA 🥰\nEntregas en MDP zona centro🌊\nEnvios a todo el pais 🚚",
+      "provincia": "Buenos Aires",
+      "ciudad": "Mar del Plata",
+      "linkInstagram": "https://www.instagram.com/tejidos.utopia",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "22347854715",
+      "listaFavoritos": [],
+      "imagePerfil": "https://linktr.ee/og/image/tejidos.utopia.jpg"
+    }
   ]
 }
