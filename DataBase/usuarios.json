@@ -44,42 +44,6 @@
       "password": "12345678",
       "createdAt": "2024-11-26T13:02:45.945Z",
       "deletedAt": null
-    },
-    {
-      "id": "1e18",
-      "nombre": "Vero",
-      "apellido": "Iza",
-      "email": "juli.programacion@gmail.com",
-      "password": "12345678",
-      "createdAt": "2024-11-27T12:06:28.569Z",
-      "deletedAt": null
-    },
-    {
-      "id": "f2e3",
-      "nombre": "Romita",
-      "apellido": "Alijas",
-      "email": "test@gmail.com",
-      "password": "12345678",
-      "createdAt": "2024-11-27T22:42:41.879Z",
-      "deletedAt": null
-    },
-    {
-      "id": "aa03",
-      "nombre": "Gerardo",
-      "apellido": "GONZALEZ",
-      "email": "test2@gmail.com",
-      "password": "12345678",
-      "createdAt": "2024-11-27T22:56:55.695Z",
-      "deletedAt": null
-    },
-    {
-      "id": "1dc0",
-      "nombre": "berta",
-      "apellido": "rubio",
-      "email": "abuela@gmail.com",
-      "password": "12345678",
-      "createdAt": "2024-11-29T03:15:15.315Z",
-      "deletedAt": null
     }
   ]
 }

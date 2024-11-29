@@ -208,39 +208,6 @@
       "deletedAt": false,
       "privado": false,
       "imagen": "https://acdn.mitiendanube.com/stores/861/657/products/a7ff46ef-53b3-4b2a-8885-0864637d2199-5386b66d01a5f177d817022587887541-1024-1024.webp"
-    },
-    {
-      "id": "1f2f",
-      "idUser": "1e18",
-      "nombre": "Miel",
-      "categoria": "Alimentos",
-      "descripcion": "Miel de 1 kg",
-      "precio": 6000,
-      "deletedAt": false,
-      "privado": false,
-      "imagen": "https://makia.ar/wp-content/uploads/2024/06/Alta-calidad-10.jpg"
-    },
-    {
-      "id": "0761",
-      "idUser": "1e18",
-      "nombre": "Miel con Chocolate",
-      "categoria": "Alimentos",
-      "descripcion": "Una experiencia única para tus sentidos: nuestra exquisita miel fusionada con cacao amargo. En MAKIA, hemos combinado la dulzura natural de nuestra miel sostenible con la riqueza intensa del cacao amargo para crear un manjar irresistible.",
-      "precio": 4500,
-      "deletedAt": false,
-      "privado": false,
-      "imagen": "https://makia.ar/wp-content/uploads/2024/06/012.jpg"
-    },
-    {
-      "id": "ecff",
-      "idUser": "1e18",
-      "nombre": "TE-Alegria",
-      "categoria": "Alimentos",
-      "descripcion": "Un rayo de sol en tu taza. El té verde con cáscara de limón, manzanilla y caléndula ofrece un sabor fresco y floral que ilumina tus sentidos. Perfecto para celebrar esos pequeños momentos de felicidad cotidiana\n\n",
-      "precio": 5000,
-      "deletedAt": false,
-      "privado": false,
-      "imagen": "https://makia.ar/wp-content/uploads/2024/11/Imagen-de-WhatsApp-2024-08-10-a-las-15.23.52_cbeec39c.jpg"
     }
   ]
 }

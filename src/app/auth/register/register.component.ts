@@ -40,28 +40,6 @@ showProfileForm: boolean = false;// Variable para controlar la visibilidad del f
 
 
 
-//Metodo que transforma el telefono a un formato de telefono util para Whatsapp
-private normalizarTelefono(telefono: string): string {
-  // 1. Eliminar todos los caracteres no numéricos excepto el "+" inicial
-  let numeroLimpio = telefono.replace(/[^0-9+]/g, '');
-
-   // 2. Si no tiene un prefijo internacional, agregar +54 por defecto
-  if (!numeroLimpio.startsWith('+')) {
-    // Si no tiene prefijo, agregar por defecto +54 para Argentina
-    numeroLimpio = '+54' + numeroLimpio;
-  }
-
-  // 3. Añadir "9" después de +54 para móviles si no está presente
-  if (numeroLimpio.startsWith('+54') && !numeroLimpio.startsWith('+549', 0)) {
-    numeroLimpio = numeroLimpio.replace('+54', '+549');
-  }
-  // 4. Eliminar ceros iniciales del código de área si existen (por ejemplo, +549011 -> +54911)
-  numeroLimpio = numeroLimpio.replace(/(\+549)(0+)/, '$1');
-
-  return numeroLimpio;
-}
-
-
  // Formulario de registro 
  formularioRegistrase= this.fb.nonNullable.group({
   nombre: ['', Validators.required],
@@ -79,13 +57,12 @@ private normalizarTelefono(telefono: string): string {
   linkInstagram:['',[Validators.pattern(/^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9_.]+$/)]],
   linkLinkedIn: ['',[Validators.pattern(/^(https?:\/\/)?(www\.)?linkedin\.com\/(in|company)\/[a-zA-Z0-9_-]+\/?$/)]],
   linkWeb: ['',[Validators.pattern(/^(https?:\/\/)?([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[a-zA-Z0-9#_-]*)*\/?$/)]],
-  telefono:  ['', [Validators.required, Validators.pattern(/^[+]?(\d{1,4})?[-.\s]?(\d{1,3})[-.\s]?(\d{3})[-.\s]?(\d{4,})$/)]], 
+  telefono: ['',[Validators.pattern(/^[+]?[0-9]{1,4}?[-.\s]?[0-9]{1,3}[-.\s]?[0-9]{1,4}[-.\s]?[0-9]{1,4}$/)]], 
   /*^[+]?[0-9]{1,4}?: Permite un prefijo de país opcional [-.\s]?: Permite guiones, puntos o espacios como separadores.
   [0-9]{1,3}: Permite uno a tres dígitos para la parte del número. */
   imagePerfil:['',[Validators.pattern(/^.*\.(jpg|jpeg|png|gif|bmp|webp)$/i)]]
 
 });
-
 
 cargarProvincias() {
   this.dataArgentina.getProvincias().subscribe({
@@ -171,16 +148,12 @@ validarFormularioRegistro() {
 }
 
 
-
-
-
   validarFormularioPerfil(){
     if (this.formularioPerfil.invalid) {
       return;
     }
     const formValue = this.formularioPerfil.value;
-    // Normalizar el teléfono antes de usarlo
-     const telefonoNormalizado = this.normalizarTelefono(formValue.telefono ?? '');
+
     // Convertir el valor del formulario a un objeto User
     const newPerfil: Perfil = {
       idUser:'',
@@ -191,13 +164,13 @@ validarFormularioRegistro() {
       linkInstagram:formValue.linkInstagram ?? '',
       linkLinkedIn: formValue.linkLinkedIn ?? '',
       linkWeb: formValue.linkWeb ?? '',
-      telefono: telefonoNormalizado,
+      telefono: formValue.telefono ?? '',
       imagePerfil: formValue.imagePerfil ?? '',
       listaFavoritos:[]
     };
   
     const username = this.formularioPerfil.get('username')?.value; //se obtiene el username del formulario
-    
+  
     // Verificar si el username ya está registrado
     this.perfilService.getPerfiles().subscribe({
       next: (profiles: Perfil[]) => {
@@ -228,7 +201,6 @@ private usernameExists(perfiles: Perfil[], username: string): boolean {
   return perfiles.some(perfil => perfil.userName.toLowerCase === username.toLowerCase);
 }
 
-
 // Método para mostrar el formulario de perfil
 toggleProfileForm() {
   this.showProfileForm = !this.showProfileForm;
@@ -242,8 +214,7 @@ togglePasswordVisibility() {
  private registerUserAndProfile() {
   const userFormValue = this.formularioRegistrase.value;
     const profileFormValue = this.formularioPerfil.value;
-// Normalizar el teléfono antes de usarlo
-const telefonoNormalizado = this.normalizarTelefono(profileFormValue.telefono ?? '');
+
     const newUser: User = {
       nombre: userFormValue.nombre,
       apellido: userFormValue.apellido,
@@ -264,7 +235,7 @@ const telefonoNormalizado = this.normalizarTelefono(profileFormValue.telefono ??
           linkInstagram: profileFormValue.linkInstagram ?? '',
           linkLinkedIn: profileFormValue.linkLinkedIn ?? '',
           linkWeb: profileFormValue.linkWeb ?? '',
-          telefono: telefonoNormalizado,
+          telefono: profileFormValue.telefono ?? '',
           imagePerfil: profileFormValue.imagePerfil ?? '',
           listaFavoritos: []
         };

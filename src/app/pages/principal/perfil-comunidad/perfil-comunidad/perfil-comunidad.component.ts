@@ -199,15 +199,6 @@ enviarMensaje(){
     }
   });  
 }
- ///--------------ENVIAR UN WHATSAPP---------------------------
- message: string = '¡Hola! Me gustaría hacer una consulta.';
- openWhatsApp(): void {
-  const phoneNumber = this.perfilSeleccionado?.telefono;
-  // Codifica el mensaje para que sea válido en una URL
-  const encodedMessage = encodeURIComponent(this.message);
-  // Arma la URL de WhatsApp
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-  // Abre la URL en una nueva ventana o pestaña
-  window.open(whatsappUrl, '_blank');
-}
+
+
 }
