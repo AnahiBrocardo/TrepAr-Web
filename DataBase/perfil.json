@@ -66,9 +66,36 @@
       "linkInstagram": "",
       "linkLinkedIn": "",
       "linkWeb": "",
+      "telefono": "5492236958703",
+      "imagePerfil": "https://www.shutterstock.com/image-photo/making-new-project-portrait-satisfied-260nw-1660017136.jpg"
+    },
+    {
+      "idUser": "1e18",
+      "userName": "Makia",
+      "descripcion": "Apicultores",
+      "provincia": "Buenos Aires",
+      "ciudad": "Santa Clara del Mar",
+      "linkInstagram": "https://www.instagram.com/makia.energia.natural",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "5492235941328",
+      "imagePerfil": "https://makia.ar/wp-content/uploads/2024/06/Alta-calidad-10-300x300.jpg",
+      "listaFavoritos": [],
+      "id": "896b"
+    },
+    {
+      "id": "6e93",
+      "idUser": "dd90",
+      "userName": "Armandine",
+      "descripcion": "alfajores artesanales",
+      "provincia": "Córdoba",
+      "ciudad": "Alto de los Quebrachos",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
       "telefono": "2236958703",
       "listaFavoritos": [],
-      "imagePerfil": ""
+      "imagePerfil": "https://www.barilochense.com/suplementos/productos-abuela-goye/fotos/46814.jpg"
     },
     {
       "idUser": "2a91",
