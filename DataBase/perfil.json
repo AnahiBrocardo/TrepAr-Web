@@ -1,31 +1,5 @@
 {
   "perfiles": [
-    {
-      "id": "5e35",
-      "idUser": "4a79",
-      "userName": "DesarrolloOk",
-      "descripcion": "desarrollo de paginas web",
-      "provincia": "San Luis",
-      "ciudad": "Buena Esperanza",
-      "linkInstagram": "",
-      "linkLinkedIn": "",
-      "linkWeb": "",
-      "telefono": "5492236958703",
-      "imagePerfil": "https://www.shutterstock.com/image-photo/making-new-project-portrait-satisfied-260nw-1660017136.jpg"
-    },
-    {
-      "id": "8e8c",
-      "idUser": "a6ba",
-      "userName": "Huellitas",
-      "descripcion": "Juguetes hechos con amor para nuestros mejores compañeros",
-      "provincia": "Buenos Aires",
-      "ciudad": "Adolfo Gonzales Chaves",
-      "linkInstagram": "",
-      "linkLinkedIn": "",
-      "linkWeb": "",
-      "telefono": "2236958703",
-      "imagePerfil": "",
-      "listaFavoritos": []
-    }
+    
   ]
 }
