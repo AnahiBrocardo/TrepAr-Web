@@ -63,7 +63,7 @@
       "linkLinkedIn": "",
       "linkWeb": "",
       "telefono": "5492236958703",
-      "imagePerfil": ""
+      "imagePerfil": "https://www.shutterstock.com/image-photo/making-new-project-portrait-satisfied-260nw-1660017136.jpg"
     },
     {
       "idUser": "1e18",
@@ -75,9 +75,61 @@
       "linkLinkedIn": "",
       "linkWeb": "",
       "telefono": "5492235941328",
-      "imagePerfil": "https://hechoenmarchiquita.ar/wp-content/uploads/2023/11/365766551_759580029510210_6153780634206095489_n.jpg",
+      "imagePerfil": "https://makia.ar/wp-content/uploads/2024/06/Alta-calidad-10-300x300.jpg",
       "listaFavoritos": [],
       "id": "896b"
+    },
+    {
+      "id": "6e93",
+      "idUser": "dd90",
+      "userName": "Armandine",
+      "descripcion": "alfajores artesanales",
+      "provincia": "Córdoba",
+      "ciudad": "Alto de los Quebrachos",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "2236958703",
+      "imagePerfil": "https://www.barilochense.com/suplementos/productos-abuela-goye/fotos/46814.jpg"
+    },
+    {
+      "id": "626d",
+      "idUser": "f2e3",
+      "userName": "Borcelle",
+      "descripcion": "Veterinaria y juguetes para nuestros compañeros mas fieles",
+      "provincia": "Buenos Aires",
+      "ciudad": "Atlántida",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "2236958703",
+      "imagePerfil": "https://marketplace.canva.com/EAGM0DTij-w/1/0/1600w/canva-logotipo-para-veterinaria-animado-de-perro-rI2OjFl3Uf0.jpg"
+    },
+    {
+      "id": "7408",
+      "idUser": "aa03",
+      "userName": "Gru",
+      "descripcion": "indumentaria deportiva",
+      "provincia": "Buenos Aires",
+      "ciudad": "Banfield",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "+5491139568933",
+      "imagePerfil": "https://img.freepik.com/vector-gratis/diseno-logotipo-tienda-ropa-degradada_23-2149484086.jpg"
+    },
+    {
+      "id": "e639",
+      "idUser": "1dc0",
+      "userName": "Bertita",
+      "descripcion": "tegidos hechos con amor",
+      "provincia": "La Pampa",
+      "ciudad": "Anguil",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "+5492236958703",
+      "imagePerfil": "https://uploads.turbologo.com/uploads/design/preview_image/2768073/preview_image20210512-15558-1ii642e.png"
     }
   ]
 }
