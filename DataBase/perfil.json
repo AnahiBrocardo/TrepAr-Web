@@ -10,9 +10,8 @@
       "linkInstagram": "",
       "linkLinkedIn": "",
       "linkWeb": "",
-      "telefono": "2236958703",
-      "imagePerfil": "",
-      "listaFavoritos": []
+      "telefono": "5492236958703",
+      "imagePerfil": "https://www.shutterstock.com/image-photo/making-new-project-portrait-satisfied-260nw-1660017136.jpg"
     },
     {
       "id": "8e8c",
@@ -26,20 +25,6 @@
       "linkWeb": "",
       "telefono": "2236958703",
       "imagePerfil": "",
-      "listaFavoritos": []
-    },
-    {
-      "id": "7e85",
-      "idUser": "87eb",
-      "userName": "BazarTrend",
-      "descripcion": "BazarTrend es un espacio virtual donde la moda, la creatividad y las últimas tendencias se encuentran. Ofrecemos una amplia variedad de productos seleccionados con estilo, pensados para aquellos que buscan lo más actual y exclusivo. Desde accesorios hasta artículos únicos. Traemos lo mejor de las tendencias, siempre con calidad y a precios unicos",
-      "provincia": "Mendoza",
-      "ciudad": "3ra Sección",
-      "linkInstagram": "",
-      "linkLinkedIn": "",
-      "linkWeb": "",
-      "telefono": "2236958703",
-      "imagePerfil": "https://www.shutterstock.com/image-illustration/bazaar-text-title-headline-3d-260nw-618167345.jpg",
       "listaFavoritos": []
     }
   ]
