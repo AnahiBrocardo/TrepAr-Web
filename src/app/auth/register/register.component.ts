@@ -198,7 +198,7 @@ private emailExists(users: User[], email: string): boolean {
 
 // Método que verifica si el username ya existe en el array de perfiles
 private usernameExists(perfiles: Perfil[], username: string): boolean {
-  return perfiles.some(perfil => perfil.userName.toLowerCase === username.toLowerCase);
+  return perfiles.some(perfil => perfil.userName.toLowerCase() === username.toLowerCase());
 }
 
 // Método para mostrar el formulario de perfil
