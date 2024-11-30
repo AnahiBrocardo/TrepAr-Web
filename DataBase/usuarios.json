@@ -4,7 +4,7 @@
       "id": "e620",
       "nombre": "Juan",
       "apellido": "Lopez",
-      "email": "juan@mail.com",
+      "email": "bazarTrend@gmail.com",
       "password": "12345678",
       "createdAt": "2024-11-25T07:42:13.886Z",
       "deletedAt": null
@@ -13,7 +13,7 @@
       "id": "43de",
       "nombre": "Maria",
       "apellido": "Jose",
-      "email": "maria@hotmail.com",
+      "email": "estiloUrbano@gmail.com",
       "password": "12345678",
       "createdAt": "2024-11-25T08:16:10.814Z",
       "deletedAt": null
@@ -22,7 +22,7 @@
       "id": "78f8",
       "nombre": "Ana",
       "apellido": "Gonzales",
-      "email": "ana@gmail.com",
+      "email": "kicksZoneOriginal@gmail.com",
       "password": "11111111",
       "createdAt": "2024-11-25T08:29:14.582Z",
       "deletedAt": null
@@ -31,7 +31,7 @@
       "id": "cda0",
       "nombre": "Julieta",
       "apellido": "Perez",
-      "email": "juli@gmail.com",
+      "email": "tejidosUtopia@gmail.com",
       "password": "12345678",
       "createdAt": "2024-11-25T08:47:11.802Z",
       "deletedAt": null
