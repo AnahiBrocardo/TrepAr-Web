@@ -53,21 +53,20 @@ usuarioService= inject(UserService);
     this.userId=localStorage.getItem('userId') || '';
     this.obtenerDatosPerfil();
     this.verificarSiEsFavorito();
-    this.obtenerMail();
   }
 
 
-  obtenerMail(){
-    if(this.userId){
-      this.usuarioService.getUserById(this.userId).subscribe({
+  obtenerMail(perfilIdUser: string){
+      this.usuarioService.getUserById(perfilIdUser).subscribe({
      next:(user:User)=>{
      this.mailUsuario= user.email;
+     console.log('mail usuario'+ this.mailUsuario);
      },
      error:(e:Error)=>{
       console.log(e.message);
      }
     })
-    }
+    
     
   }
 
@@ -100,8 +99,12 @@ totalPagesProducto(): number {
       this.perfilService.getPerfilByIdPerfil(this.perfilSeleccionadoIdPerfil).subscribe({
         next: (perfilArray: Perfil[]) => {
           if (perfilArray.length > 0) {
+            this.obtenerMail(perfilArray[0].idUser);
+            console.log(this.mailUsuario);
             this.perfilSeleccionado = perfilArray[0];
             this.obtenerDatosDeProducto(this.perfilSeleccionado.idUser);
+            
+            
           } else {
             console.error('El perfil no existe o no se encontró.');
           }
