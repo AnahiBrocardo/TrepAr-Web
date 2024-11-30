@@ -4,7 +4,7 @@
       <h5 class="titulo  mb-3">Mensajes</h5>
     </div>
 
-    <div class="no-chat pb-2" *ngIf="chatsConUsuario.length === 0 && !mensajes && pantallaCel">
+    <div class="no-chat pb-2" *ngIf="chatsConUsuario.length === 0 &&  ((!mensajes && pantallaCel) || !pantallaCel)">
       <img class="imagen-no-chat" src="/assets/img/no-chats.png"
       alt="Imagen ilustrativa, no hay chats">
       <h3 class="featurette-heading fw-normal lh-1 texto-no-producto">
