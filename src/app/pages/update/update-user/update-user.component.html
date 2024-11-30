@@ -49,7 +49,7 @@
                 <label for="password">Contraseña</label>
               
             <div class="password-container">
-                <span>{{ isPasswordVisible ? password : '••••••••' }}</span>
+                <span class="constraseñaActual">{{ isPasswordVisible ? password : '••••••••' }}</span>
                 <a  
                     class="botonMostrarOcultar" 
                     (click)="togglePasswordVisibility()">
@@ -63,7 +63,9 @@
 
             <!-- Confirmar nueva contraseña -->
             <div *ngIf="isPasswordChangeVisible">
-
+                <div class="modify-link">
+                    <a href="javascript:void(0)" (click)="togglePasswordChange()">Volver</a>
+                </div>
                 <div class="input-container">
                     <label for="newPassword">Nueva contraseña</label>
                     <div class="password-container">
@@ -76,7 +78,7 @@
                         </a>
                         
                     </div>
-                    <div *ngIf="formularioUpdateUserData.controls['newPassword'].invalid" 
+                    <div *ngIf="formularioUpdateUserData.controls['newPassword'].invalid && formularioUpdateUserData.controls['newPassword'].touched" 
                      class="alert alert-danger">
             
                 <div  class="error" *ngIf="formularioUpdateUserData.controls['newPassword'].getError('required')">
@@ -100,7 +102,7 @@
                             <i class="fas" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
                         </a>
                     </div>
-                    <div *ngIf="formularioUpdateUserData.controls['repiteNewPassword'].invalid" 
+                    <div *ngIf="formularioUpdateUserData.controls['repiteNewPassword'].invalid && formularioUpdateUserData.controls['repiteNewPassword'].touched" 
                      class="alert alert-danger">
             
                 <div  class="error" *ngIf="formularioUpdateUserData.controls['repiteNewPassword'].getError('required')">
