@@ -55,6 +55,34 @@
       "telefono": "22347854715",
       "listaFavoritos": [],
       "imagePerfil": "https://linktr.ee/og/image/tejidos.utopia.jpg"
+    },
+    {
+      "id": "0ac2",
+      "idUser": "133d",
+      "userName": "Nona Tegidos",
+      "descripcion": "Este tejido ecofriendly está hecho de fibras naturales como algodón orgánico y lino, sin ingredientes de origen animal, garantizando un proceso de producción libre de maltrato animal. Es suave al tacto y teñido con colores ecológicos, ofreciendo comodidad y sostenibilidad.",
+      "provincia": "Salta",
+      "ciudad": "Cafayate",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "www.nonatejidos.com.ar",
+      "telefono": "+5492236958703",
+      "imagePerfil": "https://i.pinimg.com/originals/f6/6b/e2/f66be219e7c544d48bd4dfc96d96c6f0.png",
+      "listaFavoritos": []
+    },
+    {
+      "id": "de3a",
+      "idUser": "2a40",
+      "userName": "Makia",
+      "descripcion": "Cultivamos y cosechamos miel de manera responsable, respetando el ciclo natural de las abejas y promoviendo la conservación de la biodiversidad.",
+      "provincia": "Buenos Aires",
+      "ciudad": "Santa Clara del Mar",
+      "linkInstagram": "https://www.instagram.com/makia.energia.natural",
+      "linkLinkedIn": "",
+      "linkWeb": "https://makia.ar/",
+      "telefono": "+5492235941328",
+      "imagePerfil": "https://hechoenmarchiquita.ar/wp-content/uploads/2023/11/IMG_20200928_120511341-scaled.jpg",
+      "listaFavoritos": []
     }
   ]
 }

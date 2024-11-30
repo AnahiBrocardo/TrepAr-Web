@@ -208,6 +208,105 @@
       "deletedAt": false,
       "privado": false,
       "imagen": "https://acdn.mitiendanube.com/stores/861/657/products/a7ff46ef-53b3-4b2a-8885-0864637d2199-5386b66d01a5f177d817022587887541-1024-1024.webp"
+    },
+    {
+      "id": "fff2",
+      "idUser": "133d",
+      "nombre": "Bufanda",
+      "categoria": "Ropa",
+      "descripcion": "Bufanda de ancho de 40 cm por un largo de 110 cm. Hecha con lana y tjido a punto santa clara",
+      "precio": 15900,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://www.daniisways.com/wp-content/uploads/2021/09/IMG_4437-copy.jpg"
+    },
+    {
+      "id": "bb9b",
+      "idUser": "133d",
+      "nombre": "Top",
+      "categoria": "Ropa",
+      "descripcion": "Top tejido al crochet. \nSe puede realizar en color: crudo-blanco- verde musgo- negro",
+      "precio": 8900,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://i.pinimg.com/originals/2f/37/9c/2f379c0cfe0416900672ee2ba71a9018.jpg"
+    },
+    {
+      "id": "7c7f",
+      "idUser": "133d",
+      "nombre": "Vestido Ameli",
+      "categoria": "Ropa",
+      "descripcion": "Vestido tejido, la gama de colores puede ir variando",
+      "precio": 19500,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://i.pinimg.com/236x/80/7a/78/807a78247603b85be855bd5bd5c12f80.jpg"
+    },
+    {
+      "id": "54de",
+      "idUser": "133d",
+      "nombre": "Cartera T1",
+      "categoria": "Ropa",
+      "descripcion": "Cartera de 20 cm por 30 cm \nDisponible en color Beige o Crudo",
+      "precio": 11200,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://i.pinimg.com/736x/07/45/59/074559af2ac682a3f98a6ea52cd58f22.jpg"
+    },
+    {
+      "id": "6ee1",
+      "idUser": "133d",
+      "nombre": "Cartera T2",
+      "categoria": "Ropa",
+      "descripcion": "Cartera Tejida de amplia capacidad",
+      "precio": 14500,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://i.pinimg.com/736x/b2/0f/3a/b20f3a82804f6c6cd7f978bdb0c61b6a.jpg"
+    },
+    {
+      "id": "45d8",
+      "idUser": "2a40",
+      "nombre": "Miel de chocolate",
+      "categoria": "Alimentos",
+      "descripcion": "La justa fusión de cacao amargo y nuestra miel . Un sabor único",
+      "precio": 4500,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://makia.ar/wp-content/uploads/2024/06/012.jpg"
+    },
+    {
+      "id": "5650",
+      "idUser": "2a40",
+      "nombre": "Miel 1kg",
+      "categoria": "Alimentos",
+      "descripcion": "Miel Cruda Pura 100% Natural\n\n",
+      "precio": 6500,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://makia.ar/wp-content/uploads/2024/06/Alta-calidad-11.jpg"
+    },
+    {
+      "id": "e577",
+      "idUser": "2a40",
+      "nombre": "Te Armonia",
+      "categoria": "Alimentos",
+      "descripcion": "Mezcla de té verde en hebras, cáscaras de naranja amarga y jengibre.\nRico en antioxidantes. Nos ayuda a equilibrarnos desde adentro.",
+      "precio": 4000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://makia.ar/wp-content/uploads/2024/06/06.jpg"
+    },
+    {
+      "id": "aab0",
+      "idUser": "2a40",
+      "nombre": "Visita Guiada",
+      "categoria": "Otro",
+      "descripcion": "Visita a guiada, con explicación de floración, huerta natural, vista de las colmenas y degustación de miel",
+      "precio": 8000,
+      "deletedAt": false,
+      "privado": true,
+      "imagen": ""
     }
   ]
 }
