@@ -71,10 +71,9 @@
       "listaFavoritos": []
     },
     {
-      "id": "de3a",
       "idUser": "2a40",
       "userName": "Makia",
-      "descripcion": "Cultivamos y cosechamos miel de manera responsable, respetando el ciclo natural de las abejas y promoviendo la conservación de la biodiversidad.",
+      "descripcion": "Cultivamos y cosechamos miel de manera responsable, respetando el ciclo natural de las abejas y promoviendo la conservación de la biodiversidad. te esperamos!",
       "provincia": "Buenos Aires",
       "ciudad": "Santa Clara del Mar",
       "linkInstagram": "https://www.instagram.com/makia.energia.natural",
@@ -82,6 +81,21 @@
       "linkWeb": "https://makia.ar/",
       "telefono": "+5492235941328",
       "imagePerfil": "https://hechoenmarchiquita.ar/wp-content/uploads/2023/11/IMG_20200928_120511341-scaled.jpg",
+      "listaFavoritos": [],
+      "id": "de3a"
+    },
+    {
+      "id": "6b04",
+      "idUser": "741a",
+      "userName": "Azúcar Moreno",
+      "descripcion": "azúcar Moreno llega para iluminar y aromatizar todo mi entorno y el de las personas que deseen ser parte.",
+      "provincia": "Mendoza",
+      "ciudad": "El Plumerillo",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "+5492236958703",
+      "imagePerfil": "https://www.mendoza.gov.ar/wp-content/uploads/sites/49/2024/04/LOGO.png",
       "listaFavoritos": []
     }
   ]

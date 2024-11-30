@@ -305,8 +305,52 @@
       "descripcion": "Visita a guiada, con explicación de floración, huerta natural, vista de las colmenas y degustación de miel",
       "precio": 8000,
       "deletedAt": false,
-      "privado": true,
-      "imagen": ""
+      "privado": false,
+      "imagen": "https://ecomaya.com.ar/wp-content/uploads/2021/11/fc68a734-9020-4437-bc1f-89c1ea281feb.jpeg"
+    },
+    {
+      "id": "5d2d",
+      "idUser": "741a",
+      "nombre": "Dulce amor",
+      "categoria": "Hogar",
+      "descripcion": "Velas personalizadas de corazones, especialmente diseñadas para el mimar y nutrir el amor. \nHechas 100% con productos naturales\nVienen 2 unidades: 1 unidad de 150 gr (grande) y 1 unidad de 70 gr chica ",
+      "precio": 9000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://i.pinimg.com/236x/11/14/b1/1114b16da42751398ad59b51fa9aa691.jpg"
+    },
+    {
+      "id": "191b",
+      "idUser": "741a",
+      "nombre": "Natura",
+      "categoria": "Hogar",
+      "descripcion": "Vela para decorar. Opciones:\n 🍋 Citricos y canela\n🍓 Frutos Rojos\n🌸 Flores de estacion",
+      "precio": 3200,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://i.pinimg.com/474x/3e/5a/0e/3e5a0ec0d843edc38e42ab0c08095d13.jpg"
+    },
+    {
+      "id": "d707",
+      "idUser": "741a",
+      "nombre": "Caracola",
+      "categoria": "Hogar",
+      "descripcion": "velas personalizadas con tematica marina. Incluye:\n🐚 1 de concha de mar 115 gr\n🐚 1 concha de mar 50 gr\n🐚 2 caracolas ",
+      "precio": 11000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://i.pinimg.com/1200x/bf/c3/dd/bfc3dd4f4c486a587e2c500737031531.jpg"
+    },
+    {
+      "id": "4188",
+      "idUser": "741a",
+      "nombre": "Burbujas",
+      "categoria": "Hogar",
+      "descripcion": "Vela de 8 burbujas, disponible el color:\nAzul marino - Blanca- Rosa- Verde",
+      "precio": 2500,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://i.pinimg.com/236x/32/21/71/322171bc6bebb301a7a9d802647603fa.jpg"
     }
   ]
 }

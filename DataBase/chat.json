@@ -1,4 +1,22 @@
 {
   "chats": [
+    {
+      "id": "a8f0",
+      "idUserEmisor": "2a40",
+      "idUserDestinatario": "133d",
+      "fechaDeCreacion": "2024-11-30T23:06:58.918Z",
+      "mensaje": "Hola me encantaria hacer un trabajo en conjunto!",
+      "visto": false,
+      "eliminadoPor": []
+    },
+    {
+      "id": "30e3",
+      "idUserEmisor": "741a",
+      "idUserDestinatario": "2a40",
+      "fechaDeCreacion": "2024-11-30T23:28:01.015Z",
+      "mensaje": "Hola, mucho gusto quiero saber si vendes la cera de abeja, me vendría genial para mi emprendimiento!!!\n",
+      "visto": false,
+      "eliminadoPor": []
+    }
   ]
 }

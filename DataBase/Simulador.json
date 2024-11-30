@@ -12,6 +12,19 @@
       "Ganancia": 30,
       "PrecioFinal": 14950,
       "habilitado": true
+    },
+    {
+      "id": "ef7e",
+      "idUsuario": "741a",
+      "nombre": "Vela-Burbujas",
+      "precioMP": 8000,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 10,
+      "valorGF": 90000,
+      "CantidadProductoMensual": 150,
+      "Ganancia": 40,
+      "PrecioFinal": 1960,
+      "habilitado": true
     }
   ]
 }
