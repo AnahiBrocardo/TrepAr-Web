@@ -1,4 +1,17 @@
 {
   "simuladores": [
+    {
+      "id": "ba0a",
+      "idUsuario": "78f8",
+      "nombre": "Vans",
+      "precioMP": 120000,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 12,
+      "valorGF": 60000,
+      "CantidadProductoMensual": 40,
+      "Ganancia": 30,
+      "PrecioFinal": 14950,
+      "habilitado": true
+    }
   ]
 }

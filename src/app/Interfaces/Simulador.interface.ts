@@ -1,5 +1,5 @@
-import { GastoFijo } from './GastoFijo.interface';
-import { MateriaPrima } from './MateriaPrima.interface';
+import { GastoFijo } from '../componentes/simulador/InterfaceSim/GastoFijo.interface';
+import { MateriaPrima } from '../componentes/simulador/InterfaceSim/MateriaPrima.interface';
 export interface Simulador{
     id?: string,
     idUsuario: string,

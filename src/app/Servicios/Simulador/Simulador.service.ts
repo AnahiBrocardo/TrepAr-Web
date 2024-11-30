@@ -1,8 +1,8 @@
 
-import { Simulador } from '../app/componentes/simulador/InterfaceSim/Simulador.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Simulador } from '../../Interfaces/Simulador.interface';
 
 
 @Injectable({

@@ -1,7 +1,6 @@
-import { Simulador } from './../../InterfaceSim/Simulador.interface';
+import { Simulador } from '../../../../Interfaces/Simulador.interface';
 import { Component, EventEmitter, Inject, inject, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormsModule, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SimuladorService } from '../../../../../Servicios/Simulador.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {MatButtonModule, MatMiniFabButton} from '@angular/material/button';
 import {MatDialogModule, MatDialog} from '@angular/material/dialog';
@@ -13,7 +12,8 @@ import Swal from 'sweetalert2';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import {BreakpointObserver} from '@angular/cdk/layout';
-import {StepperOrientation, MatStepperModule} from '@angular/material/stepper';
+import {StepperOrientation, MatStepperModule, MatStepContent} from '@angular/material/stepper';
+import { SimuladorService } from '../../../../Servicios/Simulador/Simulador.service';
 
 @Component({
   selector: 'app-agregar-simulador',
@@ -103,16 +103,21 @@ export class AgregarSimuladorComponent implements OnInit {
   formulario = this.fb.nonNullable.group({
       idUsuario: '',
       nombre: ['', [Validators.required, Validators.minLength(3)]],
-      precioMP: [0, [Validators.required]],
-      cantidadMP: [0, [Validators.required]],
-      UnidadDeCompraMP: [0, [Validators.required]],
-      valorGF: [0, [Validators.required]],
-      CantidadProductoMensual: [0, [Validators.required]],
-      Ganancia: [0, [Validators.required]],
+      precioMP: [0, [Validators.required, Validators.min(1)]],
+      cantidadMP: [0, [Validators.required, Validators.min(1)]],
+      UnidadDeCompraMP: [0, [Validators.required, Validators.min(1)]],
+      valorGF: [0, [Validators.required, Validators.min(1)]],
+      CantidadProductoMensual: [0, [Validators.required, Validators.min(1)]],
+      Ganancia: [0, [Validators.required, Validators.min(1)]],
       PrecioFinal: [0],
       habilitado: true
     })
  
+      // Método para verificar si el formulario es válido en un paso específico
+  isStepValid(controlName: string): boolean {
+    const control = this.formulario.get(controlName);
+    return control?.valid || false;
+  }
   
 
 

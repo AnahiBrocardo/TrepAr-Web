@@ -1,6 +1,5 @@
-import { Simulador } from './../../InterfaceSim/Simulador.interface';
+import { Simulador } from '../../../../Interfaces/Simulador.interface'; 
 import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
-import { SimuladorService } from '../../../../../Servicios/Simulador.service';
 import { AgregarSimuladorComponent } from "../agregar-simulador/agregar-simulador.component";
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -16,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import Swal from 'sweetalert2';
+import { SimuladorService } from '../../../../Servicios/Simulador/Simulador.service';
 
 @Component({
   selector: 'app-listar-simulador',
@@ -29,7 +29,7 @@ import Swal from 'sweetalert2';
     MatPaginatorModule,
     FormsModule,
     MatTooltipModule,
-    MatDialogModule, 
+    MatDialogModule,
     ],
   templateUrl: './listar-simulador.component.html',
   styleUrl: './listar-simulador.component.scss'
