@@ -162,7 +162,7 @@ export class UpdateUserComponent implements OnInit {
 async pedirContraseñaYActualizar() {
   try {
     const result = await Swal.fire({
-      title: "Ingrese contraseña, para guardar los cambios...",
+      title: "Ingrese contraseña actual, para guardar los cambios...",
       input: "password",
       inputAttributes: {
         autocapitalize: "off"
@@ -206,7 +206,7 @@ async pedirContraseñaYActualizar() {
         title: `Cambios guardados exitosamente`,
         text: `Los datos han sido actualizados correctamente.`
       });
-      this.router.navigateByUrl(`dashboard/${this.userId}`);
+      this.router.navigateByUrl(`dashboard/settings`);
     }
   } catch (error) {
     Swal.showValidationMessage(`Solicitud fallida: ${error}`);
