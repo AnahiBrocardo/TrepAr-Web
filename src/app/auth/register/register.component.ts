@@ -1,7 +1,7 @@
 
 import { Perfil } from './../../Interfaces/perfil.interface';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../Servicios/usuario/user.service';
 import { User } from '../../Interfaces/user.interface';
@@ -35,9 +35,9 @@ export class RegisterComponent implements OnInit{
 
  userService= inject(UserService);
  perfilService= inject(PerfilService);
- isPasswordVisible = false; // Controla la visibilidad de la contraseña
+ isPasswordVisible:boolean = false; // Controla la visibilidad de la contraseña
 showProfileForm: boolean = false;// Variable para controlar la visibilidad del formulario de perfil
-
+isConfirmPasswordVisible: boolean=false;
 
 
 //Metodo que transforma el telefono a un formato de telefono util para Whatsapp
@@ -63,12 +63,13 @@ private normalizarTelefono(telefono: string): string {
 
 
  // Formulario de registro 
- formularioRegistrase= this.fb.nonNullable.group({
+ formularioRegistrase = this.fb.group({
   nombre: ['', Validators.required],
   apellido: ['', Validators.required],
   email: ['', [Validators.required, Validators.email]],
-  password: ['', [Validators.required, Validators.minLength(8)]]
- })
+  password: ['', [Validators.required, Validators.minLength(8)]],
+  confirmPassword: ['', Validators.required]
+}, { validators: this.passwordsMatchValidator });
 
  // Formulario de perfil
  formularioPerfil = this.fb.group({
@@ -85,6 +86,16 @@ private normalizarTelefono(telefono: string): string {
   imagePerfil:['',[Validators.pattern(/^.*\.(jpg|jpeg|png|gif|bmp|webp)$/i)]]
 
 });
+
+// Función para la validación de contraseñas
+ passwordsMatchValidator(control: AbstractControl): ValidationErrors | null {
+  const password = control.get('password');
+  const confirmPassword = control.get('confirmPassword');
+  if (password && confirmPassword && password.value !== confirmPassword.value) {
+    return { passwordsMismatch: true };
+  }
+  return null;
+}
 
 
 cargarProvincias() {
@@ -140,8 +151,8 @@ validarFormularioRegistro() {
 
   // Convertir el valor del formulario a un objeto User
   const newUser: User = {
-    nombre: formValue.nombre,
-    apellido: formValue.apellido,
+    nombre: formValue.nombre ?? '',
+    apellido: formValue.apellido ?? '',
     email: formValue.email ?? '', // Si formValue.email es undefined, asigna una cadena vacía
     password: formValue.password ?? '',
     createdAt: new Date(),
@@ -161,7 +172,12 @@ validarFormularioRegistro() {
             text: 'El usuario ya está registrado',
           });
         } else {
-          this.showProfileForm = true; // Mostrar el formulario de perfil
+           // Verificar si las contraseñas coinciden
+          const password = this.formularioRegistrase.get('password')?.value;
+          const confirmPassword = this.formularioRegistrase.get('confirmPassword')?.value;
+
+            this.showProfileForm = true; // Mostrar el formulario de perfil
+          
         }
       },
       error: (error) => {
@@ -184,21 +200,7 @@ validarFormularioRegistro() {
     const formValue = this.formularioPerfil.value;
     // Normalizar el teléfono antes de usarlo
      const telefonoNormalizado = this.normalizarTelefono(formValue.telefono ?? '');
-    // Convertir el valor del formulario a un objeto User
-    const newPerfil: Perfil = {
-      idUser:'',
-      userName:formValue.username ?? '',
-      descripcion:formValue.descripcion ?? '',
-      provincia: formValue.provincia ?? '',
-      ciudad:formValue.ciudad ?? '',
-      linkInstagram:formValue.linkInstagram ?? '',
-      linkLinkedIn: formValue.linkLinkedIn ?? '',
-      linkWeb: formValue.linkWeb ?? '',
-      telefono: telefonoNormalizado,
-      imagePerfil: formValue.imagePerfil ?? '',
-      listaFavoritos:[]
-    };
-  
+    
     const username = this.formularioPerfil.get('username')?.value; //se obtiene el username del formulario
     
     // Verificar si el username ya está registrado
@@ -242,17 +244,20 @@ togglePasswordVisibility() {
   this.isPasswordVisible = !this.isPasswordVisible;
 }
 
+toggleConfirmPasswordVisibility() {
+  this.isConfirmPasswordVisible = !this.isConfirmPasswordVisible;
+}
+
  // Registrar el usuario y el perfil
  private registerUserAndProfile() {
-  alert('aca');
  
   const userFormValue = this.formularioRegistrase.value;
     const profileFormValue = this.formularioPerfil.value;
 // Normalizar el teléfono antes de usarlo
 const telefonoNormalizado = this.normalizarTelefono(profileFormValue.telefono ?? '');
     const newUser: User = {
-      nombre: userFormValue.nombre,
-      apellido: userFormValue.apellido,
+      nombre: userFormValue.nombre ?? '',
+      apellido: userFormValue.apellido ?? '',
       email: userFormValue.email ?? '',
       password: userFormValue.password ?? '',
       createdAt: new Date(),

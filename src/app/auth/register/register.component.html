@@ -58,10 +58,10 @@
   
   
                 <div data-mdb-input-init class="form-outline mb-4"> <label class="form-label"
-                    for="password">Contraseña</label>
+                    for="password">Contraseña*</label>
                   <div class="password-container">
                     <input [type]="isPasswordVisible ? 'text' : 'password'"
-                      placeholder="******" formControlName="password" class="form-control" /> <a
+                      placeholder="********" formControlName="password" class="form-control" /> <a
                       class="botonMostrarOcultar" (click)="togglePasswordVisibility()"><i class="fas"
                         [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i></a> </div>
                     <div *ngIf="formularioRegistrase.controls['password'].invalid && (formularioRegistrase.controls['password'].dirty || formularioRegistrase.controls['password'].touched)"
@@ -76,7 +76,35 @@
                           </div>
                     </div>
                 </div>
-  
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <label class="form-label"
+                  for="confirmPassword"
+                  >Confirme su contraseña*</label>
+
+                <div class="password-container">
+                  <input [type]="isConfirmPasswordVisible ? 'text' : 'password'"
+                    placeholder="********" formControlName="confirmPassword" class="form-control"
+                    /> <a
+                    class="botonMostrarOcultar" (click)="toggleConfirmPasswordVisibility()"><i class="fas"
+                      [ngClass]="isConfirmPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i></a> </div>
+                  
+                      <div *ngIf="formularioRegistrase.controls['confirmPassword'].invalid && (formularioRegistrase.controls['confirmPassword'].dirty || formularioRegistrase.controls['confirmPassword'].touched)"
+                      class="alert alert-danger">
+    
+                          <div  class="error" *ngIf="formularioRegistrase.controls['confirmPassword'].getError('required')">
+                            <span class="error">Debe volver a ingresar la contraseña</span>
+                          </div>                        
+                      </div>
+                      <div class=" alert alert-danger" *ngIf="formularioRegistrase.errors?.['passwordsMismatch'] &&  
+                      (formularioRegistrase.controls['confirmPassword'].valid && formularioRegistrase.controls['password'].valid)" 
+                    >
+                        <span  class="error">Las contraseñas no coinciden.</span>
+                      </div>
+              </div>
+                
+
+
                 <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
                   Aceptar
                 </button>
