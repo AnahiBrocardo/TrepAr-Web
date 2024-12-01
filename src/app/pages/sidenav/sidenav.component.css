@@ -146,3 +146,23 @@
   background-color: #a7dcdf;
   border-color: #759a9c;
 }
+
+
+@media (max-width: 425px) {
+  .sidenav {
+    width: 100vw; /* Ocupa todo el ancho de la pantalla */
+  }
+
+  .sidenav-collapsed {
+    width: 5rem;
+  }
+
+  .sidenav .logo-container {
+    justify-content: space-between; /
+  }
+
+  .sidenav-nav {
+    padding: 1rem;
+    align-items: flex-start; 
+  }
+}

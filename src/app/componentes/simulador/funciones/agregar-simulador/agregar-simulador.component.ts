@@ -180,17 +180,7 @@ calcularCostoMateriaPrimaPorUnidad(): number {
 }
 
 calcularTodo() {
-  if (
-    this.formulario.get('precioMP')?.value === 0 ||
-    this.formulario.get('cantidadMP')?.value === 0 ||
-    this.formulario.get('UnidadDeCompraMP')?.value === 0 ||
-    this.formulario.get('valorGF')?.value === 0 ||
-    this.formulario.get('CantidadProductoMensual')?.value === 0 ||
-    this.formulario.get('Ganancia')?.value === 0
-  ) {
-    this.camposIncompletos=true;
-    return this.precioConGanancia = 0;
-  }
+ 
   
   const costoFijoPorUnidad = this.calcularCostoMateriaPrimaPorUnidad();
   const gastoFijoPorUnidad = this.calcularGastoPorUnidad();
