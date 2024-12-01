@@ -1,8 +1,7 @@
 .simulador {
-    width: 1130px;
+    width: 75vw;
     padding: 1vh;
-    padding-top: 3vh;
-    height: 95vh;
+    height: 100vh;
     border-radius: 15px;
     background-color: rgba(255, 255, 255, 0.89);
     margin: 3vh auto;
@@ -13,6 +12,15 @@
 }
 .mat-mdc-form-field:not(.mat-mdc-paginator-page-size-select) {
     width: 100%;
+}
+
+.titulo{
+    text-align: left;
+    font-size: 1.4rem;
+    padding-left: 2vw;
+    width: 74vw;
+    border-radius: 13px;
+    box-shadow: 0 2px 8px rgba(131, 131, 131, 0.1);
 }
 
 .mat-mdc-no-data-row td div.mensaje-no-existen-datos {
@@ -62,6 +70,7 @@
 
 mat-toolbar {
     background-color: transparent !important;
+    margin-top: 4vh;
     box-shadow: none; /* Elimina la sombra, si existe */
 }
 
@@ -80,24 +89,22 @@ mat-toolbar {
     margin-bottom: 0;
 }
 
-@media (max-width: 1023px){
+@media (max-width: 1024px){
     .simulador {
-        width: 50vw !important; 
         padding: 0vh !important; 
-        padding-top: 10vh !important; 
         height: 90vh !important; 
         border-radius: 15px !important; 
         background-color: rgba(255, 255, 255, 0.89) !important; 
         margin: 2vh auto !important; 
     } 
+
 }
 
 @media (max-width: 768px) { 
 .simulador {
     width: 80vw !important; 
     padding: 0vh !important; 
-    padding-top: 5vh !important; 
-    height: 60vh !important; 
+    height: 80vh !important; 
     border-radius: 15px !important; 
     background-color: rgba(255, 255, 255, 0.89) !important; 
     margin: 2vh auto !important; 
@@ -125,13 +132,16 @@ mat-toolbar {
         margin: 0 auto !important; /* Centrar el contenedor horizontalmente */
      }
      
+     .titulo{
+   
+        width: 80vw !important;
+    }
     }
 
     @media (max-width: 425px) { 
         .simulador {
             width: 90vw !important; 
-            padding: 0vh !important; 
-            padding-top: 10vh !important; 
+            padding: 0vh !important;  
             height: 90vh !important; 
             border-radius: 15px !important; 
             background-color: rgba(255, 255, 255, 0.89) !important; 
