@@ -52,6 +52,7 @@
                     </span>
                   </div>
                 </div>
+                
                 <!-- Notificación de mensaje no visto -->
                 <div *ngIf="chat.ultimoMensajeNoVisto" class="ms-auto align-self-start">
                   <i class="fa-solid fa-circle" style="color: #ff5e4d;"></i>
@@ -73,6 +74,12 @@
                   class="rounded-circle me-2" alt="{{ currentChat.username }}" width="40" height="40">
                 <div class="flex-grow-1">
                   <strong>{{ currentChat.username }}</strong>
+                  <!-- Texto "Ver perfil" debajo del nombre -->
+                  <div class="text-muted small" 
+                  style="cursor: pointer;" 
+                    (click)="seleccionPerfil(currentChat.idUser)">
+                    Ver perfil
+                    </div>
                 </div>
               </div>
             </div>

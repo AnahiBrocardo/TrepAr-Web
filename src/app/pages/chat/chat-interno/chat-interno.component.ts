@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { Chat } from '../../../Interfaces/chat';
@@ -28,6 +29,8 @@ export class ChatInternoComponent implements OnInit{
   currentChat?: any;
   chatsConUsuario: any[] = []; // Asegúrate de que esta variable esté inicializada como un arreglo vacío
   limitPantallaCel: number = 768; 
+  router= inject(Router);
+  idPerfilDestinatario: string = '';
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -238,5 +241,33 @@ enviarMensaje() {
       });
     }
   }
+
+  
+  seleccionPerfil(userDestinatarioID: string){
+    
+    if(userDestinatarioID){
+      this.perfilService.getPerfilByIdUser(userDestinatarioID).subscribe({
+        next: (perfilArray: Perfil[]) => {
+          if (perfilArray.length > 0) {
+            if(perfilArray[0].id){
+              this.idPerfilDestinatario = perfilArray[0].id;
+             
+             localStorage.setItem('idPerfilSeleccionado', this.idPerfilDestinatario );
+            this.router.navigateByUrl('dashboard/comunidad/perfil');
+            }           
+          
+          } else {
+            console.error('El perfil no existe o no se encontró.');
+          }
+        },
+        error: (e: Error) => {
+          console.error('Error al obtener el perfil:', e);
+        }
+      })
+    }
+    
+  }
+
+
   
 }
