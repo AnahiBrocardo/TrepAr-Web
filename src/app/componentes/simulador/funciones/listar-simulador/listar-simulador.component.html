@@ -11,12 +11,15 @@
 
               <!-- Columna para la barra de búsqueda -->
               <div class="col-12 col-sm-6 col-md-auto ms-2">
-                  <mat-form-field appearance="fill" class="w-60 w-sm-30">
-                      <mat-label>Buscar</mat-label>
-                      <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" (keyup.enter)="leerTodo()" matInput>
-                      <mat-icon matSuffix>search</mat-icon>
-                  </mat-form-field>
-              </div>
+                <mat-form-field appearance="fill" class="w-60 w-sm-30">
+                    <mat-label>Buscar</mat-label>
+                    <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" 
+                           (keyup.enter)="leerTodo()" matInput>
+                    <button mat-icon-button matSuffix aria-label="Buscar" (click)="leerTodo()">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
           </div>
       </div>
   </mat-toolbar>
