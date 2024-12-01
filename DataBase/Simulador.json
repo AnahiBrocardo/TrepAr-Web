@@ -25,6 +25,19 @@
       "Ganancia": 40,
       "PrecioFinal": 1960,
       "habilitado": true
+    },
+    {
+      "idUsuario": "741a",
+      "nombre": "Velas-Aromaticas",
+      "precioMP": 100,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 2,
+      "valorGF": 60000,
+      "CantidadProductoMensual": 500,
+      "Ganancia": 50,
+      "PrecioFinal": 255,
+      "habilitado": true,
+      "id": "3967"
     }
   ]
 }
