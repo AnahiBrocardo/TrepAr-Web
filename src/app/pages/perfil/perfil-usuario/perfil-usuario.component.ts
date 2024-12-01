@@ -43,7 +43,6 @@ export class PerfilUsuarioComponent implements OnInit {
       next: (perfilArray: Perfil[]) => {
         if (perfilArray.length > 0) {
           this.perfilData = perfilArray[0]; // Acceder al primer elemento del array
-          console.log(this.perfilData);
         } else {
           console.error('El perfil no existe o no se encontró.');
         }
