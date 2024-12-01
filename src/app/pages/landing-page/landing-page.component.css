@@ -146,6 +146,15 @@
   }
 }
 
+@media (max-width: 768px) and (min-width: 426px) {
+  .items-team {
+    padding-left: 0.5vw !important;
+    padding-right: 0.5vw  !important;
+  }
+
+}
+
+
 @media (min-width: 1024px) {
   .titulo-box {
     font-size: 2rem;
@@ -162,7 +171,7 @@
   position: relative;
   width: 100%;
   max-width: 400px;
-  height: 60vh;
+  height: 75vh;
 }
 
 .image-container img {
