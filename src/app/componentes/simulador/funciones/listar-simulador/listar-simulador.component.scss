@@ -1,12 +1,12 @@
 .simulador {
     width: 75vw;
     padding: 1vh;
-    height: 100vh;
+    min-height: 60vh; 
     border-radius: 15px;
     background-color: rgba(255, 255, 255, 0.89);
     margin: 3vh auto;
+    overflow-y: auto; 
 }
-
 .mat-toolbar .mat-mcd-form--field-subscript-wrappr.mat-mdc-form-field-bottom-aling {
     display: none;
 }

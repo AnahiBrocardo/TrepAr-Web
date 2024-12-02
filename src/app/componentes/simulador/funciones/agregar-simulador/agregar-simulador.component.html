@@ -55,13 +55,13 @@
         <h3>Paso 3: Gastos Fijos</h3>
         <mat-form-field>
           <mat-label>Monto de Gastos Fijos</mat-label>
-          <mat-icon matSuffix matTooltip="Indique el total en pesos de gastos fijos mensuales. Ej: Transporte, alquiler, servicios, etc">info</mat-icon>
+          <mat-icon matSuffix matTooltip="Indique el total en pesos de gastos fijos. Ej: Transporte, alquiler, servicios, etc">info</mat-icon>
           <input matInput type="number" [min]="1" formControlName="valorGF" placeholder="Costo total de gastos fijos">
           <mat-error *ngIf="formulario.get('valorGF')?.hasError('required')">El valor de gastos fijos es obligatorio.</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Cantidad de producto adquirido</mat-label>
-          <mat-icon matSuffix matTooltip="Cantidad total de productos adquiridos (en unidades)">info</mat-icon>
+          <mat-label>Cantidad total de productos comprados</mat-label>
+          <mat-icon matSuffix matTooltip="Indique la cantidad de productos comprados (en unidades) que corresponden a los gastos fijos. Por ejemplo, si el gasto fijo de transporte fue de $10,000 y se compraron un total de 10 productos, debe ingresar 10">info</mat-icon>
           <input matInput type="number" [min]="1" formControlName="CantidadProductoMensual" placeholder="Número de unidades adquiridas">
           <mat-error *ngIf="formulario.get('CantidadProductoMensual')?.hasError('required')">La cantidad es obligatoria.</mat-error>
         </mat-form-field>
@@ -76,7 +76,7 @@
         <h3>Paso 4: Ganancia</h3>
         <mat-form-field>
           <mat-label>Porcentaje de Ganancia</mat-label>
-          <mat-icon matSuffix matTooltip="Indique en porentaje de ganancia deseado">info</mat-icon>
+          <mat-icon matSuffix matTooltip="Indique el porentaje de ganancia deseado">info</mat-icon>
 
           <input matInput type="number" [min]="0" formControlName="Ganancia" placeholder="Porcentaje de ganancia">
           <mat-error *ngIf="formulario.get('Ganancia')?.hasError('required')">La ganancia es obligatoria.</mat-error>
