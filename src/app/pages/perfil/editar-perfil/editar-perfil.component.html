@@ -84,7 +84,7 @@ class="container-fluid formulario-perfil mb-4">
   </div>
 
     <div class="form-outline mb-4">
-    <label class="form-label" for="telefono">Teléfono</label>
+    <label class="form-label" for="telefono">Teléfono* </label>
     <input type="text" id="telefono" formControlName="telefono" class="form-control" placeholder="Número de teléfono" />
     <div *ngIf="formularioActualizacionPerfil.get('telefono')?.invalid && formularioActualizacionPerfil.get('telefono')?.touched" class="text-danger">
       Ingresa un número de teléfono válido (por ejemplo, para Argentina,+54 9 11 6123-4567 o 011 6123-4567).
