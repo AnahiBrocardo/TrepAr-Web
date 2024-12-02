@@ -116,8 +116,6 @@ onProvinciaChange(event: Event): void {
     this.dataArgentina.getProvinciaIdByNombre(provinciaSeleccionada).subscribe({
       next: (idProvincia) => {
         if (idProvincia) {
-          console.log('ID de la provincia:', idProvincia);
-
           // Obtener los municipios pasando el ID de la provincia
           this.dataArgentina.getLocalidadesIdProvincia(idProvincia).subscribe({
             next: (data: LocalidadesResponse) => {

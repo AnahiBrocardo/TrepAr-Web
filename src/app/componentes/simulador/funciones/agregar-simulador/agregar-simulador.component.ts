@@ -64,8 +64,6 @@ export class AgregarSimuladorComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log('Modo:', this.tipo);
-    console.log('ID Usuario:', this.idUsuario);
   }
   
   activarRuta(idUsuario: string){

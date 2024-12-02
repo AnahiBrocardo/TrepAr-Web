@@ -1,7 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, map, Observable, switchMap } from 'rxjs';
 import { Simulador } from '../../Interfaces/Simulador.interface';
 
 
@@ -33,5 +33,9 @@ deleteSimulador(id: number | undefined): Observable<Simulador> {
 
 putSimulador(id: string | null, Simulador: Simulador): Observable<Simulador> {
   return this.http.put<Simulador>(`${this.urlBase}/${id}`, Simulador)
+}
+
+emininarUnSimulador(id: string | undefined): Observable<Simulador> {
+  return this.http.delete<Simulador>(`${this.urlBase}/${id}`)
 }
 }

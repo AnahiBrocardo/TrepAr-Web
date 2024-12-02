@@ -7,6 +7,7 @@ import { PerfilService } from '../../../Servicios/perfil/perfil.service';
 import { Perfil } from '../../../Interfaces/perfil.interface';
 import { FormsModule } from '@angular/forms';
 import { forkJoin, map } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chat-interno',
@@ -257,7 +258,7 @@ enviarMensaje() {
             }           
           
           } else {
-            console.error('El perfil no existe o no se encontró.');
+            Swal.fire("El perfil no existe o no se encontró.");
           }
         },
         error: (e: Error) => {

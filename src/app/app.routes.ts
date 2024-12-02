@@ -30,10 +30,6 @@ export const routes: Routes = [
         component: DashboardComponent,
         children: [
             {
-            path: '', // Esta ruta se activará por defecto al ingresar al dashboard
-            component: InicioComponent, // El componente que quieres que se muestre por defecto
-            },
-            {
                 path: 'comunidad',
                 loadComponent:()=>import('./pages/principal/principal.page/principal.component').then(c=> c.PrincipalComponent)
               },

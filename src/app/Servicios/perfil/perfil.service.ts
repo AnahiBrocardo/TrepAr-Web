@@ -37,4 +37,7 @@ getPerfilByIdPerfil(idPerfil:string): Observable<Perfil[]>{
   return this.http.get<Perfil[]>(`${this.urlBase}?username=${username}`);
 }
 
+deletePerfilById (id: string | undefined): Observable<Perfil>{
+  return this.http.delete<Perfil>(`${this.urlBase}/${id}`);
+}
 }

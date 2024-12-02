@@ -90,7 +90,7 @@ export class SidenavComponent implements OnInit{
   redirigir(){
     localStorage.removeItem('userId'); //se elimina el token del idusuario 
     localStorage.removeItem('token'); //se elimina el token del usuario 
-    this.router.navigate(['/']).then(() => {//navega a la página de inicio
+    this.router.navigate(['']).then(() => {//navega a la página de inicio
       window.location.reload();//Refresca la página completamente 
     });
   }

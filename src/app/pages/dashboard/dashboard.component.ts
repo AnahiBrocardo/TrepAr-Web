@@ -14,7 +14,6 @@ export class DashboardComponent implements OnInit {
   activated= inject(ActivatedRoute);
   
   idUser:string='';
-
   isLeftSidebarCollapsed = signal<boolean>(false);
   screenWidth = signal<number>(window.innerWidth);
 
@@ -29,6 +28,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
     this.idUser = localStorage.getItem('userId') || '';
+
     
   }
 

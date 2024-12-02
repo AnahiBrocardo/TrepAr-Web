@@ -1,3 +1,4 @@
+import { Simulador } from './../../Interfaces/Simulador.interface';
 import { UpdateUserComponent } from './../update/update-user/update-user.component';
 import { Component, inject, OnInit } from '@angular/core';
 import { User } from '../../Interfaces/user.interface';
@@ -7,6 +8,9 @@ import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { PerfilService } from '../../Servicios/perfil/perfil.service';
 import { Perfil } from '../../Interfaces/perfil.interface';
+import { ProductoServiceService } from '../../Servicios/productos/productos-service.service';
+import { SimuladorService } from '../../Servicios/Simulador/Simulador.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-settings',
@@ -22,8 +26,9 @@ export class SettingsComponent implements OnInit{
   // Control de visibilidad del formulario
   mostrarFormulario: boolean = false;
   router= inject(Router);
- 
+  simuladorService= inject(SimuladorService);
   perfilSevice= inject(PerfilService);
+  productoService= inject(ProductoServiceService);
 
   userId: string='';
 
@@ -61,29 +66,29 @@ export class SettingsComponent implements OnInit{
     this.mostrarFormulario = !this.mostrarFormulario;
   }
 
-  deleteUsuario(){
+  async deleteUsuario() {
     if (this.userData) {
       // Asigna la fecha actual al campo deletedAt
       this.userData.deletedAt = new Date();
       // Llama al servicio para actualizar el usuario
-      this.userService.updateUser(this.userData).subscribe({
-        next: () => {
-          console.log('Usuario eliminado exitosamente');
-          localStorage.removeItem('token');
-          localStorage.removeItem('userId');
-          this.router.navigateByUrl('');
-        },
-        error: (err: Error) => {
-          console.error('Error al actualizar el usuario:', err);
-        }
-      });
+      try {
+        await this.userService.updateUser(this.userData).toPromise();
+        await this.borrarDatosPerfil(); // Espera a que se borren los datos del perfil
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        this.router.navigate(['']).then(() => {
+          window.location.reload(); // Refresca la página completamente
+        });
+      } catch (err) {
+        console.error('Error al actualizar el usuario o borrar datos del perfil:', err);
+      }
     } else {
       console.error('No se pudo actualizar el usuario: userData es indefinido');
     }
   }
-
-  verificacionEliminacion() {
-    Swal.fire({
+  
+  async verificacionEliminacion() {
+    const result = await Swal.fire({
       title: "¿Estás seguro que deseas eliminar la cuenta?",
       text: "¡No podrás revertirlo!",
       icon: "warning",
@@ -91,19 +96,104 @@ export class SettingsComponent implements OnInit{
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Sí, eliminar"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Llamar a la verificación de la contraseña solo si se confirma la eliminación
-        this.verificarPassword().then(() => {
-          // Una vez que se haya verificado la contraseña, eliminar el usuario
-          this.deleteUsuario();
-        }).catch((error) => {
-          console.log(error); // Si ocurre algún error en la verificación de la contraseña, no eliminar
-        });
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        // Llama a la función para verificar la contraseña y espera su resultado
+        await this.verificarPassword();
+        // Si la verificación es exitosa, llama a deleteUsuario
+        await this.deleteUsuario();
+      } catch (error) {
+        console.log(error); // Maneja cualquier error en la verificación de la contraseña
       }
+    }
+  }
+  
+
+  async borrarDatosPerfil() {
+    try {
+      // Espera a que cada método de borrado se complete en orden.
+      await this.borrarPerfil();
+      await this.borrarTodosProductosPerfil();
+      await this.eliminarSimuladoresDeUsuario();
+      console.log('Todos los datos de perfil han sido borrados exitosamente.');
+    } catch (error) {
+      console.error('Error al borrar datos de perfil:', error);
+    }
+  }
+  
+  async borrarPerfil(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.perfilSevice.getPerfilByIdUser(this.userId).subscribe({
+        next: (perfiles: Perfil[]) => {
+          const idPerfil = perfiles[0]?.id;
+          if (idPerfil) {
+            this.perfilSevice.deletePerfilById(idPerfil).subscribe({
+              next: () => {
+                resolve();
+              },
+              error: (e: Error) => {
+                console.error('Error al borrar perfil:', e);
+                reject(e);
+              }
+            });
+          } else {
+            resolve(); // No hay perfil para borrar
+          }
+        },
+        error: (e: Error) => {
+          console.error('Error al obtener perfil:', e);
+          reject(e);
+        }
+      });
     });
   }
-
+  
+  async borrarTodosProductosPerfil(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.productoService.deleteAllProductosByUserId(this.userId).subscribe({
+        next: () => {
+          resolve();
+        },
+        error: (error: Error) => {
+          console.error('Error al borrar productos:', error);
+          reject(error);
+        }
+      });
+    });
+  }
+  
+  async eliminarSimuladoresDeUsuario(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.simuladorService.getSimulador(this.userId).subscribe({
+        next: (simuladores: Simulador[]) => {
+          if (simuladores.length > 0) {
+            const deleteRequests = simuladores.map((simulador) =>
+              this.simuladorService.emininarUnSimulador(simulador.id)
+            );
+    
+            forkJoin(deleteRequests).subscribe({
+              next: () => {
+                resolve();
+              },
+              error: (error: Error) => {
+                console.error('Error al eliminar simuladores:', error);
+                reject(error);
+              }
+            });
+          } else {
+            resolve(); // No hay simuladores para borrar
+          }
+        },
+        error: (error: Error) => {
+          console.error('Error al obtener simuladores:', error);
+          reject(error);
+        }
+      });
+    });
+  }
+  
 async verificarPassword() {
   try {
     const result = await Swal.fire({

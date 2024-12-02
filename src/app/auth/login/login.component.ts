@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit{
       next: (userData)=> {//se ejecuta cada vez que el Observable emite un valor
         if(userData.id){
           localStorage.setItem('userId',userData.id);
-          this.router.navigateByUrl(`dashboard`);// Redirige al usuario a la ruta '/dashboard' utilizando el método navigateByUrl
+          this.router.navigateByUrl(`dashboard/inicio`);// Redirige al usuario a la ruta '/dashboard' utilizando el método navigateByUrl
           this.formularioLogin.reset();//reseteamos los campos del form
         }
         

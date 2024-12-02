@@ -83,7 +83,7 @@ deleteSimulador(Simuladorid: number) {
       this.SimuladorService.deleteSimulador(Simuladorid).subscribe({
         next: () => {
           Swal.fire("Simulacion eliminada correctamente");
-          location.reload();
+          this.leerTodo();
         },
         error: (e: Error) => {
           console.log('No se elimino');
@@ -153,7 +153,6 @@ agregarSimulado() {
 
   //resultado y funcion de la ventana 
   dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
       this.listarTodasSimulaciones(this.idUsuario);
     });
   

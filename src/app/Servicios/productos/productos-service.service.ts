@@ -37,4 +37,15 @@ deleteProductosbyId (id: string | undefined): Observable<ProductoInterface>{
   return this.http.delete<ProductoInterface>(`${this.urlBase}/${id}`);
 }
 
+deleteAllProductosByUserId(idUsuario: string): Observable<void> {
+  return this.getProductos(idUsuario).pipe(
+    map((productos) => {
+      // Eliminamos cada producto de forma individual
+      productos.forEach(producto => {
+        this.deleteProductosbyId(producto.id).subscribe();
+      });
+    })
+  );
+}
+
 }
