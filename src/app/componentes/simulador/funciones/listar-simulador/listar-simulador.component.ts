@@ -1,5 +1,6 @@
-import { Simulador } from '../../../../Interfaces/Simulador.interface'; 
+
 import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
+
 import { AgregarSimuladorComponent } from "../agregar-simulador/agregar-simulador.component";
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import Swal from 'sweetalert2';
+import { Simulador } from '../../../../Interfaces/Simulador.interface';
 import { SimuladorService } from '../../../../Servicios/Simulador/Simulador.service';
 
 @Component({
@@ -29,7 +31,7 @@ import { SimuladorService } from '../../../../Servicios/Simulador/Simulador.serv
     MatPaginatorModule,
     FormsModule,
     MatTooltipModule,
-    MatDialogModule,
+    MatDialogModule, 
     ],
   templateUrl: './listar-simulador.component.html',
   styleUrl: './listar-simulador.component.scss'
@@ -42,6 +44,7 @@ idUsuario: string = '';
 constructor(private route: ActivatedRoute,  private router: Router) { }
 
 ngOnInit(): void {
+  console.log(this.idUsuario);
   this.idUsuario = localStorage.getItem('userId') || '';
   if (this.idUsuario) { this.listarTodasSimulaciones(this.idUsuario); }
 
@@ -81,7 +84,7 @@ deleteSimulador(Simuladorid: number) {
       this.SimuladorService.deleteSimulador(Simuladorid).subscribe({
         next: () => {
           Swal.fire("Simulacion eliminada correctamente");
-          this.leerTodo();
+          location.reload();
         },
         error: (e: Error) => {
           console.log('No se elimino');
@@ -114,14 +117,14 @@ leerTodo() {
       this.cantidadTotal = datosFiltrados.length; // Ajuste según la estructura de tu respuesta 
       this.dataSource.data = datosFiltrados.slice(inicio, fin);// Suponiendo que la cantidad total es la longitud del array de simuladores 
        }, 
-    error: (error) => { 
+    error: (error:Error) => { 
       console.error('Error al obtener los simuladores:', error); } }); }
 
 ///--------------paginado---------------------------
 cantidadTotal= 0;
-cantidadPorPagina= 8;
+cantidadPorPagina= 10;
 numeroDePag= 0;
-opcionesDePaginado: number[] = [1 , 5, 8];
+opcionesDePaginado: number[] = [1 , 5, 10];
 
 CambiarPagina(event: any){
   this.cantidadPorPagina = event.pageSize; 
@@ -140,9 +143,9 @@ agregarSimulado() {
     disableClose: true, // esto hace que si hago click por fuera de la ventana modal no se me cierre
     autoFocus: true, // esto hace que se ponga el foco del mouse n la veentana que se abre
     closeOnNavigation: false, //por si se aprieta algo fuera de la ventana
-    position: {top: '10vh'},
-    width: '80vw',// Ancho del 80% del viewport
-    maxHeight: '90vh',
+    position: {top: '30px'},
+    width: '70vw',// Ancho del 80% del viewport
+    maxHeight: '80vh',
     data: {
       tipo: 'CREAR',
       idUsuario: this.idUsuario // Pasa el idUsuario al diálogo
@@ -151,8 +154,9 @@ agregarSimulado() {
 
   //resultado y funcion de la ventana 
   dialogRef.afterClosed().subscribe(result => {
-    this.listarTodasSimulaciones(this.idUsuario); //Método para recargar la lista
+      console.log(`Dialog result: ${result}`);
     });
+  
 }
 
 
@@ -162,9 +166,9 @@ editarSimulador(simulador: Simulador) {
     disableClose: true,
     autoFocus: true,
     closeOnNavigation: false,
-    position: { top: '10vh' },
-    width: '80vw',
-    maxHeight: '90vh',
+    position: { top: '30px' },
+    width: '70vw',
+    maxHeight: '80vh',
     data: {
       tipo: 'EDITAR', // Modo edición
       simulador: simulador,// Pasa los datos del simulador
@@ -174,7 +178,8 @@ editarSimulador(simulador: Simulador) {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      
+      console.log('Simulador actualizado:', result);
+      // Aquí puedes actualizar la lista de simuladores
       this.listarTodasSimulaciones(this.idUsuario); //Método para recargar la lista
     }
   });
