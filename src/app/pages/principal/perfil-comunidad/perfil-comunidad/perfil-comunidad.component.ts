@@ -149,11 +149,27 @@ totalPagesProducto(): number {
   }
 
   leerTodo() {
-        this.listaProductos = this.textoBuscado
-          ? this.listaProductos.filter(producto =>
-              producto.nombre.toLowerCase().includes(this.textoBuscado.toLowerCase())
-            )
-          : this.listaProductos;
+    if(this.perfilSeleccionado){
+      if(this.perfilSeleccionado.idUser)
+      {
+        this.productoService.getProductos(this.perfilSeleccionado.idUser).subscribe({
+          next: (productos: ProductoInterface[]) => {
+            this.listaProductos = this.textoBuscado
+              ? productos.filter(producto =>
+                producto.nombre.toLowerCase().includes(this.textoBuscado.toLowerCase())
+              )
+              : productos;
+    
+          },
+          error: (error) => {
+            console.error('Error al obtener los productos:', error);
+          }
+        });
+
+      }
+      
+    }
+    
   }
 
   volverComunidad(){
