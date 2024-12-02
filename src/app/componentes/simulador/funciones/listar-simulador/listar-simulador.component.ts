@@ -44,10 +44,9 @@ idUsuario: string = '';
 constructor(private route: ActivatedRoute,  private router: Router) { }
 
 ngOnInit(): void {
-  console.log(this.idUsuario);
   this.idUsuario = localStorage.getItem('userId') || '';
   if (this.idUsuario) { this.listarTodasSimulaciones(this.idUsuario); }
-
+  this.leerTodo();
 }
  // Método para navegar a AgrgarSimuladorComponent 
 
@@ -122,9 +121,9 @@ leerTodo() {
 
 ///--------------paginado---------------------------
 cantidadTotal= 0;
-cantidadPorPagina= 10;
+cantidadPorPagina= 5;
 numeroDePag= 0;
-opcionesDePaginado: number[] = [1 , 5, 10];
+opcionesDePaginado: number[] = [1 , 3, 5];
 
 CambiarPagina(event: any){
   this.cantidadPorPagina = event.pageSize; 
@@ -155,6 +154,7 @@ agregarSimulado() {
   //resultado y funcion de la ventana 
   dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.listarTodasSimulaciones(this.idUsuario);
     });
   
 }
@@ -180,7 +180,7 @@ editarSimulador(simulador: Simulador) {
     if (result) {
       console.log('Simulador actualizado:', result);
       // Aquí puedes actualizar la lista de simuladores
-      this.listarTodasSimulaciones(this.idUsuario); //Método para recargar la lista
+      this.listarTodasSimulaciones(this.idUsuario);
     }
   });
 }

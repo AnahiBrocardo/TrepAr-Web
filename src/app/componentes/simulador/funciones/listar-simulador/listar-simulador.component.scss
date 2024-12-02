@@ -167,21 +167,17 @@ mat-toolbar {
             .mat-form-field { 
                 width: 100% !important; /* Ajusta el ancho de la barra de búsqueda */
                 margin-bottom: 10px !important; } /* Ajustar el contenedor de la tabla */ 
-                .mat-elevation-z8 { width: 90% !important; /* Reducir el tamaño del contenedor en pantallas
+                .mat-elevation-z8 { width: 100% !important; /* Reducir el tamaño del contenedor en pantallas
                      móviles */ 
                 margin: 0 auto !important; /* Centrar el contenedor horizontalmente */
              }
              
-            .mat-elevation-z8 {
-                width: 100% !important;
-              }
-
-              .mat-table{
-                width: 30vw !important;
-              }
-
               .mensaje-no-existen-datos{
                 font-size: 0.7rem
+              }
+
+              .mat-paginador{
+                width:100% !important;
               }
              
 }

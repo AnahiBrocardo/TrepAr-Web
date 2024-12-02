@@ -94,7 +94,7 @@ export class AgregarSimuladorComponent implements OnInit {
     } else if (this.tipo === 'EDITAR') {
       this.updateSimuladorBD(simulador); // Actualizar un simulador existente
     }
-
+   
     this.dialogRef.close(simulador); // Devuelve el simulador al componente padre
   }
 
