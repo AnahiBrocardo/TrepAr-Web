@@ -14,15 +14,13 @@ import { loginGuard } from './guards/auth.guards';
 import { logOutGuard } from './guards/auth.guards.logOut';
 import { AgregarSimuladorComponent } from './componentes/simulador/funciones/agregar-simulador/agregar-simulador.component';
 import { ListarSimuladorComponent } from './componentes/simulador/funciones/listar-simulador/listar-simulador.component';
-import { PerfilUsuarioComponent } from './pages/perfil/perfil-usuario/perfil-usuario.component';
-import { PrincipalComponent } from './pages/principal/principal.page/principal.component';
 import { PerfilComunidadComponent } from './pages/principal/perfil-comunidad/perfil-comunidad/perfil-comunidad.component';
 import { PreguntasFrecuentesComponent } from './pages/ayuda/preguntas-frecuentes/preguntas-frecuentes.component';
 import { ChatInternoComponent } from './pages/chat/chat-interno/chat-interno.component';
-import { InicioComponent } from './pages/inicio/inicio/inicio.component';
+
 
 export const routes: Routes = [
-   { path: '', component: LandingPageComponent,canActivate:[logOutGuard]},
+   {path: '', component: LandingPageComponent,canActivate:[logOutGuard]},
     {path: 'acceso', component: InicioSesionPageComponent, canActivate:[logOutGuard]},
     {path: 'registrarse', component: RegistrarsePageComponent,canActivate:[logOutGuard]},
     {
@@ -41,7 +39,7 @@ export const routes: Routes = [
             {path: 'settings', component: SettingsComponent},
             { path: 'simulador/listar-simulador', component: ListarSimuladorComponent },
             { path: 'agregar-simulador', component: AgregarSimuladorComponent},
-            {path: 'perfil', component: PerfilUsuarioComponent},
+            {path: 'perfil',loadComponent:()=>import('./pages/perfil/perfil-usuario/perfil-usuario.component').then(c=> c.PerfilUsuarioComponent)},
             {path: 'preguntas-frecuentes', component:PreguntasFrecuentesComponent},
             {path: 'chat', component:ChatInternoComponent},
             {path: 'inicio', loadComponent:()=>import('./pages/inicio/inicio/inicio.component').then(c=> c.InicioComponent)}
