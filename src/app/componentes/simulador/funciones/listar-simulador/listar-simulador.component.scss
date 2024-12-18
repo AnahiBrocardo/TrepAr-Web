@@ -106,11 +106,16 @@ mat-toolbar {
 .simulador {
     width: 80vw !important; 
     padding: 0vh !important; 
-    height: 80vh !important; 
+    height: 89vh !important; 
     border-radius: 15px !important; 
     background-color: rgba(255, 255, 255, 0.89) !important; 
     margin: 2vh auto !important; 
 } 
+
+.titulo{
+   margin-bottom: 7vh;
+}
+
 /* Botón Crear */ 
 .mat-toolbar .container-fluid .row 
 { flex-direction: column !important; /* Cambia la dirección de la fila a columna en móviles */ 
@@ -167,7 +172,8 @@ mat-toolbar {
             .mat-form-field { 
                 width: 100% !important; /* Ajusta el ancho de la barra de búsqueda */
                 margin-bottom: 10px !important; } /* Ajustar el contenedor de la tabla */ 
-                .mat-elevation-z8 { width: 100% !important; /* Reducir el tamaño del contenedor en pantallas
+                .mat-elevation-z8 { 
+                    width: 80vw !important; /* Reducir el tamaño del contenedor en pantallas
                      móviles */ 
                 margin: 0 auto !important; /* Centrar el contenedor horizontalmente */
              }
@@ -179,5 +185,45 @@ mat-toolbar {
               .mat-paginador{
                 width:100% !important;
               }
-             
+
+              .mat-table{
+                width: 10vw !important;
+              }
+    .mat-header-cell, .mat-cell {
+      font-size: 12px; /* Reducir el tamaño de texto */
+      padding: 8px; /* Reducir el espacio interno */
+    }
+  
+    /* Cambiar la disposición de las columnas para que se muestren de manera más vertical */
+    .table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  
+    /* Coloca un scroll horizontal en dispositivos móviles */
+    .mat-table {
+      width: 100%;
+      table-layout: fixed;
+    }
+  
+    .mat-row, .mat-header-row {
+      display: block;
+      width: 100%;
+    }
+  
+    .mat-cell, .mat-header-cell {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+  
+    /* Cambiar el estilo de los botones */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+         
 }

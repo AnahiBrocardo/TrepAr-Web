@@ -38,6 +38,84 @@
       "PrecioFinal": 255,
       "habilitado": true,
       "id": "3967"
+    },
+    {
+      "id": "a182",
+      "idUsuario": "133d",
+      "nombre": "sss",
+      "precioMP": 2,
+      "cantidadMP": 3,
+      "UnidadDeCompraMP": 3,
+      "valorGF": 30,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 20,
+      "PrecioFinal": 20.4,
+      "habilitado": true
+    },
+    {
+      "id": "fa6a",
+      "idUsuario": "133d",
+      "nombre": "wwww",
+      "precioMP": 2,
+      "cantidadMP": 2,
+      "UnidadDeCompraMP": 2,
+      "valorGF": 2,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 22,
+      "PrecioFinal": 3.66,
+      "habilitado": true
+    },
+    {
+      "id": "8bd9",
+      "idUsuario": "133d",
+      "nombre": "2222",
+      "precioMP": 22,
+      "cantidadMP": 2,
+      "UnidadDeCompraMP": 22,
+      "valorGF": 2,
+      "CantidadProductoMensual": 2,
+      "Ganancia": 22,
+      "PrecioFinal": 3.66,
+      "habilitado": true
+    },
+    {
+      "id": "18c4",
+      "idUsuario": "133d",
+      "nombre": "fffff",
+      "precioMP": 4,
+      "cantidadMP": 3,
+      "UnidadDeCompraMP": 4,
+      "valorGF": 3,
+      "CantidadProductoMensual": 4,
+      "Ganancia": 4,
+      "PrecioFinal": 3.9,
+      "habilitado": true
+    },
+    {
+      "id": "aad8",
+      "idUsuario": "133d",
+      "nombre": "vvvv",
+      "precioMP": 3,
+      "cantidadMP": 4,
+      "UnidadDeCompraMP": 5,
+      "valorGF": 4,
+      "CantidadProductoMensual": 5,
+      "Ganancia": 4,
+      "PrecioFinal": 3.33,
+      "habilitado": true
+    },
+    {
+      "id": "7cc0",
+      "idUsuario": "133d",
+      "nombre": "mmm",
+      "precioMP": 5,
+      "cantidadMP": 5,
+      "UnidadDeCompraMP": 5,
+      "valorGF": 5,
+      "CantidadProductoMensual": 5,
+      "Ganancia": 5,
+      "PrecioFinal": 6.3,
+      "habilitado": true
     }
   ]
 }
