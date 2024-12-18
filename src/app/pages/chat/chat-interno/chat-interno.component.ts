@@ -32,6 +32,7 @@ export class ChatInternoComponent implements OnInit{
   limitPantallaCel: number = 768; 
   router= inject(Router);
   idPerfilDestinatario: string = '';
+   chatsOriginal:any[]=[];
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -101,6 +102,7 @@ export class ChatInternoComponent implements OnInit{
         forkJoin(perfilRequests).subscribe({
           next: (resultados) => {
             this.chatsConUsuario = resultados;
+            this.chatsOriginal= resultados;
             this.originalChatsConUsuario = [...resultados];
           },
           error: (err) => {
@@ -161,8 +163,6 @@ seleccionarChat(chatSeleccionado: any) {
   this.currentChat= chatSeleccionado;
   this.mensajes = !this.mensajes;
    this.marcarMensajeComoVisto(chatSeleccionado);
-   // Notificar al servicio que se debe comprobar si hay mensajes no vistos
-   this.chatService.notifyToCheckMessages();
 }
 
 enviarMensaje() {
@@ -235,12 +235,14 @@ enviarMensaje() {
           // Actualizar en el array local
           ultimoMensaje.visto = true;
           chatSeleccionado.ultimoMensajeNoVisto = false;
+          this.chatService.notifyToCheckMessages();// Notificar al servicio que se debe comprobar si hay mensajes no vistos
         },
         error: (err: Error) => {
           console.error('Error al marcar el mensaje como visto:', err);
         }
       });
     }
+   
   }
 
   

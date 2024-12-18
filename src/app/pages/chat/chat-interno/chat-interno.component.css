@@ -154,6 +154,18 @@ div.message-received {
   text-align: center;
 }
 
+.barra-busqueda {
+  position: relative;
+  margin: 1rem; /* Margen alrededor de la barra de búsqueda */
+  max-width: 300px; /* Limitar el ancho de la barra */
+}
+
+.barra-busqueda input.form-control {
+  border-radius: 20px; /* Bordes redondeados */
+  padding: 0.5rem 1rem; /* Espaciado interno */
+}
+
+
 .imagen-no-chat {
   width: 30%;
   height: 30%;
@@ -187,6 +199,20 @@ div.message-received {
 @media (max-width: 425px) {
   .imagen-no-chat {
     width: 70%;
+  }
+
+  .container{
+    height: 83vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .imagen-no-chat {
+    width: 70%;
+  }
+
+  .container{
+    height: 83vh;
   }
 }
 
