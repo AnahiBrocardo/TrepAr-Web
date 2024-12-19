@@ -97,6 +97,20 @@
       "telefono": "+5492236958703",
       "imagePerfil": "https://www.mendoza.gov.ar/wp-content/uploads/sites/49/2024/04/LOGO.png",
       "listaFavoritos": []
+    },
+    {
+      "id": "58aa",
+      "idUser": "3546",
+      "userName": "Skate Shop Club",
+      "descripcion": "Somos un emprendimiento especializado en todo lo relacionado con el mundo del skate. Ofrecemos una amplia variedad de tablas, ruedas, rodamientos y accesorios de las mejores marcas para que puedas disfrutar de la experiencia del skate al máximo.",
+      "provincia": "Buenos Aires",
+      "ciudad": "Mar del Plata",
+      "linkInstagram": "",
+      "linkLinkedIn": "",
+      "linkWeb": "",
+      "telefono": "+5492234574896",
+      "imagePerfil": "https://i.pinimg.com/736x/ce/d2/52/ced25205b7f56a5597c6a40d797f6f93.jpg",
+      "listaFavoritos": []
     }
   ]
 }

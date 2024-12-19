@@ -351,6 +351,127 @@
       "deletedAt": false,
       "privado": false,
       "imagen": "https://i.pinimg.com/236x/32/21/71/322171bc6bebb301a7a9d802647603fa.jpg"
+    },
+    {
+      "id": "ac01",
+      "idUser": "3546",
+      "nombre": "TABLA DE SKATE PLAS PLAS BIG LOGO",
+      "categoria": "Deportes",
+      "descripcion": "Maple premium \nCanadian Hard Rock \n7 laminas seleccionadas, prensadas con epoxy americano.\nMedium Concave.",
+      "precio": 82000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/001/164/761/products/untitled-image-77-69c3295673c274022d17220286594223-1024-1024.webp"
+    },
+    {
+      "id": "cef1",
+      "idUser": "3546",
+      "nombre": "Tabla de skate WOODOO ALAS",
+      "categoria": "Deportes",
+      "descripcion": "• Grabado laser en la parte superior con la info de la tabla.\n• Construcción con tecnología EPOBLOCK™️\n• Maple Canadiense de 7 capas + pegamento EPOXI.\n• Robusta y resistente.\n• La mejor relación calidad / precio del mercado.\n• No incluye lija.",
+      "precio": 72900,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/001/164/761/products/alas-photoroom-305a32cef14289a3ea17340223959991-1024-1024.webp"
+    },
+    {
+      "id": "6c42",
+      "idUser": "3546",
+      "nombre": "TABLA PICKLE MAPLE CON FIBRA DE VIDRIO",
+      "categoria": "Otro",
+      "descripcion": "La fibra de vidrio es más resistente debido a su composición única\n\nConstrucción: MAPLE canadiense + fibra de vidrio\nCóncavo: Medio \nPegamento:Resina Epoxi Plus",
+      "precio": 120000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/001/164/761/products/pickle-fibra-1-photoroom-e81208ed92a146277217338498596930-1024-1024.webp"
+    },
+    {
+      "id": "bc81",
+      "idUser": "3546",
+      "nombre": "LIJA LONGBOARD LAB 27 X 125CM",
+      "categoria": "Otro",
+      "descripcion": "Lija de goma para long de 125cm de largo y 27 cm de ancho.",
+      "precio": 15000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/001/164/761/products/untitled-image-2024-07-30t143722-092-937568a7b89ad2045d17223626046777-1024-1024.webp"
+    },
+    {
+      "id": "2644",
+      "idUser": "3546",
+      "nombre": "LIJA THRASHER MAG. LOGO",
+      "categoria": "Otro",
+      "descripcion": "Lija engomada, micro perforada. ",
+      "precio": 18000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/001/164/761/products/untitled-image-2024-07-30t143937-078-42bc2e2a2de7ec917617223624999174-1024-1024.webp"
+    },
+    {
+      "id": "1cbd",
+      "idUser": "3546",
+      "nombre": "RULEMANES LAB ABEC 9 SELLADOS",
+      "categoria": "Otro",
+      "descripcion": "La tapa desmontable permite una mayor facilidad en la limpieza y el cuidado de tus rulemanes.\nIdeales para alta competencia en modalidad de velocidad (DH).",
+      "precio": 26500,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/001/164/761/products/rulemanes-lab-photoroom-2-d4b57468138cb398bf17344459176545-1024-1024.webp"
+    },
+    {
+      "id": "38bc",
+      "idUser": "3546",
+      "nombre": "RULEMANES ANDALÉ ABEC7",
+      "categoria": "Otro",
+      "descripcion": "Set de 8 rulemanes\nSellados\nFaciles de limpiar",
+      "precio": 35800,
+      "deletedAt": false,
+      "privado": true,
+      "imagen": "https://acdn.mitiendanube.com/stores/001/164/761/products/untitled-image-23-04bcc8ee80cee251b717248754062245-1024-1024.webp"
+    },
+    {
+      "id": "e44d",
+      "idUser": "3546",
+      "nombre": "TRUCKS TUXS 149MM HUECOS",
+      "categoria": "Otro",
+      "descripcion": "Son livianos pero resistentes, reduciendo el peso sin comprometer la durabilidad y facilitando maniobras técnicas. \n Doble Hollow\nKingpin\nEJE \nBuje de uretano \nAla hueca ",
+      "precio": 95000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/001/164/761/products/untitled-image-2024-08-24t160607-149-2e7035cc963534344317246959936378-1024-1024.webp"
+    },
+    {
+      "id": "c85d",
+      "idUser": "3546",
+      "nombre": "TRUCKS ACE CLASSICS 55 BLACK",
+      "categoria": "Otro",
+      "descripcion": "• Ancho del eje: 9.0 \"\n• Ancho deL hanger: 6.37 \"\n• Altura del truck: 53 mm (2,1 \") Classic\n• Se adapta a tablas: 8.5-9.12 \"\n• Buje superior: 12 mm de altura | 91a dureza\n• Buje inferior: inferior de 14 mm de altura | 86a dureza\n• Construido con aluminio puro serie 7071\n• Ejes de acero de la serie 3056 tratados térmicamente\n• Set de dos unidades.",
+      "precio": 99900,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/001/164/761/products/untitled-image-83-83e411e6938ee36de217272127013196-1024-1024.webp"
+    },
+    {
+      "id": "a845",
+      "idUser": "3546",
+      "nombre": "RUEDAS MINI LOGO A.W.O.L 55MM",
+      "categoria": "Otro",
+      "descripcion": "Uretano suave 78a de alto rebote y larga duración, perfecto para rodar sobre cualquier superficie, cruzar y empujar\nForma de corte en A para diversión en todo terreno.\nBuje moldeado por inyección reforzado con fibra para un rendimiento y una durabilidad superiores",
+      "precio": 90000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/001/164/761/products/untitled-image-2024-08-06t103246-810-b290bbca2197d3d2db17229514734401-1024-1024.webp"
+    },
+    {
+      "id": "e09b",
+      "idUser": "3546",
+      "nombre": "RUEDAS LONG CHEKERS 65MM 78A",
+      "categoria": "Otro",
+      "descripcion": "Medidas:\n\nDiametro: 65mm\nPisada: 51mm\nDureza: 78a\nProbalas con tu surf skate, mini long o longboard convencional.",
+      "precio": 71500,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/001/164/761/products/sulfur-s5-nuevo-photoroom-4-db3c42d47fa44beee017344450679778-1024-1024.webp"
     }
   ]
 }

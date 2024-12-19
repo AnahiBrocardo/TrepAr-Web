@@ -62,6 +62,15 @@
       "password": "12345678",
       "createdAt": "2024-11-30T23:17:12.844Z",
       "deletedAt": null
+    },
+    {
+      "id": "3546",
+      "nombre": "Franco",
+      "apellido": "Iglesias",
+      "email": "skateShopClub@gmail.com",
+      "password": "14141414",
+      "createdAt": "2024-12-19T17:29:44.904Z",
+      "deletedAt": null
     }
   ]
 }
