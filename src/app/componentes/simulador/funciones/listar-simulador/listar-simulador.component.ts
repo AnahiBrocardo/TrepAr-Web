@@ -153,10 +153,7 @@ agregarSimulado() {
 
   //resultado y funcion de la ventana 
   dialogRef.afterClosed().subscribe(result => {
-    
-      this.listarTodasSimulaciones(this.idUsuario);
-      
-     this.leerTodo();
+         this.leerTodo();
     });
   
 }
