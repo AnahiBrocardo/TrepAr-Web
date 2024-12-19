@@ -5,14 +5,14 @@
           <div class="row align-items-center d-flex justify-content-between">
               <!-- Columna para el botón Crear -->
               <div class="col-auto col-sm-6 col-md-auto">
-                  <button mat-fab extended class="my-2" (click)="agregarSimulado()" [style.width]="'auto'">
+                  <button mat-fab extended class="my-2 crear" (click)="agregarSimulado()" [style.width]="'auto'">
                       <mat-icon>note_add</mat-icon> Crear
                   </button>
               </div>
 
               <!-- Columna para la barra de búsqueda -->
               <div class="col-12 col-sm-6 col-md-auto ms-2">
-                <mat-form-field appearance="fill" class="w-60 w-sm-30">
+                <mat-form-field appearance="fill" class="w-60 w-sm-30 buscar">
                     <mat-label>Buscar</mat-label>
                     <input [(ngModel)]="textoBuscado" name="textoBuscado" placeholder="Nombre del producto" 
                            (keyup.enter)="leerTodo()" matInput>
@@ -25,7 +25,7 @@
       </div>
   </mat-toolbar>
 
-  <div class="container-fluid my-3">
+  <div class="container-fluid my-2">
       <div class="row">
           <div class="col">
               <div class="mat-elevation-z8">

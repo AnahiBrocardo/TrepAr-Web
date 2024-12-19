@@ -122,6 +122,20 @@ export class UpdateUserComponent implements OnInit {
    
   }
 
+
+ verificarCamposCompletos(): boolean {
+  // Obtener los valores de los campos del formulario
+  const nombre = this.formularioUpdateUserData.get('nombre')?.value;
+  const apellido = this.formularioUpdateUserData.get('apellido')?.value;
+  const email = this.formularioUpdateUserData.get('email')?.value;
+
+  // Crear una variable local que almacene el valor booleano
+  const camposCompletos = !!(nombre && apellido && email); 
+
+  // Retornar el valor de la variable local
+  return camposCompletos;
+}
+
   // Método para preparar los datos del usuario y enviarlos al servicio
   private actualizarUsuario() {
 

@@ -169,9 +169,14 @@ mat-toolbar {
               width: 70% !important; 
             } 
         
+            .container-fluid{
+                padding: 0 !important;
+            }
             .mat-form-field { 
                 width: 100% !important; /* Ajusta el ancho de la barra de búsqueda */
+                padding: 0 !important;
                 margin-bottom: 10px !important; } /* Ajustar el contenedor de la tabla */ 
+            
                 .mat-elevation-z8 { 
                     width: 80vw !important; /* Reducir el tamaño del contenedor en pantallas
                      móviles */ 
@@ -180,6 +185,14 @@ mat-toolbar {
              
               .mensaje-no-existen-datos{
                 font-size: 0.7rem
+              }
+
+              .crear{
+                margin: 0 !important;
+              }
+
+              .buscar{
+                padding: 0 !important;
               }
 
               .mat-paginador{
@@ -208,16 +221,7 @@ mat-toolbar {
       table-layout: fixed;
     }
   
-    .mat-row, .mat-header-row {
-      display: block;
-      width: 100%;
-    }
-  
-    .mat-cell, .mat-header-cell {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
+    
   
     /* Cambiar el estilo de los botones */
     .button-container {

@@ -27,9 +27,10 @@
 
         <div class="buttons">
             <!-- Botón de Modificar -->
-            <button (click)="toggleModificar()" class="btn btn-edit">Modificar cuenta</button>
-            
+            <button (click)="toggleModificar()" *ngIf="!mostrarFormulario" class="btn btn-edit">Modificar cuenta</button>
+            <button (click)="toggleModificar()"  *ngIf="mostrarFormulario" class="btn btn-edit">Volver</button>
             <!-- Barra desplegable con el formulario de modificar y el botón Eliminar -->
+            
             <div *ngIf="mostrarFormulario" class="form-container">
                 <!-- Botón de Eliminar que aparece al lado del botón de Modificar -->
                 <button (click)="verificacionEliminacion()" class="btn btn-delete">Eliminar cuenta</button>
