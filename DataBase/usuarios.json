@@ -76,7 +76,7 @@
       "id": "472d",
       "nombre": "Juana",
       "apellido": "Latorre ",
-      "email": "hola@petshopmdq.com",
+      "email": "hola@petshop.com",
       "password": "11111111",
       "createdAt": "2024-12-19T19:42:15.346Z",
       "deletedAt": null
@@ -85,7 +85,7 @@
       "id": "fa44",
       "nombre": "Ana",
       "apellido": "Flores",
-      "email": "ventas@atelierbotanico.com.ar",
+      "email": "ventas@atelier.com.ar",
       "password": "41414141",
       "createdAt": "2024-12-19T21:28:49.130Z",
       "deletedAt": null
@@ -94,9 +94,18 @@
       "id": "86a1",
       "nombre": "Patricia",
       "apellido": "Dominguez",
-      "email": "pawaccesoriosonline@gmail.com",
+      "email": "pawaccesorios@gmail.com",
       "password": "15151515",
       "createdAt": "2024-12-19T21:53:23.031Z",
+      "deletedAt": null
+    },
+    {
+      "id": "14cd",
+      "nombre": "Sofia",
+      "apellido": "Perez",
+      "email": "comidabysofia@gmail.com",
+      "password": "12345678",
+      "createdAt": "2024-12-19T23:51:11.926Z",
       "deletedAt": null
     }
   ]
