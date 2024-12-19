@@ -70,7 +70,7 @@ class="container-fluid formulario-perfil mb-4">
     <div class="form-outline mb-4">
     <label class="form-label" for="linkLinkedIn">LinkedIn</label>
     <input type="text" id="linkLinkedIn" formControlName="linkLinkedIn" class="form-control" placeholder="https://linkedin.com/in/tu-perfil" />
-    <div *ngIf="formularioActualizacionPerfil.get('linkLinkedIn')?.invalid && formularioActualizacionPerfil.get('linkLinkedIn')?.touched" class="text-danger">
+    <div *ngIf="formularioActualizacionPerfil.get('linkLinkedIn')?.invalid && (formularioActualizacionPerfil.controls['linkLinkedIn'].dirty || formularioActualizacionPerfil.controls['linkLinkedIn'].touched)" class="text-danger">
       Ingresa un enlace válido de LinkedIn (por ejemplo, https://linkedin.com/in/tu-perfil).
     </div>
   </div>

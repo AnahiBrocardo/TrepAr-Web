@@ -71,6 +71,33 @@
       "password": "14141414",
       "createdAt": "2024-12-19T17:29:44.904Z",
       "deletedAt": null
+    },
+    {
+      "id": "472d",
+      "nombre": "Juana",
+      "apellido": "Latorre ",
+      "email": "hola@petshopmdq.com",
+      "password": "11111111",
+      "createdAt": "2024-12-19T19:42:15.346Z",
+      "deletedAt": null
+    },
+    {
+      "id": "fa44",
+      "nombre": "Ana",
+      "apellido": "Flores",
+      "email": "ventas@atelierbotanico.com.ar",
+      "password": "41414141",
+      "createdAt": "2024-12-19T21:28:49.130Z",
+      "deletedAt": null
+    },
+    {
+      "id": "86a1",
+      "nombre": "Patricia",
+      "apellido": "Dominguez",
+      "email": "pawaccesoriosonline@gmail.com",
+      "password": "15151515",
+      "createdAt": "2024-12-19T21:53:23.031Z",
+      "deletedAt": null
     }
   ]
 }

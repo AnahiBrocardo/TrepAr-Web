@@ -3,7 +3,7 @@
     {
       "idUser": "e620",
       "userName": "BazarTrend",
-      "descripcion": "BazarTrend es un espacio virtual donde la moda, la creatividad y las últimas tendencias se encuentran. Ofrecemos una amplia variedad de productos seleccionados con estilo, pensados para aquellos que buscan lo más actual y exclusivo. ",
+      "descripcion": "Somos BazarTrend, una tienda especializada en artículos para el hogar. Ofrecemos una gran variedad de productos cuidadosamente elegidos, desde lo más actual hasta lo más exclusivo, para quienes buscan algo único, práctico y con estilo.",
       "provincia": "Buenos Aires",
       "ciudad": "Mar del Plata",
       "linkInstagram": "",
@@ -11,7 +11,11 @@
       "linkWeb": "",
       "telefono": "223414578",
       "imagePerfil": "https://www.shutterstock.com/image-illustration/bazaar-text-title-headline-3d-260nw-618167345.jpg",
-      "listaFavoritos": [],
+      "listaFavoritos": [
+        "0ac2",
+        "0b19",
+        "ae72"
+      ],
       "id": "a72d"
     },
     {
@@ -111,6 +115,48 @@
       "telefono": "+5492234574896",
       "imagePerfil": "https://i.pinimg.com/736x/ce/d2/52/ced25205b7f56a5597c6a40d797f6f93.jpg",
       "listaFavoritos": []
+    },
+    {
+      "idUser": "472d",
+      "userName": "Pet shop Mdq",
+      "descripcion": "Somos uno de los emprendimientos líderes en la región, contamos con una basta experiencia en el mercado del que somos parte.\n\nNuestros productos y servicios están a la vanguardia y cuidamos cada detalle al máximo para brindar a nuestros clientes la satisfacción de sus necesidades, ya que este es nuestro principal objetivo.",
+      "provincia": "Buenos Aires",
+      "ciudad": "Mar del Plata",
+      "linkInstagram": "https://www.instagram.com/petshop_mdq",
+      "linkLinkedIn": "",
+      "linkWeb": "https://petshopmdq.com/",
+      "telefono": "+5492234379432",
+      "imagePerfil": "https://img.pica-ai.com/image/aigc/alg%26pic-gen%26p%26eb81591ea6944748001453cca2742d6d_512_512.webp",
+      "listaFavoritos": [],
+      "id": "8c60"
+    },
+    {
+      "idUser": "fa44",
+      "userName": "Atelier",
+      "descripcion": "Atelier surge con la necesidad de rodearnos de naturaleza y de objetos artesanales dentro de esta gran ciudad. La curiosidad es la esencia del proyecto y buscamos que juntos nos inspiremos y aprendamos día a día.",
+      "provincia": "Ciudad Autónoma de Buenos Aires",
+      "ciudad": "Palermo",
+      "linkInstagram": "https://www.instagram.com/atelier.botanico",
+      "linkLinkedIn": "",
+      "linkWeb": "https://atelierbotanico.com.ar",
+      "telefono": "5491123989375",
+      "imagePerfil": "https://i.pinimg.com/736x/aa/55/17/aa55178768da23a5cee576eddc4dbd71.jpg",
+      "listaFavoritos": [],
+      "id": "0b19"
+    },
+    {
+      "idUser": "86a1",
+      "userName": "Paw accesorios",
+      "descripcion": "Somos mayorista de accesorios de moda.",
+      "provincia": "Ciudad Autónoma de Buenos Aires",
+      "ciudad": "Ciudad de Buenos Aires",
+      "linkInstagram": "https://www.instagram.com/pawaccesorios",
+      "linkLinkedIn": "",
+      "linkWeb": "https://www.pawaccesorios.com.ar/",
+      "telefono": "011 28870492",
+      "imagePerfil": "https://i.pinimg.com/736x/64/69/55/646955983a2f02d5ee2c9197bdef8c82.jpg",
+      "listaFavoritos": [],
+      "id": "ae72"
     }
   ]
 }

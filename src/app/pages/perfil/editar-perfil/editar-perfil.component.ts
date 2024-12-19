@@ -153,48 +153,66 @@ export class EditarPerfilComponent implements OnInit {
   }
 
 
-  validarFormularioPerfil() {
-    if (this.formularioActualizacionPerfil.invalid) {
-      return;
+validarCamposImcompletos():boolean{
+ let boolean=true;
+  const campos = ['username', 'descripcion', 'provincia', 'ciudad', 'telefono'];
+
+  for (const campo of campos) {
+    const control = this.formularioActualizacionPerfil.get(campo);
+    if (!control || control.value === null || control.value.trim() === '') {
+      boolean= false; // Devuelve false si algún campo está vacío
     }
-    const formValue = this.formularioActualizacionPerfil.value;
+  }
 
-    // Convertir el valor del formulario a un objeto User
-    const perfilActualizado: Perfil = {
-      idUser: '',
-      userName: formValue.username ?? '',
-      descripcion: formValue.descripcion ?? '',
-      provincia: formValue.provincia ?? '',
-      ciudad: formValue.ciudad ?? '',
-      linkInstagram: formValue.linkInstagram ?? '',
-      linkLinkedIn: formValue.linkLinkedIn ?? '',
-      linkWeb: formValue.linkWeb ?? '',
-      telefono: formValue.telefono ?? '',
-      imagePerfil: formValue.imagePerfil ?? '',
-      listaFavoritos: []
-    };
+  return boolean;
+}
 
-    const username = this.formularioActualizacionPerfil.get('username')?.value; //se obtiene el username del formulario
+  validarFormularioPerfil() {
+    const camposCompletos= this.validarCamposImcompletos();
 
-    // Verificar si el username ya está registrado
-    this.perfilService.getPerfiles().subscribe({
-      next: (profiles: Perfil[]) => {
-        if (username) {
-          if (this.usernameExists(profiles, username)) {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'El nombre de usuario ya está en uso',
-            });
-          } else {
-            this.guardarCambiosPerfil(perfilActualizado); // Guardar usuario y perfil
+    if (!camposCompletos) {
+      Swal.fire("Campos Imcompletos");
+    }else{
+      const formValue = this.formularioActualizacionPerfil.value;
+
+      // Convertir el valor del formulario a un objeto User
+      const perfilActualizado: Perfil = {
+        idUser: '',
+        userName: formValue.username ?? '',
+        descripcion: formValue.descripcion ?? '',
+        provincia: formValue.provincia ?? '',
+        ciudad: formValue.ciudad ?? '',
+        linkInstagram: formValue.linkInstagram ?? '',
+        linkLinkedIn: formValue.linkLinkedIn ?? '',
+        linkWeb: formValue.linkWeb ?? '',
+        telefono: formValue.telefono ?? '',
+        imagePerfil: formValue.imagePerfil ?? '',
+        listaFavoritos: []
+      };
+  
+      const username = this.formularioActualizacionPerfil.get('username')?.value; //se obtiene el username del formulario
+  
+      // Verificar si el username ya está registrado
+      this.perfilService.getPerfiles().subscribe({
+        next: (profiles: Perfil[]) => {
+          if (username) {
+            if (this.usernameExists(profiles, username)) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'El nombre de usuario ya está en uso',
+              });
+            } else {
+              this.guardarCambiosPerfil(perfilActualizado); // Guardar usuario y perfil
+            }
           }
-        }
-      },
-      error: (error) => {
-        console.error('Error al verificar el username', error);
-      },
-    });
+        },
+        error: (error) => {
+          console.error('Error al verificar el username', error);
+        },
+      });
+    }
+    
   }
 
   // Método que verifica si el username ya existe en el array de perfiles

@@ -116,6 +116,84 @@
       "Ganancia": 5,
       "PrecioFinal": 6.3,
       "habilitado": true
+    },
+    {
+      "id": "fce2",
+      "idUsuario": "e620",
+      "nombre": "Bandeja Plástica Rectangular",
+      "precioMP": 15000,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 9,
+      "valorGF": 60000,
+      "CantidadProductoMensual": 30,
+      "Ganancia": 25,
+      "PrecioFinal": 4583.33,
+      "habilitado": true
+    },
+    {
+      "idUsuario": "e620",
+      "nombre": "Bowl 14cm",
+      "precioMP": 13500,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 16,
+      "valorGF": 20000,
+      "CantidadProductoMensual": 25,
+      "Ganancia": 25,
+      "PrecioFinal": 2054.69,
+      "habilitado": true,
+      "id": "d775"
+    },
+    {
+      "idUsuario": "e620",
+      "nombre": "Budinera de vidrio 25cm",
+      "precioMP": 98000,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 10,
+      "valorGF": 60000,
+      "CantidadProductoMensual": 30,
+      "Ganancia": 25,
+      "PrecioFinal": 14750,
+      "habilitado": true,
+      "id": "63f0"
+    },
+    {
+      "id": "41a6",
+      "idUsuario": "e620",
+      "nombre": "Azucarera Vidrio c/ Cuchara de Bambú",
+      "precioMP": 36000,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 6,
+      "valorGF": 6000,
+      "CantidadProductoMensual": 6,
+      "Ganancia": 25,
+      "PrecioFinal": 8750,
+      "habilitado": true
+    },
+    {
+      "idUsuario": "e620",
+      "nombre": "Almohadón 50x50 ",
+      "precioMP": 60000,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 9,
+      "valorGF": 20000,
+      "CantidadProductoMensual": 24,
+      "Ganancia": 25,
+      "PrecioFinal": 9375,
+      "habilitado": true,
+      "id": "dec0"
+    },
+    {
+      "idUsuario": "e620",
+      "nombre": "Canasto Multiuso Apilable 36cm",
+      "precioMP": 38000,
+      "cantidadMP": 1,
+      "UnidadDeCompraMP": 15,
+      "valorGF": 20000,
+      "CantidadProductoMensual": 24,
+      "Ganancia": 25,
+      "PrecioFinal": 4208.33,
+      "habilitado": true,
+      "id": "3322"
     }
   ]
 }

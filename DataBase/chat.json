@@ -17,6 +17,78 @@
       "mensaje": "Hola, mucho gusto quiero saber si vendes la cera de abeja, me vendría genial para mi emprendimiento!!!\n",
       "visto": false,
       "eliminadoPor": []
+    },
+    {
+      "id": "0ccc",
+      "idUserEmisor": "e620",
+      "idUserDestinatario": "133d",
+      "fechaDeCreacion": "2024-12-19T22:39:52.034Z",
+      "mensaje": "¡Hola! Soy de BazarMan, una tienda especializada en artículos para el hogar.",
+      "visto": false,
+      "eliminadoPor": []
+    },
+    {
+      "id": "5303",
+      "idUserEmisor": "e620",
+      "idUserDestinatario": "fa44",
+      "fechaDeCreacion": "2024-12-19T22:41:10.022Z",
+      "mensaje": "¡Hola! Soy de BazarTrend. Estaba viendo tu tienda,y me encanta cómo integras lo natural en los productos para el hogar",
+      "visto": true,
+      "eliminadoPor": []
+    },
+    {
+      "id": "b320",
+      "idUserEmisor": "fa44",
+      "idUserDestinatario": "e620",
+      "mensaje": "¡Hola! Gracias por el comentario. Siempre buscamos nuevas ideas para seguir innovando.",
+      "visto": true,
+      "fechaDeCreacion": "2024-12-19T22:42:19.995Z",
+      "eliminadoPor": []
+    },
+    {
+      "id": "ccb2",
+      "idUserEmisor": "e620",
+      "idUserDestinatario": "fa44",
+      "mensaje": "Vamos creciendo, hemos lanzado nuevos productos y estamos buscando colaborar con tiendas como la tuya. Creo que podríamos complementar muy bien nuestras ofertas. ¿Te gustaría explorar alguna colaboración?",
+      "visto": false,
+      "fechaDeCreacion": "2024-12-19T22:42:45.002Z",
+      "eliminadoPor": []
+    },
+    {
+      "id": "5ba5",
+      "idUserEmisor": "e620",
+      "idUserDestinatario": "86a1",
+      "fechaDeCreacion": "2024-12-19T22:43:18.761Z",
+      "mensaje": "¡Hola! Soy de BazarTrend. Estaba viendo tu tienda de accesorios y me encanta cómo tienen productos tan únicos. ¿Cómo va todo?",
+      "visto": true,
+      "eliminadoPor": []
+    },
+    {
+      "id": "4d55",
+      "idUserEmisor": "e620",
+      "idUserDestinatario": "741a",
+      "fechaDeCreacion": "2024-12-19T22:44:05.385Z",
+      "mensaje": "¡Hola! Soy de BazarTrend. Estaba mirando tus velas y artículos relacionados, y me parece que encajarían perfecto con lo que ofrecemos. ",
+      "visto": false,
+      "eliminadoPor": []
+    },
+    {
+      "id": "e9a8",
+      "idUserEmisor": "e620",
+      "idUserDestinatario": "cda0",
+      "fechaDeCreacion": "2024-12-19T22:44:38.093Z",
+      "mensaje": "¡Hola! Soy de BazarTrend. Estaba viendo tus productos de tejidos y creo que podrían encajar muy bien con lo que ofrecemos. ¿Cómo va todo?",
+      "visto": false,
+      "eliminadoPor": []
+    },
+    {
+      "id": "7183",
+      "idUserEmisor": "86a1",
+      "idUserDestinatario": "e620",
+      "mensaje": "¡Hola! Gracias, todo va bien, estamos lanzando algunas nuevas colecciones. ¿Y BazarTrend? ¿Qué novedades tienen?",
+      "visto": false,
+      "fechaDeCreacion": "2024-12-19T22:45:38.523Z",
+      "eliminadoPor": []
     }
   ]
 }
