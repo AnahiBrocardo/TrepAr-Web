@@ -6,7 +6,7 @@
       "nombre": "Sarten",
       "categoria": "Hogar",
       "descripcion": "Sartén de cocina",
-      "precio": 40000,
+      "precio": 45000,
       "deletedAt": false,
       "privado": false,
       "imagen": "https://walmartgt.vtexassets.com/arquivos/ids/218001/Mainstays-Sarten-30Cm-1-36510.jpg"
@@ -769,6 +769,61 @@
       "deletedAt": false,
       "privado": false,
       "imagen": "https://acdn.mitiendanube.com/stores/138/225/products/img-20231221-wa0091-02870d676d245401d217042045979777-640-0.webp"
+    },
+    {
+      "id": "9e58",
+      "idUser": "e620",
+      "nombre": "Batidor a Pila",
+      "categoria": "Hogar",
+      "descripcion": "Material: Acero y plástico.\nMedidas: De alto 20cm y de diámetro 3.5cm.",
+      "precio": 5000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/003/845/525/products/dsc_0033-8d43f6a41309c3399b17078439885983-640-0.webp"
+    },
+    {
+      "id": "65fc",
+      "idUser": "e620",
+      "nombre": "Botella Acero Mármol 500ml",
+      "categoria": "Hogar",
+      "descripcion": "Nuestra Botella de Acero con Diseño de Mármol en color blanco es la compañera elegante para mantener tus bebidas frías o calientes.\nMedidas: De alto 22.5cm y de diámetro 7cm. ",
+      "precio": 9950,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/003/845/525/products/412518-0-29d94eac3ff1b941ee17086277161644-640-0.webp"
+    },
+    {
+      "id": "1837",
+      "idUser": "e620",
+      "nombre": "Cubiertos cobre",
+      "categoria": "Hogar",
+      "descripcion": "Medida del cuchillo: 21.5cm de alto.\nMedida del tenedor: 20cm de alto.\nMedida de la cuchara: 20cm de alto.\nMedida de la cucharita: 15cm de alto.",
+      "precio": 12589,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/003/845/525/products/dsc_0147-165210a6ad58ee6c6617017066414251-640-0.webp"
+    },
+    {
+      "id": "9b8c",
+      "idUser": "e620",
+      "nombre": "Cuchillos x4 + Soporte Acero",
+      "categoria": "Hogar",
+      "descripcion": "Medidas del cuchillo chef: De alto 33cm, de profundidad 1.5cm y de ancho 5cm.\nMedidas del cuchillo para carne: De alto 32cm, de profundidad 1.5cm y de ancho 3cm.\nMedidas del cuchillo para pan: De alto 31.5cm, de profundidad 1.5cm y de ancho 3cm.\n\nMedidas del cuchillo utilitario: De alto 24cm, de profundidad 1.5cm y de ancho 2cm.\nMedidas del soporte: De alto 23cm, de profundidad 10cm y de ancho 10cm.",
+      "precio": 90000,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/003/845/525/products/421333-1-8eec0992c8e5dd5e6b17176891640922-640-0.webp"
+    },
+    {
+      "id": "7b47",
+      "idUser": "e620",
+      "nombre": "Canasto Perforado ALTO con Tapa",
+      "categoria": "Hogar",
+      "descripcion": "Canasto para usos múltiples con tapa.\nMedidas: 37cm de ancho, 27cm de profundidad y 22cm de alto.",
+      "precio": 9990,
+      "deletedAt": false,
+      "privado": false,
+      "imagen": "https://acdn.mitiendanube.com/stores/003/845/525/products/dsc_0077-3a711f8441d1a3b7a217024785490907-640-0.webp"
     }
   ]
 }
