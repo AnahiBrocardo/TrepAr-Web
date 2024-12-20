@@ -171,7 +171,7 @@ validarCamposImcompletos():boolean{
     const camposCompletos= this.validarCamposImcompletos();
 
     if (!camposCompletos) {
-      Swal.fire("Campos Imcompletos");
+      Swal.fire("Campos Incompletos");
     }else{
       const formValue = this.formularioActualizacionPerfil.value;
 

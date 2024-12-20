@@ -5,9 +5,7 @@
       "nombre": "Juan",
       "apellido": "Lopez",
       "email": "bazarTrend@gmail.com",
-      "password": "12345678",
-      "createdAt": "2024-11-25T07:42:13.886Z",
-      "deletedAt": null
+      "password": "12345678"
     },
     {
       "id": "43de",
