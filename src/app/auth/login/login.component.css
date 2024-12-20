@@ -68,3 +68,10 @@
     margin-bottom: 2px;
   }
   
+  @media (max-width: 768px) {
+      .form-label {
+        text-align: left;
+        display: block; /* Asegura que el label se comporte como un bloque y no como inline */
+      }
+    }
+    
