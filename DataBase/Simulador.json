@@ -181,19 +181,6 @@
       "PrecioFinal": 9375,
       "habilitado": true,
       "id": "dec0"
-    },
-    {
-      "idUsuario": "e620",
-      "nombre": "Canasto Multiuso Apilable 36cm",
-      "precioMP": 38000,
-      "cantidadMP": 1,
-      "UnidadDeCompraMP": 15,
-      "valorGF": 20000,
-      "CantidadProductoMensual": 24,
-      "Ganancia": 25,
-      "PrecioFinal": 4208.33,
-      "habilitado": true,
-      "id": "3322"
     }
   ]
 }
